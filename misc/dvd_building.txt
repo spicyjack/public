@@ -1,0 +1,31 @@
+  561  mkisofs -dvd-video -J -R -o ironiya.iso -V "IRONIA1" IRONIA1
+  591  growisofs -Z /dev/sr0=ironiya.iso 
+  615  mkisofs -dvd-video -J -R -o rus_classics_7b.iso RUS_CLASSIC_7_B/
+  631  growisofs -Z /dev/sr0=rus_classics_7b.iso 
+  659  mkisofs -dvd-video -J -R -V RUS_CLASSICS_7A -o rus_classics_7a.iso RUS_CLASSIC_7_A/
+  660  growisofs -Z /dev/sr0=rus_classics_7a.iso 
+  697  sh /usr/share/mplayer/midentify.sh Duenya.1.dat 
+  698  sh /usr/share/mplayer/midentify.sh Duenya.2.dat 
+  699  sh /usr/share/mplayer/midentify.sh Duenya.1.mpg 
+  700  sh /usr/share/mplayer/midentify.sh Duenya.2.mpg 
+  705  ffmpeg -i Duenya.1.dat -i Duenya.2.dat -target ntsc-dvd Duenya.mpg
+  717  ffmpeg -i Gentlemens_Udachi.1.dat -i Gentlemens_Udachi.2.dat -target ntsc-dvd Gentlemens_Udachi.mpg
+  730  sleep 5; import Brilliantovaya_Ruka.title.jpg
+  731  eog Brilliantovaya_Ruka.title.jpg 
+  751  idvid Brilliantovaya_Ruka.mkv 
+  777  growisofs -Z /dev/sr0=brilliantova.ruka.iso 
+  789  mplayer dvd://
+  523  /usr/share/tovid/makexml -overwrite -dvd -menu "/tmp/Main_Menu.mpg" "/tmp/Бриллиантова_рука.1.mpg" -out "/tmp/Бриллиантова_рука"
+  524  makedvd /tmp/Бриллиантова_рука.xml 
+  525  /usr/share/tovid/makedvd /tmp/Бриллиантова_рука.xml 
+  528  mkisofs -J -R -V "Бриллиантова" -o brilliantova.ruka.iso Бриллиантова_рука
+  546  /usr/share/tovid/makexml -overwrite -dvd -menu "/tmp/Main_Menu.mpg" "/tmp/Бриллиантова_рука.1.mpg" -out "/tmp/Бриллиантова_рука"
+  547  /usr/share/tovid/makedvd /tmp/Бриллиантова_рука.xml 
+  552  mkisofs -J -R -V "Бриллиантова" -o brilliantova.ruka.iso Бриллиантова_рука
+  555  growisofs -Z /dev/sr0=brilliantova.ruka.iso 
+  569  tovid -quiet -overwrite -ntsc -dvd -wide -quality 7 -in "/home/files/DVD_Working_Dir/Features/Brilliantovaya_Ruka.mkv" -out "/tmp/Бриллиантова_рука.mpg" -from-gui -noask
+  573  /usr/share/tovid/makexml -overwrite -dvd -menu "/tmp/Main_Menu.mpg" "/tmp/Бриллиантова_рука.mpg.mpg" -out Бриллиантова_рука
+  576  /usr/share/tovid/makedvd Бриллиантова_рука.xml 
+  600  mkisofs -dvd-video -J -R -V "Бриллиантова" -o brilliantova.ruka.iso Бриллиантова_рука
+  601  mplayer brilliantova.ruka.iso 
+  604  growisofs -Z /dev/sr0=brilliantova.ruka.iso 
