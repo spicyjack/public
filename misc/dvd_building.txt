@@ -29,3 +29,6 @@
   600  mkisofs -dvd-video -J -R -V "Бриллиантова" -o brilliantova.ruka.iso Бриллиантова_рука
   601  mplayer brilliantova.ruka.iso 
   604  growisofs -Z /dev/sr0=brilliantova.ruka.iso 
+
+/dev/sr0 on /media/HIGH_FIDELITY type udf
+(ro,nosuid,nodev,uhelper=udisks,uid=46242,gid=200,iocharset=utf8,umask=0077)
