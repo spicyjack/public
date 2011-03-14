@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Test-File 1.29
+platforms       darwin
+maintainers     cpan2port
+description     test file attributes through Test::Builder
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY
+checksums sha1 b63a332dfd7cbc3e0d539131f49234e201f549a7 md5 395dd6996d63f9fcf633700186455f00 rmd160 718bf9ab7ecb391006c099c35e18f0756c9b0a98
+depends_lib-append port:p5-test-manifest
+
