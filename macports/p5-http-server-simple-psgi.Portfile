@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     HTTP-Server-Simple-PSGI 0.14
+platforms       darwin
+maintainers     cpan2port
+description     HTTP::Server::Simple::PSGI (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA
+checksums sha1 9ecb8a3e07502d8a7351ee8cf199a76655d382c6 md5 c26795112c9f616dbd37ece1c5895b55 rmd160 1a04e62dae76969b9726d90ad37ae17b94850c03
+depends_lib-append port:p5-http-server-simple
+
