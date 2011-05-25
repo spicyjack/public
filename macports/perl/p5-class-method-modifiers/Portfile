@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Class-Method-Modifiers 1.07
+platforms       darwin
+maintainers     cpan2port
+description     Class::Method::Modifiers (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK
+checksums sha1 2f90735e0287523bf2d5965864aa39523f923c2b md5 32c45c765668fd335bc8af8041bf229e rmd160 27ae12c5a6e6dd4cf0f940f8794ed5591da76c81
+
+
