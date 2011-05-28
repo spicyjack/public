@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     RSS-Parser-Lite 0.10
+platforms       darwin
+maintainers     cpan2port
+description     XML::RSS::Parser::Lite (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/E/EB/EBOSRUP
+checksums sha1 13e8a5425e49631374e6f046b369569fc8e02fc2 md5 6457aac3c4033abe5ad7f4863cd85a7d rmd160 9042706b3c10fdeb039abb88b448cf206c1369bf
+
+
