@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     HTTP-Message 6.02
+platforms       darwin
+maintainers     cpan2port
+description     Base class for Request/Response
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/G/GA/GAAS
+checksums sha1 8622a3ac18c39c3594ff42a330ceb65ac6c91c43 md5 a6b28e44f7b5e5573362f042d522a456 rmd160 6703f508af52ba7d30a1a3362c0f40f8a01af20d
+depends_lib-append port:p5-uri port:p5-html-parser port:p5-lwp-mediatypes port:p5-encode-locale port:p5-http-date
+

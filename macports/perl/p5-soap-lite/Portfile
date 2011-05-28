@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     SOAP-Lite 0.712
+platforms       darwin
+maintainers     cpan2port
+description     XML::Parser::Lite (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/M/MK/MKUTTER
+checksums sha1 46445cdf32e245b867abf0036a83d442351475c0 md5 fd71a0c0feff85f670ab4b2e571652a8 rmd160 1380a3814a323679f23fd882f5a9b779c121a9f2
+depends_lib-append port:p5-mime-tools port:p5-uri port:p5-io-socket-ssl port:p5-libwww-perl port:p5-http-daemon port:p5-class-inspector port:p5-xml-parser port:p5-task-weaken
+
