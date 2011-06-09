@@ -1,5 +1,11 @@
+syntax: glob
+.DS_Store
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.perspective*
+*.xcodeproj/*.mode*
+
 syntax: regexp
+^build$
 .*\.swp$
-.DS_Store$
 PortIndex
 PortIndex.quick
