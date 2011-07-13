@@ -3,9 +3,13 @@ syntax: glob
 *.xcodeproj/*.pbxuser
 *.xcodeproj/*.perspective*
 *.xcodeproj/*.mode*
+*.pbxindex/*pbxindex.header
+*.pbxindex/*strings.pbxstrings/control
+*.pbxindex/*symbols0.pbxsymbols
 
 syntax: regexp
 ^build$
 .*\.swp$
 PortIndex
 PortIndex.quick
+
