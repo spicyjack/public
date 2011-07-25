@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     ExtUtils-AutoInstall 0.63
+platforms       darwin
+maintainers     cpan2port
+description     Automatic install of dependencies via CPAN
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/A/AU/AUTRIJUS
+checksums sha1 44cc7a07d774cea79da1967229331afc349586a0 md5 87ce9c44a8ab52e9b0553a2e46805525 rmd160 80e115155ac1bd0a990ea58188270b1937192b17
+
+
