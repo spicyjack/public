@@ -1,0 +1,16 @@
+# $Id: Portfile 76604 2011-03-02 01:49:46Z dports@macports.org $
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Devel-Size 0.77
+revision        1
+maintainers         nomaintainer
+description         Perl extension for finding the memory usage of Perl variables
+long_description    ${description}
+
+platforms           darwin
+
+checksums           md5     3ed95f459e9fab52d6d2b3aebf9343fd \
+                    sha1    df554da94aef1f9888d51c1c994951547c05df9d \
+                    rmd160  795015670c1244b8363a81b479d58bbc8b429b04
