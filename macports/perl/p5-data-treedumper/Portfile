@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Data-TreeDumper 0.40
+platforms       darwin
+maintainers     cpan2port
+description     Data::TreeDumper (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/N/NK/NKH
+checksums sha1 3ad62dc53c005eabfe2c43925f6137907de3ed54 md5 ee4698c58fc5f529b85de6db25aeb957 rmd160 a8d8e7beeaad762c1a67a770c121d5f8ab5c842b
+depends_lib-append port:p5-sort-naturally port:p5-term-size port:p5-check-isa port:p5-devel-size
+
