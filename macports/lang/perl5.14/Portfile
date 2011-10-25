@@ -3,7 +3,7 @@
 PortSystem      1.0
 
 name            perl5.14
-version         5.14.0
+version         5.14.2
 revision        1
 set branch      [join [lrange [split ${version} .] 0 1] .]
 categories      lang
@@ -22,9 +22,12 @@ use_bzip2       yes
 homepage        http://www.perl.org/
 master_sites    http://www.cpan.org/src/5.0/
 
-checksums           md5     e7457deea78330c5f8eebb2fd2a45479 \
-                    sha1    da5e991f9d4a6728eccfc190c5ddbed3c02a94fe \
-                    rmd160  15aeb6c272d01ba0bbf938c9b198f03bd787b5e7
+checksums           md5     04a4c5d3c1f9f19d77daff8e8cd19a26 \
+                    sha1    e48d11c6fd1ee61985b475d7f261d774296a1367 \
+                    rmd160  4a15090b2b4fdfa9abda6444d1825e62c393c891
+#checksums           md5     e7457deea78330c5f8eebb2fd2a45479 \
+#                    sha1    da5e991f9d4a6728eccfc190c5ddbed3c02a94fe \
+#                    rmd160  15aeb6c272d01ba0bbf938c9b198f03bd787b5e7
 
 patchfiles	patch-Configure.diff 
 
