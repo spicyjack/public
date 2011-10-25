@@ -11,5 +11,5 @@ description     DBD::SQLite (no description available)
 extract.suffix  .tar.gz
 master_sites    http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK
 checksums sha1 1b2c005902789199e728f7a43f97f390cf6337e5 md5 623e1340f98d4df1d2f313b49489471c rmd160 95068c69776377c96f2f3652f13cac42e271cfb4
-depends_lib-append port:p5-dbi
+depends_lib-append port:p5.14-dbi
 
