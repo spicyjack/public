@@ -9,6 +9,7 @@ syntax: glob
 
 syntax: regexp
 ^build$
+.*/work$
 .*\.swp$
 PortIndex
 PortIndex.quick
