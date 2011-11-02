@@ -4,7 +4,7 @@
 PortSystem      1.0
 
 name            perl5
-version         5.14.2
+version         5.14.1
 revision        1
 categories      lang
 license         BSD
@@ -29,7 +29,6 @@ if {[variant_isset perl5_8]} {
     set branch 5.12
 } else {
     set branch 5.14
-    #default_variants +perl5_12
     default_variants +perl5_14
 }
 
