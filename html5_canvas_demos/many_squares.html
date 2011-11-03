@@ -1,0 +1,26 @@
+<body>
+This is a red square: 
+<canvas id="square" width=10 height=10></canvas>.
+This is a blue circle:
+<canvas id="circle" width=10 height=10></canvas>.
+
+<script type="text/javascript">
+// get the first canvas element
+var canvas = document.getElementById("square");
+var context = canvas.getContext("2d");
+
+// draw something on the canvas
+context.fillStyle = "#f00";     // set color to red
+context.fillRect(0,0,10,10);    // fill a small square
+
+// get the second canvas and context
+canvas = document.getElementById("circle");
+context = canvas.getContext("2d");
+
+// begin a path and add a circle to it
+context.beginPath();
+context.arc(5, 5, 5, 0, 2*Math.PI, true);
+context.fillStyle = "#00f";     // set blue fill
+context.fill();                 // fill the path
+</script>
+</body>
