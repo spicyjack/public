@@ -1,0 +1,95 @@
+#!/bin/bash
+
+SOURCE_DIR="$HOME/src"
+
+function hgstat {
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep hg);
+    do
+        echo "=== hg status: $DIR ===";
+        cd $DIR
+        hg status
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check the status in mercurial directories
+
+function hgpullall {
+    HG_DEBUG=0
+    unset HG_CMD
+    if [ $# -gt 0 ]; then HG_DEBUG=1; echo "HG_DEBUG set to ${HG_DEBUG}"; fi
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep hg);
+    do
+        echo "=== hg pull: $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        HG_CMD="hg pull -u"
+        if [ $HG_DEBUG -gt 0 ]; then echo "command: ${HG_CMD}"; fi
+        HG_OUTPUT=$(${HG_CMD} 2>&1)
+        # check to see if mercurial barked about invalid certs
+        if [ $(echo $HG_OUTPUT | grep -c "^abort: ") -gt 0 ]; then
+            HG_CMD="hg pull -u --insecure"
+            if [ $HG_DEBUG -gt 0 ]; then echo "command: ${HG_CMD}"; fi
+            HG_OUTPUT=$(${HG_CMD} 2>&1 | grep -v warning)
+        fi
+        # if the string 'no changes found' was not listed in the output...
+        if [ $(echo $HG_OUTPUT | grep -c "no changes found") -ne 1 ]; then
+            echo $HG_OUTPUT
+        fi
+        cd $SOURCE_DIR
+        IFS=$' \t\n'
+    done
+    cd $START_DIR
+} # hg pull in all mercurial directories
+
+function hginchk {
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep hg);
+    do
+        echo "=== hg incoming: $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        HG_OUTPUT=$(hg incoming 2>&1)
+        # check to see if mercurial barked about invalid certs
+        if [ $(echo $HG_OUTPUT | grep -c "^abort: ") -gt 0 ]; then
+            HG_OUTPUT=$(hg pull -u --insecure 2>/dev/null)
+        fi
+        # if the string 'no changes found' was not listed in the output...
+        if [ $(echo $HG_OUTPUT | grep -c "no changes found") -ne 1 ]; then
+            echo $HG_OUTPUT
+        fi
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check for inbound changes to mercurial directories
+
+function hgoutchk {
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep hg);
+    do
+        echo "=== hg outgoing: $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        HG_OUTPUT=$(hg outgoing 2>&1)
+        # check to see if mercurial barked about invalid certs
+        if [ $(echo $HG_OUTPUT | grep -c "^abort: ") -gt 0 ]; then
+            HG_OUTPUT=$(hg pull -u --insecure 2>/dev/null)
+        fi
+        # if the string 'no changes found' was not listed in the output...
+        if [ $(echo $HG_OUTPUT | grep -c "no changes found") -ne 1 ]; then
+            echo $HG_OUTPUT
+        fi
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check for outbound changes in mercurial directories
+
+# vi: set ft=sh sw=4 ts=4
+# fin!

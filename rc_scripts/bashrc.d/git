@@ -1,0 +1,97 @@
+#!/bin/bash
+
+SOURCE_DIR="$HOME/src"
+
+function rungitcmd {
+    local GIT_CMD=$1
+    local GIT_SUCCESS_PATTERN=$2
+
+    if [ $GIT_DEBUG -gt 0 ]; then echo "command: ${GIT_CMD}"; fi
+    GIT_OUTPUT=$(${GIT_CMD} 2>&1)
+    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -ne 1 ]; then
+        echo $GIT_OUTPUT
+    fi
+}
+
+function gitstat {
+    GIT_DEBUG=0
+    unset GIT_CMD
+    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep 'git$');
+    do
+        echo "=== git status: $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        GIT_CMD="git status"
+        GIT_SUCCESS_PATTERN="working directory clean"
+        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check the status in git directories
+
+function gitpullall {
+    GIT_DEBUG=0
+    unset GIT_CMD
+    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep 'git$');
+    do
+        echo "=== git pull: $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        GIT_CMD="git pull"
+        GIT_SUCCESS_PATTERN="Already up-to-date."
+        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # git pull in all git directories
+
+function gitinchk {
+    GIT_DEBUG=0
+    unset GIT_CMD
+    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep git);
+    do
+        echo "=== git pull --dry-run $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        GIT_CMD="git pull --dry-run"
+        GIT_SUCCESS_PATTERN="Already up-to-date."
+        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check for inbound changes to git directories
+
+function gitoutchk {
+    GIT_DEBUG=0
+    unset GIT_CMD
+    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep git);
+    do
+        echo "=== git push --dry-run $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        GIT_CMD="git push --dry-run"
+        GIT_SUCCESS_PATTERN="Everything up-to-date"
+        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+} # check for outbound changes in git directories
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!

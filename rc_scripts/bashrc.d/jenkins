@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# run the Jenkins CLI jar file
+function jenkins {
+    JAVA_BIN=$(which java)
+    $JAVA_BIN -jar ~/bin/jenkins-cli.jar -s http://localhost:8080/jenkins "$@"
+}
+
+# vi: set ft=sh sw=4 ts=4
+# fin!

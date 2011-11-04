@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# environment variables
+H_GREEN="\[\e[0;32;40m\]"
+H_BLUE="\[\e[1;34;40m\]"
+HOSTNAMES="[xaoc\.local|lagrange|observer|yabloko]"
+set_ps1 () {
+    LAST_CMD=$?
+    if [ $(echo ${HOSTNAME} | egrep -c "${HOSTNAMES}") -gt 0 ]; then
+        HOST_COLOR=${H_GREEN}
+    else
+        HOST_COLOR=${H_BLUE}
+    fi
+    if [ ${LAST_CMD} -eq 0 ]; then
+        PS1_HOST="[${HOST_COLOR}\h\[\e[0m\]]"
+    else
+        PS1_HOST="[\[\e[0;31;40m\]\h\[\e[0m\]]"
+    fi
+    PS1_USER="[\[\e[0;36;40m\]brian\[\e[0m\]"
+    PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]\\$ "
+    PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}"
+}
+unset PS3 PS1_HOST PS1_USER PS1_PATH
+PROMPT_COMMAND=set_ps1
+PS2="\[\e[0;1m\]>\[\e[0m\] "
+PS4="\[\e[1;32m\]+\[\e[0m\] "
+export PS1 PS2 PS4 
+
+# vi: set ft=sh sw=4 ts=4
+# fin!
