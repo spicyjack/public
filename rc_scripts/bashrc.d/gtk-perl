@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SOURCE_DIR="$HOME/gtk-perl"
+
+GTK_PERL_REPOS='
+perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
+perl-ExtUtils-Depends perl-ExtUtils-PkgConfig
+perl-GStreamer perl-GStreamer-GConf perl-GStreamer-Interfaces
+perl-Glib perl-Glib-IO perl-Glib-Object-Introspection
+perl-Gnome2 perl-Gnome2-Canvas perl-Gnome2-Dia perl-Gnome2-GConf
+perl-Gnome2-PanelApplet perl-Gnome2-Print perl-Gnome2-Rsvg
+perl-Gnome2-VFS perl-Gnome2-Vte perl-Gnome2-Wnck
+perl-Goo-Canvas perl-Gtk2 perl-Gtk2-Champlain perl-Gtk2-GLExt
+perl-Gtk2-GladeXML perl-Gtk2-Html2 perl-Gtk2-MozEmbed
+perl-Gtk2-SourceView perl-Gtk2-SourceView2 perl-Gtk2-Spell
+perl-Gtk2-Unique perl-Gtk3 perl-Pango
+' # GTK_PERL_REPOS
+
+function gtkstat {
+    echo "checking of status of projects in ${SOURCE_DIR}"
+    gitstat
+}
+
+function gtkpullall {
+    echo "running 'git pull' on all projects in ${SOURCE_DIR}"
+    gitpullall
+}
+
+function gtkinchk {
+    echo "checking for incoming code on all projects in ${SOURCE_DIR}"
+    gitinchk
+}
+
+function gtkpullall {
+    echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
+    gitpullall
+}
+
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
