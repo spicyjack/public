@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SOURCE_DIR="$HOME/gtk-perl"
+# base URL for all of the git source stored on gnome.org
+GNOME_GIT_BASE_URL="git://git.gnome.org"
 
 GTK_PERL_REPOS='
 perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
@@ -16,26 +17,42 @@ perl-Gtk2-SourceView perl-Gtk2-SourceView2 perl-Gtk2-Spell
 perl-Gtk2-Unique perl-Gtk3 perl-Pango
 ' # GTK_PERL_REPOS
 
+function gtkcloneall {
+    SOURCE_DIR="$HOME/gtk-perl"
+    if [ ! -d $SOURCE_DIR ]; then
+        mkdir -p $SOURCE_DIR
+    fi
+    OLDPWD=$PWD
+    cd $SOURCE_DIR
+    for PROJECT in $GTK_PERL_REPOS; do
+        echo "=== git clone ${PROJECT} into ${SOURCE_DIR} ===";
+        git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
+    done
+} # clone all of the gtk-perl sources
+
 function gtkstat {
+    SOURCE_DIR="$HOME/gtk-perl"
     echo "checking of status of projects in ${SOURCE_DIR}"
     gitstat
-}
+} # status of gtk-perl sources
 
 function gtkpullall {
+    SOURCE_DIR="$HOME/gtk-perl"
     echo "running 'git pull' on all projects in ${SOURCE_DIR}"
     gitpullall
-}
+} # pull all of the gtk-perl sources
 
 function gtkinchk {
+    SOURCE_DIR="$HOME/gtk-perl"
     echo "checking for incoming code on all projects in ${SOURCE_DIR}"
     gitinchk
-}
+} # check for incoming gtk-perl source
 
 function gtkpullall {
+    SOURCE_DIR="$HOME/gtk-perl"
     echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
     gitpullall
-}
-
+} # check for gtk-perl source that needs to be pushed to the server
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
