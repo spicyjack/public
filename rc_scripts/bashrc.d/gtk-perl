@@ -28,13 +28,10 @@ function gtkcloneall {
         echo "=== git clone ${PROJECT} into ${SOURCE_DIR} ===";
         git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
         cd ${PROJECT}.git
-        # set the correct user/e-mail for this project
         git config user.name "Brian Manning"
         git config user.email "bmanning@src.gnome.org"
         cd ..
     done
-    # return to the starting directory
-    cd $OLDPWD
 } # clone all of the gtk-perl sources
 
 function gtkstat {
@@ -55,10 +52,10 @@ function gtkinchk {
     gitinchk
 } # check for incoming gtk-perl source
 
-function gtkpullall {
+function gtkoutchk {
     SOURCE_DIR="$HOME/gtk-perl"
     echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
-    gitpullall
+    gitoutchk
 } # check for gtk-perl source that needs to be pushed to the server
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
