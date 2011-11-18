@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # base URL for all of the git source stored on gnome.org
-#GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
-GNOME_GIT_BASE_URL="http://git.gnome.org/browse"
+GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
+#GNOME_GIT_BASE_URL="http://git.gnome.org/browse"
 
 GTK_PERL_REPOS='
 perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
@@ -34,9 +34,10 @@ function gtkcloneall {
         fi
         if [ -d ${PROJECT}.git ]; then
             cd ${PROJECT}.git
+            echo "-- Setting user.name/user.email via 'git config' --"
             git config user.name "Brian Manning"
             git config user.email "bmanning@src.gnome.org"
-            cd ..
+            cd $SOURCE_DIR
         else
             echo "ERROR: project directory ${PROJECT}.git doesn't exist!"
             return
