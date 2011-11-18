@@ -4,12 +4,11 @@
 if [ -x /opt/local/bin/gdircolors ]; then
     alias dir='/opt/local/bin/gls --color=auto --classify'
     DIRCOLORS="/opt/local/bin/gdircolors"
+    eval $($DIRCOLORS ~/.dircolors)
 elif [ -x /usr/bin/dircolors ]; then
     alias dir='/bin/ls -F'
     DIRCOLORS="/usr/bin/dircolors"
-else
-    exit 1
+    eval $($DIRCOLORS ~/.dircolors)
 fi
-eval $($DIRCOLORS ~/.dircolors)
 # vi: set ft=sh sw=4 ts=4
 # fin!

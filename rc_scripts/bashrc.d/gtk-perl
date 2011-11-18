@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # base URL for all of the git source stored on gnome.org
-GNOME_GIT_BASE_URL="ssh://git.gnome.org/git"
+GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
 
 GTK_PERL_REPOS='
 perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
@@ -27,11 +27,21 @@ function gtkcloneall {
     for PROJECT in $GTK_PERL_REPOS; do
         echo "=== git clone ${PROJECT} into ${SOURCE_DIR} ===";
         git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
-        cd ${PROJECT}.git
-        git config user.name "Brian Manning"
-        git config user.email "bmanning@src.gnome.org"
-        cd ..
+        if [ $? -gt 0 ]; then
+            echo "ERROR: 'git clone' returned non-zero status"
+            return
+        fi
+        if [ -d ${PROJECT}.git ]; then
+            cd ${PROJECT}.git
+            git config user.name "Brian Manning"
+            git config user.email "bmanning@src.gnome.org"
+            cd ..
+        else
+            echo "ERROR: project directory ${PROJECT}.git doesn't exist!"
+            return
+        fi
     done
+    cd $OLDPWD
 } # clone all of the gtk-perl sources
 
 function gtkstat {
