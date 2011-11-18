@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # base URL for all of the git source stored on gnome.org
-GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
+#GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
+GNOME_GIT_BASE_URL="http://git.gnome.org/browse"
 
 GTK_PERL_REPOS='
 perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
