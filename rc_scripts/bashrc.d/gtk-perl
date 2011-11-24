@@ -34,9 +34,10 @@ function gtkcloneall {
         fi
         if [ -d ${PROJECT}.git ]; then
             cd ${PROJECT}.git
-            echo "-- Setting user.name/user.email via 'git config' --"
+            echo "-- Setting user name/email/gpgkey via 'git config' --"
             git config user.name "Brian Manning"
             git config user.email "bmanning@src.gnome.org"
+            git config user.signkey "8D7CEDE6"
             cd $SOURCE_DIR
         else
             echo "ERROR: project directory ${PROJECT}.git doesn't exist!"
