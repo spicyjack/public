@@ -53,7 +53,7 @@ function gitpullall {
         echo "=== git pull: $DIR ===";
         cd $DIR
         IFS=$' \t'
-        GIT_CMD="git pull"
+        GIT_CMD="git pull --all"
         GIT_SUCCESS_PATTERN="Already up-to-date."
         rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
         IFS=$' \t\n'
