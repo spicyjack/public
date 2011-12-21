@@ -1,9 +1,15 @@
 #!/bin/bash
 
+### VARIABLES ###
+GIT_USER="Brian Manning"
+GIT_EMAIL="bmanning@src.gnome.org"
+GIT_GPG_KEY="8D7CEDE6"
+
 # base URL for all of the git source stored on gnome.org
 GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
 #GNOME_GIT_BASE_URL="http://git.gnome.org/browse"
 
+## List of current gtk2-perl repos
 GTK_PERL_REPOS='
 perl-Cairo perl-Cairo-GObject perl-Champlain perl-Clutter
 perl-ExtUtils-Depends perl-ExtUtils-PkgConfig
@@ -18,6 +24,7 @@ perl-Gtk2-SourceView perl-Gtk2-SourceView2 perl-Gtk2-Spell
 perl-Gtk2-Unique perl-Gtk3 perl-Pango
 ' # GTK_PERL_REPOS
 
+### FUNCTIONS ###
 function gtkcloneall {
     SOURCE_DIR="$HOME/gtk-perl"
     if [ ! -d $SOURCE_DIR ]; then
@@ -35,9 +42,9 @@ function gtkcloneall {
         if [ -d ${PROJECT}.git ]; then
             cd ${PROJECT}.git
             echo "-- Setting user name/email/gpgkey via 'git config' --"
-            git config user.name "Brian Manning"
-            git config user.email "bmanning@src.gnome.org"
-            git config user.signkey "8D7CEDE6"
+            git config user.name "${GIT_USER}"
+            git config user.email "${GIT_EMAIL}"
+            git config user.signkey "${GIT_GPG_KEY}"
             cd $SOURCE_DIR
         else
             echo "ERROR: project directory ${PROJECT}.git doesn't exist!"
@@ -57,6 +64,13 @@ function gtkpullall {
     SOURCE_DIR="$HOME/gtk-perl"
     echo "running 'git pull' on all projects in ${SOURCE_DIR}"
     gitpullall
+} # pull all of the gtk-perl sources
+
+function gtkupdatechk {
+    local CHECK_DATE=$1
+    SOURCE_DIR="$HOME/gtk-perl"
+    echo "running 'git log' to check all projects in ${SOURCE_DIR}"
+    gitupdatechk $CHECK_DATE
 } # pull all of the gtk-perl sources
 
 function gtkinchk {

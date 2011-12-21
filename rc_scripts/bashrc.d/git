@@ -62,6 +62,34 @@ function gitpullall {
     cd $START_DIR
 } # git pull in all git directories
 
+function gitupdatechk {
+    local CHECK_DATE=$1
+    if [ -z $CHECK_DATE ]; then
+        echo "ERROR: need a date to check; date format is YYYY-MM-DD"
+    else
+        GIT_DEBUG=0
+        unset GIT_CMD
+        git_check_src_dir
+        START_DIR=$PWD
+        cd $SOURCE_DIR
+        for DIR in $(/bin/ls | grep 'git$');
+        do
+            echo "=== git log: $DIR ===";
+            cd $DIR
+            GIT_FORMAT="%h %cd %an %s"
+            IFS=$' \t'
+            OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
+                --after="${CHECK_DATE}")
+            if [ -n "$OUTPUT" ]; then
+                echo $OUTPUT
+            fi
+            IFS=$' \t\n'
+            cd $SOURCE_DIR
+        done
+        cd $START_DIR
+    fi
+} # git pull in all git directories
+
 function gitinchk {
     GIT_DEBUG=0
     unset GIT_CMD
