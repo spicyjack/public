@@ -79,7 +79,7 @@ function gitupdatechk {
             GIT_FORMAT="%h %cd %an %s"
             IFS=$' \t'
             OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
-                --after="${CHECK_DATE}")
+                --after="${CHECK_DATE}" | cut -c -80)
             if [ -n "$OUTPUT" ]; then
                 echo $OUTPUT
             fi
