@@ -13,7 +13,7 @@ function hgstat {
     hg_check_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep hg);
+    for DIR in $(/bin/ls | grep 'hg$');
     do
         echo "=== hg status: $DIR ===";
         cd $DIR
@@ -30,7 +30,7 @@ function hgpullall {
     hg_check_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep hg);
+    for DIR in $(/bin/ls | grep 'hg$');
     do
         echo "=== hg pull: $DIR ===";
         cd $DIR
@@ -58,7 +58,7 @@ function hginchk {
     hg_check_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep hg);
+    for DIR in $(/bin/ls | grep 'hg$');
     do
         echo "=== hg incoming: $DIR ===";
         cd $DIR
@@ -82,7 +82,7 @@ function hgoutchk {
     hg_check_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep hg);
+    for DIR in $(/bin/ls | grep 'hg$');
     do
         echo "=== hg outgoing: $DIR ===";
         cd $DIR

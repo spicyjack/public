@@ -32,9 +32,7 @@ function gitstat {
         echo "=== git status: $DIR ===";
         cd $DIR
         IFS=$' \t'
-        GIT_CMD="git status --short"
-        GIT_SUCCESS_PATTERN="working directory clean"
-        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+        git status --short
         IFS=$' \t\n'
         cd $SOURCE_DIR
     done
