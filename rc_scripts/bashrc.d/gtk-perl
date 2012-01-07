@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### VARIABLES ###
-GIT_USER="Brian Manning (gnome.org GPG signing key)"
+GIT_USER="Brian Manning"
 GIT_EMAIL="bmanning@src.gnome.org"
 GIT_GPG_KEY="8D7CEDE6"
 
