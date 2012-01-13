@@ -4,20 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Test-NoWarnings 1.04
+#perl5.setup         Test-NoWarnings 1.04 ../by-authors/id/A/AD/ADAMK
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Test::NoWarnings (no description available)
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 638a57658cb119af1fe5b15e73d47c2544dcfef84af0c6b1b2e97f08202b686c \
+                    rmd160 1809d98bca154c70409297e0ee5da9fb7487b642
 
 
-
+depends_build-append port:p5-test-tester
 

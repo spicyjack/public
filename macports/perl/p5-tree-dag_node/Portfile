@@ -4,19 +4,19 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Tree-DAG_Node 1.06
+#perl5.setup         Tree-DAG_Node 1.06 ../by-authors/id/C/CO/COGENT
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         base class for trees
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 502570774dd3bf11345fb028ca4cdd79f04db12ee68a826f0c44e24da0e3db2a \
+                    rmd160 b3011e10cbfe8b1dbc7d3ee191e6dbe692b18d46
 
 
 

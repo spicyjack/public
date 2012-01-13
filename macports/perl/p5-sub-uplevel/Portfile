@@ -4,19 +4,19 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Sub-Uplevel 0.22
+#perl5.setup         Sub-Uplevel 0.22 ../by-authors/id/D/DA/DAGOLDEN
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Sub::Uplevel (no description available)
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 22923827855d864cbed12ce3e68da73c50edd8484b748154c0a26ba15d9e5cd6 \
+                    rmd160 42e375d9447da10a0db31d8afb9c99eb38670cf3
 
 
 

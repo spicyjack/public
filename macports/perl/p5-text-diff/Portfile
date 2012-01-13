@@ -4,20 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Text-Diff 1.41
+#perl5.setup         Text-Diff 1.41 ../by-authors/id/O/OV/OVID
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Text::Diff (no description available)
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 a67f50a48e313c1680cc662109ce5f913ea71454db355d0cf4db87ac89d2d2fa \
+                    rmd160 7af64c98eca6b5e6d852bf2bea209f2a0651c989
 
-
+depends_lib-append  port:p5-algorithm-diff
 
 

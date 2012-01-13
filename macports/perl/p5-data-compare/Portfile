@@ -4,20 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Data-Compare 1.22
+#perl5.setup         Data-Compare 1.22 ../by-authors/id/D/DC/DCANTRELL
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Compare perl data structures
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 ce8f2c7cd8e7aad8bfa381824f43c0d2ae0ed8a21450817bbeb1d971b5c2e8af \
+                    rmd160 141aa84b7b5712188be2deb66bd53703ebb3e85b
 
-
+depends_lib-append  port:p5-file-find-rule
 
 

@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Sub-Exporter 0.982
+#perl5.setup         Sub-Exporter 0.982 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Sub::Exporter (no description available)
+
+long_description    ${description}
+
+checksums           sha256 722f86107110147b68be4df0d57597161cd30ab5f60e8f0d5f43f7320bc0c875 \
+                    rmd160 0a9a97c8bc135e36b996ef1247ca9177a9590630
+
+depends_lib-append  port:p5-params-util \
+                    port:p5-sub-install \
+                    port:p5-data-optlist
+
+

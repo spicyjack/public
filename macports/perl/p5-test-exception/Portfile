@@ -4,20 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Test-Exception 0.31
+#perl5.setup         Test-Exception 0.31 ../by-authors/id/A/AD/ADIE
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Functions for testing exception-based code
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 7a828b70109e5c30457b079e48974f4621d3af4e85ba6475476400f05835cdd3 \
+                    rmd160 e9d47761cc50a397e53ed32d3865901a8e321fe7
 
-
+depends_lib-append  port:p5-sub-uplevel
 
 

@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-Output 1.01
+#perl5.setup         Test-Output 1.01 ../by-authors/id/B/BD/BDFOY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Test::Output (no description available)
+
+long_description    ${description}
+
+checksums           sha256 8d3529e2983b66bbef4fa3bbc3954971b9e6fc23b518443ac3c6bba8cd86e241 \
+                    rmd160 b258dc9c930d7a973ed7468e1f94751bc5ba4897
+
+depends_lib-append  port:p5-sub-exporter \
+                    port:p5-test-tester
+
+

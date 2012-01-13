@@ -4,19 +4,19 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-Size 0.77
-#perl5.setup         Devel-Size 0.77 ../by-authors/id/N/NW/NWCLARK
+perl5.setup         Module-Util 1.07
+#perl5.setup         Module-Util 1.07 ../by-authors/id/M/MA/MATTLAW
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Report amount of memory a variable uses
+description         Module::Util (no description available)
 
 long_description    ${description}
 
-checksums           sha256 e58774774b69a7e849a6a46ea9755a19fce19fb0938d0cb43fabfa39f3cb9ca3 \
-                    rmd160 795015670c1244b8363a81b479d58bbc8b429b04
+checksums           sha256 40d3958408922ef1d0faf84339ab9bfe8c6c96f375d50702f9fda5908eb9462c \
+                    rmd160 dda3a921f9f2db25486ca5e718bee6c5935e86ec
 
 
 
