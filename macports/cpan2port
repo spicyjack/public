@@ -139,7 +139,11 @@ sub about {
     die 'no module' unless $module_name;
     $config ||= {};
 
-    my $module = CPAN::Shell->expand('Module',$module_name) or die "can't expand $module_name";
+    my $module = CPAN::Shell->expand('Module',$module_name);
+    if ( ! defined $module ) {
+        warn "CPAN::Shell->expand returned no match for $module_name";
+        return undef;
+    }
     my %info = ( name => $module_name );
     my @info_fields = qw(file cpan_path prefix version suffix);
     my $get_info = qr<
