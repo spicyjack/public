@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Gtk2 1.241
+#perl5.setup         Gtk2 1.241 ../by-authors/id/X/XA/XAOC
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Bindings for the gtk+-2.x UI Toolkit
+
+long_description    ${description}
+
+checksums           sha256 beb53d577d462a9b6469200bc5d7c7cc3bede95ad774d3926ea1874b26e3a486 \
+                    rmd160 b1f01a05a7154153e04d569b9e5320331891f30e
+
+depends_lib-append  port:p5-pango \
+                    port:p5-extutils-depends \
+                    port:p5-glib \
+                    port:p5-cairo \
+                    port:p5-extutils-pkgconfig
+
+
