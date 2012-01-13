@@ -2,11 +2,14 @@
 
 # SOURCE_DIR should be set prior to running any of the functions in this
 # script
-function git_check_src_dir {
+function set_git_source_dir {
     if [ -z $SOURCE_DIR ]; then
-        echo "WARNING: SOURCE_DIR undefined"
-        exit 1
+        SOURCE_DIR="${HOME}/src"
     fi
+} # checks to see if SOURCE_DIR has been set in the environment
+
+function unset_git_source_dir {
+    unset SOURCE_DIR
 } # checks to see if SOURCE_DIR has been set in the environment
 
 function rungitcmd {
@@ -24,7 +27,7 @@ function gitstat {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    git_check_src_dir
+    set_git_source_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'git$');
@@ -37,13 +40,14 @@ function gitstat {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_git_source_dir
 } # check the status in git directories
 
 function gitpullall {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    git_check_src_dir
+    set_git_source_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'git$');
@@ -58,16 +62,18 @@ function gitpullall {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    set_git_source_dir
 } # git pull in all git directories
 
 function gitupdatechk {
     local CHECK_DATE=$1
+
     if [ -z $CHECK_DATE ]; then
         echo "ERROR: need a date to check; date format is YYYY-MM-DD"
     else
         GIT_DEBUG=0
         unset GIT_CMD
-        git_check_src_dir
+        set_git_source_dir
         START_DIR=$PWD
         cd $SOURCE_DIR
         for DIR in $(/bin/ls | grep 'git$');
@@ -86,13 +92,14 @@ function gitupdatechk {
         done
         cd $START_DIR
     fi
+    unset_git_source_dir
 } # git pull in all git directories
 
 function gitinchk {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    git_check_src_dir
+    set_git_source_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep git);
@@ -107,13 +114,14 @@ function gitinchk {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_git_source_dir
 } # check for inbound changes to git directories
 
 function gitoutchk {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    git_check_src_dir
+    set_git_source_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep git);
@@ -128,6 +136,7 @@ function gitoutchk {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_git_source_dir
 } # check for outbound changes in git directories
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4

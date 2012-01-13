@@ -2,15 +2,16 @@
 
 # SOURCE_DIR should be set prior to running any of the functions in this
 # script
-function hg_check_src_dir {
-    if [ -z $SOURCE_DIR ]; then
-        echo "WARNING: SOURCE_DIR undefined"
-        exit 1
-    fi
+function set_hg_src_dir {
+    export SOURCE_DIR="${HOME}/src"
+} # checks to see if SOURCE_DIR has been set in the environment
+
+function unset_hg_src_dir {
+    unset SOURCE_DIR
 } # checks to see if SOURCE_DIR has been set in the environment
 
 function hgstat {
-    hg_check_src_dir
+    set_hg_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'hg$');
@@ -21,13 +22,14 @@ function hgstat {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_hg_src_dir
 } # check the status in mercurial directories
 
 function hgpullall {
     HG_DEBUG=0
     unset HG_CMD
     if [ $# -gt 0 ]; then HG_DEBUG=1; echo "HG_DEBUG set to ${HG_DEBUG}"; fi
-    hg_check_src_dir
+    set_hg_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'hg$');
@@ -52,10 +54,11 @@ function hgpullall {
         IFS=$' \t\n'
     done
     cd $START_DIR
+    unset_hg_src_dir
 } # hg pull in all mercurial directories
 
 function hginchk {
-    hg_check_src_dir
+    set_hg_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'hg$');
@@ -76,10 +79,11 @@ function hginchk {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_hg_src_dir
 } # check for inbound changes to mercurial directories
 
 function hgoutchk {
-    hg_check_src_dir
+    set_hg_src_dir
     START_DIR=$PWD
     cd $SOURCE_DIR
     for DIR in $(/bin/ls | grep 'hg$');
@@ -100,6 +104,7 @@ function hgoutchk {
         cd $SOURCE_DIR
     done
     cd $START_DIR
+    unset_hg_src_dir
 } # check for outbound changes in mercurial directories
 
 # vi: set ft=sh sw=4 ts=4

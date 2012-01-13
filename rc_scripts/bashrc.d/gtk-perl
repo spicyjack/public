@@ -25,8 +25,16 @@ perl-Gtk2-Unique perl-Gtk3 perl-Pango
 ' # GTK_PERL_REPOS
 
 ### FUNCTIONS ###
+function set_gtk_git_source_dir {
+    export SOURCE_DIR="$HOME/gtk-perl"
+}
+
+function unset_gtk_git_source_dir {
+    unset SOURCE_DIR
+}
+
 function gtkcloneall {
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     if [ ! -d $SOURCE_DIR ]; then
         mkdir -p $SOURCE_DIR
     fi
@@ -52,37 +60,43 @@ function gtkcloneall {
         fi
     done
     cd $OLDPWD
+    unset_gtk_git_source_dir
 } # clone all of the gtk-perl sources
 
 function gtkstat {
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     echo "checking of status of projects in ${SOURCE_DIR}"
     gitstat
+    unset_gtk_git_source_dir
 } # status of gtk-perl sources
 
 function gtkpullall {
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     echo "running 'git pull' on all projects in ${SOURCE_DIR}"
     gitpullall
+    unset_gtk_git_source_dir
 } # pull all of the gtk-perl sources
 
 function gtkupdatechk {
     local CHECK_DATE=$1
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     echo "running 'git log' to check all projects in ${SOURCE_DIR}"
     gitupdatechk $CHECK_DATE
+    unset_gtk_git_source_dir
 } # pull all of the gtk-perl sources
 
 function gtkinchk {
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     echo "checking for incoming code on all projects in ${SOURCE_DIR}"
     gitinchk
+    unset_gtk_git_source_dir
 } # check for incoming gtk-perl source
 
 function gtkoutchk {
-    SOURCE_DIR="$HOME/gtk-perl"
+    set_gtk_git_source_dir
     echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
     gitoutchk
+    unset_gtk_git_source_dir
 } # check for gtk-perl source that needs to be pushed to the server
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
