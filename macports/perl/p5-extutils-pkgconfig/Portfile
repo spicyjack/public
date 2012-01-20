@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         ExtUtils-PkgConfig 1.12
+#perl5.setup         ExtUtils-PkgConfig 1.12 ../by-authors/id/T/TS/TSCH
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         ExtUtils::PkgConfig (no description available)
+
+long_description    ${description}
+
+checksums           sha256 6330b9d1165363837ac1ab014888e3d908f8fb9eb76b31a36096d0e504f6ff42 \
+                    rmd160 c13d4dfa7c526d93967b5edcfe079d89d9151bdb
+
+
+
+

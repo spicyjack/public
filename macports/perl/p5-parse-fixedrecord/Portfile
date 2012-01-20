@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Parse-FixedRecord 0.02
+platforms       darwin
+maintainers     cpan2port
+description     Parse::FixedRecord (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/O/OS/OSFAMERON
+checksums sha1 049f28c47929c34dcc1291fa98058be75524b65f md5 c76a7e8b3315191a533dd56ac3ca55f0 rmd160 0ad30da9ed7d102fb8967bbf3077fddbe9265952
+depends_lib-append port:p5.14-datetime port:p5.14-moosex-types port:p5.14-datetime-format-strptime port:p5.14-moosex-classattribute port:p5.14-moose
+

@@ -1,0 +1,43 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         App-Asciio 1.02.71
+#perl5.setup         App-Asciio 1.02.71 ../by-authors/id/N/NK/NKH
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         App::Asciio (no description available)
+
+long_description    ${description}
+
+checksums           sha256 82d1cbde7e68ca28b62f8d5284b731eb1ccc0c6e9df63c0013389d2e5943a333 \
+                    rmd160 b5aead493bc7abc87a78c1c9ac399dedeccba913
+
+depends_lib-append  port:p5-directory-scratch \
+                    port:p5-compress-bzip2 \
+                    port:p5-eval-context \
+                    port:p5-test-block \
+                    port:p5-data-treedumper-renderer-gtk \
+                    port:p5-sub-exporter \
+                    port:p5-test-nowarnings \
+                    port:p5-data-treedumper \
+                    port:p5-algorithm-diff \
+                    port:p5-list-moreutils \
+                    port:p5-file-slurp \
+                    port:p5-test-exception \
+                    port:p5-glib \
+                    port:p5-readonly \
+                    port:p5-directory-scratch-structured \
+                    port:p5-test-warn \
+                    port:p5-data-compare \
+                    port:p5-clone \
+                    port:p5-module-util \
+                    port:p5-test-strict \
+                    port:p5-gtk2
+
+

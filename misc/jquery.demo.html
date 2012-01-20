@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css">
+        #nav_link {
+            text-decoration: underline;
+            color: blue;
+        } 
+    </style>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+   <script type="text/javascript">
+    var blockHidden = false;
+     $(document).ready(function(){
+        $("a#nav_link").click(function(event){
+            // prevent the link from being followed
+            event.preventDefault();
+            if ( blockHidden == false ) {
+                $("div.block").hide("slow");
+                $("a#nav_link").html("Show block");
+                blockHidden = true;
+            } else {
+                $("div.block").show("slow");
+                $("a#nav_link").html("Hide block");
+                blockHidden = false;
+            } // if ( $("a#nav_link").html() == "Hide block" )
+         });
+     });     
+   </script>
+ </head>
+ <body>
+   <a id="nav_link">Hide block</a>
+    <div class="block">This is a block of text.</div>
+ </body>
+ </html>
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-Strict 0.14
+#perl5.setup         Test-Strict 0.14 ../by-authors/id/P/PD/PDENIS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Test::Strict (no description available)
+
+long_description    ${description}
+
+checksums           sha256 c04aef226b210ea06fd436f176e59aa3f9a0d7db326bb04f5a6047584a68ac98 \
+                    rmd160 39e307c5b86b76262eaeb388ed5b18ee0cb83e30
+
+depends_lib-append  port:p5-devel-cover
+
+

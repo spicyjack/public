@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Devel-Cover 0.79
+#perl5.setup         Devel-Cover 0.79 ../by-authors/id/P/PJ/PJCJ
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Code coverage metrics for Perl
+
+long_description    ${description}
+
+checksums           sha256 a02143e1a3d7f1d607b8669b422c0f560e0782a216ed7093447abf9ad0bff67d \
+                    rmd160 bc44ca80b0500d4c90eff48b0c808aea91c99b6e
+
+
+depends_build-append port:p5-test-warn
+

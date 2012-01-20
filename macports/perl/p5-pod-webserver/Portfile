@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Pod-Webserver 3.05
+platforms       darwin
+maintainers     cpan2port
+description     Pod::Webserver (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/A/AR/ARANDAL
+checksums sha1 f73a8938bc6e6e2761b277176c65834dad184555 md5 99f47207edf23b5adb3a607348adb8ca rmd160 08567f69163e5e94b603322bfac20adb9731892d
+
+

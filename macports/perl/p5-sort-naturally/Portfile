@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Sort-Naturally 1.02
+#perl5.setup         Sort-Naturally 1.02 ../by-authors/id/S/SB/SBURKE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Sort::Naturally (no description available)
+
+long_description    ${description}
+
+checksums           sha256 b8320a18e32d0a15541d95ffae3ba18e64bfca2478b8c74b80947ad2aa6874b1 \
+                    rmd160 a1ba471cc0349b55c3119c9a65550e8f78745367
+
+
+
+

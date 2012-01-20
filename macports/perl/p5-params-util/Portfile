@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Params-Util 1.04
+#perl5.setup         Params-Util 1.04 ../by-authors/id/A/AD/ADAMK
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Params::Util (no description available)
+
+long_description    ${description}
+
+checksums           sha256 d1341f5d6bdcf6712af7819b93a9fb526446fba3663a82cf3b83fbae23af8ff5 \
+                    rmd160 4f6beeffbec32e46a7ea99ca072ef5116ca321b7
+
+
+
+

@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     XML-FeedPP 0.43
+platforms       darwin
+maintainers     cpan2port
+description     XML::FeedPP (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/K/KA/KAWASAKI
+checksums sha1 baa2b67a152b97d888991b0a7d79faf95b29c61b md5 f9f2876a801a02c9497194ced1b021b9 rmd160 0c78906dfc3d2eb6a05f3e2545535b2c9815a0d3
+depends_lib-append port:p5-xml-treepp
+

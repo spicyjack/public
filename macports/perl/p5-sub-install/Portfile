@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Sub-Install 0.925
+#perl5.setup         Sub-Install 0.925 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Sub::Install (no description available)
+
+long_description    ${description}
+
+checksums           sha256 a65a6e87b2f886ea9bbe3ac5a62ae98a7ff3f8139c0b92e727c2a7cb2d618ce9 \
+                    rmd160 1a29c281d1c7cf83f47b85e708f449d4e24547dd
+
+
+
+

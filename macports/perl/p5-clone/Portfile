@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Clone 0.31
+#perl5.setup         Clone 0.31 ../by-authors/id/R/RD/RDF
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Recursive copy of nested objects
+
+long_description    ${description}
+
+checksums           sha256 94432ba5cadbf9f78fb29a23f68481e70e24d2e77f1f669f2919b00cc3a15f39 \
+                    rmd160 183fa7abdbe9c588b693cdaec41e85a6a5e57ff7
+
+
+
+

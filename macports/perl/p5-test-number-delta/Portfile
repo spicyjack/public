@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-Number-Delta 1.03
+#perl5.setup         Test-Number-Delta 1.03 ../by-authors/id/D/DA/DAGOLDEN
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Test absolute difference between numbers
+
+long_description    ${description}
+
+checksums           sha256 9cd18d89bde4333f9f9b77668ef03e6e20d8ee5675c2ab1b216c7323419a320e \
+                    rmd160 efff6fc177cb74b8c18526e27aa00a41f9c11821
+
+
+
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Package-Generator 0.103
+#perl5.setup         Package-Generator 0.103 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Package::Generator (no description available)
+
+long_description    ${description}
+
+checksums           sha256 ab06986fe0431dd6f8cd73fdc5c219d4104b8e400b44e79dc4e451ac0c515b0f \
+                    rmd160 41e92c2d19599f6c74f8145929a24abebe5ed72c
+
+
+
+

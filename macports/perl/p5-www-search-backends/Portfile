@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     WWW-Search-Backends 1.073
+platforms       darwin
+maintainers     cpan2port
+description     WWW::Search::Backends (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/M/MT/MTHURN
+checksums sha1 dad1b3bebed618288aa9362672b1f93e9c055e4c md5 a3ca43ff6ad084f6f354673e9b0e8fd2 rmd160 b7d433869195422ea1dfa9697949911e1197e05d
+depends_lib-append port:p5-uri port:p5-www-search port:p5-html-tree port:p5-html-tree port:p5-www-search
+

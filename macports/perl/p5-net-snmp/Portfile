@@ -1,0 +1,77 @@
+# $Id: net-snmp.Portfile,v 1.1 2008/02/08 08:43:05 brian Exp $
+PortSystem 1.0
+
+name			net-snmp
+version			5.4
+revision		1
+categories		net
+maintainers		opendarwin.org@darkart.com openmaintainer
+description		An extendable SNMP implementation
+long_description	This is net-snmp, a derivative of CMU's SNMP \
+					package. Various tools relating to the Simple \
+					Network Management Protocol including: an extensible \
+					agent, an SNMP library, tools to request or set \
+					information from SNMP agents, tools to generate and \
+					handle SNMP traps, a version of the unix 'netstat' \
+					command using SNMP, a Tk/perl MIB browser.
+homepage		http://net-snmp.sourceforge.net/
+platforms		darwin
+master_sites		sourceforge
+checksums		md5 46d893281056ff476e597659cb91574d \
+			sha1 8edb17509eba9f8c9cfb015fe35a1024048129eb \
+			rmd160 8ad1f9a3def8022eea48d9b74ae71d8efb59ca61
+
+depends_build		path:/usr/include/netinet/ip_var.h:netinet-headers
+patchfiles		patch-Makefile.in
+
+depends_lib		port:openssl \
+			port:zlib
+configure.args		--enable-shared --disable-static --with-defaults \
+				--disable-agent \
+				--with-sys-contact=nobody@no.where \
+				--with-persistent-directory=${prefix}/var/net-snmp \
+				--mandir=${prefix}/share/man \
+				--infodir=${prefix}/share/info \
+				--with-logfile=${prefix}/var/log \
+				--with-openssl=${prefix} --with-zlib=${prefix} \
+				--with-install-prefix=${destroot} \
+				--without-kmem-usage
+
+variant no_ssl {
+	configure.args-delete --with-openssl=${prefix}
+	configure.args-append --without-openssl
+}
+
+variant no_zlib {
+	configure.args-delete --with-zlib=${prefix}
+	configure.args-append --without-zlib
+}
+
+variant bzip2 {
+	configure.args-append --with-bzip2=${prefix}
+}
+
+variant perl {
+	configure.args-append --with-perl-modules
+}
+
+variant server	{
+	configure.args-delete	--disable-agent
+
+	startupitem.create              yes
+	startupitem.name                NetSNMP
+	startupitem.start \
+		"echo \"NOT starting (net-)snmpd, no real startup item yet\""
+	startupitem.stop \
+		"echo \"NOT stopping (net-)snmpd, no real startup item yet\""
+}
+
+variant ipv6	{ configure.args-append --enable-ipv6 --with-out-mib-modules=mibII/ipv6}
+
+## add in support for kerb based SNMP security
+variant ksm	{ configure.args-append --with-security-modules="usm ksm" }
+
+## destroot.destdir	prefix=${destroot}${prefix} \
+## 			exec_prefix=${destroot}${prefix}
+post-destroot	{ destroot.keepdirs ${destroot}${prefix}/var/net-snmp }
+

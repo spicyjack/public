@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Number-Range 0.07
+#perl5.setup         Number-Range 0.07 ../by-authors/id/L/LA/LARRYSH
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Number::Range (no description available)
+
+long_description    ${description}
+
+checksums           sha256 247eb404caf258c10fe1208ba9166b711fe6148a7db51cf8b9cbb9320276f76e \
+                    rmd160 1df84aea1be4379fa882f8f774a513124de2ffd1
+
+
+
+

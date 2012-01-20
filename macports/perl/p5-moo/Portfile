@@ -1,0 +1,17 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Moo 0.009011
+platforms       darwin
+maintainers     cpan2port
+description     Moo (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT
+checksums   sha1 3c3e99a302bf917d521b23e2ea748677a6eea0c2 \
+            md5 cb4bac07e0d1208e058e83dace93a641 \
+            rmd160 a7f9e3e74d42dbf8d659548f218caa98ab1828bb
+depends_lib-append port:p5-strictures port:p5-class-method-modifiers
+

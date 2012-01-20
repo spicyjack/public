@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Path-Class 0.24
+perl5.setup         Path-Class 0.24 ../by-authors/id/K/KW/KWILLIAMS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Path::Class (no description available)
+
+long_description    ${description}
+
+checksums           sha256 ccdbdbd4fa2e13a4dedd1dd5c238d4f7c92561ea11564806e0676e3b66b091bc \
+                    rmd160 a6a58f29ba6accc5c551cba0f6ebb501eb7408d8
+
+
+
+

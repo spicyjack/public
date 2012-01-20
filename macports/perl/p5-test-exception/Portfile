@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-Exception 0.31
+#perl5.setup         Test-Exception 0.31 ../by-authors/id/A/AD/ADIE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Functions for testing exception-based code
+
+long_description    ${description}
+
+checksums           sha256 7a828b70109e5c30457b079e48974f4621d3af4e85ba6475476400f05835cdd3 \
+                    rmd160 e9d47761cc50a397e53ed32d3865901a8e321fe7
+
+depends_lib-append  port:p5-sub-uplevel
+
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Sub-Uplevel 0.22
+#perl5.setup         Sub-Uplevel 0.22 ../by-authors/id/D/DA/DAGOLDEN
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Sub::Uplevel (no description available)
+
+long_description    ${description}
+
+checksums           sha256 22923827855d864cbed12ce3e68da73c50edd8484b748154c0a26ba15d9e5cd6 \
+                    rmd160 42e375d9447da10a0db31d8afb9c99eb38670cf3
+
+
+
+

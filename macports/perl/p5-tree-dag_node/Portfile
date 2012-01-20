@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Tree-DAG_Node 1.06
+#perl5.setup         Tree-DAG_Node 1.06 ../by-authors/id/C/CO/COGENT
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         base class for trees
+
+long_description    ${description}
+
+checksums           sha256 502570774dd3bf11345fb028ca4cdd79f04db12ee68a826f0c44e24da0e3db2a \
+                    rmd160 b3011e10cbfe8b1dbc7d3ee191e6dbe692b18d46
+
+
+
+

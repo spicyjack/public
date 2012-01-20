@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Module-Util 1.07
+#perl5.setup         Module-Util 1.07 ../by-authors/id/M/MA/MATTLAW
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Module::Util (no description available)
+
+long_description    ${description}
+
+checksums           sha256 40d3958408922ef1d0faf84339ab9bfe8c6c96f375d50702f9fda5908eb9462c \
+                    rmd160 dda3a921f9f2db25486ca5e718bee6c5935e86ec
+
+
+
+

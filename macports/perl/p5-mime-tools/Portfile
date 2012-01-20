@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     MIME-tools 5.502
+platforms       darwin
+maintainers     cpan2port
+description     Parses streams to create MIME entities
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/D/DS/DSKOLL
+checksums sha1 0b01f76cbad9ea902b3a9cea98cecd58fbfb7850 md5 6a87adda74867e3f8868a0599137bde0 rmd160 fcbfbf707cb2fb5be9d119473440d07f5f4089e8
+depends_lib-append port:p5-mailtools port:p5-mailtools port:p5-mailtools
+

@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Glib 1.242
+#perl5.setup         Glib 1.242 ../by-authors/id/X/XA/XAOC
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Bindings for the glib-2.x UI Toolkit
+
+long_description    ${description}
+
+checksums           sha256 0ebb78bcb3d10c9564473b084ef2989cf86347c1ba4acd5e55bc6c46b6d08d78 \
+                    rmd160 c8d5e09b39b02b3df362e8ad26485c2eb09782cf
+
+depends_lib-append  port:p5-extutils-depends \
+                    port:p5-extutils-pkgconfig
+
+

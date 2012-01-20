@@ -1,0 +1,32 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Directory-Scratch-Structured 0.04
+#perl5.setup         Directory-Scratch-Structured 0.04 ../by-authors/id/N/NK/NKH
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Directory::Scratch::Structured (no description available)
+
+long_description    ${description}
+
+checksums           sha256 f2b723e8f08cde12b7d43dd68f49f136c222390f110ad85bc7cf05c6806070d9 \
+                    rmd160 426db79dac55188d694b9bbdbeeab8406c9fdc00
+
+depends_lib-append  port:p5-directory-scratch \
+                    port:p5-test-exception \
+                    port:p5-test-block \
+                    port:p5-sub-exporter \
+                    port:p5-readonly \
+                    port:p5-test-nowarnings \
+                    port:p5-data-treedumper \
+                    port:p5-test-warn \
+                    port:p5-sub-install \
+                    port:p5-test-strict
+
+

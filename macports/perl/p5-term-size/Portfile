@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Term-Size 0.207
+#perl5.setup         Term-Size 0.207 ../by-authors/id/F/FE/FERREIRA
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Simple way to get terminal size
+
+long_description    ${description}
+
+checksums           sha256 b04a14b5663b83a49e2516538b5e133409eb38f84ae157b6b200eda595fca21c \
+                    rmd160 bd2b5df2d1da60719ab766ece8ec3d9076790e89
+
+
+
+

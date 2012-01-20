@@ -1,0 +1,35 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Eval-Context 0.09.11
+perl5.setup         Eval-Context 0.09.11 ../by-authors/id/N/NK/NKH
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Eval::Context (no description available)
+
+long_description    ${description}
+
+checksums           sha256 46fdd7e750963dd3f90fbddb592b57096568ece31d93a5e77978d695a2eefa24 \
+                    rmd160 fe9a5c9a6bd6c7b1febb31ac883c1a0772129567
+
+depends_lib-append  port:p5-data-compare \
+                    port:p5-sub-install \
+                    port:p5-package-generator \
+                    port:p5-sub-exporter \
+                    port:p5-readonly \
+                    port:p5-file-slurp \
+                    port:p5-data-treedumper
+depends_build-append port:p5-text-diff \
+                     port:p5-directory-scratch-structured \
+                     port:p5-test-exception \
+                     port:p5-test-warn \
+                     port:p5-test-block \
+                     port:p5-test-output \
+                     port:p5-test-nowarnings
+

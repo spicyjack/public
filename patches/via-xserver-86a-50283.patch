@@ -1,0 +1,115 @@
+diff -N -p -r -u via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_dma.c via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_dma.c
+--- via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_dma.c	2009-07-13 18:24:36.000000000 -0700
++++ via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_dma.c	2010-05-26 19:25:09.280165663 -0700
+@@ -277,11 +277,9 @@ void via_chrome9_drm_sg_cleanup(struct d
+ 
+ 	vfree(entry->virtual);
+ 
+-	drm_free(entry->busaddr,
+-		 entry->pages * sizeof(*entry->busaddr), DRM_MEM_PAGES);
+-	drm_free(entry->pagelist,
+-		 entry->pages * sizeof(*entry->pagelist), DRM_MEM_PAGES);
+-	drm_free(entry, sizeof(*entry), DRM_MEM_SGLISTS);
++	drm_free_large(entry->busaddr); 
++	drm_free_large(entry->pagelist);
++	drm_free_large(entry);
+ }
+ 
+ static int
+@@ -299,7 +297,7 @@ via_chrome9_drm_sg_alloc(struct drm_devi
+ 	if (dev->sg)
+ 		return -EINVAL;
+ 
+-	entry = drm_alloc(sizeof(*entry), DRM_MEM_SGLISTS);
++	entry = drm_malloc_ab(sizeof(*entry), DRM_MEM_SGLISTS);
+ 	if (!entry)
+ 		return -ENOMEM;
+ 
+@@ -308,22 +306,20 @@ via_chrome9_drm_sg_alloc(struct drm_devi
+ 	DRM_DEBUG("size=%ld pages=%ld\n", request->size, pages);
+ 
+ 	entry->pages = pages;
+-	entry->pagelist = drm_alloc(pages * sizeof(*entry->pagelist),
++	entry->pagelist = drm_malloc_ab(pages * sizeof(*entry->pagelist),
+ 				    DRM_MEM_PAGES);
+ 	if (!entry->pagelist) {
+-		drm_free(entry, sizeof(*entry), DRM_MEM_SGLISTS);
++		drm_free_large(entry);
+ 		return -ENOMEM;
+ 	}
+ 
+ 	memset(entry->pagelist, 0, pages * sizeof(*entry->pagelist));
+ 
+-	entry->busaddr = drm_alloc(pages * sizeof(*entry->busaddr),
++	entry->busaddr = drm_malloc_ab(pages * sizeof(*entry->busaddr),
+ 				   DRM_MEM_PAGES);
+ 	if (!entry->busaddr) {
+-		drm_free(entry->pagelist,
+-			 entry->pages * sizeof(*entry->pagelist),
+-			 DRM_MEM_PAGES);
+-		drm_free(entry, sizeof(*entry), DRM_MEM_SGLISTS);
++		drm_free_large(entry->pagelist);
++		drm_free_large(entry);
+ 		return -ENOMEM;
+ 	}
+ 	memset((void *)entry->busaddr, 0, pages * sizeof(*entry->busaddr));
+@@ -331,12 +327,9 @@ via_chrome9_drm_sg_alloc(struct drm_devi
+ 	entry->virtual = __vmalloc(pages << PAGE_SHIFT,
+ 		GFP_KERNEL | __GFP_HIGHMEM, PAGE_KERNEL_NOCACHE);
+ 	if (!entry->virtual) {
+-		drm_free(entry->busaddr,
+-			 entry->pages * sizeof(*entry->busaddr), DRM_MEM_PAGES);
+-		drm_free(entry->pagelist,
+-			 entry->pages * sizeof(*entry->pagelist),
+-			 DRM_MEM_PAGES);
+-		drm_free(entry, sizeof(*entry), DRM_MEM_SGLISTS);
++		drm_free_large(entry->busaddr);
++		drm_free_large(entry->pagelist);
++		drm_free_large(entry);
+ 		return -ENOMEM;
+ 	}
+ 
+diff -N -p -r -u via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drm.c via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drm.c
+--- via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drm.c	2009-07-13 18:24:36.000000000 -0700
++++ via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drm.c	2010-05-26 19:17:22.516163079 -0700
+@@ -702,8 +702,7 @@ int via_chrome9_driver_load(struct drm_d
+ 	dev->types[8] = _DRM_STAT_SECONDARY;
+ 	dev->types[9] = _DRM_STAT_DMA;
+ 
+-	dev_priv = drm_calloc(1, sizeof(struct drm_via_chrome9_private),
+-		DRM_MEM_DRIVER);
++	dev_priv = drm_calloc_large(1, sizeof(struct drm_via_chrome9_private));
+ 	if (dev_priv == NULL)
+ 		return -ENOMEM;
+ 
+@@ -715,7 +714,7 @@ int via_chrome9_driver_load(struct drm_d
+ 
+ 	ret = drm_sman_init(&dev_priv->sman, 2, 12, 8);
+ 	if (ret)
+-		drm_free(dev_priv, sizeof(*dev_priv), DRM_MEM_DRIVER);
++		drm_free_large(dev_priv);
+ 	return ret;
+ }
+ 
+@@ -725,8 +724,7 @@ int via_chrome9_driver_unload(struct drm
+ 
+ 	drm_sman_takedown(&dev_priv->sman);
+ 
+-	drm_free(dev_priv, sizeof(struct drm_via_chrome9_private),
+-		DRM_MEM_DRIVER);
++	drm_free_large(dev_priv);
+ 
+ 	dev->dev_private = 0;
+ 
+diff -N -p -r -u via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drv.c via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drv.c
+--- via-xserver-86a-50283_src-unmodified/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drv.c	2009-07-13 18:24:37.000000000 -0700
++++ via-xserver-86a-50283_src/DRM/H5DRM_Independent_2.6.27_28/via_chrome9_drv.c	2010-05-26 18:14:30.628165523 -0700
+@@ -217,7 +217,7 @@ static struct drm_driver driver = {
+ 	.load = via_chrome9_driver_load,
+ 	.unload = via_chrome9_driver_unload,
+ 	.device_is_agp = via_chrome9_is_agp,
+-	.dri_library_name = dri_library_name,
++/*	.dri_library_name = dri_library_name, */
+ 	.reclaim_buffers = drm_core_reclaim_buffers,
+ 	.reclaim_buffers_locked = NULL,
+ 	.reclaim_buffers_idlelocked = via_chrome9_reclaim_buffers_locked,

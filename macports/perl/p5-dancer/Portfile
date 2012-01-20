@@ -1,0 +1,15 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem      1.0
+PortGroup       perl5 1.0
+
+perl5.setup     Dancer 1.3014
+platforms       darwin
+maintainers     cpan2port
+description     Dancer (no description available)
+extract.suffix  .tar.gz
+master_sites    http://search.cpan.org/CPAN/authors/id/S/SU/SUKRIA
+checksums sha1 a0c0db271d687f1f40fcaca05613c6243f12626e md5 11f3d37fcda68fd0da7d11b3aab4e532 rmd160 b43aa26e4c034ed810b74bff291776aa12ff4ac3
+depends_lib-append port:p5-http-server-simple-psgi port:p5-uri port:p5-http-body port:p5-mime-types port:p5-libwww-perl
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Readonly 1.03
+#perl5.setup         Readonly 1.03 ../by-authors/id/R/RO/ROODE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Create read-only scalars, arrays, hashes.
+
+long_description    ${description}
+
+checksums           sha256 53c46815dea724e29ceabb5d39471b0e6f2ebbb3cf1fe2a23d881a2855f713ea \
+                    rmd160 734555fa17b8d1dc9326c0998da1c561c4443bab
+
+
+
+
