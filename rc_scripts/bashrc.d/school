@@ -1,0 +1,53 @@
+#!/bin/bash
+
+### VARIABLES ###
+#GIT_USER="Brian Manning"
+#GIT_EMAIL="brian@xaoc.org"
+
+### FUNCTIONS ###
+function set_school_git_source_dir {
+    export SOURCE_DIR="$HOME/src/School/Intro_To_Objective_C"
+}
+
+function unset_school_git_source_dir {
+    unset SOURCE_DIR
+}
+
+function schstat {
+    set_school_git_source_dir
+    echo "checking of status of projects in ${SOURCE_DIR}"
+    gitstat
+    unset_school_git_source_dir
+} # status of school sources
+
+function schpullall {
+    set_school_git_source_dir
+    echo "running 'git pull' on all projects in ${SOURCE_DIR}"
+    gitpullall
+    unset_school_git_source_dir
+} # pull all of the school sources
+
+function schupdatechk {
+    local CHECK_DATE=$1
+    set_school_git_source_dir
+    echo "running 'git log' to check all projects in ${SOURCE_DIR}"
+    gitupdatechk $CHECK_DATE
+    unset_school_git_source_dir
+} # pull all of the school sources
+
+function schinchk {
+    set_school_git_source_dir
+    echo "checking for incoming code on all projects in ${SOURCE_DIR}"
+    gitinchk
+    unset_school_git_source_dir
+} # check for incoming school source
+
+function schoutchk {
+    set_school_git_source_dir
+    echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
+    gitoutchk
+    unset_school_git_source_dir
+} # check for school source that needs to be pushed to the server
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
