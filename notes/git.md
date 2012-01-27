@@ -15,31 +15,31 @@ Internet or network somewhere.
 
 1. showing remotes
 
-  git remote -v
+    git remote -v
 
 1. showing what's on a remote
 
-  git remote show origin
+    git remote show origin
 
 1. tracking a remote branch on the local system
 
-  git branch local_name origin/remote_name
-  git pull
+    git branch local_name origin/remote_name
+    git pull
 
 ### Creating a local repo, pushing it to remote ###
-- create the git repo in your local directory
+Create the git repo in your local directory;
 
     git init .
 
-- add the remote
+Add the remote;
 
-    git remote add bitbucket git@example.com:/path/to/repo.git
+    git remote add origin git@example.com:/path/to/repo.git
 
-- test pushing code to the new remote
+Test pushing code to the new remote;
 
     git push --dry-run origin master
 
-- do the actual push
+Do the actual push;
 
     git push origin master
 
