@@ -3,15 +3,17 @@
 	email = user@example.com
 
 [alias]
+    bare    = init --bare --shared=true
     br      = branch -v
     co      = checkout
     graph   = log --oneline --decorate --graph
     hist    = log --graph --pretty='[%h]%d %cd %s'
     pudr    = push --dry-run
     pu      = push
+    puor    = push --set-upstream origin master
+    puordr  = push --set-upstream --dry-run origin master
     stat    = status
     re      = remote -v
-    bare    = init --bare --shared=true
 
 [color]
 	ui = true
