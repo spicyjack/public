@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         ExtUtils-ParseXS 3.11
+#perl5.setup         ExtUtils-ParseXS 3.11 ../by-authors/id/S/SM/SMUELLER
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Converts Perl XS code into C code
+
+long_description    ${description}
+
+checksums           sha256 2cef00fbd685c750e46d507df1518e480c6ecc6ae5ba824113dda21f9d7bfeaa \
+                    rmd160 ca2449734efb96ed22ea15c0ed7b19f96da8eb77
+
+
+
+

@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         DateTime-TimeZone 1.42
+#perl5.setup         DateTime-TimeZone 1.42 ../by-authors/id/D/DR/DROLSKY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         DateTime::TimeZone (no description available)
+
+long_description    ${description}
+
+checksums           sha256 a5aff183bdc0f0e178e5ff36bc38717ee7c80d42022f1c1a782c3016cc92146a \
+                    rmd160 9d61574f681b67e6041f549743cd7052457f5db9
+
+depends_lib-append  port:p5-class-singleton \
+                    port:p5-params-validate \
+                    port:p5-class-load
+
+

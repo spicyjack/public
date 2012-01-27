@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         HTML-Parser 3.69
+#perl5.setup         HTML-Parser 3.69 ../by-authors/id/G/GA/GAAS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Basic HTML Parser
+
+long_description    ${description}
+
+checksums           sha256 748b1c906500e3a921d0694acb9a3a7dd3f2ff6fa61c656b928bbf7686a42406 \
+                    rmd160 55afbd697e6218d5173c688e04516bfd096ea348
+
+depends_lib-append  port:p5-html-tagset
+
+

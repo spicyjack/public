@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         HTTP-Server-Simple 0.44
+#perl5.setup         HTTP-Server-Simple 0.44 ../by-authors/id/J/JE/JESSE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         HTTP::Server::Simple (no description available)
+
+long_description    ${description}
+
+checksums           sha256 cff4f882da63a9a71271e25d1dc9160e64e5dd1195ed0a63894609ada7bb7416 \
+                    rmd160 d0071e2b09ad8f5474a8d08f8eccb9c60b5b8bfe
+
+
+
+

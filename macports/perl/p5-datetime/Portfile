@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         DateTime 0.72
+#perl5.setup         DateTime 0.72 ../by-authors/id/D/DR/DROLSKY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         A complete, easy to use date and time object
+
+long_description    ${description}
+
+checksums           sha256 b05a90f2010cd97f2c6dcb3c58b54c792f703390073787319d9a4db91e940459 \
+                    rmd160 3dbed542212e1b2176976c758942a53027bdb1bd
+
+depends_lib-append  port:p5-datetime-timezone \
+                    port:p5-datetime-locale \
+                    port:p5-params-validate \
+                    port:p5-math-round
+depends_build-append port:p5-test-fatal
+perl5.use_module_build

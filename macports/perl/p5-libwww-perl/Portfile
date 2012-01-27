@@ -1,0 +1,39 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         libwww-perl 6.03
+#perl5.setup         libwww-perl 6.03 ../by-authors/id/G/GA/GAAS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Libwww-perl
+
+long_description    ${description}
+
+checksums           sha256 af11179badf55dc60cb83e81fac212a74bce959dc9d16d0acfc087493df996fe \
+                    rmd160 95b17df5dcb97cb67775411574e4543aad43228a
+
+depends_lib-append  port:p5-uri \
+                    port:p5-lwp-mediatypes \
+                    port:p5-encode-locale \
+                    port:p5-http-message \
+                    port:p5-file-listing \
+                    port:p5-http-negotiate \
+                    port:p5-html-parser \
+                    port:p5-http-daemon \
+                    port:p5-net-http \
+                    port:p5-uri \
+                    port:p5-html-parser \
+                    port:p5-http-cookies \
+                    port:p5-http-date \
+                    port:p5-http-message \
+                    port:p5-http-message \
+                    port:p5-www-robotrules \
+                    port:p5-http-message
+
+

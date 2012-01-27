@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Class-Load 0.13
+#perl5.setup         Class-Load 0.13 ../by-authors/id/D/DR/DROLSKY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Class::Load (no description available)
+
+long_description    ${description}
+
+checksums           sha256 971160440795a54383c9b7448fb452fc9331c320474c49d17c41dde0bb85543c \
+                    rmd160 f274cfbe29615b46a0f7a749afc9caffc58100e0
+
+depends_lib-append  port:p5-try-tiny \
+                    port:p5-package-stash \
+                    port:p5-data-optlist \
+                    port:p5-module-runtime
+depends_build-append port:p5-test-requires \
+                     port:p5-test-fatal
+

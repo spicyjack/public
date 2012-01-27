@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Package-DeprecationManager 0.11
+#perl5.setup         Package-DeprecationManager 0.11 ../by-authors/id/D/DR/DROLSKY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Package::DeprecationManager (no description available)
+
+long_description    ${description}
+
+checksums           sha256 c10a6c7bfca3b3e4226aadc9fb5871db9db94238c8ca40b5e3456dd7067e52e0 \
+                    rmd160 c820bca80d5739fb9c3693e90016c8bad294fb47
+
+depends_lib-append  port:p5-params-util \
+                    port:p5-sub-install \
+                    port:p5-list-moreutils
+depends_build-append port:p5-test-requires \
+                     port:p5-test-fatal
+

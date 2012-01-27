@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-Manifest 1.23
+#perl5.setup         Test-Manifest 1.23 ../by-authors/id/B/BD/BDFOY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         configure which test files to run
+
+long_description    ${description}
+
+checksums           sha256 401038760c8f13d2e09c8cf557d0afca268ffa44068902894ceeae7697fd7e45 \
+                    rmd160 7502401caad27493e4a816f86a9bec77591e2200
+
+
+
+

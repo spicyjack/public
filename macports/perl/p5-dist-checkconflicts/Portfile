@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Dist-CheckConflicts 0.02
+#perl5.setup         Dist-CheckConflicts 0.02 ../by-authors/id/D/DO/DOY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Dist::CheckConflicts (no description available)
+
+long_description    ${description}
+
+checksums           sha256 b2a4c4c7c4c9cce5441d293a1a67631b6dbf94e5204372a06f04eabd819007d2 \
+                    rmd160 54f9a92709b52e995d558b98d28d87721835907f
+
+depends_lib-append  port:p5-sub-exporter \
+                    port:p5-list-moreutils
+depends_build-append port:p5-test-fatal
+

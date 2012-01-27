@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Package-Stash 0.33
+#perl5.setup         Package-Stash 0.33 ../by-authors/id/D/DO/DOY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Package::Stash (no description available)
+
+long_description    ${description}
+
+checksums           sha256 f65fd815d51506ffc480253fded67c04d328c3607c4341c7bb7a5bf67016a555 \
+                    rmd160 fccc8bf41f73a5f92f0e71c37d2cd6d7d8e9d3f2
+
+depends_lib-append  port:p5-package-deprecationmanager \
+                    port:p5-dist-checkconflicts
+depends_build-append port:p5-test-requires \
+                     port:p5-test-fatal
+

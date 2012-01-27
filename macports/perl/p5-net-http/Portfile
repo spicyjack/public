@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Net-HTTP 6.02
+#perl5.setup         Net-HTTP 6.02 ../by-authors/id/G/GA/GAAS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Net::HTTP (no description available)
+
+long_description    ${description}
+
+checksums           sha256 3692b8b99297ba6cc603a1edb8382b7bc4f1ba2e75d310a9d6e32d7e50110fed \
+                    rmd160 9f4b6be2d273f26afca2e949edb870eca7263e3a
+
+
+
+

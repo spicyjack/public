@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         DateTime-Locale 0.45
+#perl5.setup         DateTime-Locale 0.45 ../by-authors/id/D/DR/DROLSKY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         DateTime::Locale (no description available)
+
+long_description    ${description}
+
+checksums           sha256 8aa1b8db0baccc26ed88f8976a228d2cdf4f6ed4e10fc88c1501ecd8f3ccaf9c \
+                    rmd160 f318f1c375b5f7099045ace1509a2c8e4b168d7b
+
+depends_lib-append  port:p5-params-validate \
+                    port:p5-list-moreutils
+
+

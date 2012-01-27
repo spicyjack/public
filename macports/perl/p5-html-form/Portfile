@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         HTML-Form 6.00
+#perl5.setup         HTML-Form 6.00 ../by-authors/id/G/GA/GAAS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         HTML::Form (no description available)
+
+long_description    ${description}
+
+checksums           sha256 b41b6f5480493d427a56974c0fb6f51e807d93938ef1518dd22454b93cad4987 \
+                    rmd160 268e696bb925ce5c34d47050ed352a233a42aa05
+
+depends_lib-append  port:p5-html-parser \
+                    port:p5-uri \
+                    port:p5-http-message \
+                    port:p5-http-message
+
+

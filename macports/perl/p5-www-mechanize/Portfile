@@ -1,0 +1,38 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         WWW-Mechanize 1.71
+#perl5.setup         WWW-Mechanize 1.71 ../by-authors/id/J/JE/JESSE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Automates web page form & link interaction
+
+long_description    ${description}
+
+checksums           sha256 12635501e402a4a731aa50d305d43d253a34be10c25ac091df8c3ee79329e435 \
+                    rmd160 d4dea28d03934aa190f9bf209daf046c908baff5
+
+depends_lib-append  port:p5-html-form \
+                    port:p5-uri \
+                    port:p5-html-parser \
+                    port:p5-html-tree \
+                    port:p5-http-message \
+                    port:p5-http-server-simple \
+                    port:p5-libwww-perl \
+                    port:p5-test-warn \
+                    port:p5-html-parser \
+                    port:p5-uri \
+                    port:p5-html-parser \
+                    port:p5-uri \
+                    port:p5-http-server-simple \
+                    port:p5-http-daemon \
+                    port:p5-http-message \
+                    port:p5-libwww-perl
+
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         HTTP-Negotiate 6.00
+#perl5.setup         HTTP-Negotiate 6.00 ../by-authors/id/G/GA/GAAS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         HTTP content negotiation
+
+long_description    ${description}
+
+checksums           sha256 4e070ea67427ab1843620debc923b820bd41b9018914dfef54bbc7af9257ae82 \
+                    rmd160 d6294ced942b213b851cfe5088334934ab5e9a43
+
+depends_lib-append  port:p5-http-message
+
+
