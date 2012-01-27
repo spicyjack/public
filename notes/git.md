@@ -13,22 +13,34 @@
 Remote repositories are versions of your project that are hosted on the
 Internet or network somewhere.
 
-- showing remotes
+1. showing remotes
+
   git remote -v
-- showing what's on a remote
+
+1. showing what's on a remote
+
   git remote show origin
-- tracking a remote branch on the local system
+
+1. tracking a remote branch on the local system
+
   git branch local_name origin/remote_name
   git pull
 
 ### Creating a local repo, pushing it to remote ###
 - create the git repo in your local directory
+
     git init .
+
 - add the remote
+
     git remote add bitbucket git@example.com:/path/to/repo.git
+
 - test pushing code to the new remote
+
     git push --dry-run origin master
+
 - do the actual push
+
     git push origin master
 
 ### Git Pull ###
