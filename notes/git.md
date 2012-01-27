@@ -23,13 +23,13 @@ Internet or network somewhere.
 
 ### Creating a local repo, pushing it to remote ###
 - create the git repo in your local directory
-  git init .
+    git init .
 - add the remote
-  git remote add bitbucket git@git.xaoc.org:/spicyjack/linocuts.git
+    git remote add bitbucket git@example.com:/path/to/repo.git
 - test pushing code to the new remote
-  git push --dry-run bitbucket master
+    git push --dry-run origin master
 - do the actual push
-  git push bitbucket master
+    git push origin master
 
 ### Git Pull ###
 - Pull from a remote repo, updating an older cloned version of the same repo:
