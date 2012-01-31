@@ -3,7 +3,7 @@
 # environment variables
 H_GREEN="\[\e[0;32;40m\]"
 H_BLUE="\[\e[1;34;40m\]"
-HOSTNAMES="[xaoc\.local|lagrange|observer|yabloko]"
+HOSTNAMES="grom|xaoc\.local|lagrange|observer|yabloko"
 set_ps1 () {
     LAST_CMD=$?
     if [ $(echo ${HOSTNAME} | egrep -c "${HOSTNAMES}") -gt 0 ]; then
@@ -24,7 +24,7 @@ unset PS3 PS1_HOST PS1_USER PS1_PATH
 PROMPT_COMMAND=set_ps1
 PS2="\[\e[0;1m\]>\[\e[0m\] "
 PS4="\[\e[1;32m\]+\[\e[0m\] "
-export PS1 PS2 PS4 
+export PS1 PS2 PS4
 
 # vi: set ft=sh sw=4 ts=4
 # fin!
