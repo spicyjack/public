@@ -1,15 +1,23 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 # $Id$
 
-PortSystem      1.0
-PortGroup       perl5 1.0
+PortSystem          1.0
+PortGroup           perl5 1.0
 
-perl5.setup     Net-Wake 0.02
-platforms       darwin
-maintainers     cpan2port
-description     Net::Wake (no description available)
-extract.suffix  .tar.gz
-master_sites    http://search.cpan.org/CPAN/authors/id/C/CL/CLINTDW
-checksums sha1 f500ad78cfe0462ed095f7a489bbb9b0b20aa9af md5 c9514b5fb43a06b3343b5c0a498b624e rmd160 a48aa6be0ccecab88cdd76f2772ef5d9c77c5af2
+#perl5.setup         Net-Wake 0.02
+perl5.setup         Net-Wake 0.02 ../by-authors/id/C/CL/CLINTDW
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Net::Wake (no description available)
+
+long_description    ${description}
+
+checksums           sha256 619ef9ac1d5d47411a77748ed835c90decc83ed6b1ff178271127881e8ac6f6c \
+                    rmd160 a48aa6be0ccecab88cdd76f2772ef5d9c77c5af2
+
+
 
 
