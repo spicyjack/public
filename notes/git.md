@@ -13,18 +13,10 @@
 Remote repositories are versions of your project that are hosted on the
 Internet or network somewhere.
 
-1. showing remotes
-
-    git remote -v
-
-1. showing what's on a remote
-
-    git remote show origin
-
-1. tracking a remote branch on the local system
-
-    git branch local_name origin/remote_name
-    git pull
+1. Showing remotes: `git remote -v`
+1. Showing what's on a remote `git remote show origin`
+1. Tracking a remote branch on the local system: `git branch local_name
+origin/remote_name; git pull`
 
 ### Creating a local repo, pushing it to remote ###
 Create the git repo in your local directory;
@@ -45,38 +37,19 @@ Do the actual push;
 
 ### Git Pull ###
 - Pull from a remote repo, updating an older cloned version of the same repo:
-  git pull git://github.com/wakaleo/game-of-life.git master
+  `git pull git://github.com/wakaleo/game-of-life.git master`
 - Pull from a remote repo, updating an older cloned version of the same repo;
   set this repo to be the default repo for futher pulls/pushes:
-  git pull --set-upstream git://github.com/wakaleo/game-of-life.git master
+  `git pull --set-upstream git://github.com/wakaleo/game-of-life.git master`
   git pull -u git://github.com/wakaleo/game-of-life.git master
 - Pull a remote branch
-  git checkout <branchname>; git pull origin
+  `git checkout <branchname>; git pull origin`
 
 ### Git Push ###
 - Push to a different branch;
   - pushing an empty branch deletes the branch on the remote server
   - pushing a local branch will create the new branch on the server
   - see the git-push documentation page for more examples
-
-### Copying commits from one repo to another ###
-To copy all of the commits (complete commit including author and date
-timestamp), use 'git format-patch' followed by 'git am';
-  - git format-patch -o /path/to/patches/dir --root HEAD
-  - cat /path/to/patches/dir/<patchfile names> | git am
-
-### Exporting from CVS into Git ###
-To export a CVS repo into git, start with an empty directory (no `git init`),
-then run something like:
-
-    git cvsimport -v -A ~/authors -d user@example.com:/path/to/cvsroot module-name
-
-The `-A` switch will let you specify a list of author names to convert when
-importing from CVS.  CVS uses the username of the user who is interacting with
-the CVS repo.  You can convert those short user names to full names and e-mail
-addresses that Git likes by creating a file that maps short names to longer
-names.  The format of the file is explained in the `git-cvsimport` help page
-(http://schacon.github.com/git/git-cvsimport.html)
 
 ### Tags ###
 By default, the git push command doesn’t transfer tags to remote servers. You
@@ -106,21 +79,26 @@ of the change message screen.
 (Round-tripping)
 
 On the server:
+
     cd /var/www/git
     mkdir example.git
     cd example.git/
     git init --bare --shared=true
 
 On a client with no code to push:
+
     git clone ssh://example.com/var/www/git/example.git example.git
 
 On a client with existing code to push:
+
     git push ssh://example.com/var/www/git/example.git master
 
 Round-trip check:
+
     git clone ssh://example.com/var/www/git/example.git example.git
 
 Git config looks like:
+
         [remote "origin"]
             fetch = +refs/heads/*:refs/remotes/origin/*
             # FQDN
@@ -131,6 +109,26 @@ Git config looks like:
         [branch "master"]
             remote = origin
             merge = refs/heads/master
+
+### Copying commits from one repo to another ###
+To copy all of the commits (complete commit including author and date
+timestamp), use `git format-patch` followed by `git am`;
+
+    git format-patch -o /path/to/patches/dir --root HEAD
+    cat /path/to/patches/dir/<patchfile names> | git am
+
+### Exporting from CVS into Git ###
+To export a CVS repo into git, start with an empty directory (no `git init`),
+then run something like:
+
+    git cvsimport -v -A ~/authors -d user@example.com:/path/to/cvsroot module-name
+
+The `-A` switch will let you specify a list of author names to convert when
+importing from CVS.  CVS uses the username of the user who is interacting with
+the CVS repo.  You can convert those short user names to full names and e-mail
+addresses that Git likes by creating a file that maps short names to longer
+names.  The format of the file is explained in the `git-cvsimport` help page
+(http://schacon.github.com/git/git-cvsimport.html)
 
 ### Git Configs ###
 Multiple remote branches:
