@@ -65,6 +65,19 @@ timestamp), use 'git format-patch' followed by 'git am';
   - git format-patch -o /path/to/patches/dir --root HEAD
   - cat /path/to/patches/dir/<patchfile names> | git am
 
+### Exporting from CVS into Git ###
+To export a CVS repo into git, start with an empty directory (no `git init`),
+then run something like:
+
+    git cvsimport -v -A ~/authors -d user@example.com:/path/to/cvsroot module-name
+
+The `-A` switch will let you specify a list of author names to convert when
+importing from CVS.  CVS uses the username of the user who is interacting with
+the CVS repo.  You can convert those short user names to full names and e-mail
+addresses that Git likes by creating a file that maps short names to longer
+names.  The format of the file is explained in the `git-cvsimport` help page
+(http://schacon.github.com/git/git-cvsimport.html)
+
 ### Tags ###
 By default, the git push command doesn’t transfer tags to remote servers. You
 will have to explicitly push tags to a shared server after you have created
@@ -108,16 +121,16 @@ Round-trip check:
     git clone ssh://example.com/var/www/git/example.git example.git
 
 Git config looks like:
-[remote "origin"]
-    fetch = +refs/heads/*:refs/remotes/origin/*
-    # FQDN
-    #url = git@git.example.com:/path/to/example.git
-    # short form, if you have a config block with this name in your
-    # ~/.ssh/config file
-    url = server-name:/path/to/example.git
-[branch "master"]
-    remote = origin
-    merge = refs/heads/master
+        [remote "origin"]
+            fetch = +refs/heads/*:refs/remotes/origin/*
+            # FQDN
+            #url = git@git.example.com:/path/to/example.git
+            # short form, if you have a config block with this name in your
+            # ~/.ssh/config file
+            url = server-name:/path/to/example.git
+        [branch "master"]
+            remote = origin
+            merge = refs/heads/master
 
 ### Git Configs ###
 Multiple remote branches:
