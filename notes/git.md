@@ -36,14 +36,19 @@ Do the actual push;
     git push origin master
 
 ### Git Pull ###
-- Pull from a remote repo, updating an older cloned version of the same repo:
-  `git pull git://github.com/wakaleo/game-of-life.git master`
-- Pull from a remote repo, updating an older cloned version of the same repo;
-  set this repo to be the default repo for futher pulls/pushes:
-  `git pull --set-upstream git://github.com/wakaleo/game-of-life.git master`
-  git pull -u git://github.com/wakaleo/game-of-life.git master
-- Pull a remote branch
-  `git checkout <branchname>; git pull origin`
+Pull from a remote repo, updating an older cloned version of the same repo:
+
+    git pull git://github.com/wakaleo/game-of-life.git master
+
+Pull from a remote repo, updating an older cloned version of the same repo;
+set this repo to be the default repo for futher pulls/pushes:
+
+    git pull --set-upstream git://github.com/wakaleo/game-of-life.git master
+    git pull -u git://github.com/wakaleo/game-of-life.git master
+
+Pull a remote branch
+
+    git checkout <branchname>; git pull origin
 
 ### Git Push ###
 - Push to a different branch;
@@ -128,7 +133,7 @@ importing from CVS.  CVS uses the username of the user who is interacting with
 the CVS repo.  You can convert those short user names to full names and e-mail
 addresses that Git likes by creating a file that maps short names to longer
 names.  The format of the file is explained in the `git-cvsimport` help page
-(http://schacon.github.com/git/git-cvsimport.html)
+(http://schacon.github.com/git/git-cvsimport.html).
 
 ### Git Configs ###
 Multiple remote branches:
