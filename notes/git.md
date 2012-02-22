@@ -6,7 +6,7 @@
 
 ### Questions to be answered? ###
 - How to integrate code from one branch into another?  git pull against the
-  branch on the local disk? (CHERRY PICK!)
+  branch on the local disk? (cherry pick?)
 - Notes from git presentation(s)?  Where are they hiding?
 
 ### Remotes ###
@@ -122,6 +122,16 @@ timestamp), use `git format-patch` followed by `git am`;
     git format-patch -o /path/to/patches/dir --root HEAD
     cat /path/to/patches/dir/<patchfile names> | git am
 
+### Creating an archive file for distribution (sans the .git bits) ###
+
+    git archive -o /path/to/archive/file.zip HEAD
+
+
+`git archive` also understands `tar` format:
+
+    git archive -o /path/to/archive/file.tar HEAD
+
+
 ### Exporting from CVS into Git ###
 To export a CVS repo into git, start with an empty directory (no `git init`),
 then run something like:
@@ -148,4 +158,4 @@ Multiple remote branches:
             remote = origin
             merge = refs/heads/master
 
-# vim: filetype=markdown tabstop=2
+vim: filetype=markdown tabstop=2
