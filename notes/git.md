@@ -126,11 +126,13 @@ timestamp), use `git format-patch` followed by `git am`;
 
     git archive -o /path/to/archive/file.zip HEAD
 
-
 `git archive` also understands `tar` format:
 
     git archive -o /path/to/archive/file.tar HEAD
 
+If you use the `-o` switch to specify an output file, you don't need to use
+the `--format` switch to specify the format of the output file.  The default
+output file is STDOUT.
 
 ### Exporting from CVS into Git ###
 To export a CVS repo into git, start with an empty directory (no `git init`),
