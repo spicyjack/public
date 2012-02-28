@@ -185,5 +185,6 @@ Multiple remote branches:
 ### Git Workflow Links ###
   - http://search.cpan.org/perldoc?Dancer::Development
   - http://nvie.com/posts/a-successful-git-branching-model/
+  - How to use github effectively for your project - http://tinyurl.com/4g9wmwy
 
 vim: filetype=markdown tabstop=2
