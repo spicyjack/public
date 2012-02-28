@@ -68,6 +68,16 @@ Pull a remote branch
     git stash drop stash@{0}
     git stash list
 
+### Untracking files/directories ###
+
+Untrack a file:
+
+    git rm --cached file
+
+Untrack a directory full of files
+
+    git rm --cached -r directory 
+
 ### Tags ###
 By default, the git push command doesn’t transfer tags to remote servers. You
 will have to explicitly push tags to a shared server after you have created
