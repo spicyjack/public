@@ -56,6 +56,18 @@ Pull a remote branch
   - pushing a local branch will create the new branch on the server
   - see the git-push documentation page for more examples
 
+### Git Stash ###
+
+    git stash list
+    git stash save stashing prior to pulling, possible duplicate code
+    git pull
+    git diff
+    git log
+    git diff cfac54ac33eceadb4a6872e09d9e466cdc9b2de9
+    git stash list
+    git stash drop stash@{0}
+    git stash list
+
 ### Tags ###
 By default, the git push command doesn’t transfer tags to remote servers. You
 will have to explicitly push tags to a shared server after you have created
@@ -159,5 +171,9 @@ Multiple remote branches:
         [branch "wesleyjohnson"]
             remote = origin
             merge = refs/heads/master
+
+### Git Workflow Links ###
+  - http://search.cpan.org/perldoc?Dancer::Development
+  - http://nvie.com/posts/a-successful-git-branching-model/
 
 vim: filetype=markdown tabstop=2
