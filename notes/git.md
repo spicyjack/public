@@ -84,6 +84,12 @@ will have to explicitly push tags to a shared server after you have created
 them. This process is just like sharing remote branches — you can run git push
 origin (tagname)
 
+    git push --tags
+
+### Listing the contents of tags ###
+
+    git show <tagname>
+
 ### Rebasing changes ###
 If you have not shared changes on your machine with anyone else, and you want
 to combine a set of small changes into one large change, you can use `git
