@@ -15,8 +15,11 @@ Internet or network somewhere.
 
 1. Showing remotes: `git remote -v`
 1. Showing what's on a remote `git remote show origin`
-1. Tracking a remote branch on the local system: `git branch local_name
+1. Adding a remote branch to the local system: `git branch local_name
 origin/remote_name; git pull`
+1. If you cloned a repo that has multiple branches, use `git branch -r` to
+list all of the branches, and `git checkout <branch name>` to start working on
+that branch
 
 ### Creating a local repo, pushing it to remote ###
 Create the git repo in your local directory;
