@@ -71,6 +71,10 @@ Pull a remote branch
     git stash drop stash@{0}
     git stash list
 
+### Listing what files/directories are tracked ###
+
+    git ls-tree -r HEAD
+
 ### Untracking files/directories ###
 
 Untrack a file:
