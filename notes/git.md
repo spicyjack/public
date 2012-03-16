@@ -4,6 +4,12 @@
 - http://progit.org/
   - http://progit.org/book/
 
+### Git Workflow Links ###
+  - http://search.cpan.org/perldoc?Dancer::Development
+  - http://nvie.com/posts/a-successful-git-branching-model/
+  - How to use github effectively for your project - http://tinyurl.com/4g9wmwy
+  - http://blog.plover.com/prog/git-habits.html
+
 ### Questions to be answered? ###
 - How to integrate code from one branch into another?  git pull against the
   branch on the local disk? (cherry pick?)
@@ -194,10 +200,5 @@ Multiple remote branches:
         [branch "wesleyjohnson"]
             remote = origin
             merge = refs/heads/master
-
-### Git Workflow Links ###
-  - http://search.cpan.org/perldoc?Dancer::Development
-  - http://nvie.com/posts/a-successful-git-branching-model/
-  - How to use github effectively for your project - http://tinyurl.com/4g9wmwy
 
 vim: filetype=markdown tabstop=2
