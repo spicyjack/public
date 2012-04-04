@@ -198,6 +198,15 @@ If you use the `-o` switch to specify an output file, you don't need to use
 the `--format` switch to specify the format of the output file.  The default
 output file is STDOUT.
 
+### Exporting from Mercurial into Git ###
+1. Clone the `fast-export` tool: `git clone git://repo.or.cz/fast-export.git`
+1. Make sure the `mercurial.py` module is in your `PYTHONPATH`
+  1. `export PYTHONPATH=/path/to/lib/python/site-packages`
+1. Create a new directory for the git repo: `mkdir new-project`
+1. Run `git init` to initialize: `cd new-project; git init`
+1. Run the `fast-export` shell script: `hg-fast-export.sh -r ../repo.hg`
+1. Run `git checkout` to make the source code appear in the git repo
+
 ### Exporting from CVS into Git ###
 To export a CVS repo into git, start with an empty directory (no `git init`),
 then run something like:
