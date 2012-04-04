@@ -11,8 +11,6 @@
   - http://blog.plover.com/prog/git-habits.html
 
 ### Questions to be answered? ###
-- How to integrate code from one branch into another?  git pull against the
-  branch on the local disk? (cherry pick?)
 - Notes from git presentation(s)?  Where are they hiding?
 
 ### Remotes ###
@@ -64,6 +62,31 @@ Pull a remote branch
   - pushing an empty branch deletes the branch on the remote server
   - pushing a local branch will create the new branch on the server
   - see the git-push documentation page for more examples
+
+### Creating/Merging Branches ###
+Create a branch
+
+    git branch <branchname>
+
+Check out that branch
+
+    git checkout <branchname>
+
+Do some work in the branch, then commit the work
+
+    git commit
+
+Switch back to the `master` branch
+
+    git checkout master
+
+Then merge your work branch back into `master`
+
+    git merge <branchname>
+
+You can delete your work branch after you're done if you want
+
+    git branch -d <branchname>
 
 ### Git Stash ###
 
