@@ -6,7 +6,7 @@
 
 ### FUNCTIONS ###
 function set_school_git_source_dir {
-    export SOURCE_DIR="$HOME/src/School/Intro_To_Objective_C"
+    export SOURCE_DIR="$HOME/src/school/iOS_Programming_I"
 }
 
 function unset_school_git_source_dir {
