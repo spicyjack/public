@@ -3,6 +3,7 @@
 - http://schacon.github.com/git/git.html
 - http://progit.org/
   - http://progit.org/book/
+- http://gitimmersion.com/index.html
 
 ### Git Workflow Links ###
   - http://search.cpan.org/perldoc?Dancer::Development
