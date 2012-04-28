@@ -15,13 +15,14 @@
 - Notes from git presentation(s)?  Where are they hiding?
 
 ### Specifying revisions ###
+http://schacon.github.com/git/gitrevisions.html
 
 You can specify revisions in the following ways:
 1. Commit SHA ID; you can also use parts of a SHA ID, you would use the
 minimum amount of characters needed in order to specify a unique commit ID
 1. `&lt;branch name&gt;@{number}`, where `{number}` is a specific amount of
 commits to work backwards from the current HEAD
-1. `HEAD^&lt;number&gt;`, which means the Nth numbered parent of HEAD
+1. `HEAD~&lt;number&gt;`, which means the Nth numbered parent of HEAD
 
 ### Remotes ###
 Remote repositories are versions of your project that are hosted on the
@@ -133,6 +134,7 @@ origin (tagname)
     git push --tags
 
 ### Listing the contents of tags ###
+This includes any tags signed with a PGP/GPG encrypted signature
 
     git show <tagname>
 
