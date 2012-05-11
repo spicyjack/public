@@ -210,6 +210,9 @@ If you use the `-o` switch to specify an output file, you don't need to use
 the `--format` switch to specify the format of the output file.  The default
 output file is STDOUT.
 
+### Exporting a specific directory ###
+http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html
+
 ### Exporting from Mercurial into Git ###
 1. Clone the `fast-export` tool: `git clone git://repo.or.cz/fast-export.git`
 1. Make sure the `mercurial.py` module is in your `PYTHONPATH`
