@@ -75,6 +75,17 @@ Pull a remote branch
   - see the git-push documentation page for more examples
 
 ### Creating/Merging Branches ###
+Quick summary:
+
+    git branch fix_name
+    <make changes>
+    git add <files>
+    git commit
+    git checkout master
+    git merge fix_name
+    git checkout dev
+    git merge fix_name
+
 Create a branch
 
     git branch <branchname>
