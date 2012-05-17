@@ -1,0 +1,76 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 88235 2011-12-22 17:45:20Z ryandesign@macports.org $
+
+PortSystem  1.0
+
+name           gnome-doc-utils
+version        0.20.6
+set branch     [join [lrange [split ${version} .] 0 1] .]
+description    GNOME document utils.
+long_description \
+    gnome-doc-utils is a collection of documentation utilities \
+    for the Gnomeproject. Notably, it contains utilities for building \
+    documentation andall auxiliary files in your source tree, and it \
+    contains the DocBookXSLT stylesheets that were once distributed \
+    with Yelp.
+maintainers    devans openmaintainer
+categories     gnome
+license        LGPL-2+
+installs_libs  no
+platforms      darwin
+supported_archs noarch
+homepage       http://www.gnome.org/
+master_sites   gnome:sources/${name}/${branch}/
+
+checksums           md5     8f6e05071599bc073007830ea0a68391 \
+                    sha1    c11dda3cff4248a6918cfaf0d7b892fc20bf329e \
+                    rmd160  d333cd84d1ae1404f3913caaf51be833f85696bb
+
+use_bzip2      yes
+
+# http://trac.macports.org/ticket/23954
+use_parallel_build  no
+
+depends_build  port:intltool \
+               port:pkgconfig
+
+depends_lib    port:gettext \
+               port:libxslt
+
+depends_run    port:docbook-xml \
+               port:docbook-xsl \
+               port:rarian \
+               port:iso-codes
+
+# The perl executable should be the one explicitly required by intltool
+configure.env-append  INTLTOOL_PERL=${prefix}/bin/perl5.14
+configure.args        --disable-scrollkeeper
+
+variant python25 conflicts python26 python27 description {Use python 2.5} {
+    depends_lib-append      port:py25-libxml2 port:python25
+    configure.python        ${prefix}/bin/python2.5
+}
+
+variant python26 conflicts python25 python27 description {Use python 2.6} {
+    depends_lib-append      port:py26-libxml2 port:python26
+    configure.python        ${prefix}/bin/python2.6
+    configure.args-append   am_cv_python_pythondir=${frameworks_dir}/Python.framework/Versions/2.6/lib/python2.6/site-packages/
+}
+
+variant python27 conflicts python25 python26 description {Use python 2.7} {
+    depends_lib-append      port:py27-libxml2 port:python27
+    configure.python        ${prefix}/bin/python2.7
+    configure.args-append   am_cv_python_pythondir=${frameworks_dir}/Python.framework/Versions/2.7/lib/python2.7/site-packages/
+}
+
+if {![variant_isset python25] && ![variant_isset python26]} {
+    default_variants +python27
+}
+
+post-activate  {
+    system "${prefix}/bin/scrollkeeper-update"
+}
+
+livecheck.type      regex
+livecheck.url       http://ftp.gnome.org/pub/gnome/sources/${name}/${branch}/
+livecheck.regex     {LATEST-IS-(\d+(?:\.\d+)*)}
