@@ -112,6 +112,14 @@ You can delete your work branch after you're done if you want
 
     git branch -d <branchname>
 
+Pull a single commit out of that branch with `git cherry-pick`
+
+    git checkout <branch name>
+    git cherry-pick <source branch name> <commit ID>
+
+You can also use one of the shortcuts listed in `gitrevisions` to specify what
+commit to cherry-pick back on to the current branch
+
 ### Git Stash ###
 
     git stash list
