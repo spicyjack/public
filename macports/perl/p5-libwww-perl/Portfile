@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         libwww-perl 6.03
-#perl5.setup         libwww-perl 6.03 ../by-authors/id/G/GA/GAAS
+#perl5.setup         libwww-perl 6.04
+perl5.setup         libwww-perl 6.04 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Libwww-perl
 
 long_description    ${description}
 
-checksums           sha256 af11179badf55dc60cb83e81fac212a74bce959dc9d16d0acfc087493df996fe \
-                    rmd160 95b17df5dcb97cb67775411574e4543aad43228a
+checksums           sha256 f9715e30d814e132925fdf30500595559a2016061914b0e17b025233f975227d \
+                    rmd160 7407e138ed2e086f1498e014f6d65a472115d43b
 
 depends_lib-append  port:p5-uri \
                     port:p5-lwp-mediatypes \

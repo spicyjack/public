@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         WWW-RobotRules 6.01
-#perl5.setup         WWW-RobotRules 6.01 ../by-authors/id/G/GA/GAAS
+perl5.setup         WWW-RobotRules 6.02
+#perl5.setup         WWW-RobotRules 6.02 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Parse /robots.txt file
 
 long_description    ${description}
 
-checksums           sha256 f817e3e982c9d869c7796bcb5737c3422c2272355424acd162d0f3b132bec9d3 \
-                    rmd160 6f2c1bef375ad2b2f171b4feae721eec8e1007ec
+checksums           sha256 46b502e7a288d559429891eeb5d979461dd3ecc6a5c491ead85d165b6e03a51e \
+                    rmd160 dec9e82ddd551ec63dd3d541854ee0b52cab6214
 
 depends_lib-append  port:p5-uri
 

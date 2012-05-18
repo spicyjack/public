@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         LWP-MediaTypes 6.01
-#perl5.setup         LWP-MediaTypes 6.01 ../by-authors/id/G/GA/GAAS
+perl5.setup         LWP-MediaTypes 6.02
+#perl5.setup         LWP-MediaTypes 6.02 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Media types and mailcap processing
 
 long_description    ${description}
 
-checksums           sha256 df25a848796bb53ae465924fb1192a19400f37d7446b2fe7f73443db07c51dba \
-                    rmd160 2ea782c0da693951f1614f3a5f74d63e505368d6
+checksums           sha256 18790b0cc5f0a51468495c3847b16738f785a2d460403595001e0b932e5db676 \
+                    rmd160 a99f980361c58b1fbf5f130964a213076a32c1fe
 
 
 

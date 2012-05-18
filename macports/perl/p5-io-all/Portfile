@@ -4,21 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         HTTP-Cookies 6.01
-#perl5.setup         HTTP-Cookies 6.01 ../by-authors/id/G/GA/GAAS
+perl5.setup         IO-All 0.44
+#perl5.setup         IO-All 0.44 ../by-authors/id/I/IN/INGY
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Storage of cookies
+description         IO::All (no description available)
 
 long_description    ${description}
 
-checksums           sha256 f5d3ade383ce6389d80cb0d0356b643af80435bb036afd8edce335215ec5eb20 \
-                    rmd160 2c0e5956cf9afca45e182a9824702a8e4154e053
+checksums           sha256 1c86f6d2f3757f151ac88fd1cca0e15ace55afb4edecaa27c786ba49208520b4 \
+                    rmd160 7f0b01111ddc10b61c21ac1b89d846f2630ab3de
 
-depends_lib-append  port:p5-http-message \
-                    port:p5-http-date
+depends_lib-append  port:p5-io-string
 
 

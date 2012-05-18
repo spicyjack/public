@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         URI 1.59
-#perl5.setup         URI 1.59 ../by-authors/id/G/GA/GAAS
+perl5.setup         URI 1.60
+#perl5.setup         URI 1.60 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         URI (no description available)
 
 long_description    ${description}
 
-checksums           sha256 cb88d29b589db8d2adbc4713fd082284cba77883488717375f011bbd13b5cac6 \
-                    rmd160 3b2923d0831f8e9824360121e9e2e70370dc0c5c
+checksums           sha256 1f92d3dc64acb8845e9917c945e22b9a5275aeb9ff924eb7873c3b7a5c0d2377 \
+                    rmd160 24afb2202cae821cfe1499056b289b81a5d62f24
 
 
 

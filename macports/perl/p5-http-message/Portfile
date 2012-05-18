@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         HTTP-Message 6.02
-#perl5.setup         HTTP-Message 6.02 ../by-authors/id/G/GA/GAAS
+perl5.setup         HTTP-Message 6.03
+#perl5.setup         HTTP-Message 6.03 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Base class for Request/Response
 
 long_description    ${description}
 
-checksums           sha256 2331b3c82e8a9674e596e4583f13a655d24d2e3c7165f3bdc6def4b5d4165181 \
-                    rmd160 6703f508af52ba7d30a1a3362c0f40f8a01af20d
+checksums           sha256 c736e083bdf0eea1bb73e2dc3b66db0a8283942c0f69063afadb9a7cfa80011b \
+                    rmd160 2f2eb59852ad040d59936c6f1293d0022971c6c2
 
 depends_lib-append  port:p5-uri \
                     port:p5-html-parser \

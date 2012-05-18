@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Test-Fatal 0.008
-#perl5.setup         Test-Fatal 0.008 ../by-authors/id/R/RJ/RJBS
+perl5.setup         Test-Fatal 0.010
+#perl5.setup         Test-Fatal 0.010 ../by-authors/id/R/RJ/RJBS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Test::Fatal (no description available)
 
 long_description    ${description}
 
-checksums           sha256 5cca61b381567c325c3d958bd3de582a8bf47c23798106dccd467c770ce16a3f \
-                    rmd160 e1f2289b1d5528725aedf918bd9b81e4ed520952
+checksums           sha256 805e8497a06c1ba5ab2cc85dea74533edbf48c738c8ecf42f6d812993d279305 \
+                    rmd160 156a047157fcc8d1c1a614e66de5387e92ffcef0
 
 depends_lib-append  port:p5-try-tiny
 

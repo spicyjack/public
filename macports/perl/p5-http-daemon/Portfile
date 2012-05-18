@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         HTTP-Daemon 6.00
-#perl5.setup         HTTP-Daemon 6.00 ../by-authors/id/G/GA/GAAS
+perl5.setup         HTTP-Daemon 6.01
+#perl5.setup         HTTP-Daemon 6.01 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Base class for simple HTTP servers
 
 long_description    ${description}
 
-checksums           sha256 4801d349c52813a1e49d6b31962f45705bae76fb907279e75933596c04e0de89 \
-                    rmd160 b372f2281bf256139ff1ebf80ddd784b00974ed4
+checksums           sha256 43fd867742701a3f9fcc7bd59838ab72c6490c0ebaf66901068ec6997514adc2 \
+                    rmd160 426d00f81025ed56e861384a8722163589814a66
 
 depends_lib-append  port:p5-http-message \
                     port:p5-lwp-mediatypes \

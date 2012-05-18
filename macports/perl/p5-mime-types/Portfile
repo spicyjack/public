@@ -4,21 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         HTTP-Cookies 6.01
-#perl5.setup         HTTP-Cookies 6.01 ../by-authors/id/G/GA/GAAS
+perl5.setup         MIME-Types 1.34
+#perl5.setup         MIME-Types 1.34 ../by-authors/id/M/MA/MARKOV
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Storage of cookies
+description         Information and processing MIME types
 
 long_description    ${description}
 
-checksums           sha256 f5d3ade383ce6389d80cb0d0356b643af80435bb036afd8edce335215ec5eb20 \
-                    rmd160 2c0e5956cf9afca45e182a9824702a8e4154e053
+checksums           sha256 ebedc9c07f1ae9fd056654319cc8ed2cac9638d8719b6bd922c877b6eeb81f7a \
+                    rmd160 17f02171b2e8414b9f2bdca446bb7d1811ae2c5e
 
-depends_lib-append  port:p5-http-message \
-                    port:p5-http-date
+
 
 

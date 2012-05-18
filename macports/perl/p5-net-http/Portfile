@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Net-HTTP 6.02
-#perl5.setup         Net-HTTP 6.02 ../by-authors/id/G/GA/GAAS
+perl5.setup         Net-HTTP 6.03
+#perl5.setup         Net-HTTP 6.03 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Net::HTTP (no description available)
 
 long_description    ${description}
 
-checksums           sha256 3692b8b99297ba6cc603a1edb8382b7bc4f1ba2e75d310a9d6e32d7e50110fed \
-                    rmd160 9f4b6be2d273f26afca2e949edb870eca7263e3a
+checksums           sha256 ecb0236dc23dccdc92e4b1c2dc63b2a2e29ac3a4a1f50104a838279a72a8a0ab \
+                    rmd160 20a4e7181084820b49bda56d3cf13cd167c61924
 
 
 
