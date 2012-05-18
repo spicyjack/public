@@ -1,0 +1,31 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         App-perlbrew 0.42
+#perl5.setup         App-perlbrew 0.42 ../by-authors/id/G/GU/GUGOD
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         App::perlbrew (no description available)
+
+long_description    ${description}
+
+checksums           sha256 eea1dbda7b81bb514ff7f07b1f42be18c7a670a0a8baf3b58c15fb61ba646b14 \
+                    rmd160 9e70eb343e0b90d4f35c825b67af72fb96f0912c
+
+depends_lib-append  port:p5-cpan-perl-releases \
+                    port:p5-capture-tiny \
+                    port:p5-file-path-tiny \
+                    port:p5-devel-patchperl \
+                    port:p5-local-lib
+depends_build-append port:p5-io-all \
+                     port:p5-test-exception \
+                     port:p5-path-class \
+                     port:p5-test-output \
+                     port:p5-test-spec
+
