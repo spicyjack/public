@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         ExtUtils-PkgConfig 1.12
-#perl5.setup         ExtUtils-PkgConfig 1.12 ../by-authors/id/T/TS/TSCH
+#perl5.setup         ExtUtils-PkgConfig 1.13
+perl5.setup         ExtUtils-PkgConfig 1.13 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         ExtUtils::PkgConfig (no description available)
 
 long_description    ${description}
 
-checksums           sha256 6330b9d1165363837ac1ab014888e3d908f8fb9eb76b31a36096d0e504f6ff42 \
-                    rmd160 c13d4dfa7c526d93967b5edcfe079d89d9151bdb
+checksums           sha256 6eabad656fb5a7fb74b0567f18b7be9c58e3cf32fb4c790acc9cf0abaabf371f \
+                    rmd160 9ffb1c83790567c5a414d3b0fa5427f093fe6b30
 
 
 
