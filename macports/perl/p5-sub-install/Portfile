@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Sub-Install 0.925
-#perl5.setup         Sub-Install 0.925 ../by-authors/id/R/RJ/RJBS
+perl5.setup         Sub-Install 0.926
+#perl5.setup         Sub-Install 0.926 ../by-authors/id/R/RJ/RJBS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Sub::Install (no description available)
 
 long_description    ${description}
 
-checksums           sha256 a65a6e87b2f886ea9bbe3ac5a62ae98a7ff3f8139c0b92e727c2a7cb2d618ce9 \
-                    rmd160 1a29c281d1c7cf83f47b85e708f449d4e24547dd
+checksums           sha256 acb2496643784976fe8edebc7b412e9a93f6f0825631f5bd9186c810aed1763e \
+                    rmd160 b438897a8cc05d006e3756bbbeb236630fce9dc2
 
 
 

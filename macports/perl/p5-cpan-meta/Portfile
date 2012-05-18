@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         CPAN-Meta 2.113640
-#perl5.setup         CPAN-Meta 2.113640 ../by-authors/id/R/RJ/RJBS
+perl5.setup         CPAN-Meta 2.120921
+#perl5.setup         CPAN-Meta 2.120921 ../by-authors/id/D/DA/DAGOLDEN
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         CPAN::Meta (no description available)
 
 long_description    ${description}
 
-checksums           sha256 20d329b80aeacb5f0adfe6db161938ff352e9ca64c78acdf91fc814e88f7fd0d \
-                    rmd160 95ba8f45b3b76943007d42b7ab74d9eb7fa3fb23
+checksums           sha256 e9a829a3149920655f1bdb36cd061c21b3bfa52f05b67d12a3534933cccc9789 \
+                    rmd160 8ce3496ce89bbe89b856020f83e35b90d4b411f9
 
 
 

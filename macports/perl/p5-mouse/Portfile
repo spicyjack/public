@@ -1,30 +1,23 @@
-# $Id: Portfile 76604 2011-03-02 01:49:46Z dports@macports.org $
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
 
-PortSystem            1.0
-PortGroup             perl5 1.0
+PortSystem          1.0
+PortGroup           perl5 1.0
 
-perl5.setup           Mouse 0.93 ../by-authors/id/G/GF/GFUJI/
-revision        1
-maintainers           narf_tm openmaintainer
-description           Moose minus the antlers
-long_description      Moose is wonderful. \
-                      Unfortunately, it's a little slow. Though significant \
-                      progress has been made over the years, the compile \
-                      time penalty is a non-starter for some applications. \
-                      Mouse aims to alleviate this by providing a subset of \
-                      Moose's functionality, faster. In particular, \"has\" \
-                      in Moose is missing only a few expert-level features.
+perl5.setup         Mouse 0.97
+#perl5.setup         Mouse 0.97 ../by-authors/id/G/GF/GFUJI
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
 
-platforms             darwin
+description         Mouse (no description available)
 
-#checksums             md5 5726db5bec7ea4d4d4cd85f08cc4efc4 \
-#                      sha1 4909f83d6d3e128a582fd9f7ac8923442b5a2f73 \
-#                      rmd160 fad3ec49c0673ef3208638aac9df88d77bcbf1b4
+long_description    ${description}
 
-checksums           md5     bbd23f2a96693400fe3ff64cb9b7b650 \
-                    sha1    36ce654b351237d452c2b8b90d03d1ff5a1586f3 \
-                    rmd160  26d21b1d5f7e6ec753fef13b1a91d86a744c18f9
+checksums           sha256 dfb1f3abbc46e7646a685efa4e5804c4cf9772eb807ac6abf8f1d1529b57b97a \
+                    rmd160 4be9e12a2c860098131989ef0ee52da131a940c1
 
-depends_lib-append    port:p5-test-simple \
-                      port:p5-extutils-parsexs \
-                      port:p5-devel-ppport
+
+
+

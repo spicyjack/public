@@ -1,23 +1,23 @@
-# $Id: Portfile 76604 2011-03-02 01:49:46Z dports@macports.org $
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
 
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Devel-PPPort 3.19_03
-revision        1
-maintainers         narf_tm openmaintainer
-description         Perl/Pollution/Portability
+perl5.setup         Devel-PPPort 3.20
+#perl5.setup         Devel-PPPort 3.20 ../by-authors/id/M/MH/MHX
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Portability aid for your XS code
+
 long_description    ${description}
 
-platforms           darwin
+checksums           sha256 8002038a2613945cd88a9996fd313b0647c7d8f35c9338504f77dff12364f368 \
+                    rmd160 df311a9aa41f497a77f8c82cb9de4fb500780825
 
-master_sites        http://search.cpan.org/CPAN/authors/id/M/MH/MHX/
-distfiles           Devel-PPPort-3.19_03.tar.gz
 
-#checksums           md5 f835f18c0c4e9bfcdc371e6747e06f15 \
-#                    sha1 57ca80672f4de43690d80e25a4b36dc5db3f0ff0 \
-#                    rmd160 4031e9fe15bc19bf7825937ff27eca7669dc6b6e
 
-checksums           md5     d3d0a0fcf8d09aca88ceb2be391a2d87 \
-                    sha1    97b6e257c13b44f9e6f0d4f71a5464b61806dddb \
-                    rmd160  8e8d79ed79c612837b8718a445a10fcb12e97862
+
