@@ -1,19 +1,23 @@
 [user]
-	name = Example User Name
+	name = Example User 
 	email = user@example.com
 
 [alias]
     bare    = init --bare --shared=true
     br      = branch -v
     co      = checkout
-    graph   = log --oneline --decorate --graph
+    graph   = log --oneline --decorate --graph 
     hist    = log --graph --pretty='[%h]%d %cd %s'
+    ls      = ls-tree --abbrev=8 -r HEAD
     pudr    = push --dry-run
-    pu      = push
+    pu      = push 
     puor    = push --set-upstream origin master
+    puom    = push --set-upstream origin master
     puordr  = push --set-upstream --dry-run origin master
-    stat    = status
+    puomdr  = push --set-upstream --dry-run origin master
     re      = remote -v
+    stat    = status 
+    untrack = rm --cached
 
 [color]
 	ui = true
