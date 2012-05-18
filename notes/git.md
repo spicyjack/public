@@ -35,6 +35,8 @@ origin/remote_name; git pull`
 1. If you cloned a repo that has multiple branches, use `git branch -r` to
 list all of the branches, and `git checkout <branch name>` to start working on
 that branch
+1. Track a remote branch after pulling it to the local system: `git branch
+--set-upstream <branch name> origin/<branch name>`
 
 ### Creating a local repo, pushing it to remote ###
 Create the git repo in your local directory;
