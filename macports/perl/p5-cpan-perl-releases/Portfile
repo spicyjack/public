@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         CPAN-Perl-Releases 0.52
+perl5.setup         CPAN-Perl-Releases 0.52 ../by-authors/id/B/BI/BINGOS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         CPAN::Perl::Releases (no description available)
+
+long_description    ${description}
+
+checksums           sha256 3695636f67eaaa41ff3ec17a5808fdcd74c037597fc86947721ef5513ec629b1 \
+                    rmd160 83998d32030f7105c41c2061deb1adc0d42d68e9
+
+
+
+
