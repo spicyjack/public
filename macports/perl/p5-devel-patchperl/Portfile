@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Devel-PatchPerl 0.70
+perl5.setup         Devel-PatchPerl 0.70 ../by-authors/id/B/BI/BINGOS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Devel::PatchPerl (no description available)
+
+long_description    ${description}
+
+checksums           sha256 5815ff65c218ae3bc6657378c376e4fb5a250fca38afdec8b96c372a3b646ed1 \
+                    rmd160 a381f46c3ac283ea601d2953041d41dbb35a84bc
+
+depends_lib-append  port:p5-file-pushd
+
+

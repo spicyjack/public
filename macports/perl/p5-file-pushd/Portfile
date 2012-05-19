@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         File-pushd 1.002
+#perl5.setup         File-pushd 1.002 ../by-authors/id/D/DA/DAGOLDEN
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         File::pushd (no description available)
+
+long_description    ${description}
+
+checksums           sha256 06376071c034cde08d1f5fb2c9477c3146bbcea79cfeb0820882bf0cf08b5790 \
+                    rmd160 bc4deced4999f7c356c01f06bf61a20e41e6c429
+
+
+
+

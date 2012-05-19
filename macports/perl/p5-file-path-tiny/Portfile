@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         File-Path-Tiny 0.3
+#perl5.setup         File-Path-Tiny 0.3 ../by-authors/id/D/DM/DMUEY
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         File::Path::Tiny (no description available)
+
+long_description    ${description}
+
+checksums           sha256 0b69ab10594c2775d5b02a641a0b2ca0b168b452e65857d894a6b791a2e4d9b0 \
+                    rmd160 911a3766c55a6249f58fd2dea9bb6af4de88efd5
+
+
+
+
