@@ -23,7 +23,6 @@ depends_lib-append  port:p5-directory-scratch \
                     port:p5-eval-context \
                     port:p5-test-block \
                     port:p5-data-treedumper-renderer-gtk \
-                    port: \
                     port:p5-sub-exporter \
                     port:p5-test-nowarnings \
                     port:p5-data-treedumper \
