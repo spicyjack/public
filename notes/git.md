@@ -6,10 +6,11 @@
 - http://gitimmersion.com/index.html
 
 ### Git Workflow Links ###
-  - http://search.cpan.org/perldoc?Dancer::Development
-  - http://nvie.com/posts/a-successful-git-branching-model/
-  - How to use github effectively for your project - http://tinyurl.com/4g9wmwy
-  - http://blog.plover.com/prog/git-habits.html
+- http://search.cpan.org/perldoc?Dancer::Development
+- http://nvie.com/posts/a-successful-git-branching-model/
+- How to use github effectively for your project - http://tinyurl.com/4g9wmwy
+- http://blog.plover.com/prog/git-habits.html
+- http://perlbrew.pl/Perlbrew-development-and-the-git-flow.html
 
 ### Questions to be answered? ###
 - Notes from git presentation(s)?  Where are they hiding?
