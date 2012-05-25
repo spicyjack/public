@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Gtk2 1.243
-#perl5.setup         Gtk2 1.243 ../by-authors/id/X/XA/XAOC
+perl5.setup         Gtk2 1.244
+#perl5.setup         Gtk2 1.244 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,8 +15,8 @@ description         Bindings for the gtk+-2.x UI Toolkit
 
 long_description    ${description}
 
-checksums           sha256 039bd521eab4133a5af0485efa64b7c52ec7539855d3057e27a551d562a03a8f \
-                    rmd160 48fe3fad258e35c8469e62e2ac22c7f3fc748b8b
+checksums           sha256 a53a541c885ee44fc71c6ef8538cc29206e0605225b9e36d2678ee2026a9977a \
+                    rmd160 5b15e23846a11d86c081ffa639c778e9c7914213
 
 depends_lib-append  port:p5-pango \
                     port:p5-extutils-depends \
