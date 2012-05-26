@@ -4,20 +4,20 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-#perl5.setup         Try-Tiny 0.11
-perl5.setup         Try-Tiny 0.11 ../by-authors/id/D/DO/DOY
+perl5.setup         HTTP-Body 1.15
+#perl5.setup         HTTP-Body 1.15 ../by-authors/id/G/GE/GETTY
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Try::Tiny (no description available)
+description         HTTP Body Parser
 
 long_description    ${description}
 
-checksums           sha256 059e154ed82760bf6c1b6fddded800228bd97612d18159c68bfc36a8ea2bc885 \
-                    rmd160 01bb65da99e3ab98042809b1f455136ec0d1e703
+checksums           sha256 dc2b67750d186e6fc9bf98354b972b644300a06af88fdbe0e0291dbc853c839a \
+                    rmd160 6d20e2edab0d056394227cb57419adfe360b3f6b
 
-
-
+depends_lib-append  port:p5-http-message
+depends_build-append port:p5-test-deep
 

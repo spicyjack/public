@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-#perl5.setup         libwww-perl 6.04
-perl5.setup         libwww-perl 6.04 ../by-authors/id/G/GA/GAAS
+perl5.setup         libwww-perl 6.04
+#perl5.setup         libwww-perl 6.04 ../by-authors/id/G/GA/GAAS
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
