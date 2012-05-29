@@ -155,10 +155,16 @@ origin (tagname)
 
     git push --tags
 
-### Listing the contents of tags ###
+### Showing Things ###
+
+#### Listing the contents of tags ####
 This includes any tags signed with a PGP/GPG encrypted signature
 
     git show <tagname>
+
+#### Showing what changed in a commit ####
+
+    git show <commit ID>
 
 ### Rebasing changes ###
 If you have not shared changes on your machine with anyone else, and you want
