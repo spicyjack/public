@@ -1,0 +1,4 @@
+#!/bin/bash
+# MacPorts Installer addition on 2011-07-04_at_01:08:52: adding an appropriate
+# PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
