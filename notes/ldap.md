@@ -27,6 +27,40 @@
 
     sudo port unload openldap
 
+## Querying LDAP ##
+
+ldapsearch -x -b '' -s base '(objectclass=\*)' namingContexts
+
+## Adding initial LDAP entries ##
+Create a text file that contains the following:
+
+    dn: dc=xaoc,dc=org
+    objectClass: dcObject
+    objectClass: organization
+    o: XAOC
+    cn: xaoc
+
+    dn: cn=Manager,dc=xaoc,dc=org
+    objectclass: organizationRole
+    cn: Manager
+
+## Adding user LDAP entries ##
+Create a text file that contains the following:
+
+    # First User
+    dn: cn=First User,dc=xaoc,dc=org
+    cn: First User
+    cn: 1st User
+    objectClass: person
+    sn: User
+
+    # Second User
+    dn: cn=Second User,dc=xaoc,dc=org
+    cn: Second User
+    cn: 2nd User
+    objectClass: person
+    sn: User
+
 ## Set up rsyslog to log slapd to a separate file ##
 Edit /etc/rsyslog.conf, set the following:
 
