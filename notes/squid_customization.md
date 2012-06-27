@@ -1,5 +1,14 @@
 ## Customizing Error Messages in Squid ##
 http://www.squid-cache.org
+- http://www.squid-cache.org/Doc/config/
+  - http://www.squid-cache.org/Doc/config/cache_dir/
+  - http://www.squid-cache.org/Doc/config/cache_mem/
+  - http://www.squid-cache.org/Doc/config/err_page_stylesheet/
+  - http://www.squid-cache.org/Doc/config/err_html_text/
+- http://wiki.squid-cache.org/Features
+  - http://wiki.squid-cache.org/Features/CustomErrors
+  - http://wiki.squid-cache.org/SquidFaq/AddACacheDir
+- URL for testing error pages: http://www.foo.bar/
 
 - Copy the contents of `/usr/share/squid/errors/en` (Debian) to a new
   directory so that you can customize the pages
