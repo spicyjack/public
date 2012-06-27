@@ -1,8 +1,10 @@
 ## Git Links ##
-- http://schacon.github.com/git/user-manual.html
+- http://git-scm.com/documentation
+  - http://git-scm.com/docs
+  - http://progit.org/
+    - http://progit.org/book/
 - http://schacon.github.com/git/git.html
-- http://progit.org/
-  - http://progit.org/book/
+
 - http://gitimmersion.com/index.html
 
 ### Git Workflow Links ###
