@@ -4,8 +4,10 @@
   - http://progit.org/
     - http://progit.org/book/
 - http://schacon.github.com/git/git.html
-
 - http://gitimmersion.com/index.html
+- Git for the confused:
+  http://www.gelato.unsw.edu.au/archives/git/0512/13748.html
+- Git Magic; http://www-cs-students.stanford.edu/~blynn/gitmagic/ch08.html
 
 ### Git Workflow Links ###
 - http://search.cpan.org/perldoc?Dancer::Development
@@ -167,6 +169,12 @@ This includes any tags signed with a PGP/GPG encrypted signature
 #### Showing what changed in a commit ####
 
     git show <commit ID>
+
+#### Renaming lightweight tags ####
+Move the file in the `.git/refs/tags` directories.
+
+*TODO* test this with --annotated and --signed tags to see if it will also
+work.
 
 ### Rebasing changes ###
 If you have not shared changes on your machine with anyone else, and you want
