@@ -6,7 +6,7 @@
 
 ### FUNCTIONS ###
 function set_school_git_source_dir {
-    export SOURCE_DIR="$HOME/src/school/iOS_Programming_I"
+    export SOURCE_DIR="$HOME/src/school/iOS_Programming_II"
 }
 
 function unset_school_git_source_dir {
