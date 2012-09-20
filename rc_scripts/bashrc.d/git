@@ -139,5 +139,32 @@ function gitoutchk {
     unset_git_source_dir
 } # check for outbound changes in git directories
 
+function gitrefchk {
+    GIT_DEBUG=0
+    unset GIT_CMD
+    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
+    set_git_source_dir
+    START_DIR=$PWD
+    cd $SOURCE_DIR
+    for DIR in $(/bin/ls | grep git);
+    do
+        echo "=== git status $DIR ===";
+        cd $DIR
+        IFS=$' \t'
+        GIT_CMD="git status"
+        GIT_SUCCESS_PATTERN="branch is ahead"
+        if [ $GIT_DEBUG -gt 0 ]; then echo "command: ${GIT_CMD}"; fi
+        GIT_OUTPUT=$(${GIT_CMD} 2>&1)
+        if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -eq 1 ];
+        then
+            echo $GIT_OUTPUT
+        fi
+        IFS=$' \t\n'
+        cd $SOURCE_DIR
+    done
+    cd $START_DIR
+    unset_git_source_dir
+} # check for outbound changes in git directories
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
