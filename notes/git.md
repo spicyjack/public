@@ -260,6 +260,10 @@ http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html
 1. Run the `fast-export` shell script: `hg-fast-export.sh -r ../repo.hg`
 1. Run `git checkout` to make the source code appear in the git repo
 
+### Reverting a single file in a repo to an older version ###
+
+    git checkout revision -- filename
+
 ### Exporting from CVS into Git ###
 To export a CVS repo into git, start with an empty directory (no `git init`),
 then run something like:
