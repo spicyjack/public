@@ -1,13 +1,21 @@
 #!/bin/bash
 
-# environment variables
+# ANSI escape codes: http://en.wikipedia.org/wiki/ANSI_escape_code
+
+# host colors
 H_GREEN="\[\e[0;32;40m\]"
 H_BLUE="\[\e[1;34;40m\]"
+
+# user colors
 U_CYAN="\[\e[0;36;40m\]"
 U_MAGENTA="\[\e[0;35;40m\]"
 U_YELLOW="\[\e[0;33;40m\]"
+
+# list of hostnames that receive special colors
 HOSTNAMES="grom|xaoc\.local|lagrange|observer|yabloko"
+# list of usernames that receive special colors
 SERVICE_USERS="jenkins|icinga|icinga-cmd"
+
 set_ps1 () {
     LAST_CMD=$?
     ### Set up PS1_HOST
