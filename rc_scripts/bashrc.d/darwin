@@ -1,0 +1,6 @@
+#!/bin/sh
+
+CLICOLOR=1
+LSCOLORS=ExFxCxDxBxegedabagacad
+
+export CLICOLOR LSCOLORS
