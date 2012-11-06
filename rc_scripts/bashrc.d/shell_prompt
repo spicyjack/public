@@ -16,7 +16,7 @@ set_ps1 () {
     else
         PS1_HOST="[\[\e[0;31;40m\]\h\[\e[0m\]]"
     fi
-    PS1_USER="[\[\e[0;36;40m\]brian\[\e[0m\]"
+    PS1_USER="[\[\e[0;36;40m\]\u\[\e[0m\]"
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]\\$ "
     PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}"
 }
