@@ -12,7 +12,7 @@ U_MAGENTA="\[\e[0;35;40m\]"
 U_YELLOW="\[\e[0;33;40m\]"
 
 # list of hostnames that receive special colors
-HOSTNAMES="grom|xaoc\.local|lagrange|observer|yabloko"
+HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko"
 # list of usernames that receive special colors
 SERVICE_USERS="jenkins|icinga|icinga-cmd"
 
