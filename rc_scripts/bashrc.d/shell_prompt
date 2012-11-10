@@ -24,10 +24,17 @@ set_ps1 () {
     else
         HOST_COLOR=${H_BLUE}
     fi
-    if [ ${LAST_CMD} -eq 0 ]; then
-        PS1_HOST="[${HOST_COLOR}\h\[\e[0m\]]"
+    # speshul case for grom
+    if [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
+        HOST_STRING="гром"
     else
-        PS1_HOST="[\[\e[0;31;40m\]\h\[\e[0m\]]"
+        HOST_STRING="\h"
+    fi
+    # HOST_COLOR + HOST_STRING = PS1_HOST
+    if [ ${LAST_CMD} -eq 0 ]; then
+        PS1_HOST="[${HOST_COLOR}${HOST_STRING}\[\e[0m\]]"
+    else
+        PS1_HOST="[\[\e[0;31;40m\]${HOST_STRING}\[\e[0m\]]"
     fi
     ### Set up PS1_USER
     if [ $(echo ${USER} | egrep -c "${SERVICE_USERS}") -gt 0 ]; then
