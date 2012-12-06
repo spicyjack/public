@@ -2,9 +2,8 @@
 
 # Copyright (c) 2010 by Brian Manning <elspicyjack at gmail dot com>
 # PLEASE DO NOT E-MAIL THE AUTHOR ABOUT THIS SCRIPT!
-# For help with script errors and feature requests, 
-# please contact the Streambake mailing list:
-# streambake@googlegroups.com / http://groups.google.com/group/streambake
+# For help with script errors and feature requests,
+# contact someone.
 
 =head1 NAME
 
@@ -55,7 +54,7 @@ An object used for storing configuration data.
 
 =head3 Object Methods
 
-=cut 
+=cut
 
 ######################
 # Template::Config #
@@ -78,7 +77,7 @@ L<Getopt::Long>.
 
 # a list of valid arguments to this script
 my @_valid_script_args = ( qw(verbose config) );
-); # my @_valid_script_args 
+); # my @_valid_script_args
 
 # a list of arguments that won't cause the script to barf if Shout is not
 # installed
@@ -88,9 +87,9 @@ sub new {
 
     my $self = bless ({}, $class);
 
-    # script arguments 
-    my %args; 
-    
+    # script arguments
+    my %args;
+
     # parse the command line arguments (if any)
     my $parser = Getopt::Long::Parser->new();
 
@@ -143,7 +142,7 @@ sub new {
         # now print out the sample config file
         print qq(# sample template config file\n);
         print qq(# any line that starts with '#' is a comment\n);
-        print qq(# sample config generated on ) 
+        print qq(# sample config generated on )
             . POSIX::strftime( q(%c), localtime() ) . qq(\n);
         foreach my $arg ( @_valid_shout_args ) {
             print $arg . q( = ) . $self->get($arg) . qq(\n);
@@ -166,11 +165,11 @@ EOC
         my $config_errors = 0;
         foreach my $line ( @config_lines ) {
             chomp $line;
-            warn qq(VERB: parsing line '$line'\n) 
+            warn qq(VERB: parsing line '$line'\n)
                 if ( defined $self->get(q(verbose)));
             next if ( $line =~ /^#/ );
             my ($key, $value) = split(/\s*=\s*/, $line);
-            warn qq(VERB: key/value for line is '$key'/'$value'\n) 
+            warn qq(VERB: key/value for line is '$key'/'$value'\n)
                 if ( defined $self->get(q(verbose)));
             if ( grep(/$key/, @_valid_script_args) > 0 ) {
                 $self->set($key => $value);
@@ -212,7 +211,7 @@ sub _apply_defaults {
     my $self = shift;
     # icecast defaults
     $self->set( user => q(source) ) unless ( defined $self->get(q(user)) );
-    $self->set( password => q(default) ) unless ( 
+    $self->set( password => q(default) ) unless (
         defined $self->get(q(password)) );
 } # sub _apply_defaults
 
@@ -248,7 +247,7 @@ sub set {
     # turn the args reference back into a hash with a copy
     my %args = %{$self->{_args}};
 
-    if ( exists $args{$key} ) { 
+    if ( exists $args{$key} ) {
         my $oldvalue = $args{$key};
         $args{$key} = $value;
         $self->{_args} = \%args;
@@ -292,7 +291,7 @@ use POSIX qw(strftime);
 use IO::File;
 use IO::Handle;
 
-=over 
+=over
 
 =item new($config)
 
@@ -313,13 +312,13 @@ sub new {
         $logfd = IO::File->new(q( >> ) . $config->get(q(logfile)));
         die q( ERR: Can't open logfile ) . $config->get(q(logfile)) . qq(: $!)
             unless ( defined $logfd );
-        # apply UTF-8-ness to the filehandle 
+        # apply UTF-8-ness to the filehandle
         $logfd->binmode(qq|:encoding(utf8)|);
     } else {
         # set :utf8 on STDOUT before wrapping it in IO::Handle
         binmode(STDOUT, qq|:encoding(utf8)|);
         $logfd = IO::Handle->new_from_fd(fileno(STDOUT), q(w));
-        die qq( ERR: could not wrap STDOUT in IO::Handle object: $!) 
+        die qq( ERR: could not wrap STDOUT in IO::Handle object: $!)
             unless ( defined $logfd );
     } # if ( exists $args{logfile} )
     $logfd->autoflush(1);
@@ -383,7 +382,7 @@ package Template::File;
 use strict;
 use warnings;
 
-=over 
+=over
 
 =item new(filename => $file, logger => $logger, config => $config)
 
@@ -404,7 +403,7 @@ sub new {
     die qq( ERR: Template::Logger object required as 'logger =>')
         unless ( exists $args{logger} );
     $logger = $args{logger};
-        
+
     die qq( ERR: Template::Logger object required as 'logger =>')
         unless ( exists $args{config} );
     $config = $args{config};
@@ -419,7 +418,7 @@ sub new {
 
     # some tests of the actual file on the filesystem
     # does it exist?
-    unless ( -e $self->get_filename() ) { 
+    unless ( -e $self->get_filename() ) {
         $logger->timelog( qq(WARN: Missing file on filesystem!) );
         $logger->log(qq(- ) . $self->get_display_name() );
         # return an undefined object so that callers know something's wrong
@@ -429,7 +428,7 @@ sub new {
     # previous step may have set $self to undef
     if ( defined $self ) {
         # can we read the file?
-        unless ( -r $self->get_filename() ) { 
+        unless ( -r $self->get_filename() ) {
             $logger->timelog( qq(WARN: Can't read file on filesystem!) );
             $logger->log(qq(- ) . $self->get_display_name() );
             # return an undefined object so that callers know something's wrong
@@ -463,29 +462,29 @@ use warnings;
 
     # reroute some signals to our handlers
     # exiting the script
-    $SIG{INT} = $SIG{TERM} = sub { 
+    $SIG{INT} = $SIG{TERM} = sub {
         my $signal = shift;
         $logger->timelog(qq(CRIT: Received SIG$signal; exiting...));
         # close the connection to the icecast server
         $conn->close();
     }; # $SIG{INT}
 
-    $SIG{HUP} = sub { 
+    $SIG{HUP} = sub {
         $logger->timelog(qq(INFO: Received SIGHUP;));
     }; # $SIG{HUP}
 
-    $SIG{USR1} = sub { 
+    $SIG{USR1} = sub {
         $logger->timelog(qq(INFO: Received SIGUSR1;));
     }; # $SIG{USR1}
 
 =head1 AUTHOR
 
-Brian Manning, C<< <elspicyjack at gmail dot com> >>
+Brian Manning, C<< <brian at xaoc dot org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to 
-C<< <streambake at googlegroups dot com> >>.
+Please report any bugs or feature requests to
+C<< <a_mailing_list at example com> >>.
 
 =head1 SUPPORT
 
@@ -495,7 +494,7 @@ You can find documentation for this script with the perldoc command.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (c) 2008,2010 Brian Manning, all rights reserved.
+Copyright (c) 2008,2010,2012 Brian Manning, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
