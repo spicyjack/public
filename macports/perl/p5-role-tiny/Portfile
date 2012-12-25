@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Role-Tiny 1.002004
+perl5.setup         Role-Tiny 1.002004 ../by-authors/id/I/IL/ILMARI
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Role::Tiny (no description available)
+
+long_description    ${description}
+
+checksums           sha256 a69c4d28634ca66f448f84636652628ece6e84c03593d9f233bdbaf8d5342258 \
+                    rmd160 a4eb1b44d2e09b3c4b18e8cd1d5d47a0154fc3dd
+
+
+depends_build-append port:p5-test-fatal
+

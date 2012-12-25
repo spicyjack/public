@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Moo 0.091006
-#perl5.setup         Moo 0.091006 ../by-authors/id/M/MS/MSTROUT
+#perl5.setup         Moo 1.000007
+perl5.setup         Moo 1.000007 ../by-authors/id/M/MS/MSTROUT
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,10 +15,11 @@ description         Moo (no description available)
 
 long_description    ${description}
 
-checksums           sha256 9846003a0188f7d5174273048db41466b8971f7755c17233d713bbf22e82b8fd \
-                    rmd160 62d6b57f312629f3d61e52c20a66ac996a296445
+checksums           sha256 140762fbe0c2a3ffa82e85d06c1e69596d8d10531f4d3ceb9f1e6da77791050b \
+                    rmd160 7d1b1496aaa0ff09ef0c9feb67b453a1ef5a9dbe
 
-depends_lib-append  port:p5-strictures \
+depends_lib-append  port:p5-devel-globaldestruction \
+                    port:p5-strictures \
                     port:p5-role-tiny \
                     port:p5-module-runtime \
                     port:p5-class-method-modifiers
