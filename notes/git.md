@@ -77,9 +77,11 @@ Pull a remote branch
 
 ### Git Push ###
 - Push to a different branch;
-  - pushing an empty branch deletes the branch on the remote server
-    - *git push origin --delete branch_name*
-  - pushing a local branch will create the new branch on the server
+  - pushing an empty source branch deletes the named branch on the remote server
+    - `git push origin --delete branch_name`
+    - `git push origin :branch_name`
+  - pushing a local branch that does not exist on the server will create the
+    new branch on the server
   - see the git-push documentation page for more examples
 
 ### Creating/Merging Branches ###
