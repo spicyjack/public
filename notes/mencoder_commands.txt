@@ -49,8 +49,16 @@ acodec=mp3:abitrate=160:vcodec=mpeg4 -o Spermula.320.mp4
 
 Creating Animated Gifs
 ----------------------
+Get a chunk of the movie:
+
+mencoder -ss 1:04:20 -endpos 1:04:27 -vf scale=320:200 -fps 15 -ovc x264
+-nosound dvd://1 -o rockin.m4v
+
+Shorten it from the beginning of the clip:
 mencoder -ss 76.8 -vf scale=320:200 -fps 15 -ovc lavc -nosound \
     IDIOCRACY_SIDEA.m4v -o shorter_idiocracy.m4v
+
+Trim the unwanted bits at the end:
 mencoder -endpos 11.6 -ovc copy shorter_idiocracy.m4v \
     -o shortest_idiocracy.m4v
 
