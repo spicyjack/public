@@ -8,11 +8,13 @@ Originally posted at:
 *FIXME* - See about automating the tasks below; Windows batch files and
 registry policies?
 
-- Boot into Safe Mode (how do you do that?)
-- Delete a bunch of unneeded stuff from `C:\Windows`
-- Delete a bunch of stuff from `C:\Program Files`
+## Patches/Service Packs to Apply ##
+- SP3
+- Windows Security Essentials
+- IE8
 
 ## Windows Applications that can be removed ##
+- Boot into Safe Mode (how do you do that?)
 - `Start -> Settings -> Control Panel -> Add/Remove Programs -> Add/Remove
   Windows Components`
 - Uncheck:
