@@ -5,6 +5,9 @@ Tweaking installs of Windows to create a base Windows image.
 Originally posted at:
   http://wiki.portaboom.com/pmwiki.php?n=HowTos.BuildingWindowsImage
 
+*FIXME* - See about automating the tasks below; Windows batch files and
+registry policies?
+
 - Boot into Safe Mode (how do you do that?)
 - Delete a bunch of unneeded stuff from `C:\Windows`
 - Delete a bunch of stuff from `C:\Program Files`
