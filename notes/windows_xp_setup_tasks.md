@@ -9,6 +9,14 @@ Originally posted at:
 - Delete a bunch of unneeded stuff from `C:\Windows`
 - Delete a bunch of stuff from `C:\Program Files`
 
+## Windows Applications that can be removed ##
+- `Start -> Settings -> Control Panel -> Add/Remove Programs -> Add/Remove
+  Windows Components`
+- Uncheck:
+  - MSN Explorer
+  - Outlook Express
+  - Windows Messenger
+
 ## Things you can delete from Windows ##
 - `C:\Windows\System32\Logon.scr` and other `*.scr` files (screensavers)
 - `C:\Windows\Web\Wallpaper` - `Ascent.jpg` and other `.jpg` files (wallpapers)
@@ -63,4 +71,4 @@ would be Microsoft Messenger on Windows XP; here's how you kill it.
 - `My Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
 - `My Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce`
 
-###### vim: filetype=markdown shiftwidth=2 tabstop=2 #######
+###### vim: filetype=markdown shiftwidth=2 tabstop=2:
