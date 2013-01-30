@@ -14,7 +14,7 @@ registry policies?
 - IE8
 
 ## Windows Applications that can be removed ##
-- Boot into Safe Mode (how do you do that?)
+- Boot into Safe Mode by pressing *F8* after the BIOS finishes with POST
 - `Start -> Settings -> Control Panel -> Add/Remove Programs -> Add/Remove
   Windows Components`
 - Uncheck:
