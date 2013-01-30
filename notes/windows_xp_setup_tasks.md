@@ -23,17 +23,18 @@ registry policies?
   - Windows Messenger
 
 ## Things you can delete from Windows ##
-- `C:\Windows\System32\Logon.scr` and other `*.scr` files (screensavers)
-- `C:\Windows\Web\Wallpaper` - `Ascent.jpg` and other `.jpg` files (wallpapers)
 - `C:\Documents and Settings\All Users\Document`, all Shared Music, Shared
-Pictures and Shared Video folders (built in samples)
-- `C:\Windows\Help\*` - All files (Windows XP Help)
-- `C:\Windows\System32\Dllcache` - Backup `.dll` files for recovery
-- `C:\Windows\kb\*.txt` - Uninstall info about SP2 and hotfixes
-- `C:\Windows\SET\*.tmp` - Temporary files
+  Pictures and Shared Video folders (built in samples)
 - `C:\Windows\$hf_mig$` - Uninstall files of SP2 and hotfixes
+- `C:\Windows\Help\*` - Windows XP Help - Compress folder
 - `C:\Windows\ime` - `chsime,  CHTIME, imejp, imejp98, imjp98_1, imkr6_1` -
 Traditional/Simplified Chinese, Japanese, and Korean input methods
+- `C:\Windows\kb\*.txt` - Uninstall info about SP2 and hotfixes
+- `C:\Windows\SET\*.tmp` - Temporary files
+- `C:\Windows\System32\Dllcache` - Backup `.dll` files for recovery
+- `C:\Windows\System32\Logon.scr` and other `*.scr` files (screensavers)
+- `C:\Windows\Web\Wallpaper` - `Ascent.jpg` and other `.jpg` files (wallpapers)
+
 - For Internet Explorer, right click on it's toolbars, and keep only the Back,
 Forward, Stop, Refresh and Home icons, and disable the Links toolbar
 
