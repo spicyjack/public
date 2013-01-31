@@ -13,6 +13,10 @@ registry policies?
 - Windows Security Essentials
 - IE8
 
+## Settings to change ##
+- Control Panel -> Regional and Language, switch the system time to show
+  HH:mm:ss instead of AM/PM
+
 ## Windows Applications that can be removed ##
 - Boot into Safe Mode by pressing *F8* after the BIOS finishes with POST
 - `Start -> Settings -> Control Panel -> Add/Remove Programs -> Add/Remove
