@@ -49,5 +49,12 @@ function schoutchk {
     unset_school_git_source_dir
 } # check for school source that needs to be pushed to the server
 
+function schrefchk {
+    set_school_git_source_dir
+    echo "checking for outgoing code on all projects in ${SOURCE_DIR}"
+    gitrefchk
+    unset_school_git_source_dir
+} # check for outbound changes in git directories
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
