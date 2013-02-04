@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Glib 1.260
-#perl5.setup         Glib 1.260 ../by-authors/id/X/XA/XAOC
+perl5.setup         Glib 1.290
+#perl5.setup         Glib 1.290 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,10 +15,9 @@ description         Bindings for the glib-2.x UI Toolkit
 
 long_description    ${description}
 
-checksums           sha256 db01e042278b6cd64a0be7bbb5b2432da236ec4f4bfb472d3ab5b2fe07c105a3 \
-                    rmd160 b205d7321978098b6a8d9383128441abd2662f68
+checksums           sha256 e9566ce83d057374fdbf7c849520001f157e0d8493b99c513cbaaaf3aa6565ed \
+                    rmd160 d9378458eb6295c9af62d2f2dc23b86a6a9154fe
 
-depends_lib-append  port:p5-extutils-depends \
-                    port:p5-extutils-pkgconfig
+
 
 

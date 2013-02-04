@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-#perl5.setup         Cairo 1.082
-perl5.setup         Cairo 1.082 ../by-authors/id/X/XA/XAOC
+perl5.setup         Cairo 1.103
+#perl5.setup         Cairo 1.103 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
@@ -15,10 +15,9 @@ description         Cairo (no description available)
 
 long_description    ${description}
 
-checksums           sha256 0625896ab5f48fc2561cd7472a200a48ffb1d9aa5ded3f3eed4b9992a51fd473 \
-                    rmd160 836bad8acbf61a595a1b27d28b8d76d58bf2a3bc
+checksums           sha256 eaebd9c3b9d66b4c41533ec7c736a2a4b73e0bf6ad207132a970d83a85827872 \
+                    rmd160 47b919383ef66aedbf8ca96dc2f7aca1d14b4534
 
-depends_lib-append  port:p5-extutils-depends \
-                    port:p5-extutils-pkgconfig
-depends_build-append port:p5-test-number-delta
+
+
 
