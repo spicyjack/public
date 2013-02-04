@@ -1,0 +1,13 @@
+*.swp
+.DS_Store
+# Perl Dancer server side app
+App-Example/logs
+App-Example/MYMETA.yml
+App-Example/Makefile
+App-Example/blib/
+App-Example/pm_to_blib
+# JavaScript client
+html/css/qunit*.css
+html/js/qunit*.js
+html/js/jquery*.js
+html/js/jquery*.js.gz
