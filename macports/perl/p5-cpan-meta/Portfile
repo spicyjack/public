@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         CPAN-Meta 2.120921
-#perl5.setup         CPAN-Meta 2.120921 ../by-authors/id/D/DA/DAGOLDEN
+#perl5.setup         CPAN-Meta 2.120921
+perl5.setup         CPAN-Meta 2.120921 ../by-authors/id/D/DA/DAGOLDEN
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
