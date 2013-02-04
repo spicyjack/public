@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Glib 1.290
-#perl5.setup         Glib 1.290 ../by-authors/id/X/XA/XAOC
+#perl5.setup         Glib 1.280
+perl5.setup         Glib 1.280 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:

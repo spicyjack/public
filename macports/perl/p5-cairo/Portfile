@@ -4,8 +4,8 @@
 PortSystem          1.0
 PortGroup           perl5 1.0
 
-perl5.setup         Cairo 1.103
-#perl5.setup         Cairo 1.103 ../by-authors/id/X/XA/XAOC
+#perl5.setup         Cairo 1.103
+perl5.setup         Cairo 1.103 ../by-authors/id/X/XA/XAOC
 platforms           darwin
 maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
