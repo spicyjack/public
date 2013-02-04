@@ -15,9 +15,5 @@ description         Bindings for the glib-2.x UI Toolkit
 
 long_description    ${description}
 
-checksums           sha256 e9566ce83d057374fdbf7c849520001f157e0d8493b99c513cbaaaf3aa6565ed \
-                    rmd160 d9378458eb6295c9af62d2f2dc23b86a6a9154fe
-
-
-
-
+checksums           sha256  392cf0c1442dc7e2d6e75ad4788e955f939cdbdd2c3441a760c4d650e44df1b9 \
+                    rmd160  57d8096ba21111cbf3cae4f68a23e630a891b0a2
