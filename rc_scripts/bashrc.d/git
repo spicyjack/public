@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# customize PS1 based on whether or not the current repo is dirty or not;
+# - http://tinyurl.com/bgfymnj
+# - http://www.japko.net/blog/lang/en/2012/05/29/pimp-my-git/
+
 # SOURCE_DIR should be set prior to running any of the functions in this
 # script
 function set_git_source_dir {
