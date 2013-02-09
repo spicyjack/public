@@ -57,18 +57,26 @@ set_ps1 () {
     ### Show Git status
     PS1_GIT_STATUS=$(__git_ps1 "%s")
     if [ "x${PS1_GIT_STATUS}" != "x" ]; then
+        # check for untracked files (original symbol: %)
+        GIT_UNTRACKED=""
+        if [ "x$(git ls-files --others --exclude-standard)" != "x" ]; then
+            GIT_UNTRACKED="♦"
+        fi
+        # check for a dirty tree (original symbols, staged = *, unstaged = +)
         $(git diff --no-ext-diff --quiet --exit-code)
         if [ $? -gt 0 ]; then
             # dirty tree
-            PS1_GIT_STATUS="${C_RED}(${PS1_GIT_STATUS} ☢)"
+            PS1_GIT_STATUS="${C_RED}(${PS1_GIT_STATUS} ☢${GIT_UNTRACKED})"
         else
             # clean tree
-            PS1_GIT_STATUS="${C_GREEN}(${PS1_GIT_STATUS})"
+            PS1_GIT_STATUS="${C_GREEN}(${PS1_GIT_STATUS} ${GIT_UNTRACKED})"
         fi
+        PS1_GIT_STATUS="${PS1_GIT_STATUS}${C_END}"
+        # FIXME no check for stashed files (original symbol: $)
     fi
     ### Set up PS1_PATH
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
-    PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}${PS1_GIT_STATUS}${C_END}\$ "
+    PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}${PS1_GIT_STATUS}\$ "
 }
 unset PS3 PS1_HOST PS1_USER PS1_PATH
 PROMPT_COMMAND=set_ps1
