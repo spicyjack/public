@@ -2,14 +2,23 @@
 
 # ANSI escape codes: http://en.wikipedia.org/wiki/ANSI_escape_code
 
-# host colors
-H_GREEN="\[\e[0;32;40m\]"
-H_BLUE="\[\e[1;34;40m\]"
+# ANSI tail, sets color to normal
+C_END="\[\e[0m\]"
 
-# user colors
-U_CYAN="\[\e[0;36;40m\]"
-U_MAGENTA="\[\e[0;35;40m\]"
-U_YELLOW="\[\e[0;33;40m\]"
+C_BLUE="\[\e[1;34;40m\]"
+C_GREEN="\[\e[0;32;40m\]"
+C_RED="\[\e[0;31;40m\]"
+C_CYAN="\[\e[0;36;40m\]"
+C_MAGENTA="\[\e[0;35;40m\]"
+C_YELLOW="\[\e[0;33;40m\]"
+
+# host colors
+# - blue = generic host
+# - green = known host, last command exited with zero status
+# - red = known host, last command exited with non-zero status
+# git dirty status
+# - green - current branch is not dirty
+# - red - current branch is dirty
 
 # list of hostnames that receive special colors
 HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko"
@@ -20,9 +29,9 @@ set_ps1 () {
     LAST_CMD=$?
     ### Set up PS1_HOST
     if [ $(echo ${HOSTNAME} | egrep -c "${HOSTNAMES}") -gt 0 ]; then
-        HOST_COLOR=${H_GREEN}
+        HOST_COLOR=${C_GREEN}
     else
-        HOST_COLOR=${H_BLUE}
+        HOST_COLOR=${C_BLUE}
     fi
     # speshul case for grom
     if [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
@@ -30,21 +39,36 @@ set_ps1 () {
     else
         HOST_STRING="\h"
     fi
+    ### Set up PS1_HOST
     # HOST_COLOR + HOST_STRING = PS1_HOST
     if [ ${LAST_CMD} -eq 0 ]; then
-        PS1_HOST="[${HOST_COLOR}${HOST_STRING}\[\e[0m\]]"
+        PS1_HOST="[${HOST_COLOR}${HOST_STRING}${C_END}]"
     else
-        PS1_HOST="[\[\e[0;31;40m\]${HOST_STRING}\[\e[0m\]]"
+        PS1_HOST="[${H_RED}${HOST_STRING}${C_END}]"
     fi
     ### Set up PS1_USER
     if [ $(echo ${USER} | egrep -c "${SERVICE_USERS}") -gt 0 ]; then
-        PS1_USER="[${U_YELLOW}\u\[\e[0m\]"
+        # service users get yellow
+        PS1_USER="[${C_YELLOW}\u\[\e[0m\]"
     else
-        PS1_USER="[${U_CYAN}\u\[\e[0m\]"
+        # normal users get cyan
+        PS1_USER="[${C_CYAN}\u\[\e[0m\]"
     fi
-    ### Set up PS1_HOST
-    PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]\\$ "
-    PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}"
+    ### Show Git status
+    PS1_GIT_STATUS=$(__git_ps1 "%s")
+    if [ "x${PS1_GIT_STATUS}" != "x" ]; then
+        $(git diff --no-ext-diff --quiet --exit-code)
+        if [ $? -gt 0 ]; then
+            # dirty tree
+            PS1_GIT_STATUS="${C_RED}(${PS1_GIT_STATUS} ☢)"
+        else
+            # clean tree
+            PS1_GIT_STATUS="${C_GREEN}(${PS1_GIT_STATUS})"
+        fi
+    fi
+    ### Set up PS1_PATH
+    PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
+    PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}${PS1_GIT_STATUS}${C_END}\$ "
 }
 unset PS3 PS1_HOST PS1_USER PS1_PATH
 PROMPT_COMMAND=set_ps1
