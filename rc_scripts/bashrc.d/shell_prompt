@@ -57,22 +57,33 @@ set_ps1 () {
     ### Show Git status
     PS1_GIT_STATUS=$(__git_ps1 "%s")
     if [ "x${PS1_GIT_STATUS}" != "x" ]; then
-        # check for untracked files (original symbol: %)
-        GIT_UNTRACKED=""
-        if [ "x$(git ls-files --others --exclude-standard)" != "x" ]; then
-            GIT_UNTRACKED="♦"
-        fi
-        # check for a dirty tree (original symbols, staged = *, unstaged = +)
+        # default status; no changes, green color
+        GIT_STATUS=$C_GREEN
+        # check for a dirty tree
         $(git diff --no-ext-diff --quiet --exit-code)
         if [ $? -gt 0 ]; then
-            # dirty tree
-            PS1_GIT_STATUS="${C_RED}(${PS1_GIT_STATUS} ☢${GIT_UNTRACKED})"
+            # dirty tree; git status is red (unstaged symbol = +)
+            GIT_STATUS=$C_RED
+            PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
         else
-            # clean tree
-            PS1_GIT_STATUS="${C_GREEN}(${PS1_GIT_STATUS} ${GIT_UNTRACKED})"
+            # dirty tree; git status is yellow (staged symbol = *)
+            $(git diff-index --cached --quiet HEAD)
+            if [ $? -gt 0 ]; then
+                # dirty tree; git status is red
+                GIT_STATUS=$C_YELLOW
+                PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
+            else
+                # check for untracked files (original symbol: %)
+                # show blue for untracked files
+                if [ "x$(git ls-files --others --exclude-standard)" != "x" ];
+                then
+                    GIT_STATUS=$C_BLUE
+                    PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
+                fi
+                # FIXME no check for stashed files (original symbol: $)
+            fi
         fi
-        PS1_GIT_STATUS="${PS1_GIT_STATUS}${C_END}"
-        # FIXME no check for stashed files (original symbol: $)
+        PS1_GIT_STATUS="${GIT_STATUS}(${PS1_GIT_STATUS})${C_END}"
     fi
     ### Set up PS1_PATH
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
