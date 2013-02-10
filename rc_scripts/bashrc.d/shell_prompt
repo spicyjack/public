@@ -64,21 +64,18 @@ set_ps1 () {
         if [ $? -gt 0 ]; then
             # dirty tree; git status is red (unstaged symbol = +)
             GIT_STATUS=$C_RED
-            PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
         else
             # dirty tree; git status is yellow (staged symbol = *)
             $(git diff-index --cached --quiet HEAD)
             if [ $? -gt 0 ]; then
                 # dirty tree; git status is red
                 GIT_STATUS=$C_YELLOW
-                PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
             else
                 # check for untracked files (original symbol: %)
                 # show blue for untracked files
                 if [ "x$(git ls-files --others --exclude-standard)" != "x" ];
                 then
                     GIT_STATUS=$C_BLUE
-                    PS1_GIT_STATUS="${PS1_GIT_STATUS} ☢"
                 fi
                 # FIXME no check for stashed files (original symbol: $)
             fi
