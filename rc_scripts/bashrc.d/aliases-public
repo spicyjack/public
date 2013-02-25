@@ -1,0 +1,13 @@
+#!/bin/bash
+# public aliases 
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vi='/usr/bin/vim'
+alias dir='ls --color=tty --classify'
+alias cls='cd; clear'
+alias datesync='sudo ntpdate pool.ntp.org'
+alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
+    localtime(\$1))/e"'
+# vi: set ft=sh sw=4 ts=4
+# fin!
