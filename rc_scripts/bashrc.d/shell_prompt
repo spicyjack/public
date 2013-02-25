@@ -44,7 +44,7 @@ set_ps1 () {
     if [ ${LAST_CMD} -eq 0 ]; then
         PS1_HOST="[${HOST_COLOR}${HOST_STRING}${C_END}]"
     else
-        PS1_HOST="[${H_RED}${HOST_STRING}${C_END}]"
+        PS1_HOST="[${C_RED}${HOST_STRING}${C_END}]"
     fi
     ### Set up PS1_USER
     if [ $(echo ${USER} | egrep -c "${SERVICE_USERS}") -gt 0 ]; then
