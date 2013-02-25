@@ -1,0 +1,82 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Dist-Zilla 4.300030
+#perl5.setup         Dist-Zilla 4.300030 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Dist::Zilla (no description available)
+
+long_description    ${description}
+
+checksums           sha256 430aa9682d5fb079c5713913e9dc5789cea40a6ccdfbf7386a546bb776254207 \
+                    rmd160 96e742f7d95610603c424705795945b01ab5ca7a
+
+depends_lib-append  port:p5-ppi \
+                    port:p5-datetime \
+                    port:p5-perl-prereqscanner \
+                    port:p5-pod-eventual \
+                    port:p5-sub-exporter \
+                    port:p5-app-cmd \
+                    port:p5-config-mvp \
+                    port:p5-autobox \
+                    port:p5-software-license \
+                    port:p5-text-glob \
+                    port:p5-termreadkey \
+                    port:p5-test-deep \
+                    port:p5-list-moreutils \
+                    port:p5-moose \
+                    port:p5-config-mvp-reader-ini \
+                    port:p5-try-tiny \
+                    port:p5-moosex-setonce \
+                    port:p5-moosex-lazyrequire \
+                    port:p5-file-pushd \
+                    port:p5-file-homedir \
+                    port:p5-list-allutils \
+                    port:p5-config-mvp \
+                    port:p5-moose-autobox \
+                    port:p5-config-mvp \
+                    port:p5-moosex-types-path-class \
+                    port:p5-hash-merge-simple \
+                    port:p5-moosex-types \
+                    port:p5-config-mvp \
+                    port:p5-file-copy-recursive \
+                    port:p5-path-class \
+                    port:p5-text-template \
+                    port:p5-app-cmd \
+                    port:p5-config-mvp \
+                    port:p5-moosex-types \
+                    port:p5-string-rewriteprefix \
+                    port:p5-data-section \
+                    port:p5-moose \
+                    port:p5-file-sharedir \
+                    port:p5-params-util \
+                    port:p5-log-dispatchouli \
+                    port:p5-app-cmd \
+                    port:p5-sub-exporter-formethods \
+                    port:p5-perl-version \
+                    port:p5-moose \
+                    port:p5-software-license \
+                    port:p5-file-find-rule \
+                    port:p5-namespace-autoclean \
+                    port:p5-yaml-tiny \
+                    port:p5-class-load \
+                    port:p5-cpan-uploader \
+                    port:p5-config-mvp \
+                    port:p5-sub-exporter \
+                    port:p5-config-ini \
+                    port:p5-moosex-role-parameterized \
+                    port:p5-string-formatter \
+                    port:p5-json \
+                    port:p5-file-sharedir-install \
+                    port:p5-moosex-types-perl
+depends_build-append port:p5-software-license \
+                     port:p5-test-fatal \
+                     port:p5-test-file-sharedir
+
