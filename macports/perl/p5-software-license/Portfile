@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Software-License 0.103005
+perl5.setup         Software-License 0.103005 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Software::License (no description available)
+
+long_description    ${description}
+
+checksums           sha256 050a14e0b3fb15763fd267fdd8ccc7ec8c459d8cc830b0bdc39ce09f5910f88c \
+                    rmd160 5949e1c0f89e98a0663bf90b68e1d9f58f41ab51
+
+depends_lib-append  port:p5-sub-install \
+                    port:p5-data-section \
+                    port:p5-text-template
+
+

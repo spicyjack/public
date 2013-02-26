@@ -11,5 +11,6 @@
 - WP-Syntax - http://wordpress.org/extend/plugins/wp-syntax/
 - Crayon - http://wordpress.org/extend/plugins/crayon-syntax-highlighter/
 - WP-GeSHi-Highlight - http://wordpress.org/extend/plugins/wp-geshi-highlight/
+- http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/
 
 # vim: filetype=markdown tabstop=2
