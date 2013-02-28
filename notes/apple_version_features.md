@@ -72,8 +72,12 @@ where the specific version was provided for a feature.
 ### OS X 10.6 ###
 - Grand Central Dispatch (Introducing Blocks and Grand Central Dispatch)
 
+### OS X 10.8 ###
+- GameKit 
+
 ## Links ##
 - iOS Technology Overview - http://tinyurl.com/acxu7g8
 - App-Related Resources - http://tinyurl.com/ccj8hwp
+- OS X Technology Overview - http://tinyurl.com/d627eyg
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
