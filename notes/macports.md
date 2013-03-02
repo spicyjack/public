@@ -6,6 +6,10 @@
 ## Default version of Perl ##
 - set in /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/\_resources/port1.0/group/perl5-1.0.tcl
 
+## Troubleshooting missing Perl module dependencies ##
+Run `port rdeps p5-package-name`, and usually, it will print out any missing
+port files at the very top of the output.
+
 ## mjpegtools ##
 From: https://trac.macports.org/ticket/32207
 
