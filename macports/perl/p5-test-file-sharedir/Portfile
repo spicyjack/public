@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Test-File-ShareDir 0.3.1
+#perl5.setup         Test-File-ShareDir 0.3.1 ../by-authors/id/K/KE/KENTNL
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Test::File::ShareDir (no description available)
+
+long_description    ${description}
+
+checksums           sha256 cba4c50ce82b3e146d4f8984fa19c16561083840950b5954388e61a133814602 \
+                    rmd160 33b61ca9f873455285ad978dc2361891100b4778
+
+depends_lib-append  port:p5-file-sharedir \
+                    port:p5-path-class \
+                    port:p5-file-copy-recursive
+depends_build-append port:p5-test-fatal
+perl5.use_module_build

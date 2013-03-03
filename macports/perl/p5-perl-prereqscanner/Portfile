@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Perl-PrereqScanner 1.015
+#perl5.setup         Perl-PrereqScanner 1.015 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Perl::PrereqScanner (no description available)
+
+long_description    ${description}
+
+checksums           sha256 a987f34cd9d4f58af7311796c3b0296881f43e10fcf6ed138b805d3b112486e7 \
+                    rmd160 ed2bc36cbf2b5582ff3d60272e1017d000b15938
+
+depends_lib-append  port:p5-moose \
+                    port:p5-ppi \
+                    port:p5-namespace-autoclean \
+                    port:p5-params-util \
+                    port:p5-string-rewriteprefix \
+                    port:p5-list-moreutils \
+                    port:p5-moose
+depends_build-append port:p5-try-tiny \
+                     port:p5-ppi
+
