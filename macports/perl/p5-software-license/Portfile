@@ -11,7 +11,7 @@ maintainers         nomaintainer
 # Uncomment this line if you know there will be no arch-specific code:
 #supported_archs     noarch
 
-description         Software::License (no description available)
+description         Software::License::None (no description available)
 
 long_description    ${description}
 

@@ -1,0 +1,24 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Pod-Eventual 0.093330
+#perl5.setup         Pod-Eventual 0.093330 ../by-authors/id/R/RJ/RJBS
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Pod::Eventual (no description available)
+
+long_description    ${description}
+
+checksums           sha256 29de14a69df8a26f7e8ff73daca5afa7acc84cc9b7ae28093a5b1af09a4830b6 \
+                    rmd160 59cc146ac43e659ebb77575661da7fff11ffe43c
+
+depends_lib-append  port:p5-test-deep \
+                    port:p5-mixin-linewise
+
+
