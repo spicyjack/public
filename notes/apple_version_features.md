@@ -4,6 +4,11 @@ Versions of different Apple software, and what features they support.
 In the listings below, the (string in parenthesis) is the name of the document
 where the specific version was provided for a feature.
 
+## Links ##
+- iOS Technology Overview - http://tinyurl.com/acxu7g8
+- App-Related Resources - http://tinyurl.com/ccj8hwp
+- OS X Technology Overview - http://tinyurl.com/d627eyg
+
 ## Unknown ##
 
 ## iOS ##
@@ -56,6 +61,7 @@ where the specific version was provided for a feature.
 - Storyboards (iOS Technology Overview)
 - GKTurnBasedMatch - persistent matches stored in iCloud (iOS Technology
   Overview)
+- GLKit Framework (iOS Technology Overview, GLKit Framework Reference)
 
 ### iOS 5.1 ###
 - *iPad 3rd Gen*
@@ -75,9 +81,6 @@ where the specific version was provided for a feature.
 ### OS X 10.8 ###
 - GameKit 
 
-## Links ##
-- iOS Technology Overview - http://tinyurl.com/acxu7g8
-- App-Related Resources - http://tinyurl.com/ccj8hwp
-- OS X Technology Overview - http://tinyurl.com/d627eyg
+
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
