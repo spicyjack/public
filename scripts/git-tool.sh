@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # - get a list of directories
+# - filter the list for directories to exclude, and exclude those dirs
 # - for each directory;
 #   - if the directory ends in *.git, then enter it, and run the command
 #   - if the directory does not end in *.git, push it to a stack, or enter it
