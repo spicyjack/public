@@ -8,8 +8,31 @@ where the specific version was provided for a feature.
 - iOS Technology Overview - http://tinyurl.com/acxu7g8
 - App-Related Resources - http://tinyurl.com/ccj8hwp
 - OS X Technology Overview - http://tinyurl.com/d627eyg
+- ARM versions - http://wanderingcoder.net/2010/07/19/ought-arm/
 
-## Unknown ##
+## ARM Hardware ##
+
+### ARMv6 ###
+- iPhone (ARM 11)
+- iPhone 3G (ARM 11)
+- iPod Touch 1st Gen
+
+### ARMv7 ###
+- iPhone 3GS (ARM Cortex A8)
+- iPhone 4 (Apple A4)
+- iPhone 4S (Apple A5)
+- iPod Touch 2nd Gen
+- iPod Touch 3rd Gen
+- iPod Touch 4th Gen (Apple A4)
+- iPod Touch 5th Gen (Apple A5)
+- iPad (Apple A4)
+- iPad 2 (Apple A5)
+- iPad 3rd Gen (Apple A5X)
+- iPad 4th Gen (Apple A6X)
+- iPad Mini (Apple A5)
+
+### ARMv7s ###
+- iPhone 5 (Apple A6)
 
 ## iOS ##
 
