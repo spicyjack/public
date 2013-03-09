@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# - get a list of directories
+# - for each directory;
+#   - if the directory ends in *.git, then enter it, and run the command
+#   - if the directory does not end in *.git, push it to a stack, or enter it
+#   and process it's contents
+
 function rungitcmd {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
@@ -12,6 +18,7 @@ function rungitcmd {
 }
 
 function gitstat {
+    local EXCLUDE_DIRS=$1
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -20,6 +27,9 @@ function gitstat {
     echo "=== Running 'git status' in ${SOURCE_DIR} ==="
     for DIR in $(/bin/ls | grep 'git$');
     do
+        if [ $(echo ${DIR} | egrep -c "${EXCLUDE_DIRS}") -gt 0 ]; then
+            continue
+        fi
         echo "- $DIR";
         cd $DIR
         IFS=$' \t'
@@ -28,7 +38,6 @@ function gitstat {
         cd $SOURCE_DIR
     done
     cd $START_DIR
-    unset_git_source_dir
 } # check the status in git directories
 
 function gitpullall {
