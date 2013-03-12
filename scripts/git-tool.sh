@@ -2,12 +2,14 @@
 
 # - get a list of directories
 # - filter the list for directories to exclude, and exclude those dirs
+# - loop over the left-over directories
 # - for each directory;
 #   - if the directory ends in *.git, then enter it, and run the command
 #   - if the directory does not end in *.git, push it to a stack, or enter it
 #   and process it's contents
 
-function rungitcmd {
+### FUNCTIONS ###
+rungitcmd() {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
 
@@ -18,7 +20,7 @@ function rungitcmd {
     fi
 }
 
-function gitstat {
+gitstat() {
     local EXCLUDE_DIRS=$1
     GIT_DEBUG=0
     unset GIT_CMD
@@ -41,7 +43,7 @@ function gitstat {
     cd $START_DIR
 } # check the status in git directories
 
-function gitpullall {
+gitpullall() {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -63,7 +65,7 @@ function gitpullall {
     set_git_source_dir
 } # git pull in all git directories
 
-function gitupdatechk {
+gitupdatechk() {
     local CHECK_DATE=$1
 
     if [ -z $CHECK_DATE ]; then
@@ -93,7 +95,7 @@ function gitupdatechk {
     unset_git_source_dir
 } # git pull in all git directories
 
-function gitinchk {
+gitinchk() {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -115,7 +117,7 @@ function gitinchk {
     unset_git_source_dir
 } # check for inbound changes to git directories
 
-function gitoutchk {
+gitoutchk() {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -137,7 +139,7 @@ function gitoutchk {
     unset_git_source_dir
 } # check for outbound changes in git directories
 
-function gitrefchk {
+gitrefchk() {
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -164,19 +166,7 @@ function gitrefchk {
     unset_git_source_dir
 } # check for outbound changes in git directories
 
-# vi: set filetype=sh shiftwidth=4 tabstop=4
-# fin!
-#!/bin/sh
-# other possible choices here are /bin/bash or maybe /bin/ksh
-
-# Copyright (c)2004,2012 by Brian Manning.  License terms are listed at the
-# bottom of this file
-#
-# shell script that does something
-
-### FUNCTIONS ###
-function check_exit_status()
-{
+check_exit_status() {
     ERROR=$1
     QUIET=$2
     OUTPUT=$3
@@ -235,15 +225,26 @@ QUIET=1
 
 ### SCRIPT SETUP ###
 # BSD's getopt is simpler than the GNU getopt; we need to detect it
-OSDETECT=$(/usr/bin/uname -s)
-if [ ${OSDETECT} == "Darwin" ]; then
+if [ -x /usr/bin/uname ]; then
+    OSDETECT=$(/usr/bin/uname -s)
+elif [ -x /bin/uname ]; then
+    OSDETECT=$(/bin/uname -s)
+else 
+    echo "ERROR: can't run 'uname -s' command to determine system type"
+    exit 1
+fi
+
+# FIXME MacPorts can install getopt to /opt/local/bin/getopt; check for it
+if [ ${OSDETECT} = "Darwin" ]; then
     # this is the BSD part
     echo "WARNING: BSD OS Detected; long switches will not work here..."
-    TEMP=$(/usr/bin/getopt hpqv: $*)
-elif [ ${OSDETECT} == "Linux" ]; then
+    GETOPT_TEMP=$(/usr/bin/getopt heqc $*)
+elif [ ${OSDETECT} = "Linux" ]; then
     # and this is the GNU part
-    TEMP=$(/usr/bin/getopt -o hpqv: \
-        --long help,prompt,quiet,verbose: -n '${SCRIPTNAME}' -- "$@")
+    GETOPT_TEMP=$(/usr/bin/getopt -o heqncp:e: \
+        --long help,examples,quiet,dry-run,explain,color,nocolor \
+        --long path:,exclude: \
+        -n '${SCRIPTNAME}' -- "$@")
 else
     echo "Error: Unknown OS Type.  I don't know how to call"
     echo "'getopts' correctly for this operating system.  Exiting..."
@@ -257,24 +258,54 @@ if [ $? != 0 ] ; then
     exit 1
 fi
 
-function show_help () {
-cat <<-EOF
+show_examples() {
+# show script usage examples
+cat <<-EOE
 
-    ${SCRIPTNAME} [options]
+==== ${SCRIPTNAME} Examples ====
 
-    SCRIPT OPTIONS
-    -h|--help       Displays this help message
-    -v|--verbose    Nice pretty output messages
-    -q|--quiet      No script output (unless an error occurs)
-    -p|--prompt     Don't prompt after each output run
-    NOTE: Long switches do not work with BSD systems (GNU extension)
+  # run on all *.git dirs in /path/to/src/tree, 
+  # exclude /path/to/tree/dirA, /path/to/src/tree/dirB
+  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB"
 
-EOF
+EOE
+
 }
 
-# Note the quotes around `$TEMP': they are essential!
-# read in the $TEMP variable
-eval set -- "$TEMP"
+show_help() {
+# show script options
+cat <<-EOH
+
+${SCRIPTNAME} [options] <command>
+
+    GENERAL SCRIPT OPTIONS
+    -h|--help       Displays this help message
+    -e|--examples   Show examples of script usage
+    -q|--quiet      No script output (unless an error occurs)
+    -n|--dry-run    Explain what will be done, don't actually do it
+    -c|--nocolor    Don't use colorized status messages (good for scripting)
+
+    OPTIONS FOR DIRECTORY PATHS
+    -p|--path       Starting path for searching for Git repos
+    -e|--exclude    Exclude these paths from the search
+
+    COMMANDS
+    stat            Run 'git status --short' in all repos found
+    pullall         Run 'git pull' in all repos found
+    refchk          Run 'git status', can show files not synced with remote
+    outchk          Run 'git push --dry-run'; shows commits needing pushing
+    inchk           Run 'git pull --dry-run'; shows commits needing pulling
+    updatechk       Shows all repos that have been updated since YYYY-MM-DD
+
+NOTE: Long switches (GNU extension) do not work with BSD systems 
+
+EOH
+
+}
+
+# Note the quotes around `$GETOPT_TEMP': they are essential!
+# read in the $GETOPT_TEMP variable
+eval set -- "$GETOPT_TEMP"
 
 # read in command line options and set appropriate environment variables
 # if you change the below switches to something else, make sure you change the
@@ -284,18 +315,35 @@ while true ; do
         -h|--help) # show the script options
             show_help
             exit 0;;
-        -q|--quiet)    # don't output anything (unless there's an error)
+        -e|--examples) 
+            show_examples
+            exit 0;;
+        # Don't output anything (unless there's an error)
+        -q|--quiet) 
             QUIET=1
             shift;;
-        -v|--verbose) # output pretty messages
-            QUIET=0
+        # Don't use color in the output
+        -c|--nocolor|--color) 
+            NO_COLOR=1
             shift;;
-        -o|--option) # a month was passed in
-            OPTION=$2;
+        # Explain what will be done, don't actually do
+        -n|--dry-run|--explain)
+            NO_COLOR=1
+            shift;;
+        # Path to the directory with one or more git repos
+        -p|--path|--dir)
+            REPO_PATH=$2;
             shift 2;;
-        --) shift;
+        # Paths to exclude
+        -e|--exclude)
+            EXCLUDE_PATH=$2;
+            shift 2;;
+        # everything else
+        --) 
+            shift;
             break;;
-        *) # we shouldn't get here; die gracefully
+        # we shouldn't get here; die gracefully
+        *) 
             echo "ERROR: unknown option '$1'" >&2
             echo "ERROR: use --help to see all script options" >&2
             exit 1
