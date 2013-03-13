@@ -123,12 +123,18 @@ You can delete your work branch after you're done if you want
 Pull a single commit out of that branch with `git cherry-pick`
 
     git checkout <branch name>
-    git cherry-pick <source branch name> <commit ID>
+    git cherry-pick <one or more commit IDs to cherry-pick>
 
 You can also use one of the shortcuts listed in `gitrevisions` to specify what
-commit to cherry-pick back on to the current branch
+commit to cherry-pick back on to the current branch.  See `git help
+cherry-pick` for more info.
 
 ### Git Stash ###
+
+    git stash
+    git fetch
+    git rebase
+    git stash pop
 
     git stash list
     git stash save stashing prior to pulling, possible duplicate code
@@ -137,6 +143,7 @@ commit to cherry-pick back on to the current branch
     git log
     git diff cfac54ac33eceadb4a6872e09d9e466cdc9b2de9
     git stash list
+    git stash apply stash@{0}
     git stash drop stash@{0}
     git stash list
 
