@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# git-tool.sh
+# - manage multiple git repos quicker and easier than doing it by hand ;)
+
+# Script can be obtained from:
+# https://github.com/spicyjack/public/blob/master/scripts/git-tool.sh
+
+# Copyright (c)2013 Brian Manning <brian at xaoc dot org>
+# License: GPL v2 (see licence blurb at the bottom of the file)
+# Get support and more info about this script at:
+# https://github.com/spicyjack/public/issues
+
 # - get a list of directories
 # - filter the list for directories to exclude, and exclude those dirs
 # - loop over the left-over directories
@@ -13,10 +24,13 @@ SCRIPTNAME=$(basename $0)
 # path to the perl binary
 
 # set quiet mode by default, needs to be set prior to the getops call
-QUIET=1
+QUIET=0
 
 # colorize? yes please (0=yes, colorize, 1=no, don't colorize)
 NO_COLORIZE=0
+
+# global variable for measuring how many directories deep we currently are
+RECURSION_DEPTH=0
 
 ### OUTPUT COLORIZATION VARIABLES ###
 START="["
@@ -34,10 +48,10 @@ F_BLK=30; F_RED=31; F_GRN=32; F_YLW=33
 F_BLU=34; F_MAG=35; F_CYN=36; F_WHT=37
 
 # some shortcuts
-MSG_DELETE="${BOLD};${F_YLW};${B_RED}"
-MSG_DRYRUN="${BOLD};${F_WHT};${B_BLU}"
-MSG_VERBOSE="${BOLD};${F_WHT};${B_GRN}"
-MSG_INFO="${BOLD};${F_BLU};${B_WHT}"
+MSG_FAIL="${BOLD};${F_YLW};${B_RED}"
+MSG_DRYRUN="${BOLD};${F_CYN};${B_BLU}"
+MSG_OK="${BOLD};${F_WHT};${B_GRN}"
+MSG_INFO="${BOLD};${F_WHI};${B_BLU}"
 MSG_FLUFF="${BOLD};${F_BLU};${B_BLK}"
 
 ### FUNCTIONS ###
@@ -54,9 +68,54 @@ colorize () {
     fi
 }
 
+# clear the COLORIZE_OUT variable
 colorize_clear () {
     COLORIZE_OUT=""
 }
+
+# check the exit status of a sub-process that was run
+check_exit_status() {
+    local ERROR=$1
+    local CMD_RUN="$2"
+    local CMD_OUT="$3"
+
+    # check for errors from the script
+    if [ $ERROR -ne 0 ] ; then
+        if [ $QUIET -eq 0 ]; then
+            colorize $MSG_FAIL "${CMD_RUN} exited with error: $ERROR"
+            echo $COLORIZE_OUT
+            colorize $MSG_FAIL "${CMD_RUN} output: "
+            echo $COLORIZE_OUT
+            echo $CMD_OUT
+        fi
+        SCRIPT_EXIT=1
+#    else
+#        if [ $QUIET -eq 0 ]; then
+#            colorize $MSG_OK "${CMD_RUN} exited with no errors"
+#            echo $COLORIZE_OUT
+#            colorize $MSG_INFO "${CMD_RUN} output:"
+#            echo $COLORIZE_OUT
+#            echo $CMD_OUT
+#        fi
+#        SCRIPT_EXIT=0
+    fi
+} # check_exit_status
+
+# recurse a path, looking for directories to either run git commands in, or to
+# enter to look for more directories
+recurse_path() {
+    local RECURSE_PATH=$1
+    find $RECURSE_PATH -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -exec
+    for ENTRY in $(/bin/ls -1 $RECURSE_PATH);
+    do
+        if [ $(stat -f "%HT" "${RECURSE_PATH}/${ENTRY}" \
+                | grep -c "Directory" ) -gt 0 ];
+        then
+            echo "$ENTRY is a directory"
+        fi
+    done
+}
+
 rungitcmd() {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
@@ -223,52 +282,13 @@ gitrefchk() {
 } # gitrefchk
 
 
-# check the exit status of a sub-process that was run
-check_exit_status() {
-    local ERROR=$1
-    local CMD_RUN="$2"
-    local CMD_OUT="$3"
-
-    # check for errors from the script
-    if [ $ERROR -ne 0 ] ; then
-        if [ $QUIET -eq 0 ]; then
-            colorize $MSG_DELETE "${CMD_RUN} exited with error: $ERROR"
-            echo $COLORIZE_OUT
-            colorize $MSG_DELETE "${CMD_RUN} output: "
-            echo $COLORIZE_OUT
-            echo $CMD_OUT
-        fi
-        EXIT=1
-    else
-        if [ $QUIET -eq 0 ]; then
-            colorize $MSG_VERBOSE "${CMD_RUN} exited with no errors"
-            echo $COLORIZE_OUT
-            colorize $MSG_INFO "${CMD_RUN} output:"
-            echo $COLORIZE_OUT
-            echo $CMD_OUT
-        fi
-        EXIT=0
-    fi
-} # check_exit_status
-
-### SCRIPT SETUP ###
-# BSD's getopt is simpler than the GNU getopt; we need to detect it
-if [ -x /usr/bin/uname ]; then
-    OSDETECT=$(/usr/bin/uname -s)
-elif [ -x /bin/uname ]; then
-    OSDETECT=$(/bin/uname -s)
-else 
-    echo "ERROR: can't run 'uname -s' command to determine system type"
-    exit 1
-fi
-
 show_examples() {
 # show script usage examples
 cat <<-EOE
 
 ==== ${SCRIPTNAME} Examples ====
 
-  # run on all *.git dirs in /path/to/src/tree, 
+  # run on all *.git dirs in /path/to/src/tree,
   # exclude /path/to/tree/dirA, /path/to/src/tree/dirB
   ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB"
 
@@ -301,27 +321,45 @@ ${SCRIPTNAME} [options] <command>
     inchk           Run 'git pull --dry-run'; shows commits needing pulling
     updatechk       Shows all repos that have been updated since YYYY-MM-DD
 
-NOTE: Long switches (GNU extension) do not work with BSD systems 
+NOTE: Long switches (GNU extension) do not work with BSD systems
 
 EOH
 
 }
 
-# FIXME something installs getopt to /opt/local/bin/getopt; check for it
-if [ ${OSDETECT} = "Darwin" ]; then
-    # this is the BSD part
-    echo "WARNING: BSD OS Detected; long switches will not work here..."
-    GETOPT_TEMP=$(/usr/bin/getopt heqc $*)
-elif [ ${OSDETECT} = "Linux" ]; then
-    # and this is the GNU part
-    GETOPT_TEMP=$(/usr/bin/getopt -o heqncp:e: \
-        --long help,examples,quiet,dry-run,explain,color,nocolor \
-        --long path:,exclude: \
-        -n '${SCRIPTNAME}' -- "$@")
+### SCRIPT SETUP ###
+# BSD's getopt is simpler than the GNU getopt; we need to detect it
+if [ -x /usr/bin/uname ]; then
+    OSDETECT=$(/usr/bin/uname -s)
+elif [ -x /bin/uname ]; then
+    OSDETECT=$(/bin/uname -s)
 else
-    echo "Error: Unknown OS Type.  I don't know how to call"
-    echo "'getopts' correctly for this operating system.  Exiting..."
+    echo "ERROR: can't run 'uname -s' command to determine system type"
     exit 1
+fi
+
+for GETOPT_CHECK in "/opt/local/bin/getopt" "/usr/bin/getopt";
+do
+    if [ -x "${GETOPT_CHECK}" ]; then
+        GETOPT_BIN=$GETOPT_CHECK
+        break
+    fi
+    if [ -z "${GETOPT_BIN}" ]; then
+        echo "ERROR: getopt binary not found; exiting...."
+        exit 1
+    fi
+done
+
+# Use short options if we're using Darwin's getopt
+if [ $OSDETECT = "Darwin" -a $GETOPT_BIN != "/opt/local/bin/getopt" ]; then
+    GETOPT_TEMP=$(${GETOPT_BIN} heqc $*)
+else
+# Use short and long options with GNU's getopt
+    GETOPT_TEMP=$(${GETOPT_BIN} -o heqncp:e: \
+        --long help,examples,quiet,dry-run,explain \
+        --long color,nocolor,no-color \
+        --long path:,exclude: \
+        -n "${SCRIPTNAME}" -- "$@")
 fi
 
 # if getopts exited with an error code, then exit the script
@@ -343,15 +381,15 @@ while true ; do
         -h|--help) # show the script options
             show_help
             exit 0;;
-        -e|--examples) 
+        -e|--examples)
             show_examples
             exit 0;;
         # Don't output anything (unless there's an error)
-        -q|--quiet) 
+        -q|--quiet)
             QUIET=1
             shift;;
         # Don't use color in the output
-        -c|--nocolor|--color) 
+        -c|--nocolor|--color|--no-color)
             NO_COLORIZE=1
             shift;;
         # Explain what will be done, don't actually do
@@ -367,11 +405,11 @@ while true ; do
             EXCLUDE_PATH=$2;
             shift 2;;
         # everything else
-        --) 
+        --)
             shift;
             break;;
         # we shouldn't get here; die gracefully
-        *) 
+        *)
             echo "ERROR: unknown option '$1'" >&2
             echo "ERROR: use --help to see all script options" >&2
             exit 1
@@ -380,28 +418,41 @@ while true ; do
 done
 
 ### SCRIPT MAIN LOOP ###
+# do some error checking; we need at a minimum '--path' and a <command> to run
+if [ -z $REPO_PATH ]; then
+    colorize "$MSG_FAIL" "ERROR: missing repo path as --path"
+    echo $COLORIZE_OUT
+    exit 1
+fi
+
 colorize_clear
 if [ $QUIET -eq 0 ]; then
-    colorize $MSG_FLUFF "=-=-=-=-=-=-=-="
-    colorize $MSG_INFO $SCRIPTNAME
-    colorize $MSG_FLUFF "=-=-=-=-=-=-=-="
+    colorize "$MSG_FLUFF" "=-=-=-=-=-=-=-= "
+    colorize "$MSG_INFO" "$SCRIPTNAME"
+    colorize "$MSG_FLUFF" " =-=-=-=-=-=-=-="
     echo $COLORIZE_OUT
 fi
 
 # generate a date for checking for errors
-OUTPUT=$(date)
-check_exit_status $? "date" $OUTPUT
-colorize $MSG_INFO "$OUTPUT"
-echo $COLORIZE_OUT
+#colorize_clear
+#OUTPUT=$(date)
+#check_exit_status $? "date" $OUTPUT
+#colorize $MSG_INFO "$OUTPUT"
+#echo $COLORIZE_OUT
+
+# get a list of directories to enumerate over
+colorize_clear
+recurse_path "$REPO_PATH"
 
 # exit cleanly if we reach here
-if [ $QUIET -eq 0 ]; then
-    echo "Hit <ENTER> to exit"
-    read ANSWER
-fi
+#if [ $QUIET -eq 0 ]; then
+#    echo "Hit <ENTER> to exit"
+#    read ANSWER
+#fi
 
-exit ${EXIT}
+exit ${SCRIPT_EXIT}
 
+# ### begin license blurb ###
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation; version 2 dated June, 1991.
