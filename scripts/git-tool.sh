@@ -8,7 +8,55 @@
 #   - if the directory does not end in *.git, push it to a stack, or enter it
 #   and process it's contents
 
+# what's my name?
+SCRIPTNAME=$(basename $0)
+# path to the perl binary
+
+# set quiet mode by default, needs to be set prior to the getops call
+QUIET=1
+
+# colorize? yes please (0=yes, colorize, 1=no, don't colorize)
+NO_COLORIZE=0
+
+### OUTPUT COLORIZATION VARIABLES ###
+START="["
+END="m"
+
+# text attributes
+NONE=0; BOLD=1; NORM=2; BLINK=5; INVERSE=7; CONCEALED=8
+
+# background colors
+B_BLK=40; B_RED=41; B_GRN=42; B_YLW=43
+B_BLU=44; B_MAG=45; B_CYN=46; B_WHT=47
+
+# foreground colors
+F_BLK=30; F_RED=31; F_GRN=32; F_YLW=33
+F_BLU=34; F_MAG=35; F_CYN=36; F_WHT=37
+
+# some shortcuts
+MSG_DELETE="${BOLD};${F_YLW};${B_RED}"
+MSG_DRYRUN="${BOLD};${F_WHT};${B_BLU}"
+MSG_VERBOSE="${BOLD};${F_WHT};${B_GRN}"
+MSG_INFO="${BOLD};${F_BLU};${B_WHT}"
+MSG_FLUFF="${BOLD};${F_BLU};${B_BLK}"
+
 ### FUNCTIONS ###
+# wrap text inside of ANSI tags, unless --nocolor is set
+colorize () {
+    local COLOR="$1"
+    local TEXT="$2"
+
+    if [ $NO_COLORIZE -eq 0 ]; then
+        COLORIZE_OUT="${COLORIZE_OUT}${START}${COLOR}${END}${TEXT}"
+        COLORIZE_OUT="${COLORIZE_OUT}${START};${NONE}${END}"
+    else
+        COLORIZE_OUT="${COLORIZE_OUT}${TEXT}"
+    fi
+}
+
+colorize_clear () {
+    COLORIZE_OUT=""
+}
 rungitcmd() {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
@@ -20,6 +68,7 @@ rungitcmd() {
     fi
 }
 
+# check the status in git directories
 gitstat() {
     local EXCLUDE_DIRS=$1
     GIT_DEBUG=0
@@ -41,8 +90,10 @@ gitstat() {
         cd $SOURCE_DIR
     done
     cd $START_DIR
-} # check the status in git directories
+} # gitstat
 
+
+# git pull in all git directories
 gitpullall() {
     GIT_DEBUG=0
     unset GIT_CMD
@@ -63,8 +114,9 @@ gitpullall() {
     done
     cd $START_DIR
     set_git_source_dir
-} # git pull in all git directories
+} # gitpullall
 
+# git pull in all git directories
 gitupdatechk() {
     local CHECK_DATE=$1
 
@@ -82,10 +134,10 @@ gitupdatechk() {
             cd $DIR
             GIT_FORMAT="%h %cd %an %s"
             IFS=$' \t'
-            OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
+            GIT_OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
                 --after="${CHECK_DATE}" | cut -c -80)
-            if [ -n "$OUTPUT" ]; then
-                echo $OUTPUT
+            if [ -n "$GIT_OUTPUT" ]; then
+                echo $GIT_OUTPUT
             fi
             IFS=$' \t\n'
             cd $SOURCE_DIR
@@ -93,8 +145,10 @@ gitupdatechk() {
         cd $START_DIR
     fi
     unset_git_source_dir
-} # git pull in all git directories
+} # gitupdatechk
 
+
+# check for inbound changes to git directories
 gitinchk() {
     GIT_DEBUG=0
     unset GIT_CMD
@@ -115,8 +169,9 @@ gitinchk() {
     done
     cd $START_DIR
     unset_git_source_dir
-} # check for inbound changes to git directories
+} # gitinchk
 
+# check for outbound changes in git directories
 gitoutchk() {
     GIT_DEBUG=0
     unset GIT_CMD
@@ -137,8 +192,9 @@ gitoutchk() {
     done
     cd $START_DIR
     unset_git_source_dir
-} # check for outbound changes in git directories
+} # gitoutchk
 
+# check for outbound changes in git directories
 gitrefchk() {
     GIT_DEBUG=0
     unset GIT_CMD
@@ -164,64 +220,36 @@ gitrefchk() {
     done
     cd $START_DIR
     unset_git_source_dir
-} # check for outbound changes in git directories
+} # gitrefchk
 
+
+# check the exit status of a sub-process that was run
 check_exit_status() {
-    ERROR=$1
-    QUIET=$2
-    OUTPUT=$3
+    local ERROR=$1
+    local CMD_RUN="$2"
+    local CMD_OUT="$3"
 
     # check for errors from the script
     if [ $ERROR -ne 0 ] ; then
         if [ $QUIET -eq 0 ]; then
-            echo -n "${START}${MSG_DELETE}${END}script exited with error:"
-            echo "${START};${NONE}${END}"
-            echo $? >&2
-            echo -n "${START}${MSG_DELETE}${END}script output:"
-            echo "${START};${NONE}${END}"
-            echo $OUTPUT
+            colorize $MSG_DELETE "${CMD_RUN} exited with error: $ERROR"
+            echo $COLORIZE_OUT
+            colorize $MSG_DELETE "${CMD_RUN} output: "
+            echo $COLORIZE_OUT
+            echo $CMD_OUT
         fi
-         EXIT=1
+        EXIT=1
     else
         if [ $QUIET -eq 0 ]; then
-            echo -n "${START}${MSG_VERBOSE}${END}script exited with no errors"
-            echo "${START};${NONE}${END}"
-            echo -n "${START}${MSG_INFO}${END}script output:"
-            echo "${START};${NONE}${END}"
-            echo $OUTPUT
+            colorize $MSG_VERBOSE "${CMD_RUN} exited with no errors"
+            echo $COLORIZE_OUT
+            colorize $MSG_INFO "${CMD_RUN} output:"
+            echo $COLORIZE_OUT
+            echo $CMD_OUT
         fi
         EXIT=0
     fi
-} # function check_exit_status
-
-### OUTPUT COLORIZATION VARIABLES ###
-START="["
-END="m"
-
-# text attributes
-NONE=0; BOLD=1; NORM=2; BLINK=5; INVERSE=7; CONCEALED=8
-
-# background colors
-B_BLK=40; B_RED=41; B_GRN=42; B_YLW=43
-B_BLU=44; B_MAG=45; B_CYN=46; B_WHT=47
-
-# foreground colors
-F_BLK=30; F_RED=31; F_GRN=32; F_YLW=33
-F_BLU=34; F_MAG=35; F_CYN=36; F_WHT=37
-
-# some shortcuts
-MSG_DELETE="${BOLD};${F_YLW};${B_RED}"
-MSG_DRYRUN="${BOLD};${F_WHT};${B_BLU}"
-MSG_VERBOSE="${BOLD};${F_WHT};${B_GRN}"
-MSG_INFO="${BOLD};${F_BLU};${B_WHT}"
-
-### MAIN SCRIPT ###
-# what's my name?
-SCRIPTNAME=$(basename $0)
-# path to the perl binary
-
-# set quiet mode by default, needs to be set prior to the getops call
-QUIET=1
+} # check_exit_status
 
 ### SCRIPT SETUP ###
 # BSD's getopt is simpler than the GNU getopt; we need to detect it
@@ -231,30 +259,6 @@ elif [ -x /bin/uname ]; then
     OSDETECT=$(/bin/uname -s)
 else 
     echo "ERROR: can't run 'uname -s' command to determine system type"
-    exit 1
-fi
-
-# FIXME MacPorts can install getopt to /opt/local/bin/getopt; check for it
-if [ ${OSDETECT} = "Darwin" ]; then
-    # this is the BSD part
-    echo "WARNING: BSD OS Detected; long switches will not work here..."
-    GETOPT_TEMP=$(/usr/bin/getopt heqc $*)
-elif [ ${OSDETECT} = "Linux" ]; then
-    # and this is the GNU part
-    GETOPT_TEMP=$(/usr/bin/getopt -o heqncp:e: \
-        --long help,examples,quiet,dry-run,explain,color,nocolor \
-        --long path:,exclude: \
-        -n '${SCRIPTNAME}' -- "$@")
-else
-    echo "Error: Unknown OS Type.  I don't know how to call"
-    echo "'getopts' correctly for this operating system.  Exiting..."
-    exit 1
-fi
-
-# if getopts exited with an error code, then exit the script
-#if [ $? -ne 0 -o $# -eq 0 ] ; then
-if [ $? != 0 ] ; then
-    echo "Run '${SCRIPTNAME} --help' to see script options" >&2
     exit 1
 fi
 
@@ -303,6 +307,30 @@ EOH
 
 }
 
+# FIXME something installs getopt to /opt/local/bin/getopt; check for it
+if [ ${OSDETECT} = "Darwin" ]; then
+    # this is the BSD part
+    echo "WARNING: BSD OS Detected; long switches will not work here..."
+    GETOPT_TEMP=$(/usr/bin/getopt heqc $*)
+elif [ ${OSDETECT} = "Linux" ]; then
+    # and this is the GNU part
+    GETOPT_TEMP=$(/usr/bin/getopt -o heqncp:e: \
+        --long help,examples,quiet,dry-run,explain,color,nocolor \
+        --long path:,exclude: \
+        -n '${SCRIPTNAME}' -- "$@")
+else
+    echo "Error: Unknown OS Type.  I don't know how to call"
+    echo "'getopts' correctly for this operating system.  Exiting..."
+    exit 1
+fi
+
+# if getopts exited with an error code, then exit the script
+#if [ $? -ne 0 -o $# -eq 0 ] ; then
+if [ $? != 0 ] ; then
+    echo "Run '${SCRIPTNAME} --help' to see script options" >&2
+    exit 1
+fi
+
 # Note the quotes around `$GETOPT_TEMP': they are essential!
 # read in the $GETOPT_TEMP variable
 eval set -- "$GETOPT_TEMP"
@@ -324,11 +352,11 @@ while true ; do
             shift;;
         # Don't use color in the output
         -c|--nocolor|--color) 
-            NO_COLOR=1
+            NO_COLORIZE=1
             shift;;
         # Explain what will be done, don't actually do
         -n|--dry-run|--explain)
-            NO_COLOR=1
+            DRY_RUN=1
             shift;;
         # Path to the directory with one or more git repos
         -p|--path|--dir)
@@ -352,17 +380,19 @@ while true ; do
 done
 
 ### SCRIPT MAIN LOOP ###
+colorize_clear
 if [ $QUIET -eq 0 ]; then
-    # run the script
-    echo
-    echo -n "=-=-=-=-=-=-=-=${START}${MSG_INFO}${END}Displaying Date"
-    echo "${START};${NONE}${END}=-=-=-=-=-=-=-="
+    colorize $MSG_FLUFF "=-=-=-=-=-=-=-="
+    colorize $MSG_INFO $SCRIPTNAME
+    colorize $MSG_FLUFF "=-=-=-=-=-=-=-="
+    echo $COLORIZE_OUT
 fi
 
 # generate a date for checking for errors
-$OUTPUT=$(date)
-check_exit_status $? $QUIET "$OUTPUT"
-
+OUTPUT=$(date)
+check_exit_status $? "date" $OUTPUT
+colorize $MSG_INFO "$OUTPUT"
+echo $COLORIZE_OUT
 
 # exit cleanly if we reach here
 if [ $QUIET -eq 0 ]; then
