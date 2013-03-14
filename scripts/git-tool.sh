@@ -276,6 +276,7 @@ gitrefchk() {
 # enter to look for more directories
 recurse_path() {
     local RECURSE_PATH="$1"
+    local GIT_CMD="$2"
     # use find to find directories, use \0 as the delimiter in the output
     find $RECURSE_PATH -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -print0 \
         | while IFS= read -d $'\0' CURR_PATH;
@@ -290,7 +291,6 @@ recurse_path() {
             | egrep -c "$EXCLUDED_PATHS") -gt 0 ];
         then
             if [ $QUIET -eq 0 ]; then
-
                 colorize "$MSG_INFO" "=-=-=-= Skipping ${CURR_PATH} =-=-=-="
                 echo $COLORIZE_OUT
             fi
@@ -302,7 +302,8 @@ recurse_path() {
             START_PATH="$PWD"
             cd "${CURR_PATH}"
             colorize $MSG_DRYRUN "${RECURSION_DEPTH}:${CURR_PATH}"
-            colorize $MSG_DRYRUN ": Running git operation"
+            colorize $MSG_DRYRUN ": Running 'git ${GIT_CMD}'"
+            # FIXME the command to run should go here
             echo $COLORIZE_OUT
             cd "$START_PATH"
         else
@@ -312,7 +313,7 @@ recurse_path() {
             colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
             colorize $MSG_FLUFF ": Recursing into ${CURR_PATH}"
             echo $COLORIZE_OUT
-            recurse_path "$CURR_PATH"
+            recurse_path "${CURR_PATH}" "${GIT_CMD}"
             # take the counter back to where it started
             RECURSION_DEPTH=$(($RECURSION_DEPTH - 1))
         fi
@@ -473,16 +474,10 @@ if [ $QUIET -eq 0 ]; then
     echo $COLORIZE_OUT
 fi
 
-# generate a date for checking for errors
-#colorize_clear
-#OUTPUT=$(date)
-#check_exit_status $? "date" $OUTPUT
-#colorize $MSG_INFO "$OUTPUT"
-#echo $COLORIZE_OUT
-
 # get a list of directories to enumerate over
 colorize_clear
-recurse_path "$REPO_PATH"
+GIT_CMD=$*
+recurse_path "$REPO_PATH" "$GIT_CMD"
 
 # exit cleanly if we reach here
 #if [ $QUIET -eq 0 ]; then
