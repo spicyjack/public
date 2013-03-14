@@ -1,16 +1,19 @@
 #!/bin/bash
 
 # git-tool.sh
-# - manage multiple git repos quicker and easier than doing it by hand ;)
-
-# Script can be obtained from:
-# https://github.com/spicyjack/public/blob/master/scripts/git-tool.sh
+# Manage multiple git repos quicker and easier than doing it by hand ;)
 
 # Copyright (c)2013 Brian Manning <brian at xaoc dot org>
 # License: GPL v2 (see licence blurb at the bottom of the file)
 # Get support and more info about this script at:
 # https://github.com/spicyjack/public/issues
+# Script can be obtained from:
+# https://github.com/spicyjack/public/blob/master/scripts/git-tool.sh
 
+# This is somewhat similar to what the 'repo' (http://tinyurl.com/6pblfg4)
+# tool does, sans the messy XML bits needed to make 'repo' work
+
+# psuedocode
 # - get a list of directories
 # - filter the list for directories to exclude, and exclude those dirs
 # - loop over the left-over directories
@@ -31,6 +34,9 @@ NO_COLORIZE=0
 
 # global variable for measuring how many directories deep we currently are
 RECURSION_DEPTH=0
+
+# What paths to exclude from searching; none by default
+EXCLUDED_PATHS=""
 
 ### OUTPUT COLORIZATION VARIABLES ###
 START="["
@@ -101,21 +107,6 @@ check_exit_status() {
     fi
 } # check_exit_status
 
-# recurse a path, looking for directories to either run git commands in, or to
-# enter to look for more directories
-recurse_path() {
-    local RECURSE_PATH=$1
-    find $RECURSE_PATH -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -exec
-    for ENTRY in $(/bin/ls -1 $RECURSE_PATH);
-    do
-        if [ $(stat -f "%HT" "${RECURSE_PATH}/${ENTRY}" \
-                | grep -c "Directory" ) -gt 0 ];
-        then
-            echo "$ENTRY is a directory"
-        fi
-    done
-}
-
 rungitcmd() {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
@@ -129,7 +120,7 @@ rungitcmd() {
 
 # check the status in git directories
 gitstat() {
-    local EXCLUDE_DIRS=$1
+    local EXCLUDED_PATHS=$1
     GIT_DEBUG=0
     unset GIT_CMD
     if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
@@ -281,6 +272,52 @@ gitrefchk() {
     unset_git_source_dir
 } # gitrefchk
 
+# recurse a path, looking for directories to either run git commands in, or to
+# enter to look for more directories
+recurse_path() {
+    local RECURSE_PATH="$1"
+    # use find to find directories, use \0 as the delimiter in the output
+    find $RECURSE_PATH -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -print0 \
+        | while IFS= read -d $'\0' CURR_PATH;
+    do
+        colorize_clear
+        # skip the original path
+        if [ "x${CURR_PATH}" = "x${RECURSE_PATH}" ]; then
+            continue
+        fi
+        # check to see if we skip this directory
+        if [ -n "$EXCLUDED_PATHS" -a $(echo ${CURR_PATH} \
+            | egrep -c "$EXCLUDED_PATHS") -gt 0 ];
+        then
+            if [ $QUIET -eq 0 ]; then
+
+                colorize "$MSG_INFO" "=-=-=-= Skipping ${CURR_PATH} =-=-=-="
+                echo $COLORIZE_OUT
+            fi
+            continue
+        fi
+        # is CURR_PATH a *.git directory?
+        if [ $(echo "${CURR_PATH}" | grep -c "\.git$") -gt 0 ]; then
+            # yes, run the specified git command
+            START_PATH="$PWD"
+            cd "${CURR_PATH}"
+            colorize $MSG_DRYRUN "${RECURSION_DEPTH}:${CURR_PATH}"
+            colorize $MSG_DRYRUN ": Running git operation"
+            echo $COLORIZE_OUT
+            cd "$START_PATH"
+        else
+            # no, found another directory, recurse into it
+            # bump the counter so it can be used for formatting and the like
+            RECURSION_DEPTH=$(($RECURSION_DEPTH + 1))
+            colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
+            colorize $MSG_FLUFF ": Recursing into ${CURR_PATH}"
+            echo $COLORIZE_OUT
+            recurse_path "$CURR_PATH"
+            # take the counter back to where it started
+            RECURSION_DEPTH=$(($RECURSION_DEPTH - 1))
+        fi
+    done
+}
 
 show_examples() {
 # show script usage examples
@@ -311,7 +348,7 @@ ${SCRIPTNAME} [options] <command>
 
     OPTIONS FOR DIRECTORY PATHS
     -p|--path       Starting path for searching for Git repos
-    -e|--exclude    Exclude these paths from the search
+    -x|--exclude    Exclude these paths from the search
 
     COMMANDS
     stat            Run 'git status --short' in all repos found
@@ -338,24 +375,27 @@ else
     exit 1
 fi
 
+# these two paths cover a majority of my test machines
 for GETOPT_CHECK in "/opt/local/bin/getopt" "/usr/bin/getopt";
 do
     if [ -x "${GETOPT_CHECK}" ]; then
         GETOPT_BIN=$GETOPT_CHECK
         break
     fi
-    if [ -z "${GETOPT_BIN}" ]; then
-        echo "ERROR: getopt binary not found; exiting...."
-        exit 1
-    fi
 done
+
+# did we find an actual binary out of the list above?
+if [ -z "${GETOPT_BIN}" ]; then
+    echo "ERROR: getopt binary not found; exiting...."
+    exit 1
+fi
 
 # Use short options if we're using Darwin's getopt
 if [ $OSDETECT = "Darwin" -a $GETOPT_BIN != "/opt/local/bin/getopt" ]; then
-    GETOPT_TEMP=$(${GETOPT_BIN} heqc $*)
+    GETOPT_TEMP=$(${GETOPT_BIN} heqncp:x: $*)
 else
 # Use short and long options with GNU's getopt
-    GETOPT_TEMP=$(${GETOPT_BIN} -o heqncp:e: \
+    GETOPT_TEMP=$(${GETOPT_BIN} -o heqncp:x: \
         --long help,examples,quiet,dry-run,explain \
         --long color,nocolor,no-color \
         --long path:,exclude: \
@@ -402,7 +442,7 @@ while true ; do
             shift 2;;
         # Paths to exclude
         -e|--exclude)
-            EXCLUDE_PATH=$2;
+            EXCLUDED_PATHS=$2;
             shift 2;;
         # everything else
         --)
