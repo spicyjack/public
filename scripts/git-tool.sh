@@ -32,6 +32,8 @@ QUIET=0
 # colorize? yes please (0=yes, colorize, 1=no, don't colorize)
 NO_COLORIZE=0
 
+# dry-run, i.e. show commands, don't run them? (0 = no, 1 = yes)
+DRY_RUN=0
 # global variable for measuring how many directories deep we currently are
 RECURSION_DEPTH=0
 
@@ -245,40 +247,35 @@ gitoutchk() {
 } # gitoutchk
 
 # check for outbound changes in git directories
-gitrefchk() {
-    GIT_DEBUG=0
-    unset GIT_CMD
-    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    set_git_source_dir
-    START_DIR=$PWD
-    cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep git);
-    do
-        echo "=== git status $DIR ===";
-        cd $DIR
+refchk() {
+    local REPO_PATH="$1"
+    local CURR_DIR="$2"
+
+    # truncate the path, and remove the leading slash, if there is one
+    SHORT_DIR=$(echo "${CURR_DIR}" | sed "s!${REPO_PATH}!!g; s!^/!!;")
+    echo "== refchk $SHORT_DIR ==";
+    GIT_CMD="git status"
+    GIT_SUCCESS_PATTERN="branch is ahead"
+    if [ $DRY_RUN -gt 0 ]; then
+        echo "git command dry-run: ${GIT_CMD}"
+    else
         IFS=$' \t'
-        GIT_CMD="git status"
-        GIT_SUCCESS_PATTERN="branch is ahead"
-        if [ $GIT_DEBUG -gt 0 ]; then echo "command: ${GIT_CMD}"; fi
         GIT_OUTPUT=$(${GIT_CMD} 2>&1)
         if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -eq 1 ];
         then
             echo $GIT_OUTPUT
         fi
         IFS=$' \t\n'
-        cd $SOURCE_DIR
-    done
-    cd $START_DIR
-    unset_git_source_dir
-} # gitrefchk
+    fi
+} # refchk
 
 # recurse a path, looking for directories to either run git commands in, or to
 # enter to look for more directories
 recurse_path() {
     local RECURSE_PATH="$1"
-    local GIT_CMD="$2"
+    local GIT_TOOL_CMD="$2"
     # use find to find directories, use \0 as the delimiter in the output
-    find $RECURSE_PATH -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -print0 \
+    find "${RECURSE_PATH}" -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -print0 \
         | while IFS= read -d $'\0' CURR_PATH;
     do
         colorize_clear
@@ -291,7 +288,7 @@ recurse_path() {
             | egrep -c "$EXCLUDED_PATHS") -gt 0 ];
         then
             if [ $QUIET -eq 0 ]; then
-                colorize "$MSG_INFO" "=-=-=-= Skipping ${CURR_PATH} =-=-=-="
+                colorize "$MSG_INFO" "--> Skipping ${CURR_PATH} <--"
                 echo $COLORIZE_OUT
             fi
             continue
@@ -301,19 +298,19 @@ recurse_path() {
             # yes, run the specified git command
             START_PATH="$PWD"
             cd "${CURR_PATH}"
-            colorize $MSG_DRYRUN "${RECURSION_DEPTH}:${CURR_PATH}"
-            colorize $MSG_DRYRUN ": Running 'git ${GIT_CMD}'"
+            #colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
+            #colorize $MSG_FLUFF ": Running 'git ${GIT_TOOL_CMD}'"
             # FIXME the command to run should go here
-            echo $COLORIZE_OUT
+            #echo $COLORIZE_OUT
+            $GIT_TOOL_CMD "${REPO_PATH}" "${CURR_PATH}"
             cd "$START_PATH"
         else
             # no, found another directory, recurse into it
             # bump the counter so it can be used for formatting and the like
             RECURSION_DEPTH=$(($RECURSION_DEPTH + 1))
-            colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
-            colorize $MSG_FLUFF ": Recursing into ${CURR_PATH}"
-            echo $COLORIZE_OUT
-            recurse_path "${CURR_PATH}" "${GIT_CMD}"
+            #colorize $MSG_INFO "Recursing into: ${CURR_PATH}"
+            #echo $COLORIZE_OUT
+            recurse_path "${CURR_PATH}" "${GIT_TOOL_CMD}"
             # take the counter back to where it started
             RECURSION_DEPTH=$(($RECURSION_DEPTH - 1))
         fi
@@ -351,7 +348,7 @@ ${SCRIPTNAME} [options] <command>
     -p|--path       Starting path for searching for Git repos
     -x|--exclude    Exclude these paths from the search
 
-    COMMANDS
+    SCRIPT COMMANDS
     stat            Run 'git status --short' in all repos found
     pullall         Run 'git pull' in all repos found
     refchk          Run 'git status', can show files not synced with remote
@@ -466,18 +463,32 @@ if [ -z $REPO_PATH ]; then
     exit 1
 fi
 
+# Tell the rest of the script what command the user asked for
+GIT_TOOL_CMD=$*
+if [ -z $GIT_TOOL_CMD ]; then
+    colorize "$MSG_FAIL" "ERROR: missing 'command' to run"
+    echo $COLORIZE_OUT
+    colorize_clear
+    echo " - Use ${SCRIPTNAME} --help for script options"
+    echo " - Use ${SCRIPTNAME} --examples for usage examples"
+    exit 1
+fi
+
 colorize_clear
 if [ $QUIET -eq 0 ]; then
     colorize "$MSG_FLUFF" "=-=-=-=-=-=-=-= "
     colorize "$MSG_INFO" "$SCRIPTNAME"
     colorize "$MSG_FLUFF" " =-=-=-=-=-=-=-="
     echo $COLORIZE_OUT
+    colorize_clear
+    colorize "$MSG_FLUFF" "--- Repo path: "
+    colorize "$MSG_INFO" "${REPO_PATH}"
+    colorize "$MSG_FLUFF" " ---"
+    echo $COLORIZE_OUT
+    colorize_clear
 fi
 
-# get a list of directories to enumerate over
-colorize_clear
-GIT_CMD=$*
-recurse_path "$REPO_PATH" "$GIT_CMD"
+recurse_path "$REPO_PATH" "$GIT_TOOL_CMD"
 
 # exit cleanly if we reach here
 #if [ $QUIET -eq 0 ]; then
@@ -499,7 +510,8 @@ exit ${SCRIPT_EXIT}
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program;  if not, write to the Free Software
-#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111, USA.
+#   Foundation, Inc.,
+#   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # end of line
