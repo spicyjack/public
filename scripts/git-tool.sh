@@ -5,22 +5,16 @@
 
 # Copyright (c)2013 Brian Manning <brian at xaoc dot org>
 # License: GPL v2 (see licence blurb at the bottom of the file)
-# Get support and more info about this script at:
-# https://github.com/spicyjack/public/issues
-# Script can be obtained from:
-# https://github.com/spicyjack/public/blob/master/scripts/git-tool.sh
+
+# - Clone the script repo with:
+#   - git clone https://github.com/spicyjack/public.git
+# - Script also can be obtained from:
+#   - https://github.com/spicyjack/public/blob/master/scripts/git-tool.sh
+# - Get support and more info about this script at:
+#   - https://github.com/spicyjack/public/issues
 
 # This is somewhat similar to what the 'repo' (http://tinyurl.com/6pblfg4)
 # tool does, sans the messy XML bits needed to make 'repo' work
-
-# psuedocode
-# - get a list of directories
-# - filter the list for directories to exclude, and exclude those dirs
-# - loop over the left-over directories
-# - for each directory;
-#   - if the directory ends in *.git, then enter it, and run the command
-#   - if the directory does not end in *.git, push it to a stack, or enter it
-#   and process it's contents
 
 # what's my name?
 SCRIPTNAME=$(basename $0)
@@ -113,161 +107,92 @@ rungitcmd() {
     local GIT_CMD=$1
     local GIT_SUCCESS_PATTERN=$2
 
-    if [ $GIT_DEBUG -gt 0 ]; then echo "command: ${GIT_CMD}"; fi
+    ORIG_IFS=$IFS
+    IFS=$' \t'
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
-    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -ne 1 ]; then
+    check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
+    # run the command, check for the string that signals "success"
+    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -gt 0 ]; then
         echo $GIT_OUTPUT
     fi
+    IFS=$ORIG_IFS
 }
 
 # check the status in git directories
-gitstat() {
-    local EXCLUDED_PATHS=$1
-    GIT_DEBUG=0
-    unset GIT_CMD
-    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    START_DIR=$PWD
-    cd $SOURCE_DIR
-    echo "=== Running 'git status' in ${SOURCE_DIR} ==="
-    for DIR in $(/bin/ls | grep 'git$');
-    do
-        if [ $(echo ${DIR} | egrep -c "${EXCLUDE_DIRS}") -gt 0 ]; then
-            continue
-        fi
-        echo "- $DIR";
-        cd $DIR
-        IFS=$' \t'
-        git status --short
-        IFS=$' \t\n'
-        cd $SOURCE_DIR
-    done
-    cd $START_DIR
-} # gitstat
+repostat() {
+    local SHORT_DIR="$1"
 
+    echo "- $SHORT_DIR"
+    if [ $NO_COLORIZE -eq 0 ]; then
+        GIT_CMD="git -c color.status=always status --short"
+    else
+        GIT_CMD="git status --short"
+    fi
+    $GIT_CMD
+}
 
 # git pull in all git directories
-gitpullall() {
-    GIT_DEBUG=0
-    unset GIT_CMD
-    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    set_git_source_dir
-    START_DIR=$PWD
-    cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep 'git$');
-    do
-        echo "=== git pull: $DIR ===";
-        cd $DIR
-        IFS=$' \t'
-        GIT_CMD="git pull --all"
-        GIT_SUCCESS_PATTERN="Already up-to-date."
-        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
-        IFS=$' \t\n'
-        cd $SOURCE_DIR
-    done
-    cd $START_DIR
-    set_git_source_dir
-} # gitpullall
+pullall() {
+    local SHORT_DIR="$1"
+
+    echo "- $SHORT_DIR"
+    GIT_CMD="git pull --all"
+    GIT_SUCCESS_PATTERN="Already up-to-date."
+    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+}
 
 # git pull in all git directories
-gitupdatechk() {
-    local CHECK_DATE=$1
+updatechk() {
+    local SHORT_DIR="$1"
+    local CHECK_DATE="$2"
 
     if [ -z $CHECK_DATE ]; then
         echo "ERROR: need a date to check; date format is YYYY-MM-DD"
     else
-        GIT_DEBUG=0
-        unset GIT_CMD
-        set_git_source_dir
-        START_DIR=$PWD
-        cd $SOURCE_DIR
-        for DIR in $(/bin/ls | grep 'git$');
-        do
-            echo "=== git log: $DIR ===";
-            cd $DIR
-            GIT_FORMAT="%h %cd %an %s"
-            IFS=$' \t'
-            GIT_OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
-                --after="${CHECK_DATE}" | cut -c -80)
-            if [ -n "$GIT_OUTPUT" ]; then
-                echo $GIT_OUTPUT
-            fi
-            IFS=$' \t\n'
-            cd $SOURCE_DIR
-        done
-        cd $START_DIR
+        echo "=== git log: $DIR ===";
+        cd $DIR
+        GIT_FORMAT="%h %cd %an %s"
+        GIT_OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
+            --after="${CHECK_DATE}" | cut -c -80)
+        if [ -n "$GIT_OUTPUT" ]; then
+            echo $GIT_OUTPUT
+        fi
     fi
-    unset_git_source_dir
-} # gitupdatechk
-
+}
 
 # check for inbound changes to git directories
-gitinchk() {
-    GIT_DEBUG=0
-    unset GIT_CMD
-    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    set_git_source_dir
-    START_DIR=$PWD
-    cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep git);
-    do
-        echo "=== git pull --dry-run $DIR ===";
-        cd $DIR
-        IFS=$' \t'
-        GIT_CMD="git pull --dry-run"
-        GIT_SUCCESS_PATTERN="Already up-to-date."
-        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
-        IFS=$' \t\n'
-        cd $SOURCE_DIR
-    done
-    cd $START_DIR
-    unset_git_source_dir
-} # gitinchk
+inchk() {
+    local SHORT_DIR="$1"
+
+    echo "- $SHORT_DIR";
+    GIT_CMD="git pull --dry-run"
+    GIT_SUCCESS_PATTERN="Already up-to-date."
+    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+}
 
 # check for outbound changes in git directories
-gitoutchk() {
-    GIT_DEBUG=0
-    unset GIT_CMD
-    if [ $# -gt 0 ]; then GIT_DEBUG=1; echo "GIT_DEBUG set to ${GIT_DEBUG}"; fi
-    set_git_source_dir
-    START_DIR=$PWD
-    cd $SOURCE_DIR
-    for DIR in $(/bin/ls | grep git);
-    do
-        echo "=== git push --dry-run $DIR ===";
-        cd $DIR
-        IFS=$' \t'
-        GIT_CMD="git push --dry-run"
-        GIT_SUCCESS_PATTERN="Everything up-to-date"
-        rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
-        IFS=$' \t\n'
-        cd $SOURCE_DIR
-    done
-    cd $START_DIR
-    unset_git_source_dir
-} # gitoutchk
+outchk() {
+    local SHORT_DIR="$1"
+
+    echo "- $SHORT_DIR";
+    GIT_CMD="git push --dry-run"
+    GIT_SUCCESS_PATTERN="Everything up-to-date"
+    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+}
 
 # check for outbound changes in git directories
 refchk() {
-    local REPO_PATH="$1"
-    local CURR_DIR="$2"
+    local SHORT_DIR="$1"
 
-    # truncate the path, and remove the leading slash, if there is one
-    SHORT_DIR=$(echo "${CURR_DIR}" | sed "s!${REPO_PATH}!!g; s!^/!!;")
-    echo "== refchk $SHORT_DIR ==";
-    GIT_CMD="git status"
-    GIT_SUCCESS_PATTERN="branch is ahead"
-    if [ $DRY_RUN -gt 0 ]; then
-        echo "git command dry-run: ${GIT_CMD}"
+    echo "- $SHORT_DIR";
+    if [ $NO_COLORIZE -eq 0 ]; then
+        GIT_CMD="git -c color.status=always status"
     else
-        IFS=$' \t'
-        GIT_OUTPUT=$(${GIT_CMD} 2>&1)
-        if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -eq 1 ];
-        then
-            echo $GIT_OUTPUT
-        fi
-        IFS=$' \t\n'
+        GIT_CMD="git status"
     fi
-} # refchk
+    GIT_SUCCESS_PATTERN="branch is ahead"
+    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+}
 
 # recurse a path, looking for directories to either run git commands in, or to
 # enter to look for more directories
@@ -276,7 +201,7 @@ recurse_path() {
     local GIT_TOOL_CMD="$2"
     # use find to find directories, use \0 as the delimiter in the output
     find "${RECURSE_PATH}" -maxdepth 1 -type d -name "[a-zA-Z0-9_]*" -print0 \
-        | while IFS= read -d $'\0' CURR_PATH;
+        | sort -z | while IFS= read -d $'\0' CURR_PATH;
     do
         colorize_clear
         # skip the original path
@@ -288,7 +213,7 @@ recurse_path() {
             | egrep -c "$EXCLUDED_PATHS") -gt 0 ];
         then
             if [ $QUIET -eq 0 ]; then
-                colorize "$MSG_INFO" "--> Skipping ${CURR_PATH} <--"
+                colorize "$MSG_FLUFF" "--> Skipping ${CURR_PATH} <--"
                 echo $COLORIZE_OUT
             fi
             continue
@@ -300,9 +225,13 @@ recurse_path() {
             cd "${CURR_PATH}"
             #colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
             #colorize $MSG_FLUFF ": Running 'git ${GIT_TOOL_CMD}'"
-            # FIXME the command to run should go here
             #echo $COLORIZE_OUT
-            $GIT_TOOL_CMD "${REPO_PATH}" "${CURR_PATH}"
+            SHORT_DIR=$(echo "${CURR_PATH}" | sed "s!${REPO_PATH}!!g; s!^/!!;")
+            if [ $DRY_RUN -gt 0 ]; then
+                echo "git command dry-run: ${GIT_TOOL_CMD} in ${SHORT_DIR}"
+            else
+                $GIT_TOOL_CMD "${SHORT_DIR}"
+            fi
             cd "$START_PATH"
         else
             # no, found another directory, recurse into it
@@ -315,7 +244,7 @@ recurse_path() {
             RECURSION_DEPTH=$(($RECURSION_DEPTH - 1))
         fi
     done
-}
+} # recurse_path
 
 show_examples() {
 # show script usage examples
