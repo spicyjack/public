@@ -252,9 +252,21 @@ cat <<-EOE
 
 ==== ${SCRIPTNAME} Examples ====
 
-  # run on all *.git dirs in /path/to/src/tree,
+  # get the status of all *.git dirs in /path/to/src/tree,
   # exclude /path/to/tree/dirA, /path/to/src/tree/dirB
-  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB"
+  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB" repostat
+
+  # check to see if you've forgotten to push to a remote repo
+  # does not need to access the network, so faster than 'git push --dry-run'
+  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB" refchk
+
+  # check to see if you need to pull from remote repos to local repos
+  # ** needs network access **
+  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB" inchk
+
+  # check to see if you need to push to remote repos from local repos
+  # ** needs network access **
+  ${SCRIPTNAME} --path=/path/to/src/tree --exclude="dirA|dirB" outchk
 
 EOE
 
