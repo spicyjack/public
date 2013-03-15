@@ -368,7 +368,7 @@ while true ; do
             REPO_PATH=$2;
             shift 2;;
         # Paths to exclude
-        -e|--exclude)
+        -x|--exclude)
             EXCLUDED_PATHS=$2;
             shift 2;;
         # everything else
@@ -385,6 +385,11 @@ while true ; do
 done
 
 ### SCRIPT MAIN LOOP ###
+# if we're outputting to a pipe set NO_COLORIZATION
+if [ ! -t 1 ]; then
+    NO_COLORIZE=1
+fi
+
 # do some error checking; we need at a minimum '--path' and a <command> to run
 if [ -z $REPO_PATH ]; then
     colorize "$MSG_FAIL" "ERROR: missing repo path as --path"
