@@ -112,7 +112,7 @@ rungitcmd() {
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
     check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
     # run the command, check for the string that signals "success"
-    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -gt 0 ]; then
+    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -eq 0 ]; then
         echo $GIT_OUTPUT
     fi
     IFS=$ORIG_IFS
