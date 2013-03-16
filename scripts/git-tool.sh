@@ -190,7 +190,7 @@ refchk() {
     else
         GIT_CMD="git status"
     fi
-    GIT_SUCCESS_PATTERN="branch is ahead"
+    GIT_SUCCESS_PATTERN="working directory clean"
     rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
 }
 
