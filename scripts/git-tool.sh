@@ -81,11 +81,14 @@ check_exit_status() {
     local CMD_RUN="$2"
     local CMD_OUT="$3"
 
+
     # check for errors from the script
     if [ $ERROR -ne 0 ] ; then
         if [ $QUIET -eq 0 ]; then
+            colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} exited with error: $ERROR"
             echo $COLORIZE_OUT
+            colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} output: "
             echo $COLORIZE_OUT
             echo $CMD_OUT
@@ -111,10 +114,6 @@ rungitcmd() {
     IFS=$' \t'
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
     check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
-    # run the command, check for the string that signals "success"
-    if [ $(echo $GIT_OUTPUT | grep -c "${GIT_SUCCESS_PATTERN}") -eq 0 ]; then
-        echo $GIT_OUTPUT
-    fi
     IFS=$ORIG_IFS
 }
 
