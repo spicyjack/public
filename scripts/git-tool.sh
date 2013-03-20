@@ -81,7 +81,6 @@ check_exit_status() {
     local CMD_RUN="$2"
     local CMD_OUT="$3"
 
-
     # check for errors from the script
     if [ $ERROR -ne 0 ] ; then
         if [ $QUIET -eq 0 ]; then
