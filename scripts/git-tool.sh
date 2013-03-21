@@ -18,13 +18,15 @@
 
 # what's my name?
 SCRIPTNAME=$(basename $0)
-# path to the perl binary
+
+# assume everything will go well
+EXIT_STATUS=0
 
 # set quiet mode by default, needs to be set prior to the getops call
 QUIET=0
 
-# colorize? yes please (0=yes, colorize, 1=no, don't colorize)
-NO_COLORIZE=0
+# colorize? yes please (1=yes, colorize, 0=no, don't colorize)
+COLORIZE=1
 
 # dry-run, i.e. show commands, don't run them? (0 = no, 1 = yes)
 DRY_RUN=0
@@ -51,8 +53,10 @@ F_BLU=34; F_MAG=35; F_CYN=36; F_WHT=37
 
 # some shortcuts
 MSG_FAIL="${BOLD};${F_YLW};${B_RED}"
+MSG_WARN="${F_YLW};${B_BLK}"
 MSG_DRYRUN="${BOLD};${F_CYN};${B_BLU}"
 MSG_OK="${BOLD};${F_WHT};${B_GRN}"
+MSG_REMOTE="${F_CYN};${B_BLK}"
 MSG_INFO="${BOLD};${F_WHI};${B_BLU}"
 MSG_FLUFF="${BOLD};${F_BLU};${B_BLK}"
 
@@ -62,7 +66,7 @@ colorize () {
     local COLOR="$1"
     local TEXT="$2"
 
-    if [ $NO_COLORIZE -eq 0 ]; then
+    if [ $COLORIZE -eq 1 ]; then
         COLORIZE_OUT="${COLORIZE_OUT}${START}${COLOR}${END}${TEXT}"
         COLORIZE_OUT="${COLORIZE_OUT}${START};${NONE}${END}"
     else
@@ -90,32 +94,30 @@ check_exit_status() {
             colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} output: "
             echo $COLORIZE_OUT
-            echo $CMD_OUT
+            colorize_clear
+            colorize $MSG_WARN "${CMD_OUT}"
+            echo $COLORIZE_OUT
+            colorize_clear
         fi
-        SCRIPT_EXIT=1
-#    else
-#        if [ $QUIET -eq 0 ]; then
-#            colorize $MSG_OK "${CMD_RUN} exited with no errors"
-#            echo $COLORIZE_OUT
-#            colorize $MSG_INFO "${CMD_RUN} output:"
-#            echo $COLORIZE_OUT
-#            echo $CMD_OUT
-#        fi
-#        SCRIPT_EXIT=0
+        EXIT_STATUS=1
     fi
 } # check_exit_status
 
 rungitcmd() {
-    local GIT_CMD=$1
-    local GIT_NOTIFY_PATTERN=$2
+    local GIT_CMD="$1"
+    local GIT_NOTIFY_PATTERN="$2"
 
     ORIG_IFS=$IFS
     IFS=$' \t'
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
-    check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
-    if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -gt 0 ];
-    then
-        echo $GIT_OUTPUT
+    GIT_CMD_EXIT_STATUS=$?
+    check_exit_status $GIT_CMD_EXIT_STATUS "${GIT_CMD}" "${GIT_OUTPUT}"
+    if [ $GIT_CMD_EXIT_STATUS -eq 0 ]; then
+        if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -gt 0 ];
+        then
+            colorize $MSG_REMOTE "${GIT_OUTPUT}"
+            echo $COLORIZE_OUT
+        fi
     fi
     IFS=$ORIG_IFS
 }
@@ -125,7 +127,7 @@ repostat() {
     local SHORT_DIR="$1"
 
     echo "- $SHORT_DIR"
-    if [ $NO_COLORIZE -eq 0 ]; then
+    if [ $COLORIZE -eq 1 ]; then
         GIT_CMD="git -c color.status=always status --short"
     else
         GIT_CMD="git status --short"
@@ -139,7 +141,7 @@ pullall() {
 
     echo "- $SHORT_DIR"
     GIT_CMD="git pull --all"
-    GIT_NOTIFY_PATTERN="Already up-to-date."
+    GIT_NOTIFY_PATTERN="From"
     rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
@@ -178,7 +180,7 @@ outchk() {
 
     echo "- $SHORT_DIR";
     GIT_CMD="git push --dry-run"
-    GIT_NOTIFY_PATTERN="Everything up-to-date"
+    GIT_NOTIFY_PATTERN="To"
     rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
@@ -187,7 +189,7 @@ refchk() {
     local SHORT_DIR="$1"
 
     echo "- $SHORT_DIR";
-    if [ $NO_COLORIZE -eq 0 ]; then
+    if [ $COLORIZE -eq 1 ]; then
         GIT_CMD="git -c color.status=always status"
     else
         GIT_CMD="git status"
@@ -299,7 +301,9 @@ ${SCRIPTNAME} [options] <command>
     inchk           Run 'git pull --dry-run'; shows commits needing pulling
     updatechk       Shows all repos that have been updated since YYYY-MM-DD
 
-NOTE: Long switches (GNU extension) do not work with BSD systems
+NOTES:
+- Long switches (GNU extension) do not work with BSD 'getopt'
+- Colorization is disabled when script outputs to pipe (-t set on filehandle)
 
 EOH
 
@@ -371,7 +375,7 @@ while true ; do
             shift;;
         # Don't use color in the output
         -c|--nocolor|--color|--no-color)
-            NO_COLORIZE=1
+            COLORIZE=0
             shift;;
         # Explain what will be done, don't actually do
         -n|--dry-run|--explain)
@@ -401,7 +405,7 @@ done
 ### SCRIPT MAIN LOOP ###
 # if we're outputting to a pipe set NO_COLORIZATION
 if [ ! -t 1 ]; then
-    NO_COLORIZE=1
+    COLORIZE=0
 fi
 
 # do some error checking; we need at a minimum '--path' and a <command> to run
@@ -444,7 +448,7 @@ recurse_path "$REPO_PATH" "$GIT_TOOL_CMD"
 #    read ANSWER
 #fi
 
-exit ${SCRIPT_EXIT}
+exit ${EXIT_STATUS}
 
 # ### begin license blurb ###
 #   This program is free software; you can redistribute it and/or modify
