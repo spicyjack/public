@@ -14,6 +14,8 @@
   non-zero status; any special return codes can be documented here.
 - `DESC:` - (multiple allowed, optional) Multiple `DESC:` fields are combined
   to make a long block of text for describing the function.
+- `NOTE:` - (multiple allowed, optional) Multiple `NOTE:` fields are combined
+  to make a long block of text for a note.
 
 Example usage:
 
@@ -29,4 +31,4 @@ Example usage:
     ## ERR: '3' is returned if a different set of conditions are met
     ## DESC: This is a line of text describing this function
 
-vi: set filetype=markdown shiftwidth=4 tabstop=2:
+vi: set filetype=markdown shiftwidth=2 tabstop=2:
