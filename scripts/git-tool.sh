@@ -107,12 +107,17 @@ check_exit_status() {
 
 rungitcmd() {
     local GIT_CMD=$1
-    local GIT_SUCCESS_PATTERN=$2
+    local GIT_NOTIFY_PATTERN=$2
 
     ORIG_IFS=$IFS
     IFS=$' \t'
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
     check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
+    say $GIT_OUTPUT
+    if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -ne 0 ];
+    then
+        say $GIT_OUTPUT
+    fi
     IFS=$ORIG_IFS
 }
 
@@ -135,8 +140,8 @@ pullall() {
 
     echo "- $SHORT_DIR"
     GIT_CMD="git pull --all"
-    GIT_SUCCESS_PATTERN="Already up-to-date."
-    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+    GIT_NOTIFY_PATTERN="Already up-to-date."
+    rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
 # git pull in all git directories
@@ -164,8 +169,8 @@ inchk() {
 
     echo "- $SHORT_DIR";
     GIT_CMD="git pull --dry-run"
-    GIT_SUCCESS_PATTERN="Already up-to-date."
-    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+    GIT_NOTIFY_PATTERN="Already up-to-date."
+    rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
 # check for outbound changes in git directories
@@ -174,8 +179,8 @@ outchk() {
 
     echo "- $SHORT_DIR";
     GIT_CMD="git push --dry-run"
-    GIT_SUCCESS_PATTERN="Everything up-to-date"
-    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+    GIT_NOTIFY_PATTERN="Everything up-to-date"
+    rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
 # check for outbound changes in git directories
@@ -188,8 +193,8 @@ refchk() {
     else
         GIT_CMD="git status"
     fi
-    GIT_SUCCESS_PATTERN="working directory clean"
-    rungitcmd "$GIT_CMD" "$GIT_SUCCESS_PATTERN"
+    GIT_NOTIFY_PATTERN="Your branch is ahead"
+    rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
 # recurse a path, looking for directories to either run git commands in, or to
