@@ -168,7 +168,7 @@ inchk() {
 
     echo "- $SHORT_DIR";
     GIT_CMD="git pull --dry-run"
-    GIT_NOTIFY_PATTERN="Already up-to-date."
+    GIT_NOTIFY_PATTERN="From"
     rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
