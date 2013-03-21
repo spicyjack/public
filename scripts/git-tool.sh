@@ -113,8 +113,7 @@ rungitcmd() {
     IFS=$' \t'
     GIT_OUTPUT=$(${GIT_CMD} 2>&1)
     check_exit_status $? "${GIT_CMD}" "${GIT_OUTPUT}"
-    echo $GIT_OUTPUT
-    if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -ne 0 ];
+    if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -gt 0 ];
     then
         echo $GIT_OUTPUT
     fi
