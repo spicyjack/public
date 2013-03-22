@@ -262,7 +262,14 @@ output file is STDOUT.
 http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html
 
 ### Exporting from Mercurial into Git ###
-1. Clone the `fast-export` tool: `git clone git://repo.or.cz/fast-export.git`
+1. Clone the `fast-export` tool: 
+
+    git clone git://repo.or.cz/fast-export.git
+
+1. Install the `mercurial.py` module
+  1. Install via `pip`
+  1. `sudo apt-get install pip`
+  1. `sudo pip install mercurial==2.2`
 1. Make sure the `mercurial.py` module is in your `PYTHONPATH`
   1. `export PYTHONPATH=/path/to/lib/python/site-packages`
 1. Create a new directory for the git repo: `mkdir new-project`
