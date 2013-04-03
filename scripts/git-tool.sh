@@ -90,13 +90,13 @@ check_exit_status() {
         if [ $QUIET -eq 0 ]; then
             colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} exited with error: $ERROR"
-            echo -e $COLORIZE_OUT
+            echo $COLORIZE_OUT
             colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} output: "
-            echo -e $COLORIZE_OUT
+            echo $COLORIZE_OUT
             colorize_clear
             colorize $MSG_WARN "${CMD_OUT}"
-            echo -e $COLORIZE_OUT
+            echo $COLORIZE_OUT
             colorize_clear
         fi
         EXIT_STATUS=1
@@ -116,7 +116,7 @@ rungitcmd() {
         if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -gt 0 ];
         then
             colorize $MSG_REMOTE "${GIT_OUTPUT}"
-            echo -e $COLORIZE_OUT
+            echo $COLORIZE_OUT
         fi
     fi
     IFS=$ORIG_IFS
@@ -152,6 +152,7 @@ updatechk() {
 
     if [ -z $CHECK_DATE ]; then
         echo "ERROR: need a date to check; date format is YYYY-MM-DD"
+        exit 1
     else
         echo "=== git log: $DIR ===";
         cd $DIR
@@ -218,7 +219,7 @@ recurse_path() {
         then
             if [ $QUIET -eq 0 ]; then
                 colorize "$MSG_FLUFF" "--> Skipping ${CURR_PATH} <--"
-                echo -e -n $COLORIZE_OUT
+                builtin echo -e $COLORIZE_OUT
             fi
             continue
         fi
@@ -411,7 +412,7 @@ fi
 # do some error checking; we need at a minimum '--path' and a <command> to run
 if [ -z $REPO_PATH ]; then
     colorize "$MSG_FAIL" "ERROR: missing repo path as --path"
-    echo -e $COLORIZE_OUT
+    echo $COLORIZE_OUT
     exit 1
 fi
 
@@ -419,7 +420,7 @@ fi
 GIT_TOOL_CMD=$*
 if [ -z $GIT_TOOL_CMD ]; then
     colorize "$MSG_FAIL" "ERROR: missing 'command' to run"
-    echo -e $COLORIZE_OUT
+    echo $COLORIZE_OUT
     colorize_clear
     echo " - Use ${SCRIPTNAME} --help for script options"
     echo " - Use ${SCRIPTNAME} --examples for usage examples"
@@ -431,12 +432,12 @@ if [ $QUIET -eq 0 ]; then
     colorize "$MSG_FLUFF" "=-=-=-=-=-=-=-= "
     colorize "$MSG_INFO" "$SCRIPTNAME"
     colorize "$MSG_FLUFF" " =-=-=-=-=-=-=-="
-    echo -e $COLORIZE_OUT
+    builtin echo -e $COLORIZE_OUT
     colorize_clear
     colorize "$MSG_FLUFF" "--- Repo path: "
     colorize "$MSG_INFO" "${REPO_PATH}"
     colorize "$MSG_FLUFF" " ---"
-    echo -e $COLORIZE_OUT
+    builtin echo -e $COLORIZE_OUT
     colorize_clear
 fi
 
