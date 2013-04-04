@@ -90,13 +90,13 @@ check_exit_status() {
         if [ $QUIET -eq 0 ]; then
             colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} exited with error: $ERROR"
-            builtin echo $COLORIZE_OUT
+            $ECHO_CMD $COLORIZE_OUT
             colorize_clear
             colorize $MSG_FAIL "${CMD_RUN} output: "
-            builtin echo $COLORIZE_OUT
+            $ECHO_CMD $COLORIZE_OUT
             colorize_clear
             colorize $MSG_WARN "${CMD_OUT}"
-            builtin echo $COLORIZE_OUT
+            $ECHO_CMDN $COLORIZE_OUT
             colorize_clear
         fi
         EXIT_STATUS=1
@@ -116,7 +116,7 @@ rungitcmd() {
         if [ $(echo ${GIT_OUTPUT} | grep -c "${GIT_NOTIFY_PATTERN}") -gt 0 ];
         then
             colorize $MSG_REMOTE "${GIT_OUTPUT}"
-            builtin echo $COLORIZE_OUT
+            $ECHO_CMD $COLORIZE_OUT
         fi
     fi
     IFS=$ORIG_IFS
@@ -219,7 +219,7 @@ recurse_path() {
         then
             if [ $QUIET -eq 0 ]; then
                 colorize "$MSG_FLUFF" "--> Skipping ${CURR_PATH} <--"
-                builtin echo $COLORIZE_OUT
+                $ECHO_CMD $COLORIZE_OUT
             fi
             continue
         fi
@@ -230,7 +230,7 @@ recurse_path() {
             cd "${CURR_PATH}"
             #colorize $MSG_FLUFF "${RECURSION_DEPTH}:${CURR_PATH}"
             #colorize $MSG_FLUFF ": Running 'git ${GIT_TOOL_CMD}'"
-            #builtin echo $COLORIZE_OUT
+            #$ECHO_CMD $COLORIZE_OUT
             SHORT_DIR=$(echo "${CURR_PATH}" | sed "s!${REPO_PATH}!!g; s!^/!!;")
             if [ $DRY_RUN -gt 0 ]; then
                 echo "git command dry-run: ${GIT_TOOL_CMD} in ${SHORT_DIR}"
@@ -243,7 +243,7 @@ recurse_path() {
             # bump the counter so it can be used for formatting and the like
             RECURSION_DEPTH=$(($RECURSION_DEPTH + 1))
             #colorize $MSG_INFO "Recursing into: ${CURR_PATH}"
-            #builtin echo -e $COLORIZE_OUT
+            #$ECHO_CMD $COLORIZE_OUT
             recurse_path "${CURR_PATH}" "${GIT_TOOL_CMD}"
             # take the counter back to where it started
             RECURSION_DEPTH=$(($RECURSION_DEPTH - 1))
@@ -319,6 +319,14 @@ elif [ -x /bin/uname ]; then
 else
     echo "ERROR: can't run 'uname -s' command to determine system type"
     exit 1
+fi
+
+if [ $OSDETECT = "Darwin" ]; then
+    ECHO_CMD="builtin echo"
+elif [ $OSDETECT = "Linux" ]; then
+    ECHO_CMD="builtin echo -e"
+else
+    ECHO_CMD="echo"
 fi
 
 # these two paths cover a majority of my test machines
@@ -412,7 +420,7 @@ fi
 # do some error checking; we need at a minimum '--path' and a <command> to run
 if [ -z $REPO_PATH ]; then
     colorize "$MSG_FAIL" "ERROR: missing repo path as --path"
-    builtin echo $COLORIZE_OUT
+    $ECHO_CMD $COLORIZE_OUT
     exit 1
 fi
 
@@ -420,7 +428,7 @@ fi
 GIT_TOOL_CMD=$*
 if [ -z $GIT_TOOL_CMD ]; then
     colorize "$MSG_FAIL" "ERROR: missing 'command' to run"
-    builtin echo $COLORIZE_OUT
+    $ECHO_CMD $COLORIZE_OUT
     colorize_clear
     echo " - Use ${SCRIPTNAME} --help for script options"
     echo " - Use ${SCRIPTNAME} --examples for usage examples"
@@ -432,12 +440,12 @@ if [ $QUIET -eq 0 ]; then
     colorize "$MSG_FLUFF" "=-=-=-=-=-=-=-= "
     colorize "$MSG_INFO" "$SCRIPTNAME"
     colorize "$MSG_FLUFF" " =-=-=-=-=-=-=-="
-    builtin echo $COLORIZE_OUT
+    $ECHO_CMD $COLORIZE_OUT
     colorize_clear
     colorize "$MSG_FLUFF" "--- Repo path: "
     colorize "$MSG_INFO" "${REPO_PATH}"
     colorize "$MSG_FLUFF" " ---"
-    builtin echo $COLORIZE_OUT
+    $ECHO_CMD $COLORIZE_OUT
     colorize_clear
 fi
 
