@@ -1,6 +1,14 @@
 # OpenGL ES Notes #
 
+*Note*: most `OpenGL ES` calls have `manpages`.  `GLKit` documentation can be
+viewed from within Xcode or on the web.
+
 ## Links ##
+OpenGL Documentation on the web
+- http://www.opengl.org/sdk/docs/man/
+- http://www.khronos.org/opengles/sdk/docs/man/
+- System manpages
+
 vim syntax files
 - OpenGL - http://www.vim.org/scripts/script.php?script_id=752
 - OpenGL Shading Language
