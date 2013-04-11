@@ -48,4 +48,10 @@ vim syntax files
   - Having an the object itself move relative to a common origin
 - Coordinate transformation
   - Having the world origin move while the object stays stationary
+- Vertex shaders
+  - Responsible for processing vertexes (meshes)
+  - Stores data in "clip-space" coordinates
+- Fragment shaders
+  - Responsible for colorizing pixels
+
 # vim: filetype=markdown shiftwidth=2 tabstop=2
