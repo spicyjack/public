@@ -96,7 +96,7 @@ check_exit_status() {
             $ECHO_CMD $COLORIZE_OUT
             colorize_clear
             colorize $MSG_WARN "${CMD_OUT}"
-            $ECHO_CMDN $COLORIZE_OUT
+            $ECHO_CMD $COLORIZE_OUT
             colorize_clear
         fi
         EXIT_STATUS=1

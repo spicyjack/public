@@ -1,6 +1,18 @@
 # OpenGL ES Notes #
 
+*Note*: most `OpenGL ES` calls have `manpages`.  `GLKit` documentation can be
+viewed from within Xcode or on the web.
+
 ## Links ##
+OpenGL Documentation on the web
+- http://www.opengl.org/sdk/docs/man/
+- http://www.khronos.org/opengles/sdk/docs/man/
+- System manpages
+- OpenGL State Variables
+  - http://www.glprogramming.com/red/appendixb.html
+- OpenGL data types
+  - http://www.glprogramming.com/red/chapter01.html#name3
+
 vim syntax files
 - OpenGL - http://www.vim.org/scripts/script.php?script_id=752
 - OpenGL Shading Language
@@ -40,4 +52,10 @@ vim syntax files
   - Having an the object itself move relative to a common origin
 - Coordinate transformation
   - Having the world origin move while the object stays stationary
+- Vertex shaders
+  - Responsible for processing vertexes (meshes)
+  - Stores data in "clip-space" coordinates
+- Fragment shaders
+  - Responsible for colorizing pixels
+
 # vim: filetype=markdown shiftwidth=2 tabstop=2
