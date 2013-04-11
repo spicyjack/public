@@ -8,6 +8,10 @@ OpenGL Documentation on the web
 - http://www.opengl.org/sdk/docs/man/
 - http://www.khronos.org/opengles/sdk/docs/man/
 - System manpages
+- OpenGL State Variables
+  - http://www.glprogramming.com/red/appendixb.html
+- OpenGL data types
+  - http://www.glprogramming.com/red/chapter01.html#name3
 
 vim syntax files
 - OpenGL - http://www.vim.org/scripts/script.php?script_id=752
