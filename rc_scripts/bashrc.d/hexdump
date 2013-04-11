@@ -1,0 +1,15 @@
+#!/bin/bash
+# public aliases
+function verify_hexdump_exists {
+    TMP_HEXDUMP=$(which hexdump)
+    if [ ! -x $TMP_HEXDUMP ]; then
+        echo "ERROR: can't find 'hexdump' command"
+        exit 1
+    fi
+}
+function hexC {
+    verify_hexdump_exists
+    $TMP_HEXDUMP -C "$1" | /usr/bin/less
+}
+# vim: set filetype=sh shiftwidth=4 tabstop=4:
+# fin!
