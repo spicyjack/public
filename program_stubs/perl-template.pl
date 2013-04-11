@@ -1,13 +1,13 @@
 #!/usr/bin/perl -w
 
-# Copyright (c) 2012 by Brian Manning <elspicyjack at gmail dot com>
+# Copyright (c) 2012-2013 by Brian Manning <brian at xaoc dot org>
 # For help with script errors and feature requests,
 # please contact the author on IRC;
 # irc.freenode.net #kernel-panic, nick: spicyjack
 
 =head1 NAME
 
-B<template.pl> - Browse, maintain and dump C<Infobot> factoid files.
+B<template.pl> - A template file for quickly writing Perl scripts.
 
 =head1 VERSION
 
@@ -26,23 +26,23 @@ our $VERSION = '0.01';
  -h|--help          Shows this help text
 
  Other script options:
- -f|--file          Path to factoid file; may be used multiple times
- -d|--dump          Dump the factoid file(s) as key/value pairs to STDOUT
+ -f|--file          Path to a file; may be used multiple times
+ -d|--dump          Dump a file/files as key/value pairs to STDOUT
  -l|--list          Pretty-print key/value pairs to STDOUT
- -k|--keys          List factoid keys
- -s|--values        List factoid values
+ -k|--keys          List keys
+ -s|--values        List values
 
  Example usage:
 
- # list factoids in /path/to/factoid-is.[dir|pag]
- template.pl --file /path/to/factoid-is --list
+ # list files in /path/to/file
+ template.pl --file /path/to/file --list
 
 You can view the full C<POD> documentation of this file by calling C<perldoc
 template.pl>.
 
 =head1 DESCRIPTION
 
-B<template.pl> - Browse, maintain and dump C<Infobot> factoid files.
+B<template.pl> -  A template file for quickly writing Perl scripts.
 
 =head1 OBJECTS
 
@@ -382,4 +382,4 @@ under the same terms as Perl itself.
 =cut
 
 # fin!
-# vim: set sw=4 ts=4
+# vim: set shiftwidth=4 tabstop=4
