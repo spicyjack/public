@@ -1,9 +1,8 @@
 #!/usr/bin/perl -w
 
 # Copyright (c) 2012-2013 by Brian Manning <brian at xaoc dot org>
-# For help with script errors and feature requests,
-# please contact the author on IRC;
-# irc.freenode.net #kernel-panic, nick: spicyjack
+# For help with script errors and feature requests, please file an issue
+# on the GitHub issue tracker: https://github.com/spicyjack/public/issues
 
 =head1 NAME
 
@@ -363,8 +362,8 @@ Brian Manning, C<< <brian at xaoc dot org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to
-C<< <irc://irc.freenode.com/#kernel-panic spicyjack> >>.
+Please report any issues/bugs or feature requests to
+C<< <https://github.com/spicyjack/public/issues> >>.
 
 =head1 SUPPORT
 
