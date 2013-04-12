@@ -57,5 +57,17 @@ vim syntax files
   - Stores data in "clip-space" coordinates
 - Fragment shaders
   - Responsible for colorizing pixels
+- Matrices
+  - Model matrix
+    - The model is every object in the scene; when it is time to render the
+      object, the model matrix is calculated for each object
+  - View matrix
+    - The view matrix is where the camera is positioned, and where it is
+      facing
+  - Projection view
+    - The lens that is put on to the camara
+  - Viewport
+    - Where the image is recorded
+
 
 # vim: filetype=markdown shiftwidth=2 tabstop=2
