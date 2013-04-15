@@ -13,6 +13,9 @@ OpenGL Documentation on the web
 - OpenGL data types
   - http://www.glprogramming.com/red/chapter01.html#name3
 
+Web GL Techniques and Performance
+- http://www.youtube.com/watch?v=rfQ8rKGTVlg
+
 vim syntax files
 - OpenGL - http://www.vim.org/scripts/script.php?script_id=752
 - OpenGL Shading Language
@@ -69,5 +72,36 @@ vim syntax files
   - Viewport
     - Where the image is recorded
 
+## Notes from WebGL Techniques and Performance ##
+First iteration
+- Loop over all of the objects
+  - Upload the Shader/Fragment programs to the GPU
+  - Set up model attributes and uniforms
+  - Call `drawElements` to draw the elements on the screen
+
+Second iteration
+- For each type of object (square, cone, circle)
+  - Set up common stuff to draw object
+    - Example: lighting is shared across all objects, only need to set it up
+      once
+  - For each instance of object
+    - Set up unique stuff for instance
+    - Order drawing of models by model
+      - If many models are being used over and over again, you only need to
+        set up each type of model one time when you are drawing all of the
+        models
+    - Draw instance
+
+Third Iteration
+- Move the world view math into the vertex shader program from the main
+  program
+- Move all of the cubes into 1 mesh, along with color data
+  - Pass the big mesh to the GPU so it can draw it
+
+Fourth Iteration
+- Compute the clock for each axis based on a "global clock"
+  - Move the math that computes the axis clock into the GPU
+  - Pass in the global clock to the GPU so that the GPU can calculate the axis
+    clocks
 
 # vim: filetype=markdown shiftwidth=2 tabstop=2
