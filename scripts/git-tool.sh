@@ -413,6 +413,8 @@ done
 
 ### SCRIPT MAIN LOOP ###
 # if we're outputting to a pipe set NO_COLORIZATION
+# FIXME you can use `less -R` to read ANSI colorization sequences; have some
+# way to override the test for pipe below
 if [ ! -t 1 ]; then
     COLORIZE=0
 fi
