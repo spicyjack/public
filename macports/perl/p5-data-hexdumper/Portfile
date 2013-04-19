@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Data-Hexdumper 3.0001
+#perl5.setup         Data-Hexdumper 3.0001 ../by-authors/id/D/DC/DCANTRELL
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Display binary data in multiple formats
+
+long_description    ${description}
+
+checksums           sha256 f9243cbe8affed5045fe4df505726a7a7289471e30c51ac065b3ed6ce0d1a604 \
+                    rmd160 ea94125363e350c71cfd3c033377fbb7d0b03fd7
+
+
+
+
