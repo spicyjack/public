@@ -11,6 +11,7 @@
     # from http://coderwall.com/p/euwpig?i=3&p=1&t=git
     lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     ls      = ls-tree --abbrev=8 -r HEAD
+    one     = log --oneline
     pudr    = push --dry-run
     puall   = push --set-upstream --all
     pualldr = push --set-upstream --all --dry-run
