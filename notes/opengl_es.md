@@ -67,7 +67,7 @@ vim syntax files
   - View matrix
     - The view matrix is where the camera is positioned, and where it is
       facing
-  - Projection view
+  - Projection view/matrix
     - The lens that is put on to the camara
   - Viewport
     - Where the image is recorded
