@@ -63,12 +63,15 @@ vim syntax files
 - Matrices
   - Model matrix
     - The model is every object in the scene; when it is time to render the
-      object, the model matrix is calculated for each object
+      object, the model matrix is calculated for each object.  The model
+      matrix is used to transform position coordinates from "world space" to
+      "eye space"
   - View matrix
     - The view matrix is where the camera is positioned, and where it is
       facing
   - Projection view/matrix
-    - The lens that is put on to the camara
+    - The lens that is put on to the camara.  The matrix used to transform
+      position coordinates from "eye space" to "projection space"
   - Viewport
     - Where the image is recorded
 
