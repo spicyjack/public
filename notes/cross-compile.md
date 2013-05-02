@@ -11,4 +11,12 @@
 - How to compile `ffmpeg` for Raspberry Pi - http://tinyurl.com/dy4rjs3
   - based on "How to Build a cross-compiler" - http://tinyurl.com/c9fuofd
 
+## Installation and Running ##
+
+    ct-ng menuconfig
+    ct-ng build
+
+Logfile is located in:
+- `/opt/cross/x-tools/arm-unknown-linux-gnueabi/build.log`
+
 vim: filetype=markdown shiftwidth=2 tabstop=2:
