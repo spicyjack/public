@@ -19,6 +19,10 @@
 Logfile is located in:
 - `/opt/cross/x-tools/arm-unknown-linux-gnueabi/build.log`
 
+Add `bashrc.d` script for `crosstool-ng`:
+
+https://raw.github.com/spicyjack/public/master/rc_scripts/bashrc.d/crosstool-ng
+
 ## Compiling Other Apps ##
 - Make sure that the cross-compiler toolchain is in the `$PATH` for the user
   that will be doing the work
