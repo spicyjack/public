@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# environment variables for the product of crosstool-ng
+ADDITIONAL_PATHS="/opt/cross/x-tools/arm-unknown-linux-gnueabi/bin"
+for ADDPATH in $(echo ${ADDITIONAL_PATHS});
+do
+    if [ $(echo ${PATH} | grep -c ${ADDPATH}) -eq 0 ]; then
+        PATH=${ADDPATH}:$PATH
+    #else
+    #    echo "Path: $ADDPATH already exists in \$PATH"
+    fi
+done
+
+unset ADDITIONAL_PATHS ADDPATH
+export PATH
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
