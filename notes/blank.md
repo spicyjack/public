@@ -1,4 +1,4 @@
 ## Blank Markdown Notes Template ##
 
 
-# vim: filetype=markdown shiftwidth=2 tabstop=2
+vim: filetype=markdown shiftwidth=2 tabstop=2
