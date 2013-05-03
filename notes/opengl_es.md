@@ -13,9 +13,6 @@ OpenGL Documentation on the web
 - OpenGL data types
   - http://www.glprogramming.com/red/chapter01.html#name3
 
-Web GL Techniques and Performance
-- http://www.youtube.com/watch?v=rfQ8rKGTVlg
-
 vim syntax files
 - OpenGL - http://www.vim.org/scripts/script.php?script_id=752
 - OpenGL Shading Language
@@ -75,7 +72,36 @@ vim syntax files
   - Viewport
     - Where the image is recorded
 
+## Outline of OpenGL Transformations ##
+- Viewing transformation is applied to the scene
+  - Used to determine the vantage point of the scene
+  - Applied before any other transformations, because the other
+    matrixes will use the completed (i.e. view has been moved to it's
+    destination) view matrix to calculate their final matrixes before the
+    scene is rendered
+  - GLKit Classes: GLKMatrix4MakePerspective?
+
+- Transformations are applied to models
+  - Translation and rotation matrixes are non-commutive, meaning there will be
+    different results depending on whether the translation matrix was
+    calculated first, or the rotation matrix was calculated first
+  - GLKit Classes: None, combined with ModelView matrix below
+
+- ModelView matrix is just another term for the view matrix with model
+  matrixes applied to it, or the combined view and model matrixes
+  - GLKit Classes: GLKEffectPropertyTransform.modelviewMatrix
+
+- Projection Transformation is applied to vertices
+  - Projection defines the viewing volume and establishes clipping planes
+  - GLKit Classes: GLKEffectPropertyTransform.modelviewMatrix
+
+- Viewport Transformation maps the scene on to the physical window that's
+  available for viewing it
+  - GLKit Classes: None, combined into GLKMatrix4MakePerspective maybe?
+
 ## Notes from WebGL Techniques and Performance ##
+- http://www.youtube.com/watch?v=rfQ8rKGTVlg
+
 First iteration
 - Loop over all of the objects
   - Upload the Shader/Fragment programs to the GPU
