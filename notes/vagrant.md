@@ -13,7 +13,12 @@ run:
     vagrant init precise32 http://files.vagrantup.com/precise32.box
     vagrant up
 
-`vagrant init` creates the `Vagrantfile`, or the description of the VM
-environment, and `vagrant up` launches it.
+- `vagrant init` creates the `Vagrantfile`, or the description of the VM
+environment
+- `vagrant up` launches it
+- Use `vagrant ssh` once the VM has launched to log into it
+  - Needs an SSH client installed in your path, or use PuTTY to connect to
+    `localhost:2222` with a key file; use `vagrant ssh-config` to get the full
+    path to the keyfile
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
