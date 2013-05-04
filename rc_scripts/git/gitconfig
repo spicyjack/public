@@ -3,27 +3,30 @@
 	email = user@example.com
 
 [alias]
-    bare    = init --bare --shared=true
-    br      = branch -v
-    co      = checkout
-    graph   = log --oneline --decorate --graph
-    hist    = log --graph --pretty='[%h]%d %cd %s'
+    bare        = init --bare --shared=true
+    br          = branch -v
+    co          = checkout
+    graph       = log --oneline --decorate --graph
+    hist        = log --graph --pretty='[%h]%d %cd %s'
     # from http://coderwall.com/p/euwpig?i=3&p=1&t=git
-    lg      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    ls      = ls-tree --abbrev=8 -r HEAD
-    one     = log --oneline
-    pudr    = push --dry-run
-    puall   = push --set-upstream --all
-    pualldr = push --set-upstream --all --dry-run
-    puor    = push --set-upstream origin master
-    puom    = push --set-upstream origin master
-    puordr  = push --set-upstream --dry-run origin master
-    puomdr  = push --set-upstream --dry-run origin master
-    stat    = status
+    lg          = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cres
+et %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+        --abbrev-commit
+    ls          = ls-tree --abbrev=8 -r HEAD
+    pudr        = push --dry-run
+    puall       = push --set-upstream --all
+    pualldr     = push --set-upstream --all --dry-run
+    puor        = push --set-upstream origin master
+    puom        = push --set-upstream origin master
+    puordr      = push --set-upstream --dry-run origin master
+    puomdr      = push --set-upstream --dry-run origin master
+    stat        = status
     # shows annotation along with tag name
-    tagn    = tag -n
-    re      = remote -v
-    untrack = rm --cached
+    tagn        = tag -n
+    # 'lg' (above) will also show tags with commit hashes
+    showtags    = show-ref --tags
+    re          = remote -v
+    untrack     = rm --cached
 
 [color]
 	ui = true
