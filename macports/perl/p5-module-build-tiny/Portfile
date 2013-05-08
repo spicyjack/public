@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Module-Build-Tiny 0.019
+#perl5.setup         Module-Build-Tiny 0.019 ../by-authors/id/L/LE/LEONT
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Module::Build::Tiny (no description available)
+
+long_description    ${description}
+
+checksums           sha256 693c675f31f6a0db35963ae14c5dea7c49e037cef60feaef2f33403ba01e107d \
+                    rmd160 225a6b26442c7aa0c241524d7ef731adfd8dec9a
+
+depends_lib-append  port:p5-extutils-helpers \
+                    port:p5-extutils-config \
+                    port:p5-extutils-installpaths
+
+perl5.use_module_build
