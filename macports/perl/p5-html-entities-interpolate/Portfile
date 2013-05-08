@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         HTML-Entities-Interpolate 1.04
+#perl5.setup         HTML-Entities-Interpolate 1.04 ../by-authors/id/R/RS/RSAVAGE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         String interpolation encoding of HTML attrs
+
+long_description    ${description}
+
+extract.suffix  .tgz
+checksums           sha256 efc22c4aa1fbe26112a53e4e637c7632b48ea429f2648cdb3207fc003e7540f9 \
+                    rmd160 fc48623206eb7c3505f1f90a9c2b9a1b75eef49d
+
+depends_lib-append  port:p5-html-parser \
+                    port:p5-tie-function
+depends_build-append port:p5-test-pod
+
