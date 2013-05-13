@@ -87,7 +87,7 @@ Page 132, OpenGL SuperBible, 5th Ed.
   - Translation and rotation matrixes are non-commutive, meaning there will be
     different results depending on whether the translation matrix was
     calculated first, or the rotation matrix was calculated first
-  - GLKit Classes: None, combined with ModelView matrix below
+  - GLKit Classes: `GLKMatrix4Make[Translation|Scale|Rotation]`
 
 - ModelView matrix is just another term for the view matrix with model
   matrixes applied to it, or the combined view and model matrixes
