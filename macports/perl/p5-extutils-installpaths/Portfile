@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         ExtUtils-InstallPaths 0.009
+#perl5.setup         ExtUtils-InstallPaths 0.009 ../by-authors/id/L/LE/LEONT
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         ExtUtils::InstallPaths (no description available)
+
+long_description    ${description}
+
+checksums           sha256 1b0827a4acf40d38552c4348767000f7e2d8cf5fd0d19436bf8747d2a72d77bc \
+                    rmd160 3f2e47498de61bd699cbd994d6325f358b22bdc1
+
+depends_lib-append  port:p5-extutils-config
+
+

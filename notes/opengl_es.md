@@ -72,32 +72,34 @@ vim syntax files
   - Viewport
     - Where the image is recorded
 
-## Outline of OpenGL Transformations ##
+## Understanding Transformations ##
+Page 132, OpenGL SuperBible, 5th Ed.
+
 - Viewing transformation is applied to the scene
   - Used to determine the vantage point of the scene
   - Applied before any other transformations, because the other
     matrixes will use the completed (i.e. view has been moved to it's
     destination) view matrix to calculate their final matrixes before the
     scene is rendered
-  - GLKit Classes: GLKMatrix4MakePerspective?
+  - GLKit Classes: `GLKMatrix4Make[Translation|Scale|Rotation]`
 
 - Transformations are applied to models
   - Translation and rotation matrixes are non-commutive, meaning there will be
     different results depending on whether the translation matrix was
     calculated first, or the rotation matrix was calculated first
-  - GLKit Classes: None, combined with ModelView matrix below
+  - GLKit Classes: `GLKMatrix4Make[Translation|Scale|Rotation]`
 
 - ModelView matrix is just another term for the view matrix with model
   matrixes applied to it, or the combined view and model matrixes
-  - GLKit Classes: GLKEffectPropertyTransform.modelviewMatrix
+  - GLKit Classes: `GLKEffectPropertyTransform.modelviewMatrix`
 
 - Projection Transformation is applied to vertices
   - Projection defines the viewing volume and establishes clipping planes
-  - GLKit Classes: GLKEffectPropertyTransform.modelviewMatrix
+  - GLKit Classes: `GLKMatrix4Make[Ortho|Perspective]`
 
 - Viewport Transformation maps the scene on to the physical window that's
   available for viewing it
-  - GLKit Classes: None, combined into GLKMatrix4MakePerspective maybe?
+  - GLKit Classes: None
 
 ## Notes from WebGL Techniques and Performance ##
 - http://www.youtube.com/watch?v=rfQ8rKGTVlg

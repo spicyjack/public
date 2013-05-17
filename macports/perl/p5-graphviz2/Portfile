@@ -1,0 +1,43 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         GraphViz2 2.08
+perl5.setup         GraphViz2 2.08 ../by-authors/id/R/RS/RSAVAGE
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         A wrapper for AT&T's Graphviz
+
+long_description    ${description}
+
+extract.suffix  .tgz
+checksums           sha256 71074ad3eceadf331bead90ae8548510507e85b99232a3669d1bf94df543e55e \
+                    rmd160 622c1ad1384ab31175e0ca60fe6b41b1317cb3dd
+
+depends_lib-append  port:p5-set-array \
+                    port:p5-capture-tiny \
+                    port:p5-ipc-run \
+                    port:p5-file-which \
+                    port:p5-html-tree \
+                    port:p5-text-xslate \
+                    port:p5-timedate \
+                    port:p5-data-section-simple \
+                    port:p5-dbi \
+                    port:p5-log-handler \
+                    port:p5-try-tiny \
+                    port:p5-perl6-slurp \
+                    port:p5-class-load \
+                    port:p5-hash-fieldhash \
+                    port:p5-parse-recdescent \
+                    port:p5-html-entities-interpolate \
+                    port:p5-algorithm-dependency \
+                    port:p5-xml-tiny \
+                    port:p5-tree-dag_node \
+                    port:p5-xml-bare
+
+

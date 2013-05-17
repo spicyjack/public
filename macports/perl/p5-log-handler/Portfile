@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+#perl5.setup         Log-Handler 0.76
+perl5.setup         Log-Handler 0.76 ../by-authors/id/B/BL/BLOONIX
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Log messages to several outputs.
+
+long_description    ${description}
+
+checksums           sha256 ede6bcac91f27102f480bb043eb3d6b792fe204338bfee55554d200d8e78af2f \
+                    rmd160 a87166733d06db46d67615f9fc7ce4cc09651534
+
+depends_lib-append  port:p5-params-validate
+
+

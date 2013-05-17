@@ -1,0 +1,23 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           perl5 1.0
+
+perl5.setup         Data-MessagePack 0.47
+#perl5.setup         Data-MessagePack 0.47 ../by-authors/id/G/GF/GFUJI
+platforms           darwin
+maintainers         nomaintainer
+# Uncomment this line if you know there will be no arch-specific code:
+#supported_archs     noarch
+
+description         Data::MessagePack (no description available)
+
+long_description    ${description}
+
+checksums           sha256 47225ee51263bd78324a0f2a3de800bf53344dc597cb64d58661e711bbab9ca8 \
+                    rmd160 b2a97105efe5c022dcd98e502fcc4ea55407b212
+
+
+depends_build-append port:p5-test-requires
+
