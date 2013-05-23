@@ -1,4 +1,5 @@
-" from http://blogs.perl.org/users/ovid/2011/01/show-perl-subname-in-vim-statusline.html
+" from ovid's blog post: http://tinyurl.com/qxrvvyc
+" save as ~/.vim/ftplugin/perl.vim
 if ! exists("g:did_perl_statusline")
     setlocal statusline+=%(\ %{StatusLineIndexLine()}%)
     setlocal statusline+=%=
