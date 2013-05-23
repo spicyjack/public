@@ -1,12 +1,15 @@
 " from ovid's blog post: http://tinyurl.com/qxrvvyc
-" save as ~/.vim/ftplugin/perl.vim
-if ! exists("g:did_perl_statusline")
-    setlocal statusline+=%(\ %{StatusLineIndexLine()}%)
-    setlocal statusline+=%=
-    setlocal statusline+=%f\ 
-    setlocal statusline+=%P
-    let g:did_perl_statusline = 1
-endif
+" modified 23May2013 by Brian Manning <brian at xaoc dot org>
+
+" To use, save this file as:
+" ~/.vim/ftplugin/perl.vim
+"
+" Then add this to your ~/.vimrc somewhere:
+" autocmd BufReadPost * if &syntax == 'perl' | source ~/.vim/ftplugin/perl.vim
+
+" This is different from Ovid's example, in that it *prepends* the current
+" method name in front of the other statusline values
+setlocal statusline^=%(\ %{StatusLineIndexLine()}%)
 
 if has( 'perl' )
 perl << EOP
@@ -18,7 +21,7 @@ perl << EOP
         my @document = map { $curbuf->Get($_) } 0 .. $curbuf->Count;
         my ( $line_number, $column  ) = $curwin->Cursor;
 
-        my $sub_name = '(not in sub)';
+        my $sub_name = 'N/A';
         for my $i ( reverse ( 1 .. $line_number  -1 ) ) {
             my $line = $document[$i];
             if ( $line =~ /^\s*sub\s+(\w+)\b/ ) {
@@ -26,7 +29,7 @@ perl << EOP
                 last;
             }
         }
-        VIM::DoCommand "let subName='$line_number: $sub_name'";
+        VIM::DoCommand "let subName='($sub_name)'";
     }
 EOP
 
