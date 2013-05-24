@@ -16,7 +16,7 @@ From: https://trac.macports.org/ticket/32207
     port -sv install mjpegtools configure.compiler=llvm-gcc-4.2
 
 ## launchctl ##
-- launchctl and !MacPorts - http://tinyurl.com/6benazm 
+- launchctl and MacPorts - http://tinyurl.com/6benazm 
 
 To start a program that's installed via MacPorts, you can either use
 `launchctl`:
