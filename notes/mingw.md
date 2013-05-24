@@ -10,7 +10,6 @@
 - Downloads
   - http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/
 
-
 ## MinGW-64 Links ##
 - Homepage - http://mingw-w64.sourceforge.net/
 - Allows building MinGW apps for Windows on Windows, Linux and OS X (Darwin)
@@ -19,6 +18,16 @@
   - http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/
   - http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/
 
-
+## mingw-get usage ##
+- Get help
+  - `mingw-get --help`
+- Update available packages
+  - `mingw-get update`
+- List packages
+  - `mingw-get list`
+- List just package names (requires `UnxUtils`)
+  - `mingw-get list | grep Package | less`
+- Install basically everything:
+  - `mingw-get install mingw-developer-toolkit --start-menu`
 
 # vim: filetype=markdown shiftwidth=2 tabstop=2
