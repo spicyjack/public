@@ -16,9 +16,12 @@ run:
 - `vagrant init` creates the `Vagrantfile`, or the description of the VM
 environment
 - `vagrant up` launches it
+  - This needs to be run from the directory that contains the `Vagrantfile`
 - Use `vagrant ssh` once the VM has launched to log into it
   - Needs an SSH client installed in your path, or use PuTTY to connect to
     `localhost:2222` with a key file; use `vagrant ssh-config` to get the full
     path to the keyfile
+- `vagrant box list` lists configured Vagrant instances
+- `vagrant status` will list the running vagrant instances
 
 vim: filetype=markdown shiftwidth=2 tabstop=2

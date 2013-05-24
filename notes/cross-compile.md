@@ -23,12 +23,23 @@ Add `bashrc.d` script for `crosstool-ng`:
 
 https://raw.github.com/spicyjack/public/master/rc_scripts/bashrc.d/crosstool-ng
 
-## Compiling Other Apps ##
+## Notes on Compiling Other Apps ##
 - Make sure that the cross-compiler toolchain is in the `$PATH` for the user
   that will be doing the work
 - Do compiles under `Vagrant`, to try to work out library dependencies and
   what needs to be installed on the system prior to compiling?
 - See the `ffmpeg` link above for different ways of calling the cross-compiler
   when building a ѕet of apps/libraries
+
+## Examples of Compiling Other Apps ##
+Setup
+
+    export CCPREFIX="/opt/cross/x-tools/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-"
+
+SDL
+
+    ./configure --prefix=/usr/local/src/arm-output/SDL-1.2.15 \
+      --host=arm-unknown-linux-gnueabi
+
 
 vim: filetype=markdown shiftwidth=2 tabstop=2:
