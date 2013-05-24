@@ -22,5 +22,6 @@ environment
     `localhost:2222` with a key file; use `vagrant ssh-config` to get the full
     path to the keyfile
 - `vagrant box list` lists configured Vagrant instances
+- `vagrant status` will list the running vagrant instances
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
