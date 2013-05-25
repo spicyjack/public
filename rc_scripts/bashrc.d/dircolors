@@ -6,6 +6,10 @@ if [ -x /opt/local/bin/gdircolors ]; then
     DIRCOLORS="/opt/local/bin/gdircolors"
     eval $($DIRCOLORS ~/.dircolors)
 elif [ -x /usr/bin/dircolors ]; then
+    # GNU/Linux
+    #alias dir='/bin/ls --classify --color=auto'
+    #DIRCOLORS="/usr/bin/dircolors --bourne-shell"
+    # BSD/Mac OS X
     alias dir='/bin/ls -F'
     DIRCOLORS="/usr/bin/dircolors"
     eval $($DIRCOLORS ~/.dircolors)
