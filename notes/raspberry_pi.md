@@ -38,9 +38,9 @@ After the system comes up, set up the `pi` user
 - Install the following packages:
 
 
-    autofs vim-nox console-tools git screen bzip2 zip unzip sysv-rc-conf stow
-    linuxlogo cvs fluxbox slim zenity libgtk2-perl kernel-package debhelper
-    dh-make-perl
+    autofs vim-nox console-tools git-core screen bzip2 zip unzip 
+    sysv-rc-conf stow linuxlogo cvs fluxbox slim zenity libgtk2-perl
+    kernel-package debhelper dh-make-perl
 
 For *Jenkins*, use the setup notes in `personal.git/notes/jenkins/notes.md`.
 Test SSH connectivity after setting up the user and dropping the SSH key into
