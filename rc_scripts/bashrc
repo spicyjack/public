@@ -15,6 +15,7 @@ for RCFILE in ~/.bashrc.d/*; do
     fi
     source $RCFILE
 done
+unset RCFILE
 
 # vi: set ft=sh sw=4 ts=4
 # fin!
