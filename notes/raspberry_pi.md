@@ -2,24 +2,6 @@
 See also `arm_notes.md`
 
 ## Setting up the default Raspbian image ##
-- Run `apt-get update`
-- Install new window manager, then update-alternatives x-window-manager
-- Install new terminal emulator
-- Create `~/.ssh` and add `authorized_keys`
-- Install `git` and clone `rcfiles-lack`
-- Remove LXDE packages
-  - lxde-common lxde-core lxde lxappearance lxde-icon-theme lxinput
-    lxmenu-data lxpanel lxpolkit lxrandr lxsession lxsession-edit lxshortcut
-    lxtask lxterminal libfm1 libfm-gtk1 libfm-gtk-bin pcmanfm
-- Install new packages
-  - vim linuxlogo console-tools cvs git screen less bzip2 zip unzip
-    kernel-package debhelper dh-make-perl fluxbox zenity libgtk2-perl
-    libdancer-perl sqlite3 sqlite3-doc libdbd-sqlite3-perl
-- If you install a session manager by mistake, you can remove it from
-  `/etc/init.d` with:
-  - `sudo update-rc.d -f <session manager package name> remove`
-
-## Alternate Host Setup ##
 In the `raspi-config` setup tool:
 - Expand rootfs
 - Change the password to be the default `lack` password
@@ -31,8 +13,35 @@ In the `raspi-config` setup tool:
 - Reboot
 
 After the system comes up, set up the `pi` user
-- Install `authorized_keys` file
-- Set up `.bashrc`
+- Run `apt-get update; apt-get upgrade`
+- Create `~/.ssh` as user `pi` and add `authorized_keys`
+- Install new packages
+
+
+    autofs vim-nox linuxlogo console-tools cvs git-core screen less 
+    bzip2 zip unzip kernel-package debhelper dh-make-perl fluxbox zenity 
+    sqlite3 sqlite3-doc 
+
+- Optional Perl modules; not recommended if you're going to PerlBrew
+
+
+    libgtk2-perl libdancer-perl libdbd-sqlite3-perl
+
+- Clone `https://github.com/spicyjack/rcfiles-lack.git`
+  - Set up `.bashrc`
+- Install new window manager, then...
+  - `sudo update-alternatives --config x-window-manager`
+- Install new terminal emulator
+- Remove LXDE packages
+
+
+    lxde-common lxde-core lxde lxappearance lxde-icon-theme lxinput
+    lxmenu-data lxpanel lxpolkit lxrandr lxsession lxsession-edit lxshortcut
+    lxtask lxterminal libfm1 libfm-gtk1 libfm-gtk-bin pcmanfm
+
+- If you install a session manager by mistake, you can remove it from
+  `/etc/init.d` with:
+  - `sudo update-rc.d -f <session manager package name> remove`
 - Start setting up the machine based on
   `personal.git/notes/qemu/host_setup.md`
 - Install the following packages:
@@ -40,11 +49,16 @@ After the system comes up, set up the `pi` user
 
     autofs vim-nox console-tools git-core screen bzip2 zip unzip 
     sysv-rc-conf stow linuxlogo cvs fluxbox slim zenity libgtk2-perl
-    kernel-package debhelper dh-make-perl
+    kernel-package debhelper dh-make-perl htop
 
 For *Jenkins*, use the setup notes in `personal.git/notes/jenkins/notes.md`.
 Test SSH connectivity after setting up the user and dropping the SSH key into
 the `jenkins` user's home directory.
+
+## Raspberry-specific commands ##
+- Check CPU temp
+- `echo "scale=2;($(cat /sys/class/thermal/thermal_zone0/temp)/1000)*9/5+32"|bc`
+
 
 ## Links ##
 - http://www.raspberrypi.org/
@@ -63,6 +77,8 @@ the `jenkins` user's home directory.
   - RPi Hub - http://elinux.org/RPi_Hub
   - RPi Software (building software for Raspberry Pi)
     http://elinux.org/RPi_Software
+  - Configuration file: http://elinux.org/RPiconfig
+    - Includes how to check CPU speed and temperature
 
 ## Distros ##
 - Raspbian
