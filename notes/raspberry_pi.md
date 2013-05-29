@@ -58,7 +58,7 @@ the `jenkins` user's home directory.
 ## Raspberry-specific commands ##
 - Check CPU temp
 - `echo "scale=2;($(cat /sys/class/thermal/thermal_zone0/temp)/1000)*9/5+32"|bc`
-
+- `/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`
 
 ## Links ##
 - http://www.raspberrypi.org/
