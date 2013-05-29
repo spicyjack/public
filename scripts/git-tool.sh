@@ -329,8 +329,9 @@ else
     ECHO_CMD="echo"
 fi
 
-# these two paths cover a majority of my test machines
-for GETOPT_CHECK in "/opt/local/bin/getopt" "/usr/bin/getopt";
+# these paths cover a majority of my test machines
+for GETOPT_CHECK in "/opt/local/bin/getopt" "/usr/local/bin/getopt" \
+    "/usr/bin/getopt";
 do
     if [ -x "${GETOPT_CHECK}" ]; then
         GETOPT_BIN=$GETOPT_CHECK

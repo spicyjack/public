@@ -1,14 +1,14 @@
 #!/bin/bash
 # public aliases
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias vi='/usr/bin/vim'
-alias dir='ls --color=tty --classify'
-alias cdir='ls --color=yes --classify'
 alias cls='cd; clear'
-alias lessr='less -R'
+alias cp='cp -i'
 alias datesync='sudo ntpdate pool.ntp.org'
+# dircolors sets up 'dir' now
+alias lessr='less -R'
+alias mv='mv -i'
+alias rm='rm -i'
+alias vi='/usr/bin/vim'
+# convert epoch time to a normal date/time
 alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
     localtime(\$1))/e"'
 # vim: set filetype=sh shiftwidth=4 tabstop=4:

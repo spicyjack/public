@@ -1,32 +1,32 @@
 #!/bin/bash
 
-# ANSI escape codes: http://en.wikipedia.org/wiki/ANSI_escape_code
-
-# ANSI tail, sets color to normal
-C_END="\[\e[0m\]"
-
-C_BLUE="\[\e[1;34;40m\]"
-C_GREEN="\[\e[0;32;40m\]"
-C_RED="\[\e[0;31;40m\]"
-C_CYAN="\[\e[0;36;40m\]"
-C_MAGENTA="\[\e[0;35;40m\]"
-C_YELLOW="\[\e[0;33;40m\]"
-
-# host colors
-# - blue = generic host
-# - green = known host, last command exited with zero status
-# - red = known host, last command exited with non-zero status
-# git dirty status
-# - green - current branch is not dirty
-# - red - current branch is dirty
-
-# list of hostnames that receive special colors
-HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko"
-# list of usernames that receive special colors
-SERVICE_USERS="jenkins|icinga|icinga-cmd"
-
 set_ps1 () {
     LAST_CMD=$?
+
+    # list of hostnames that receive special colors
+    HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko"
+    # list of usernames that receive special colors
+    SERVICE_USERS="jenkins|icinga|icinga-cmd"
+
+    # ANSI tail, sets color to normal
+    C_END="\[\e[0m\]"
+
+    C_BLUE="\[\e[1;34;40m\]"
+    C_GREEN="\[\e[0;32;40m\]"
+    C_RED="\[\e[0;31;40m\]"
+    C_CYAN="\[\e[0;36;40m\]"
+    C_MAGENTA="\[\e[0;35;40m\]"
+    C_YELLOW="\[\e[0;33;40m\]"
+
+    # ANSI escape codes: http://en.wikipedia.org/wiki/ANSI_escape_code
+    # host colors
+    # - blue = generic host
+    # - green = known host, last command exited with zero status
+    # - red = known host, last command exited with non-zero status
+    # git dirty status
+    # - green - current branch is not dirty
+    # - red - current branch is dirty
+
     ### Set up PS1_HOST
     if [ $(echo ${HOSTNAME} | egrep -c "${HOSTNAMES}") -gt 0 ]; then
         HOST_COLOR=${C_GREEN}
@@ -85,12 +85,18 @@ set_ps1 () {
     ### Set up PS1_PATH
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
     PS1="${PS1_HOST}${PS1_USER}${PS1_PATH}${PS1_GIT_STATUS}\$ "
+
+    # unset things so they don't pollute the environment
+    unset PS3 PS1_HOST PS1_USER PS1_PATH PS1_GIT_STATUS
+    unset SERVICE_USERS HOSTNAMES HOST_STRING HOST_COLOR
+    unset C_END C_BLUE C_GREEN C_RED C_CYAN C_MAGENTA C_YELLOW
 }
-unset PS3 PS1_HOST PS1_USER PS1_PATH
+
 PROMPT_COMMAND=set_ps1
 PS2="\[\e[0;1m\]>\[\e[0m\] "
 PS4="\[\e[1;32m\]+\[\e[0m\] "
 export PS1 PS2 PS4
+
 
 # vi: set ft=sh sw=4 ts=4
 # fin!
