@@ -38,8 +38,13 @@ Setup
 
 SDL
 
-    ./configure --prefix=/usr/local/src/arm-output/SDL-1.2.15 \
-      --host=arm-unknown-linux-gnueabi
+    ./configure --build=$(uname -m) --enable-static \
+    --host=arm-unknown-linux-gnueabi --target=arm-unknown-linux-gnueabi \
+    --prefix=/usr/local/src/arm-out --disable-pulseaudio --disable-video-x11 \
+    2>&1 | tee config.out
 
+    /opt/cross/x-tools/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-ldd
+    --root /opt/cross/x-tools/arm-unknown-linux-gnueabi/ 
+      libSDL-1.2.so.0.11.4 | less
 
 vim: filetype=markdown shiftwidth=2 tabstop=2:
