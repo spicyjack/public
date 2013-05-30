@@ -55,6 +55,17 @@ For *Jenkins*, use the setup notes in `personal.git/notes/jenkins/notes.md`.
 Test SSH connectivity after setting up the user and dropping the SSH key into
 the `jenkins` user's home directory.
 
+## Raspbian Repository ##
+From: http://www.raspbian.org/RaspbianRepository
+
+    deb http://archive.raspbian.org/raspbian wheezy main contrib non-free
+    deb-src http://archive.raspbian.org/raspbian wheezy main contrib non-free
+
+To add the Raspbian GPG package signing keys:
+
+    wget http://archive.raspbian.org/raspbian.public.key -O - \
+      | sudo apt-key add -
+
 ## Raspberry-specific commands ##
 - Check CPU temp
 - `echo "scale=2;($(cat /sys/class/thermal/thermal_zone0/temp)/1000)*9/5+32"|bc`
