@@ -33,4 +33,7 @@ installed version of Perl.
 
     curl -kL http://install.perlbrew.pl | bash
 
-# vim: filetype=markdown shiftwidth=2 tabstop=2
+## Links ##
+- http://www.dagolden.com/index.php/2134/how-i-manage-new-perls-with-perlbrew/
+
+vim: filetype=markdown shiftwidth=2 tabstop=2
