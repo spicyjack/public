@@ -50,15 +50,6 @@
 - Install package dependencies
   - Graphviz, for graphing job dependencies
 
-### Creating Java equivs packages ###
-
-    cd /dev/shm
-    # NOTE: remove backslash escaping of asterisk in the next command
-    cp /usr/share/doc/java-common/dummy-packages/\*.control .
-    for FILE in *.control; do echo "Building $FILE"; equivs-build $FILE; done
-    sudo dpkg -i *.deb
-
-
 ### Related Links ###
 http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-jenkins-build-from-the-command-line
 
@@ -111,5 +102,12 @@ http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-je
     # doesn't work, looks for files in the wrong user directory
     sudo -u jenkins java -jar jenkins.war 2>&1 \
       | sudo -u jenkins tee -a jenkins.log > /dev/null &
+
+### Creating Java equivs packages ###
+
+    cd /dev/shm
+    cp /usr/share/doc/java-common/dummy-packages/*.control .
+    for FILE in *.control; do echo "Building $FILE"; equivs-build $FILE; done
+    sudo dpkg -i *.deb
 
 vim: filetype=markdown shiftwidth=2 tabstop=2:
