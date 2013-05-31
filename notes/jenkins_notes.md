@@ -58,16 +58,6 @@
     for FILE in *.control; do echo "Building $FILE"; equivs-build $FILE; done
     sudo dpkg -i *.deb
 
-### Starting Jenkins from the command line ###
-
-    sudo su - jenkins
-    java -jar jenkins.war --httpPort=8888 --httpListenAddress=127.0.0.1 \
-      >> jenkins.log 2>&1 &
-
-    # doesn't work, looks for files in the wrong user directory
-    sudo -u jenkins java -jar jenkins.war 2>&1 \
-      | sudo -u jenkins tee -a jenkins.log > /dev/null &
-
 
 ### Related Links ###
 http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-jenkins-build-from-the-command-line
@@ -75,23 +65,23 @@ http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-je
 ## Jenkins Plugins and their purposes ##
 - AnsiColor (currently disabled)
 - ant (builtin)
-- Avatar - shows avatar pictures
-- Build Pipeline Plugin - Allows for visualization of the build pipeline
+- Avatar: shows avatar pictures
+- Build Pipeline Plugin : Allows for visualization of the build pipeline
 - Compact Columns
-- Copy Artifact - a build step for copying artifacts of other jobs
-- Custom Job Icon - set up a custom icon for jobs
-- Dependency Graph Viewer - view a graph of job dependencies
-- External Monitor Job Type - monitor processes external to Jenkins
+- Copy Artifact: a build step for copying artifacts of other jobs
+- Custom Job Icon: set up a custom icon for jobs
+- Dependency Graph Viewer: view a graph of job dependencies
+- External Monitor Job Type: monitor processes external to Jenkins
 - GitHub API Plugin
 - GitHub Plugin
-- Green Balls - replace the blue job status balls with green ones
-- Hudson Xvnc plugin - for testing apps that need X11 to test/run
+- Green Balls: replace the blue job status balls with green ones
+- Hudson Xvnc plugin: for testing apps that need X11 to test/run
 - Jenkins CVS plugin
 - Jenkins Dependency Analyzer Plugin
 - Jenkins GIT Plugin
 - Jenkins Google Code Plugin
 - Jenkins Gravatar Plugin
-- Jenkins instant-messaging plugin - support for build notification via
+- Jenkins instant-messaging plugin: support for build notification via
   instant messenger
 - Jenkins IRC Plugin
 - Jenkins Jabber notifier
@@ -104,12 +94,22 @@ http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-je
 - Jenkins Xvfb plugin
 - Job Log Logger plugin
 - LDAP Plugin
-- Log Command plugin - adds commands to the CLI for viewing job logs
+- Log Command plugin: adds commands to the CLI for viewing job logs
 - Maven Integration plugin
 - pam-auth
 - Token Macro plugin
 - View Job filters
-- Xcode integration - invokes Xcode tools for building Xcode projects
+- Xcode integration: invokes Xcode tools for building Xcode projects
   (agvtool)
+
+### Starting Jenkins from the command line ###
+
+    sudo su - jenkins
+    java -jar jenkins.war --httpPort=8888 --httpListenAddress=127.0.0.1 \
+      >> jenkins.log 2>&1 &
+
+    # doesn't work, looks for files in the wrong user directory
+    sudo -u jenkins java -jar jenkins.war 2>&1 \
+      | sudo -u jenkins tee -a jenkins.log > /dev/null &
 
 vim: filetype=markdown shiftwidth=2 tabstop=2:
