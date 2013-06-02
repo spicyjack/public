@@ -346,7 +346,7 @@ if [ -z "${GETOPT_BIN}" ]; then
 fi
 
 # Use short options if we're using Darwin's getopt
-if [ $OSDETECT = "Darwin" -a $GETOPT_BIN != "/opt/local/bin/getopt" ]; then
+if [ $OSDETECT = "Darwin" -a $GETOPT_BIN = "/usr/bin/getopt" ]; then
     GETOPT_TEMP=$(${GETOPT_BIN} heqncp:x: $*)
 else
 # Use short and long options with GNU's getopt
@@ -361,6 +361,11 @@ fi
 #if [ $? -ne 0 -o $# -eq 0 ] ; then
 if [ $? != 0 ] ; then
     echo "Run '${SCRIPTNAME} --help' to see script options" >&2
+    if [ $OSDETECT = "Darwin" -a $GETOPT_BIN = "/usr/bin/getopt" ]; then
+        echo "WARNING: 'Darwin' OS and system '/usr/bin/getopt' detected;" >&2
+        echo "WARNING: Only short options (-h, -e, etc.) will work" >&2
+        echo "WARNING: with system '/usr/bin/getopt' under 'Darwin' OS" >&2
+    fi
     exit 1
 fi
 
