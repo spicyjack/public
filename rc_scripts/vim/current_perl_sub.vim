@@ -1,5 +1,6 @@
 " from ovid's blog post: http://tinyurl.com/qxrvvyc
 " modified 23May2013 by Brian Manning <brian at xaoc dot org>
+" - 03Jun2013 - added detection of 'package main;'
 
 " To use, save this file as:
 " ~/.vim/ftplugin/perl.vim
@@ -24,8 +25,12 @@ perl << EOP
         my $sub_name = 'N/A';
         for my $i ( reverse ( 1 .. $line_number  -1 ) ) {
             my $line = $document[$i];
-            if ( $line =~ /^\s*sub\s+(\w+)\b/ ) {
-                $sub_name = $1;
+            if ( $line =~ /^\s*sub\s+(\w+)\b|^package (main)/ ) {
+                if ( $1 ) {
+                    $sub_name = $1;
+                } elsif ( $2 ) {
+                    $sub_name = $2;
+                }
                 last;
             }
         }
