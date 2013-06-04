@@ -57,7 +57,7 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
-## Problems installing gtk-doc ##
+### Problems installing gtk-doc ###
 `libxml2` needs to be installed so it also installs it's python module.
 
 - `brew install python`
