@@ -61,5 +61,4 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
-
 vim: filetype=markdown shiftwidth=2 tabstop=2
