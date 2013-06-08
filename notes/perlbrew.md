@@ -2,36 +2,37 @@
 
 https://metacpan.org/module/App::perlbrew
 
-## Get the current status ##
+## Using Perlbrew ##
+Get the current status
+- `perlbrew info`
 
-    perlbrew info
+Get Perl version availability
+- Also shows installed versions of Perl, with an `i` character next to an
+  installed version of Perl.
+- `perlbrew available`
 
-## Get Perl version availability ##
-Also shows installed versions of Perl, with an `i` character next to an
-installed version of Perl.
+Switch to a different Perl
+- `perlbrew switch perl-5.X.X`
 
-    perlbrew available
+Turn perlbrew off completely
+- `perlbrew off`
 
-## Switch to a different Perl ##
+Use 'switch' command to turn it back on.
+- `perlbrew switch perl-5.12.2`
 
-    perlbrew switch perl-5.X.X
+Temporarily use another version only in current shell ##
+- `perlbrew use perl-5.8.1`
+- `perl -v`
 
-# Turn perlbrew off completely
+Perlbrew Installation
+- `curl -kL http://install.perlbrew.pl | bash`
 
-    perlbrew off
+# Using `cpanm` #
+Installing a module + dependencies
+- `cpanm Module::Name`
 
-# Use 'switch' command to turn it back on.
-
-    perlbrew switch perl-5.12.2
-
-## Temporarily use another version only in current shell ##
-
-    perlbrew use perl-5.8.1
-    perl -v
-
-## Installation ##
-
-    curl -kL http://install.perlbrew.pl | bash
+"Looking" into a module distribution
+- `cpanm --look Module::Name`
 
 ## Links ##
 - http://www.dagolden.com/index.php/2134/how-i-manage-new-perls-with-perlbrew/
@@ -52,12 +53,12 @@ path;
 Verify your `libcairo` was built with `GObject` support.  You would have built
 `libcairo` like this:
 
-    brew install cairo --with-glib
+    brew install --with-glib cairo
 
 Same deal with `Gtk2` above; install Gtk3 with `PKG_CONFIG_PATH` set to the
 system X11 path;
 
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig cpanm Gtk2
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig cpanm Gtk3
 
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
