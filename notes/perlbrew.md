@@ -61,10 +61,8 @@ the environment.
 
     cpanm --look Cairo::GObject
 
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:/usr/local/lib/pkgconfig \
-      perl Makefile.PL
-    LDFLAGS="-L/usr/local/opt/cairo/lib" \
-      CPPFLAGS="-I/usr/local/opt/cairo/include" \
+    CPPFLAGS="-I/usr/local/cairo/include" \
+      LDFLAGS="-L/usr/local/lib" \
       PKG_CONFIG_PATH="/usr/X11/lib/pkgconfig" \
       perl Makefile.PL
 
