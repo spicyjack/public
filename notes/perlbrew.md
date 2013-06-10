@@ -38,11 +38,12 @@ Installing a module + dependencies
 - http://www.dagolden.com/index.php/2134/how-i-manage-new-perls-with-perlbrew/
 
 ## Problems installing Gtk2: Cairo won't build ##
-Unlink and relink all of the dependencies for `libcairo`;
+Unlink and relink all of the dependencies for `cairo`;
 - `brew link --force pixman`
 - `brew link --force fontconfig`
 - `brew link --force freetype`
 - `brew link --force libpng`
+- `brew link --force cairo`
 
 Then build `Cairo` via `cpanm` with `PKG_CONFIG_PATH` set to the system X11
 path;
@@ -55,10 +56,27 @@ Verify your `libcairo` was built with `GObject` support.  You would have built
 
     brew install --with-glib cairo
 
-Same deal with `Gtk2` above; install Gtk3 with `PKG_CONFIG_PATH` set to the
-system X11 path;
+Same deal with `Gtk2` above; install `Cairo::GObject` with extra paths set in
+the environment.
 
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig cpanm Gtk3
+    cpanm --look Cairo::GObject
 
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:/usr/local/lib/pkgconfig \
+      perl Makefile.PL
+    LDFLAGS="-L/usr/local/opt/cairo/lib" \
+      CPPFLAGS="-I/usr/local/opt/cairo/include" \
+      PKG_CONFIG_PATH="/usr/X11/lib/pkgconfig" \
+      perl Makefile.PL
+
+Edit the resulting `Makefile` and remove references to `include` in
+`/usr/lib`.  Also, add a reference to the `Freetype` include files in
+`/usr/local/include/freetype2`
+
+    INC = -I/usr/X11/include -I/usr/local/include/freetype2 \
+    -I/usr/local/Cellar/cairo/1.12.14/include/cairo \
+    -I/usr/local/Cellar/glib/2.36.2/include/glib-2.0 \
+    -I/usr/local/Cellar/glib/2.36.2/lib/glib-2.0/include
+
+Then run `make && make test && make install` to install `Cairo::GObject`.
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
