@@ -1,10 +1,15 @@
 # Life with Perlbrew #
 
-https://metacpan.org/module/App::perlbrew
+## Links ##
+- http://perlbrew.pl/
+- https://metacpan.org/module/App::perlbrew
 
 ## Using Perlbrew ##
 Get the current status
 - `perlbrew info`
+
+List the current installed Perls
+- `perlbrew list`
 
 Get Perl version availability
 - Also shows installed versions of Perl, with an `i` character next to an
@@ -13,6 +18,12 @@ Get Perl version availability
 
 Switch to a different Perl
 - `perlbrew switch perl-5.X.X`
+
+Install a different version of Perl
+- `perlbrew install perl-5.X.X`
+
+Install `cpanminus/cpanm`
+- `perlbrew install-cpanm`
 
 Turn perlbrew off completely
 - `perlbrew off`
