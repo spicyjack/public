@@ -6,6 +6,13 @@
 ## Homebrew Command Summary ##
 Update recipes
 - `brew update`
+- This will list what recipes got updated
+
+Upgrade recipes
+- `brew upgrade <recipe>`
+
+How to find out what packages are out of date?
+- `brew outdated`
 
 List installed packages
 - `brew list`
@@ -13,9 +20,9 @@ List installed packages
 List files installed by a package
 - `brew list <package name>`
 
-- How to find out what files belong to which packages?
-  - Do an `ls -l` on the file, it will pount back to the location of the
-    installing package.
+How to find out what files belong to which packages?
+- Do an `ls -l` on the file, it will pount back to the location of the
+  installing package.
 
 ## Package Notes ##
 
