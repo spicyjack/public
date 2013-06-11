@@ -1,17 +1,28 @@
 # Homebrew Notes #
 
 ## Todo ##
+- Fix libcairo so that GObject support works, so that Gtk3 can be compiled
 
 ## Homebrew Command Summary ##
+Update recipes
+- `brew update`
+- This will list what recipes got updated
+
+Upgrade recipes
+- `brew upgrade <recipe>`
+
+How to find out what packages are out of date?
+- `brew outdated`
+
 List installed packages
 - `brew list`
 
 List files installed by a package
 - `brew list <package name>`
 
-- How to find out what files belong to which packages?
-  - Do an `ls -l` on the file, it will pount back to the location of the
-    installing package.
+How to find out what files belong to which packages?
+- Do an `ls -l` on the file, it will pount back to the location of the
+  installing package.
 
 ## Package Notes ##
 
@@ -57,14 +68,10 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
-## Problems installing gtk-doc ##
-`libxml2` needs to be installed so it also installs it's python module.
+### Gtk+3 ###
 
-- `brew install python`
-- `brew install gnome-doc-utils`
-  - Edit `/usr/local/bin/xml2po` and change the bangpath to 
-    `#!/usr/bin/env python`
-- `brew install --with-python libxml2`
-- `brew install gtk-doc`
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
+    ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
+    --enable-introspection=yes --enable-gtk-doc
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
