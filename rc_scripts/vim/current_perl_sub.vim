@@ -25,11 +25,16 @@ perl << EOP
         my $sub_name = 'N/A';
         for my $i ( reverse ( 1 .. $line_number  -1 ) ) {
             my $line = $document[$i];
-            if ( $line =~ /^\s*sub\s+(\w+)\b|^package (main)/ ) {
+            my $sub_qr = qr/^\s*sub\s+(\w+)\b/;
+            my $package_qr = qr/^package (main)/;
+            my $method_qr = qr/^\s*method\s+(\w+)\s+\{/;
+            if ( $line =~ /$sub_qr|$package_qr|$method_qr/ ) {
                 if ( $1 ) {
                     $sub_name = $1;
                 } elsif ( $2 ) {
                     $sub_name = $2;
+                } elsif ( $3 ) {
+                    $sub_name = $3;
                 }
                 last;
             }
