@@ -53,7 +53,6 @@ Unlink and relink all of the dependencies for `cairo`;
 - `brew link --force pixman`
 - `brew link --force fontconfig`
 - `brew link --force freetype`
-- `brew link --force libpng`
 - `brew link --force cairo`
 
 Then build `Cairo` via `cpanm` with `PKG_CONFIG_PATH` set to the system X11
