@@ -68,4 +68,10 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
+### Gtk+3 ###
+
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
+    ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
+    --enable-introspection=yes --enable-gtk-doc
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
