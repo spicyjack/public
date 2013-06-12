@@ -69,9 +69,39 @@ Or, if you don't want/need launchctl, you can just run:
   - `brew unlink libtiff && brew link libtiff`
 
 ### Gtk+3 ###
+- Had to enable introspection on Pango, Cairo, Gdk-pixbuf, Atk, etc.
+- Had to mangle something in the Gtk3 source tree (I think docs/gtk/) to get
+  Gtk3 to install.  It could have been the docbook catalog in
+  /usr/local/etc/xml.
+
 
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
     ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
     --enable-introspection=yes --enable-gtk-doc
+
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+    GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
+    ./configure --prefix=/usr/local/Cellar/gdk-pixbuf/2.28.1 \
+      --disable-dependency-tracking --disable-maintainer-mode \
+      --enable-debug=no --enable-introspection=yes \
+      --disable-Bsymbolic --without-gdiplus
+      
+    Error: Could not symlink file:
+    /usr/local/Cellar/gtk+3/3.8.2/bin/gtk-update-icon-cache
+    Target /usr/local/bin/gtk-update-icon-cache already exists. You may need
+    to delete it.
+    To force the link and overwrite all other conflicting files, do:
+      brew link --overwrite formula_name
+
+      To list all files that would be deleted:
+        brew link --overwrite --dry-run formula_name
+        [гром][brian local](master)$ ls -l
+        /usr/local/bin/gtk-update-icon-cache
+        lrwxr-xr-x  1 brian  admin  48 May 24 21:59
+        /usr/local/bin/gtk-update-icon-cache ->
+        ../Cellar/gtk+/2.24.18/bin/gtk-update-icon-cache
+        [гром][brian local](master)$ brew link --overwrite gtk+3
+        Linking /usr/local/Cellar/gtk+3/3.8.2... 267 symlinks created
+
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
