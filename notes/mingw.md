@@ -30,4 +30,19 @@
   - http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/
   - http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/
 
+## MinGW Environment Setup ##
+Any utilities provided by MinGW must be the only utilities of that type in the
+environment.  Other \*NIX utilities, provided by things like Git on Windows or
+UnxUtils, must me excluded from the user's $PATH environment variable, or
+there will be program crashes/hangs.
+
+### Emergency/customized Bash startup in Windows ###
+`MSYS` startup icon info:
+- Target: `C:\MinGW\msys\1.0\bin\bash.exe --rcfile /p/.bashrc.winnt`
+- Start in: `C:\MinGW\msys\1.0\bin`
+
+Contents of `/p/.bashrc.winnt`
+- `PATH=/mingw/bin:/usr/bin:/usr/sbin; export PATH`
+- Add other customization to suit
+
 # vim: filetype=markdown shiftwidth=2 tabstop=2

@@ -50,6 +50,17 @@
 - Install package dependencies
   - Graphviz, for graphing job dependencies
 
+## Jenkins on Windows ##
+If you are using Jenkins on Windows, and you have multiple copies of either
+`sh.exe` or `bash.exe` in your `%PATH%`, you might want to set a default shell
+in Jenkins, along with any options for that shell.
+
+- Manage Jenkins
+- Configure System
+- Shell
+  - Shell executable: Whatever shell and arguments you need to run jobs
+    - Example: `C:\MinGW\msys\1.0\bin\bash.exe -xe --rcfile /p/.bashrc`
+
 ### Related Links ###
 http://serverfault.com/questions/309848/how-can-i-check-the-build-status-of-a-jenkins-build-from-the-command-line
 
