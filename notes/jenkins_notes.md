@@ -9,7 +9,7 @@
 - All steps will use `say/info/warn` for writing output to STDERR/STDOUT
   - allows --quiet to be tested for in fewer places
 
-### Debugging Jobs ###
+### Debugging Jobs in Linux ###
 - PatchELF, resets the RPATH in a library file
   - http://nixos.org/patchelf.html
 - `readelf` can show you the header info in a library file
