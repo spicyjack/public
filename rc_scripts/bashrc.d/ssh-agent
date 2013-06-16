@@ -2,37 +2,40 @@
 
 SSH_AGENTS_FOUND=0
 
+if [ "x$SSH_AUTH_SOCK" = "x" ]; then
 # This is a "Linux-y" path for the SSH agent socket
 # Macs have agent sockets in /tmp/launchd
-SSH_AGENT_SOCKET_PATH="/tmp/ssh-*"
-for SSH_AGENT_SOCK_DIR in $(/bin/ls -1d $SSH_AGENT_SOCKET_PATH 2>/dev/null);
-do
-    # we have a socket, see if there's an agent running with the pid
-    SSH_AGENT_SOCK=$(/bin/ls $SSH_AGENT_SOCK_DIR/agent.* 2>/dev/null)
-    SSH_AGENT_SOCK_BASENAME=$(/usr/bin/basename $SSH_AGENT_SOCK)
-    SSH_AGENT_PID=$(echo $SSH_AGENT_SOCK_BASENAME | awk -F'.' '{print $2}')
-    /bin/ps x | grep "ssh-agent" | awk '{print $1}' | grep -q $SSH_AGENT_PID
-    if [ $? -eq 0 ]; then
-        echo "Found SSH agent; PID = $SSH_AGENT_PID"
+    SSH_AGENT_SOCKET_PATH="/tmp/ssh-*"
+    for SSH_AGENT_SOCK_DIR in $(/bin/ls -1d $SSH_AGENT_SOCKET_PATH 2>/dev/null);
+    do
+        # we have a socket, see if there's an agent running with the pid
+        SSH_AGENT_SOCK=$(/bin/ls $SSH_AGENT_SOCK_DIR/agent.* 2>/dev/null)
+        SSH_AGENT_SOCK_BASENAME=$(/usr/bin/basename $SSH_AGENT_SOCK)
+        SSH_AGENT_PID=$(echo $SSH_AGENT_SOCK_BASENAME | awk -F'.' '{print $2}')
+        /bin/ps x | grep "ssh-agent" | grep -v grep \
+            | awk '{print $1}' | grep -q $SSH_AGENT_PID
+        if [ $? -eq 0 ]; then
+            echo "Found SSH agent; PID = $SSH_AGENT_PID"
+        fi
+        SSH_AGENTS_FOUND=$(( $SSH_AGENTS_FOUND + 1))
+    done
+    if [ $SSH_AGENTS_FOUND -eq 0 ]; then
+        echo -n "Starting SSH agent; "
+        unset SSH_AGENTS_FOUND SSH_AGENT_SOCKET_PATH SSH_AGENT_SOCK_DIR
+        eval $(ssh-agent)
+    else
+        if [ $SSH_AGENTS_FOUND -gt 1 ]; then
+            echo "WARNING: Found $SSH_AGENTS_FOUND agents running;"
+        fi
+        SSH_AUTH_SOCK=$SSH_AGENT_SOCK
+        echo "Reusing running SSH agent (socket: $SSH_AUTH_SOCK)"
+        export SSH_AUTH_SOCK
+
+        unset SSH_AGENTS_FOUND SSH_AGENT_SOCKET_PATH SSH_AGENT_SOCK_DIR
+        unset SSH_AGENT_PID SSH_AGENT_SOCK_BASENAME SSH_AGENT_SOCK
     fi
-    SSH_AGENTS_FOUND=$(( $SSH_AGENTS_FOUND + 1))
-done
-if [ $SSH_AGENTS_FOUND -eq 0 ]; then
-    echo -n "Starting SSH agent; "
-    unset SSH_AGENTS_FOUND SSH_AGENT_SOCKET_PATH SSH_AGENT_SOCK_DIR
-    eval $(ssh-agent)
-    exit 0
+else
+    echo "SSH_AUTH_SOCK set in environment (socket: $SSH_AUTH_SOCK)"
 fi
-
-if [ $SSH_AGENTS_FOUND -gt 1 ]; then
-    echo "WARNING: Found $SSH_AGENTS_FOUND agents running;"
-fi
-echo "Reusing running SSH agent (socket: $SSH_AGENT_SOCK)"
-SSH_AUTH_SOCK=$SSH_AGENT_SOCK
-export SSH_AUTH_SOCK
-
-unset SSH_AGENTS_FOUND SSH_AGENT_SOCKET_PATH SSH_AGENT_SOCK_DIR
-unset SSH_AGENT_PID SSH_AGENT_SOCK_BASENAME SSH_AGENT_SOCK
-
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
