@@ -50,6 +50,9 @@ http://www.vim.org/scripts/script.php?script_id=273
 - `\to` - Taglist; open `taglist` window
 - `\tc` - Taglist; close `taglist` window
 
+## Align ##
+http://www.vim.org/scripts/script.php?script_id=294
+
 Use ranges for `Align` shortcuts; `'a,.` (from mark `a` to current line)
 - `\t=` - align on equals sign
 - `\t,` - align on comma
