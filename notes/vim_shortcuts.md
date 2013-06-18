@@ -25,8 +25,16 @@ commands below to move around.
 ## My Custom Commands ##
 Added to my `~/.vimrc`
 - `\pc` - `perl -c %p`
+  - `noremap <script> <silent> <unique> <Leader>pc :! perl -c %:p<CR>`
 - `\sy` - Syntax check
+  - Uses
+    https://github.com/spicyjack/public/blob/master/rc_scripts/vim/current_perl_sub.vim
+  - `noremap <script> <silent> <unique> <Leader>sy :call SyntaxCheck()<CR>`
+  - If you get warnings about missing functions after installing the above
+    script, your `VIM` doesn't have Perl compiled into it
+    - Check with `vim --version`, there should be a `+perl` in the output
 - `\pd` - Run Perldoc on the current file
+  - `noremap <script> <silent> <unique> <Leader>pd :! perldoc %<CR>`
 
 # Utility Plugins #
 
