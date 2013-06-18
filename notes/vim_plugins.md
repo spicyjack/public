@@ -1,5 +1,13 @@
-## vim plugins ##
+# VIM Syntax/Utility Plugins #
 
+## Installing Utility Plugins ##
+
+After installing code plugins with help files (which usually get placed in
+`$HOME/.vim/doc`, in an open `vim` session, rebuild the `helptags` file with:
+
+    :helptags ~/.vim/doc
+
+## Syntax Plugins ##
 - googlecodewiki - http://www.vim.org/scripts/script.php?script_id=3173
 - markdown - http://www.vim.org/scripts/script.php?script_id=2882
 - ciscoasa - http://www.vim.org/scripts/script.php?script_id=3055
@@ -19,6 +27,8 @@
 - jquery - http://www.vim.org/scripts/script.php?script_id=2416
 - Cocoa/Objective-C - https://github.com/msanders/cocoa.vim
 - OpenGL Shading - http://www.vim.org/scripts/script.php?script_id=1002
+
+## Utility Plugins ##
 - BufExplorer - http://www.vim.org/scripts/script.php?script_id=42
 - Project - http://www.vim.org/scripts/script.php?script_id=69
   - Creates a "Project", helping organize a set of files/directories
