@@ -1,8 +1,14 @@
 " from ovid's blog post: http://tinyurl.com/qxrvvyc
 " modified 23May2013 by Brian Manning <brian at xaoc dot org>
 " - 03Jun2013 - added detection of 'package main;'
+" - 11Jun2013 - added detection of 'method' from 'methods' module
 
-" To use, save this file as:
+" To use, verify that your VIM has Perl compiled into it;
+" vim --version | grep "[+­]perl"
+" Perl is compiled if you see "+perl"; on Debian, Perl is only compiled into
+" the "vim-nox" package
+
+" save this file as:
 " ~/.vim/ftplugin/perl.vim
 "
 " Then add this to your ~/.vimrc somewhere:
