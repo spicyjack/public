@@ -1,15 +1,43 @@
-## VIM Shortcuts ##
+# VIM Shortcuts #
 
-- `\pc` - `perl -c %p`
-- `\sy` - Syntax check
-- `\pd` - Run Perldoc on the current file
+## Built-in VIM Commands ##
 - `^x^s` or `^x-s` - Locate word in front of the cursor and find the first
   `spell` suggestion for it (`compl-spelling`)
 - `^n` - Find the next suggestion
 - `^p` - Find the previous suggestion
 - `^n` - Find the next match for words that start with the keyword in front of
   the cursor (`keywords`, `compl-keyword`)
-- `\be` - BufExplorer, lets you quickly switch between files in buffers
+
+### Moving around using tags ###
+Help files and source code indexed with the `ctags` command have the concept
+of `tags`, or markers in files that `VIM` can use to jump around.  When you
+are in source files, or inside of help files, you can use the tag navigation
+commands below to move around.
+
+- `^]` or `Ctrl-]`
+  - When the cursor is on `|text|` in a help file, `VIM` will jump to the help
+    section for `text`
+  - On a function name in source code, will jump to the definition of that
+    function in the source code
+- `^t`, `Ctrl-t`, `^o`, or `Ctrl-o` will go back through your tag "history"
+- `:tags` will show you  your "tag history"
+
+## My Custom Commands ##
+Added to my `~/.vimrc`
+- `\pc` - `perl -c %p`
+- `\sy` - Syntax check
+- `\pd` - Run Perldoc on the current file
+
+# Utility Plugins #
+
+## BufExplorer ##
+http://www.vim.org/scripts/script.php?script_id=42
+- `\be` - switch between files in buffers, full screen
+- `\bs` - switch between files, horizontal split
+- `\bv` - switch between files, vertical split
+
+## Taglist ##
+http://www.vim.org/scripts/script.php?script_id=273
 - `\tt` - Taglist; toggle `taglist` window
 - `\to` - Taglist; open `taglist` window
 - `\tc` - Taglist; close `taglist` window
@@ -19,6 +47,5 @@ Use ranges for `Align` shortcuts; `'a,.` (from mark `a` to current line)
 - `\t,` - align on comma
 - `\t|` - align on pipes
 - `\tsp` - align on whitespace
-
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
