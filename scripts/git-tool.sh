@@ -135,7 +135,6 @@ repostat() {
     $GIT_CMD
 }
 
-# git pull in all git directories
 pullall() {
     local SHORT_DIR="$1"
 
@@ -145,7 +144,7 @@ pullall() {
     rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
 }
 
-# git pull in all git directories
+# FIXME this is broken, the CHECK_DATE is never passed in
 updatechk() {
     local SHORT_DIR="$1"
     local CHECK_DATE="$2"
@@ -154,14 +153,12 @@ updatechk() {
         echo "ERROR: need a date to check; date format is YYYY-MM-DD"
         exit 1
     else
-        echo "=== git log: $DIR ===";
-        cd $DIR
-        GIT_FORMAT="%h %cd %an %s"
-        GIT_OUTPUT=$(git log --pretty=format:"${GIT_FORMAT}" \
-            --after="${CHECK_DATE}" | cut -c -80)
-        if [ -n "$GIT_OUTPUT" ]; then
-            echo $GIT_OUTPUT
-        fi
+        echo "- $SHORT_DIR";
+        #cd $DIR
+        GIT_CMD="git log --pretty=format:\"%h %cd %an %s\" \
+            --after="${CHECK_DATE}" | cut -c -80)"
+        GIT_NOTIFY_PATTERN="git"
+        rungitcmd "$GIT_CMD" "$GIT_NOTIFY_PATTERN"
     fi
 }
 
