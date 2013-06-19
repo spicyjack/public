@@ -43,6 +43,7 @@ http://www.vim.org/scripts/script.php?script_id=42
 - `\be` - switch between files in buffers, full screen
 - `\bs` - switch between files, horizontal split
 - `\bv` - switch between files, vertical split
+- `^^` (`Ctrl-^`) - switch between the two most recently used buffers
 
 ## Taglist ##
 http://www.vim.org/scripts/script.php?script_id=273
