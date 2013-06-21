@@ -3,13 +3,11 @@
 alias cls='cd; clear'
 alias cp='cp -i'
 alias datesync='sudo ntpdate pool.ntp.org'
-# dircolors sets up 'dir' now
-alias lessr='less -R'
-alias mv='mv -i'
-alias rm='rm -i'
-alias vi='/usr/bin/vim'
-# convert epoch time to a normal date/time
+alias dir='/usr/local/bin/gls --color=tty --classify'
 alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
     localtime(\$1))/e"'
+alias mv='mv -i'
+alias rm='rm -i'
+alias vi='/usr/local/bin/vim'
 # vim: set filetype=sh shiftwidth=4 tabstop=4:
 # fin!
