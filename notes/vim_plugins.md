@@ -39,6 +39,9 @@ After installing code plugins with help files (which usually get placed in
     same shortcut
     - The `tt` shortcut for `Align` is defined in
       `~/.vim/plugin/AlignMapsPlugin.vim`, line 172
+- tasklist - http://www.vim.org/scripts/script.php?script_id=2607
+  - Search for `FIXME`, `XXX`, or `TODO` in code, and make a list that shows
+    you the contents of those comments and where they're located in the file
 - eqalignsimple - http://tinyurl.com/l8d8ay3 (From Damian Conway)
 
 # vim: filetype=markdown tabstop=2

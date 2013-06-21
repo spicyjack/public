@@ -51,6 +51,15 @@ http://www.vim.org/scripts/script.php?script_id=273
 - `\to` - Taglist; open `taglist` window
 - `\tc` - Taglist; close `taglist` window
 
+## TaskList ##
+http://www.vim.org/scripts/script.php?script_id=2607
+- `\tl` - TaskList; show all `FIXME`/`XXX`/`TODO` comments found in current
+  file
+- Movement commands once TaskList is open:
+  - `q` - Quit TaskList and restore original cursor position
+  - `e` - Exit TaskList and keep results window open (but won't be updated)
+  - `<CR>` - Exit TaskList and place cursor at selected line
+
 ## Align ##
 http://www.vim.org/scripts/script.php?script_id=294
 
