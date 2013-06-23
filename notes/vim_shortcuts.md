@@ -22,38 +22,48 @@ commands below to move around.
 - `^t`, `Ctrl-t`, `^o`, or `Ctrl-o` will go back through your tag "history"
 - `:tags` will show you  your "tag history"
 
+## Changing the <Leader> ##
+The `mapleader` is the key that is pressed prior to entering in custom
+commands.  You can change the `mapleader` from it's default of "\" to
+something else using this command in your `$HOME/.vimrc`:
+
+    let mapleader = ","
+
 ## My Custom Commands ##
+Given the above change to `mapleader`, all custom commands are now prefixed
+with commas (`,`) instead of backslashes ("\").
+
 Added to my `~/.vimrc`
-- `\pc` - `perl -c %p`
+- `,pc` - `perl -c %p`
   - `noremap <script> <silent> <unique> <Leader>pc :! perl -c %:p<CR>`
-- `\sy` - Syntax check
+- `,sy` - Syntax check
   - Uses
     https://github.com/spicyjack/public/blob/master/rc_scripts/vim/current_perl_sub.vim
   - `noremap <script> <silent> <unique> <Leader>sy :call SyntaxCheck()<CR>`
   - If you get warnings about missing functions after installing the above
     script, your `VIM` doesn't have Perl compiled into it
     - Check with `vim --version`, there should be a `+perl` in the output
-- `\pd` - Run Perldoc on the current file
+- `,pd` - Run Perldoc on the current file
   - `noremap <script> <silent> <unique> <Leader>pd :! perldoc %<CR>`
 
 # Utility Plugins #
 
 ## BufExplorer ##
 http://www.vim.org/scripts/script.php?script_id=42
-- `\be` - switch between files in buffers, full screen
-- `\bs` - switch between files, horizontal split
-- `\bv` - switch between files, vertical split
+- `,be` - switch between files in buffers, full screen
+- `,bs` - switch between files, horizontal split
+- `,bv` - switch between files, vertical split
 - `^^` (`Ctrl-^`) - switch between the two most recently used buffers
 
 ## Taglist ##
 http://www.vim.org/scripts/script.php?script_id=273
-- `\tt` - Taglist; toggle `taglist` window
-- `\to` - Taglist; open `taglist` window
-- `\tc` - Taglist; close `taglist` window
+- `,tt` - Taglist; toggle `taglist` window
+- `,to` - Taglist; open `taglist` window
+- `,tc` - Taglist; close `taglist` window
 
 ## TaskList ##
 http://www.vim.org/scripts/script.php?script_id=2607
-- `\tl` - TaskList; show all `FIXME`/`XXX`/`TODO` comments found in current
+- `,tl` - TaskList; show all `FIXME`/`XXX`/`TODO` comments found in current
   file
 - Movement commands once TaskList is open:
   - `q` - Quit TaskList and restore original cursor position
@@ -64,9 +74,9 @@ http://www.vim.org/scripts/script.php?script_id=2607
 http://www.vim.org/scripts/script.php?script_id=294
 
 Use ranges for `Align` shortcuts; `'a,.` (from mark `a` to current line)
-- `\t=` - align on equals sign
-- `\t,` - align on comma
-- `\t|` - align on pipes
-- `\tsp` - align on whitespace
+- `,t=` - align on equals sign
+- `,t,` - align on comma
+- `,t|` - align on pipes
+- `,tsp` - align on whitespace
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
