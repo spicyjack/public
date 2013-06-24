@@ -4,8 +4,6 @@
 - http://www.openldap.org/doc/admin24/quickstart.html
 - http://www.zytrax.com/books/ldap/
 
-
-
 ## Querying LDAP ##
 Basic query to see if the LDAP server running on the same machine is
 functioning correctly:
@@ -26,19 +24,21 @@ Same search, remote host
 ## Creating initial LDAP organization entries ##
 Create a text file that contains the following:
 
-    dn: dc=xaoc,dc=org
+    dn: dc=example,dc=org
     objectClass: dcObject
     objectClass: organization
-    o: XAOC
-    cn: xaoc
+    o: example
+    cn: example
 
-    dn: cn=Manager,dc=xaoc,dc=org
+    dn: cn=Manager,dc=example,dc=org
     objectclass: organizationRole
     cn: Manager
 
 ## Adding organization .ldif file to LDAP ##
 
-    ldapadd -x -D "cn=Manager,dc=xaoc,dc=org" -W -f org.ldif
+    ldapadd -x -D "cn=Manager,dc=example,dc=org" -W -f org.ldif
+    ldapadd -x -D "cn=Manager,dn=example,dn=org" -W -f example.ldif \
+      -H ldap://host.example.org
 
 ### ldapadd options ###
 - `-x` - Simple auth, not SASL auth
@@ -52,14 +52,14 @@ Create a text file that contains the following:
 Create a text file that contains the following:
 
     # First User
-    dn: cn=First User,dc=xaoc,dc=org
+    dn: cn=First User,dc=example,dc=org
     cn: First User
     cn: 1st User
     objectClass: person
     sn: User
 
     # Second User
-    dn: cn=Second User,dc=xaoc,dc=org
+    dn: cn=Second User,dc=example,dc=org
     cn: Second User
     cn: 2nd User
     objectClass: person
