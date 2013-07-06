@@ -72,7 +72,7 @@ Perlbrew Installation
 
     curl -kL http://install.perlbrew.pl | bash
 
-# Using `cpanm` #
+## Using `cpanm` ##
 Installing a module + dependencies
 
     cpanm Module::Name
@@ -81,6 +81,15 @@ Installing a module + dependencies
 
 "Looking" into a module distribution
 - `cpanm --look Module::Name`
+
+## Working with CPAN module bundles ##
+Create CPAN bundle
+
+    perl -MCPAN -e autobundle
+
+Re-install modules listed in the bundle
+
+    perl -MCPAN -e 'install Bundle::Snapshot_2010_09_20_00'
 
 ## Links ##
 - http://www.dagolden.com/index.php/2134/how-i-manage-new-perls-with-perlbrew/
