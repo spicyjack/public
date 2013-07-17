@@ -6,44 +6,90 @@
 
 ## Using Perlbrew ##
 Get the current status
-- `perlbrew info`
+
+    perlbrew info
 
 List the current installed Perls
-- `perlbrew list`
+
+    perlbrew list
 
 Get Perl version availability
+
+    perlbrew available
+
 - Also shows installed versions of Perl, with an `i` character next to an
   installed version of Perl.
-- `perlbrew available`
 
 Switch to a different Perl
-- `perlbrew switch perl-5.X.X`
+
+    perlbrew switch perl-5.X.X
 
 Install a different version of Perl
-- `perlbrew install perl-5.X.X`
+
+    perlbrew install perl-5.X.X
+
+Install Perl with specific options
+
+    perlbrew install --switch --thread --multi --64int --64all --ld \
+    --as perl-5.18.0-with_threads -j 4 perl-5.18.0
+
+Create an alias to an existing install of Perl
+
+    perlbrew alias create perl-5.18.0 5.18.0-no_threads
+
+Uninstall an existing install
+
+    perlbrew uninstall perl-5.18.0
+
+Delete a previously created alias
+
+    perlbrew alias delete 5.18.0-no_threads
+
+Use a different installed Perl
+
+    perlbrew use perl-5.18.0-with_threads
 
 Install `cpanminus/cpanm`
-- `perlbrew install-cpanm`
+
+    perlbrew install-cpanm
+
+- See the section below on working with `cpanm`
 
 Turn perlbrew off completely
-- `perlbrew off`
+
+    perlbrew off
 
 Use 'switch' command to turn it back on.
-- `perlbrew switch perl-5.12.2`
+
+    perlbrew switch perl-5.12.2
 
 Temporarily use another version only in current shell ##
-- `perlbrew use perl-5.8.1`
-- `perl -v`
+
+    perlbrew use perl-5.8.1
+    perl -v
 
 Perlbrew Installation
-- `curl -kL http://install.perlbrew.pl | bash`
 
-# Using `cpanm` #
+    curl -kL http://install.perlbrew.pl | bash
+
+## Using `cpanm` ##
 Installing a module + dependencies
-- `cpanm Module::Name`
+
+    cpanm Module::Name
+    cpanm ExtUtils::Depends
+    cpanm ExtUtils::PkgConfig
 
 "Looking" into a module distribution
 - `cpanm --look Module::Name`
+
+## Working with CPAN module bundles ##
+Create CPAN bundle
+
+    perl -MCPAN -e autobundle
+
+Re-install modules listed in the bundle
+
+    perl -MCPAN -e 'install Bundle::Snapshot_2010_09_20_00'
 
 ## Links ##
 - http://www.dagolden.com/index.php/2134/how-i-manage-new-perls-with-perlbrew/

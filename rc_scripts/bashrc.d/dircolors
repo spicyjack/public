@@ -1,31 +1,16 @@
 #!/bin/bash
 
 # add the user's .dir_colors directives
-if [ -x /opt/local/bin/gdircolors ]; then
-    # MacPorts
-    alias dir='/opt/local/bin/gls --color=auto --classify'
-    alias cdir='/opt/local/bin/gls --color=yes --classify'
-    DIRCOLORS="/opt/local/bin/gdircolors"
-    eval $($DIRCOLORS ~/.dircolors)
-    return
-elif [ -x /usr/local/bin/gdircolors ]; then
-    # Homebrew
+if [ -x /usr/local/bin/gdircolors ]; then
     alias dir='/usr/local/bin/gls --color=auto --classify'
-    alias cdir='/usr/local/bin/gls --color=yes --classify'
     DIRCOLORS="/usr/local/bin/gdircolors"
     eval $($DIRCOLORS ~/.dircolors)
-    return
+elif [ -x /opt/local/bin/gdircolors ]; then
+    alias dir='/opt/local/bin/gls --color=auto --classify'
+    DIRCOLORS="/opt/local/bin/gdircolors"
+    eval $($DIRCOLORS ~/.dircolors)
 elif [ -x /usr/bin/dircolors ]; then
-    # GNU/Linux
-    #alias dir='/bin/ls --classify --color=auto'
-    #DIRCOLORS="/usr/bin/dircolors --bourne-shell"
-    # BSD/Mac OS X
-    # moved this in from the 'darwin' bashrc.d file
-    CLICOLOR=1
-    LSCOLORS=ExFxCxDxBxegedabagacad
-    export CLICOLOR LSCOLORS
     alias dir='/bin/ls -F'
-    alias dir='CLICOLOR_FORCE=1 /bin/ls -F'
     DIRCOLORS="/usr/bin/dircolors"
     eval $($DIRCOLORS ~/.dircolors)
 fi
