@@ -34,4 +34,6 @@
   `DirectorySerivce`
 - `man id` - information about user/group IDs
 
+## Links ##
+- http://jamesmead.org/blog/2011-01-20-adding-a-user-in-osx-on-command-line
 vim: filetype=markdown shiftwidth=2 tabstop=2
