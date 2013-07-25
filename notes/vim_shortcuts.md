@@ -7,6 +7,8 @@
 - `^p` - Find the previous suggestion
 - `^n` - Find the next match for words that start with the keyword in front of
   the cursor (`keywords`, `compl-keyword`)
+- `:map` - Show current keymappings
+- `,ha` - Print `hardcopy` of the current file to _~/<filename>.ps_
 
 ### Moving around using tags ###
 Help files and source code indexed with the `ctags` command have the concept
