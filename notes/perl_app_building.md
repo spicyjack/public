@@ -7,9 +7,13 @@ Modules required for building Perl apps:
 - PAR::Packer
 
 Modules required for `idgames_sync.pl`
+- libwww-perl
+- Mouse
+- ExtUtils::AutoInstall
 - File::Stat::Ls
 - Number::Format
 - Log::Log4perl
+- Date::Format (TimeDate)
 
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
