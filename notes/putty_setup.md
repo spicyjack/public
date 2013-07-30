@@ -12,6 +12,8 @@
     0x3a)
   - Change it's character class from '1' to '2' by typing '2' in the "Set to
     class" box, and clicking on the Set button
-
+- Window -> Colours
+  - Set `Default Bold Foreground` `Blue` to 0
+  - Set `Cursor Color` to `Green` 0 and `Red` 255
 
 # vim: filetype=markdown shiftwidth=2 tabstop=2
