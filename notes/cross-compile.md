@@ -25,12 +25,13 @@
   - `ct-ng help`
 - List all of the possible architectures that can be built
   - `ct-ng list-samples`
-- Customize an existing architecture
+- Select a specific sample (which can be customized)
+  - `ct-ng <sample name>`
+- Customize an existing sample
   - `ct-ng menuconfig`
 - Build it
   - `ct-ng build`
   - `ct-ng build.4` (build with 4 parallel processes)
-
 - Show currently configured toolchain/architecture (tuple)
   - `ct-ng show-tuple`
 - Show the current version
