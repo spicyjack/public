@@ -53,6 +53,6 @@ Busybox
   - Config is located at: `~/src/lack/projects.git/armlack/buildroot`
 - Run `make oldconfig` to update if your `.config` was created with an older
   version of Busybox
-- Run `make` to compile
+- Run `make (-j 10)` to compile
 
 vim: filetype=markdown shiftwidth=2 tabstop=2:
