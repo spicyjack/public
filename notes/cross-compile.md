@@ -47,4 +47,12 @@ SDL
     --root /opt/cross/x-tools/arm-unknown-linux-gnueabi/ 
       libSDL-1.2.so.0.11.4 | less
 
+Busybox
+- Unpack source
+- Copy in `.config`
+  - Config is located at: `~/src/lack/projects.git/armlack/buildroot`
+- Run `make oldconfig` to update if your `.config` was created with an older
+  version of Busybox
+- Run `make` to compile
+
 vim: filetype=markdown shiftwidth=2 tabstop=2:
