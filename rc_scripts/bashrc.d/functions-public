@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# shell functions
+function ff {
+    find . -name "*$1*" -print
+} # find file from here
+
+function find_agent {
+    /usr/bin/find /tmp 2>/dev/null | grep agent
+} # find a list of agent sockets on the host
+
+function histgrep  {
+    history | grep "$@" | tail -22
+} # history, one screenful please
+
+function jdate {
+    echo -n "The current julian date in GMT is: "
+    TZ=GMT date +%j
+} # show the current Julian date in GMT time zone
+
+# for QEMU instances
+function lssh {
+    /usr/bin/ssh -v -X -o "StrictHostKeyChecking no" -l $1 -p $2 localhost
+} # ssh to localhost as a specific user on a specific port
+
+function pigfind {
+    find . -maxdepth 1 -type d -exec du -s '{}' \; 2>/dev/null | sort -n
+} # get the sizes of the subdirectories of $PWD, sort from smallest to largest
+
+function r97 {
+    rdesktop -a 16 -g 900x700 $1 &
+} # remote desktop to a host with 900x700 with 16 bit color
+
+function ar97 {
+    rdesktop -a 16 -u Administrator -g 900x700 $1 &
+} # remote desktop to a host with 900x700 with 16 bit color, admin user
+
+function ar107 {
+    rdesktop -a 16 -u Administrator -g 1024x768 $1 &
+} # remote desktop to a host with 900x700 with 16 bit color, admin user
+
+function sudogrep {
+    sudo grep $1 /etc/sudoers | less
+} # look for the string passed in as arg 1 in the sudoers file
+
+ctree () {
+    tree -C $1 | less -R
+} # show a colorized tree, and pipe to colorized less
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# конец!
