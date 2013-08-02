@@ -24,7 +24,13 @@ function lssh {
 } # ssh to localhost as a specific user on a specific port
 
 function pigfind {
-    find . -maxdepth 1 -type d -exec du -s '{}' \; 2>/dev/null | sort -n
+    if [ "x$1" != "x" ]; then
+        FIND_PATH="$1"
+    else
+        FIND_PATH="."
+    fi
+    find $FIND_PATH -maxdepth 1 -type d -exec du -sh '{}' \; 2>/dev/null \
+        | sort -h
 } # get the sizes of the subdirectories of $PWD, sort from smallest to largest
 
 function r97 {
