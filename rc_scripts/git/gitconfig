@@ -1,32 +1,36 @@
 [user]
-	name = Example User 
-	email = user@example.com
+    name = Example User
+    email = user@example.com
+
 
 [alias]
-    bare    = init --bare --shared=true
-    br      = branch -v
-    co      = checkout
-    graph   = log --oneline --decorate --graph
-    hist    = log --graph --pretty='[%h]%d %cd %s'
+    bare        = init --bare --shared=true
+    br          = branch -v
+    co          = checkout
+    graph       = log --oneline --decorate --graph
+    hist        = log --graph --pretty='[%h]%d %cd %s'
     # from http://coderwall.com/p/euwpig?i=3&p=1&t=git
-    lg      = log --graph --pretty=format:'%Cred%h%Creset \
+    lg          = log --graph --pretty=format:'%Cred%h%Creset \
         -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
         --abbrev-commit
-    ls      = ls-tree --abbrev=8 -r HEAD
-    pudr    = push --dry-run
-    puall   = push --set-upstream --all
-    pualldr = push --set-upstream --all --dry-run
-    puor    = push --set-upstream origin master
-    puom    = push --set-upstream origin master
-    puordr  = push --set-upstream --dry-run origin master
-    puomdr  = push --set-upstream --dry-run origin master
-    stat    = status
-    # shows annotation along with tag name
-    tagn    = tag -n
+    ls          = ls-tree --abbrev=8 -r HEAD
+    pudr        = push --dry-run
+    puall       = push --all
+    puallset    = push --set-upstream --all
+    pualldr     = push --all --dry-run
+    pualldrset  = push --set-upstream --all --dry-run
+    puor        = push origin master
+    puorset     = push --set-upstream origin master
+    puordr      = push --dry-run origin master
+    puordrset   = push --set-upstream --dry-run origin master
     # 'lg' (above) will also show tags with commit hashes
-    showtags= show-ref --tags
-    re      = remote -v
-    untrack = rm --cached
+    showtags    = show-ref --tags
+    stat        = status
+    # shows annotation along with tag name
+    tagn        = tag -n
+    tags        = tag
+    re          = remote -v
+    untrack     = rm --cached
 
 [color]
 	ui = true
