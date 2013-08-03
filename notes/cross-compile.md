@@ -74,6 +74,8 @@ SDL
     --prefix=/usr/local/src/arm-out --disable-pulseaudio --disable-video-x11 \
     2>&1 | tee config.out
 
+Check compilation
+
     /opt/cross/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-ldd
     --root /opt/cross/arm-unknown-linux-gnueabi/ 
       libSDL-1.2.so.0.11.4 | less
