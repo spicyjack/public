@@ -75,8 +75,11 @@ To add the Raspbian GPG package signing keys:
 - http://www.raspberrypi.org/
   - Downloads 
   - http://www.raspberrypi.org/downloads
-  - https://github.com/raspberrypi/quake3
-    - Includes cross-compilation scripts
+  - https://github.com/raspberrypi
+    - https://github.com/raspberrypi/firmware
+      - Firmware updates, including binary blobs that get loaded at boot time
+    - https://github.com/raspberrypi/quake3
+      - Includes cross-compilation scripts
 - Quick Start Guide
   - http://www.raspberrypi.org/quick-start-guide
 - Resellers
