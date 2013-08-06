@@ -48,7 +48,7 @@ Add `bashrc.d` script for `crosstool-ng`:
 
 https://raw.github.com/spicyjack/public/master/rc_scripts/bashrc.d/crosstool-ng
 
-## Build Environment Variables ##
+## Crosstool Build Environment Variables ##
 V=0|1|2
   - 0 => show only human-readable messages (default)
   - 1 => show only the commands being executed
@@ -61,6 +61,21 @@ V=0|1|2
   what needs to be installed on the system prior to compiling?
 - See the `ffmpeg` link above for different ways of calling the cross-compiler
   when building a ѕet of apps/libraries
+- The options `--host`, `--build` and `--target` are used by GNU Automake to
+  set up the environment for cross-compiling
+  - `--build` - The type of system on which the package is being configured
+    and compiled. It defaults to the result of running config.guess.
+    Specifying a build-type that differs from host-type enables
+    cross-compilation mode.
+  - `--host` - The type of system on which the package runs. By default it is
+    the same as the build machine. Specifying a host-type that differs from
+    build-type, when build-type was also explicitly specified, enables
+    cross-compilation mode.
+  - `--target` - The type of system for which any compiler tools in the
+    package produce code (rarely needed). By default, it is the same as host.
+  - GNU Autoconf manual:
+    - Specifying target triplets: http://tinyurl.com/ltkzvqn
+    - Hosts and cross-compilation: http://tinyurl.com/n837ws3
 
 ## Examples of Compiling Other Apps ##
 Setup
