@@ -103,5 +103,12 @@ Or, if you don't want/need launchctl, you can just run:
         [гром][brian local](master)$ brew link --overwrite gtk+3
         Linking /usr/local/Cellar/gtk+3/3.8.2... 267 symlinks created
 
+06Aug2013 - This works somehow for whatever reason.
+
+You need to set `GI_TYPELIB_PATH` to the `girepository` path
+(`/usr/local/lib/girepository-1.0` in Homebrew); the `gir` path
+(`/usr/local/share/gir-1.0`) may work too.
+
+Then you can just run `perl -e "use Gtk3;"` and it will run.
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
