@@ -116,11 +116,9 @@ Or, if you don't want/need launchctl, you can just run:
     ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
     --enable-introspection=yes --enable-gtk-doc
 
-- Had to enable introspection on Pango, Cairo, Gdk-pixbuf, Atk, etc.
-- Had to mangle something in the Gtk3 source tree (I think docs/gtk/) to get
-  Gtk3 to install.  It could have been the docbook catalog in
-  /usr/local/etc/xml.
-
+Note the addition of `XML_CATALOG_FILES` and the two paths for
+`PKG_CONFIG_PATH`; this is only needed to build `GTK+3`.  When trying to
+install, you'll get this error:
 
     Error: Could not symlink file:
     /usr/local/Cellar/gtk+3/3.8.2/bin/gtk-update-icon-cache
@@ -150,12 +148,14 @@ Or, if you don't want/need launchctl, you can just run:
       GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0/
       cpanm Gtk3
 
-Gtk3 still needs to be installed by hand (`cpanm --look Gtk3`) for some reason
-:/
+`Gtk3` still needs to be installed by hand (`cpanm --look Gtk3`) for some
+reason :/
 
-`GI_TYPELIB_PATH` needs to point to the directory that has the `*.typelib`
-files; this is usually `/usr/local/lib/girepository-X.X`.  There's also
-another directory with `*.gir` files that may be needed, to build `GTK+3` and
-friends I think.  The `*.gir` files are located at `/usr/local/share/gir-1.0`.
+When running `Gtk3` scripts, `GI_TYPELIB_PATH` needs to point to the directory
+that has the `*.typelib` files; this is usually
+`/usr/local/lib/girepository-X.X`.  Probably best to set it either in the
+environment, or in scripts themselves.  There's also another directory with
+`*.gir` files that may be needed, to build `GTK+3` and friends I think.  The
+`*.gir` files are located at `/usr/local/share/gir-1.0`.
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
