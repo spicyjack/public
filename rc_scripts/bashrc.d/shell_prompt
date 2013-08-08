@@ -92,11 +92,17 @@ set_ps1 () {
     unset C_END C_BLUE C_GREEN C_RED C_CYAN C_MAGENTA C_YELLOW
 }
 
-PROMPT_COMMAND=set_ps1
-PS2="\[\e[0;1m\]>\[\e[0m\] "
-PS4="\[\e[1;32m\]+\[\e[0m\] "
+if [ -t ]; then
+    PROMPT_COMMAND=set_ps1
+    PS2="\[\e[0;1m\]>\[\e[0m\] "
+    PS4="\[\e[1;32m\]+\[\e[0m\] "
+else
+    PS1="[\h][\u \W] "
+    PS2="> "
+    PS4="+ "
+fi
+
 export PS1 PS2 PS4
 
-
-# vi: set ft=sh sw=4 ts=4
+# vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!

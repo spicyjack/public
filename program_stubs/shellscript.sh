@@ -1,8 +1,8 @@
 #!/bin/sh
 # other possible choices here are /bin/bash or maybe /bin/ksh
 
-# Copyright (c)2004,2012 by Brian Manning.  License terms are listed at the
-# bottom of this file
+# Copyright (c)2004,2012, 2013
+# by Brian Manning.  License terms are listed at the bottom of this file
 #
 # shell script that does something
 

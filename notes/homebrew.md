@@ -153,4 +153,9 @@ Or, if you don't want/need launchctl, you can just run:
 Gtk3 still needs to be installed by hand (`cpanm --look Gtk3`) for some reason
 :/
 
+`GI_TYPELIB_PATH` needs to point to the directory that has the `*.typelib`
+files; this is usually `/usr/local/lib/girepository-X.X`.  There's also
+another directory with `*.gir` files that may be needed, to build `GTK+3` and
+friends I think.  The `*.gir` files are located at `/usr/local/share/gir-1.0`.
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
