@@ -80,19 +80,19 @@ V=0|1|2
 ## Examples of Compiling Other Apps ##
 Setup
 
-    export CCPREFIX="/opt/cross/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-"
+    export CCPREFIX="/opt/cross/armv6-lack_rpi-linux-gnueabi/bin/armv6-lack_rpi-linux-gnueabi-"
 
 SDL
 
     ./configure --build=$(uname -m) --enable-static \
-    --host=arm-unknown-linux-gnueabi --target=arm-unknown-linux-gnueabi \
+    --host=armv6-lack_rpi-linux-gnueabi \
     --prefix=/usr/local/src/arm-out --disable-pulseaudio --disable-video-x11 \
     2>&1 | tee config.out
 
 Check compilation
 
-    /opt/cross/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-ldd
-    --root /opt/cross/arm-unknown-linux-gnueabi/ 
+    /opt/cross/armv6-lack_rpi-linux-gnueabi/bin/armv6-lack_rpi-linux-gnueabi-ldd
+    --root /opt/cross/armv6-lack_rpi-linux-gnueabi/
       libSDL-1.2.so.0.11.4 | less
 
 Busybox
