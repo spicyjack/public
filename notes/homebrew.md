@@ -139,17 +139,14 @@ install, you'll get this error:
 
 ### Pango, Cairo and Gtk2 Perl Modules ###
 
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Pango
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Cairo
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Gtk2
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Cairo
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Pango
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ cpanm Gtk2
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
       cpanm Cairo::GObject
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
-      GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0/
+      GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0/ \
       cpanm Gtk3
-
-`Gtk3` still needs to be installed by hand (`cpanm --look Gtk3`) for some
-reason :/
 
 When running `Gtk3` scripts, `GI_TYPELIB_PATH` needs to point to the directory
 that has the `*.typelib` files; this is usually
