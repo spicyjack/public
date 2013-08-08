@@ -68,16 +68,38 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
-### Gtk+3 ###
-- Had to enable introspection on Pango, Cairo, Gdk-pixbuf, Atk, etc.
-- Had to mangle something in the Gtk3 source tree (I think docs/gtk/) to get
-  Gtk3 to install.  It could have been the docbook catalog in
-  /usr/local/etc/xml.
+## Compiling a Gtk+3 stack under Homebrew ##
 
+### libgobject-introspection ###
+- Install, and use `brew link --force gobject-introspection` to create the
+  `gir/girepository` links back to `gobject-introspection`
 
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
-    ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
-    --enable-introspection=yes --enable-gtk-doc
+### libcairo ###
+- Install `cairo` via Homebrew
+  - `brew install --with-glib cairo`
+- Force link the `cairo` library
+  - `brew link --force cairo`
+
+### libatk ###
+
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+    GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
+      ./configure --prefix=/usr/local/Cellar/atk/2.8.0 \
+      --enable-introspection=yes
+
+### libpango ###
+
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+    GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
+      ./configure --prefix=/usr/local/Cellar/pango/1.34.1 \
+      --enable-introspection=yes
+
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+    GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
+      ./configure --prefix=/usr/local/Cellar/glib/2.36.3 \
+      --enable-introspection=yes
+
+### gdk-pixbuf ###
 
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
@@ -85,7 +107,21 @@ Or, if you don't want/need launchctl, you can just run:
       --disable-dependency-tracking --disable-maintainer-mode \
       --enable-debug=no --enable-introspection=yes \
       --disable-Bsymbolic --without-gdiplus
-      
+
+
+### libgtk3 ###
+
+    XML_CATALOG_FILES="/usr/local/etc/xml/catalog" \
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
+    ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
+    --enable-introspection=yes --enable-gtk-doc
+
+- Had to enable introspection on Pango, Cairo, Gdk-pixbuf, Atk, etc.
+- Had to mangle something in the Gtk3 source tree (I think docs/gtk/) to get
+  Gtk3 to install.  It could have been the docbook catalog in
+  /usr/local/etc/xml.
+
+
     Error: Could not symlink file:
     /usr/local/Cellar/gtk+3/3.8.2/bin/gtk-update-icon-cache
     Target /usr/local/bin/gtk-update-icon-cache already exists. You may need
@@ -103,5 +139,18 @@ Or, if you don't want/need launchctl, you can just run:
         [гром][brian local](master)$ brew link --overwrite gtk+3
         Linking /usr/local/Cellar/gtk+3/3.8.2... 267 symlinks created
 
+### Pango, Cairo and Gtk2 Perl Modules ###
+
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Pango
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Cairo
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ perl Makefile.PL cpanm Gtk2
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
+      cpanm Cairo::GObject
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
+      GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0/
+      cpanm Gtk3
+
+Gtk3 still needs to be installed by hand (`cpanm --look Gtk3`) for some reason
+:/
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
