@@ -50,7 +50,11 @@ function sudogrep {
 } # look for the string passed in as arg 1 in the sudoers file
 
 ctree () {
-    tree -C $1 | less -R
+    if [ -e $1 ]; then
+        tree -C $1 | less -R
+    else
+        echo "Hmm. '$1' doesn't exist. Try again!"
+    fi
 } # show a colorized tree, and pipe to colorized less
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
