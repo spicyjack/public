@@ -23,17 +23,20 @@ Switch between source and header file
     Counterpart"
 
 ## Debugging Programs ##
-_Step Into_ - Execute the current line of code and (if it is a routine) jump
-to its first line
-- Step Into - `F7`
-- Step Into Thread - `⌃⇧F7`
-- Step Into Instruction - `⇧F7`
+_Continue_ - Continue program execution
+- `⌃⌘Y`
 
 _Step Over_ - Execute the current line of code and if it is a routine) return
 to the next line in the current file
 - Step Over - `F6`
 - Step Over Thread - `⌃⇧F6`
 - Step Over Instruction - `⇧F6`
+
+_Step Into_ - Execute the current line of code and (if it is a routine) jump
+to its first line
+- Step Into - `F7`
+- Step Into Thread - `⌃⇧F7`
+- Step Into Instruction - `⇧F7`
 
 _Step Out_ - Complete the current routine and step to the next routine or back
 to the calling routine
