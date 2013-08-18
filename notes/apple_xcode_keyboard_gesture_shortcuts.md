@@ -47,9 +47,11 @@ _Breakpoints and Console_
 - Toggle breakpoints - `⌘Y`
 - Clear Console - `⌘K`
 
-_Continuing code execution_ - After you reach a breakpoint in code, you can
-continue code execution to a given point by hovering over a line of code in
-the editor, and then clicking on the green button that appears there.
+_Continuing code execution_ 
+- Keyboard shortcut: `⌘⌃Y`
+- After you reach a breakpoint in code, you can continue code execution to a
+  given point by hovering over a line of code in the editor, and then clicking
+  on the green button that appears there.
 
 _Setting CoreLocation for debugging_ - You can set a location for
 `CoreLocation` apps in the debug toolbar by clicking on the "location arrow"
