@@ -16,6 +16,25 @@ character
 - Option:  0x2325 ⌥
 - Shift:   0x21e7 ⇧
 
+## Showing/Hiding Views ##
+Show/Hide Utilities (Inspectors)
+- `⌘⌥0`
+
+Show/Hide Debug Area
+- `⌘⇧Y`
+
+Show/Hide Project Navigator
+- `⌘0`
+
+Show specific Navigator panes
+- `⌘1` - Project Navigator
+- `⌘2` - Symbol Navigator
+- `⌘3` - Search Navigator
+- `⌘4` - Issue Navigator
+- `⌘5` - Debug Navigator
+- `⌘6` - Breakpoint Navigator
+- `⌘7` - Log Navigator
+
 ## Editing Text ##
 Switch between source and header file
 - `Cmd-Ctrl-Up` (`⌘-⌃-↑`) and `Cmd-Ctrl-Down` (`⌘-⌃-↓`)
