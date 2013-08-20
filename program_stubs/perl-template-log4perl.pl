@@ -116,7 +116,7 @@ sub new {
 
     # return this object to the caller
     return $self;
-} # sub new
+}
 
 =item get($key)
 
@@ -133,7 +133,7 @@ sub get {
 
     if ( exists $args{$key} ) { return $args{$key}; }
     return undef;
-} # sub get
+}
 
 =item set( key => $value )
 
@@ -158,9 +158,9 @@ sub set {
     } else {
         $args{$key} = $value;
         $self->{_args} = \%args;
-    } # if ( exists $args{$key} )
+    }
     return undef;
-} # sub get
+}
 
 =item get_args( )
 
@@ -172,7 +172,7 @@ sub get_args {
     my $self = shift;
     # hash-ify the return arguments
     return %{$self->{_args}};
-} # get_args
+}
 
 ################
 # package main #
@@ -185,12 +185,6 @@ use utf8;
 use Carp;
 use Log::Log4perl qw(get_logger :no_extra_logdie_message);
 use Log::Log4perl::Level;
-
-my %pps_type = (
-    1   => q|'Directory'|,
-    2   => q|'File (Data)'|,
-    5   => q|'Root'|,
-);
 
     binmode(STDOUT, ":utf8");
     #my $catalog_file = q(/srv/www/purl/html/Ural_Catalog/UralCatalog.xls);

@@ -105,7 +105,7 @@ sub new {
 
     # return this object to the caller
     return $self;
-} # sub new
+}
 
 =item get($key)
 
@@ -122,7 +122,7 @@ sub get {
 
     if ( exists $args{$key} ) { return $args{$key}; }
     return undef;
-} # sub get
+}
 
 =item set( key => $value )
 
@@ -147,9 +147,9 @@ sub set {
     } else {
         $args{$key} = $value;
         $self->{_args} = \%args;
-    } # if ( exists $args{$key} )
+    }
     return undef;
-} # sub get
+}
 
 =item get_args( )
 
@@ -161,7 +161,7 @@ sub get_args {
     my $self = shift;
     # hash-ify the return arguments
     return %{$self->{_args}};
-} # get_args
+}
 
 =back
 
@@ -212,7 +212,7 @@ sub new {
         $logfd = IO::Handle->new_from_fd(fileno(STDOUT), q(w));
         die qq( ERR: could not wrap STDOUT in IO::Handle object: $!)
             unless ( defined $logfd );
-    } # if ( exists $args{logfile} )
+    }
     $logfd->autoflush(1);
 
     my $self = bless ({
@@ -221,7 +221,7 @@ sub new {
 
     # return this object to the caller
     return $self;
-} # sub new
+}
 
 =item log($message)
 
@@ -236,7 +236,7 @@ sub log {
 
     my $FH = $self->{_OUTFH};
     print $FH $msg . qq(\n);
-} # sub log
+}
 
 =item timelog($message)
 
@@ -252,7 +252,7 @@ sub timelog {
 
     my $FH = $self->{_OUTFH};
     print $FH $timestamp . q(: ) . $msg . qq(\n);
-} # sub timelog
+}
 
 =back
 
@@ -317,7 +317,7 @@ sub new {
         $logger->log(qq(- ) . $self->get_display_name() );
         # return an undefined object so that callers know something's wrong
         undef $self;
-    } # unless ( -e $self->get_filename() )
+    }
 
     # previous step may have set $self to undef
     if ( defined $self ) {
@@ -328,10 +328,10 @@ sub new {
             # return an undefined object so that callers know something's wrong
             undef $self;
         } # unless ( -r $self->get_filename() )
-    } # if ( defined $self )
+    }
 
     return $self
-} # sub new
+}
 
 =back
 
@@ -373,7 +373,7 @@ You can find documentation for this script with the perldoc command.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (c) 2012 Brian Manning, all rights reserved.
+Copyright (c) 2012-2013 Brian Manning, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
