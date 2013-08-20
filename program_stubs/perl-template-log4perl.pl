@@ -162,6 +162,31 @@ sub set {
     return undef;
 }
 
+=item defined($key)
+
+Returns "true" (C<1>) if the value for the key passed in as C<key> is
+C<defined>, and "false" (C<0>) if the value is undefined, or the key doesn't
+exist.
+
+=cut
+
+sub defined {
+    my $self = shift;
+    my $key = shift;
+    # turn the args reference back into a hash with a copy
+    my %args = %{$self->{_args}};
+
+    # Can't use Log4perl here, since it hasn't been set up yet
+    if ( exists $args{$key} ) {
+        #warn qq(exists: $key\n);
+        if ( defined $args{$key} ) {
+            #warn qq(defined: $key; ) . $args{$key} . qq(\n);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 =item get_args( )
 
 Returns a hash containing the parsed script arguments.
@@ -213,7 +238,7 @@ use Log::Log4perl::Level;
     my $log = get_logger("");
 
     $log->logdie(qq(Missing '--catalog' spreadsheet file argument))
-        unless ( defined $config->get(q(catalog)) );
+        unless ( $config->defined(q(catalog)) );
     $log->logdie(qq(Can't read catalog file ) . $config->get(q(catalog)) )
         unless ( -r $config->get(q(catalog)) );
 

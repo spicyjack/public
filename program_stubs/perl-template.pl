@@ -151,6 +151,31 @@ sub set {
     return undef;
 }
 
+=item defined($key)
+
+Returns "true" (C<1>) if the value for the key passed in as C<key> is
+C<defined>, and "false" (C<0>) if the value is undefined, or the key doesn't
+exist.
+
+=cut
+
+sub defined {
+    my $self = shift;
+    my $key = shift;
+    # turn the args reference back into a hash with a copy
+    my %args = %{$self->{_args}};
+
+    # Can't use logger object here, since it hasn't been set up yet
+    if ( exists $args{$key} ) {
+        #warn qq(exists: $key\n);
+        if ( defined $args{$key} ) {
+            #warn qq(defined: $key; ) . $args{$key} . qq(\n);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 =item get_args( )
 
 Returns a hash containing the parsed script arguments.
@@ -199,7 +224,7 @@ sub new {
     my $config = shift;
 
     my $logfd;
-    if ( defined $config->get(q(logfile)) ) {
+    if ( $config->defined(q(logfile)) ) {
         # append to the existing logfile, if any
         $logfd = IO::File->new(q( >> ) . $config->get(q(logfile)));
         die q( ERR: Can't open logfile ) . $config->get(q(logfile)) . qq(: $!)
