@@ -113,7 +113,7 @@ Things to check/think about when you're writing new code
   - Preparing Your Web Content for iPad - http://tinyurl.com/7ofz2qq
   - Safari Extensions Development Guide - http://tinyurl.com/b6ge4ax
 
-### Objective C ###
+### Objective-C ###
   - Objective-C Feature Availablity Index - http://tinyurl.com/nr5eujz
   - Objective-C types; 
     - Jumping Monkey - http://tinyurl.com/7ddrdmb
@@ -141,6 +141,8 @@ Things to check/think about when you're writing new code
     - Blocks Programming Topics - http://tinyurl.com/3syy4vr
     - String Format Specifiers - http://tinyurl.com/n63fuj8
   - Mastering Threads on Mac OS X - http://drdobbs.com/parallel/232602177
+  - The _Clockwise/Spiral Rule_ for parsing C declarations
+    - http://c-faq.com/decl/spiral.anderson.html
 
 ### C Programming ###
   - Unary Expressions (& \* - + ! ~)
