@@ -80,4 +80,8 @@ _Current list of threads_ - You can see a current list of threads from the
 debug toolbar by clicking on the name of the program or program icon in the
 debug toolbar
 
+_LLDB Debugger commands_ 
+- `p` - print variable
+- `po` - print object
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
