@@ -28,9 +28,14 @@ Install a different version of Perl
 
     perlbrew install perl-5.X.X
 
-Install Perl with specific options
+Install Perl with specific options (64-bit platforms)
 
     perlbrew install --switch --thread --multi --64int --64all --ld \
+    --as perl-5.18.0-with_threads -j 4 perl-5.18.0
+
+Install Perl with specific options (32-bit platforms)
+
+    perlbrew install --switch --thread --multi --64int --ld \
     --as perl-5.18.0-with_threads -j 4 perl-5.18.0
 
 Create an alias to an existing install of Perl
