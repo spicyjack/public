@@ -51,10 +51,6 @@ After the system comes up, set up the `pi` user
     sysv-rc-conf stow linuxlogo cvs fluxbox slim zenity libgtk2-perl
     kernel-package debhelper dh-make-perl htop
 
-For *Jenkins*, use the setup notes in `personal.git/notes/jenkins/notes.md`.
-Test SSH connectivity after setting up the user and dropping the SSH key into
-the `jenkins` user's home directory.
-
 ## Raspbian Repository ##
 From: http://www.raspbian.org/RaspbianRepository
 
