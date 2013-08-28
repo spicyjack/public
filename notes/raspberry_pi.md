@@ -1,6 +1,10 @@
 # Raspberry Pi #
 See also `arm_notes.md`
 
+## Articles ##
+- How two volunteers built Raspberry Pi's operating system
+  - http://tinyurl.com/d6ywp7j
+
 ## Setting up the default Raspbian image ##
 In the `raspi-config` setup tool:
 - Expand rootfs
