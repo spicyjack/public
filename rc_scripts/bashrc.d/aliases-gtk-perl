@@ -1,0 +1,12 @@
+#!/bin/bash
+# git aliases
+GIT_PATH="/home/brian/src/gtk-perl"
+alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} refchk"
+# these next two are the same
+alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
+alias gtkrepostat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
+alias gtkinchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} inchk"
+alias gtkoutchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} outchk"
+alias gtkpullall="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} pullall"
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
