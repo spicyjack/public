@@ -1,6 +1,6 @@
 #!/bin/bash
 # git aliases
-GIT_PATH="/home/brian/src/gtk-perl"
+GIT_PATH="/home/foo/src/gtk-perl"
 alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} refchk"
 # these next two are the same
 alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
