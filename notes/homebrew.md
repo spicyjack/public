@@ -70,29 +70,46 @@ Or, if you don't want/need launchctl, you can just run:
 
 ## Compiling a Gtk+3 stack under Homebrew ##
 
-### libgobject-introspection ###
-- Install, and use `brew link --force gobject-introspection` to create the
-  `gir/girepository` links back to `gobject-introspection`
+### gobject-introspection ###
+- Install `gobject-introspection`
 
-### libcairo ###
+### cairo ###
 - Install `cairo` via Homebrew
   - `brew install --with-glib cairo`
 - Force link the `cairo` library
   - `brew link --force cairo`
+- Force link `libffi` (Glib dependency)
+  - `brew link --force libffi`
 
-### libatk ###
+### atk ###
 
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
       ./configure --prefix=/usr/local/Cellar/atk/2.8.0 \
       --enable-introspection=yes
 
-### libpango ###
+### pango ###
+Force link `cairo` and `fontconfig` in order to pick up `.pc` files
 
+    brew link --force cairo
+    brew link --force fontconfig
+
+Then do an interactive install of pango
+
+    brew install --interactive pango
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
       ./configure --prefix=/usr/local/Cellar/pango/1.34.1 \
       --enable-introspection=yes
+
+You should see this after running `./configure`:
+
+    configuration:
+            backends: Cairo Xft FreeType
+
+### glib ###
+Note: may not be needed (02Sep2013), `cairo` may have built this with the
+correct flags.
 
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
@@ -101,6 +118,8 @@ Or, if you don't want/need launchctl, you can just run:
 
 ### gdk-pixbuf ###
 
+    brew install jpeg libtiff libpng
+    brew install --interactive gdk-pixbuf
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     GI_TYPELIB_PATH=/usr/local/share/gir-1.0 \
     ./configure --prefix=/usr/local/Cellar/gdk-pixbuf/2.28.1 \
@@ -111,14 +130,26 @@ Or, if you don't want/need launchctl, you can just run:
 
 ### libgtk3 ###
 
-    XML_CATALOG_FILES="/usr/local/etc/xml/catalog" \
+    brew install d-bus at-spi2-core at-spi2-atk gtk-doc
+    brew install --interactive gtk+3
+
+Configure with:
+
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig \
     ./configure --prefix="/usr/local/Cellar/gtk+3/3.8.2" --disable-debug \
     --enable-introspection=yes --enable-gtk-doc
 
-Note the addition of `XML_CATALOG_FILES` and the two paths for
-`PKG_CONFIG_PATH`; this is only needed to build `GTK+3`.  When trying to
-install, you'll get this error:
+Note the addition of the two paths for `PKG_CONFIG_PATH`; this is only needed
+to build `GTK+3`.
+
+To build, add `PATH=$PATH:/usr/local/bin` to pick `gtkdoc-scan`, and add
+`XML_CATALOG_FILES=""` to tell `gtk-doc` where to look for XML catalogs.
+
+    PATH=$PATH:/usr/local/bin \
+    XML_CATALOG_FILES="/usr/local/etc/xml/catalog" \
+    time make
+
+When trying to install, you'll get this error:
 
     Error: Could not symlink file:
     /usr/local/Cellar/gtk+3/3.8.2/bin/gtk-update-icon-cache
