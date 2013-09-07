@@ -17,7 +17,7 @@ After installing code plugins with help files (which usually get placed in
 - redcode - http://www.vim.org/scripts/script.php?script_id=1705
 - redcode - http://www.vim.org/scripts/script.php?script_id=1017
 - nagios - http://www.vim.org/scripts/script.php?script_id=2261
-- json - http://www.vim.org/scripts/script.php?script_id=1945
+- json - https://github.com/elzr/vim-json
   - can also use javascript syntax highlight file;
     http://www.codeography.com/2010/07/13/json-syntax-highlighting-in-vim.html
 - javascript
