@@ -57,7 +57,9 @@ ctree () {
     fi
 } # show a colorized tree, and pipe to colorized less
 
-viewjson () {
+_download_viewer () {
+    local OUTPUT_TYPE="$1"
+    local WGET_URL="$2"
     JSON_XS_CMD=$(which json_xs)
     VIM_CMD=$(which vim)
     WGET_CMD=$(which wget)
@@ -73,11 +75,20 @@ viewjson () {
         echo "(Hint: quote URL to prevent shell from interpreting URL)"
         return 1
     else
-        $WGET_CMD -O - "$1" | $JSON_XS_CMD \
+        $WGET_CMD -O - "$WGET_URL" | $JSON_XS_CMD \
             | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
-            -c 'runtime! macros/less.vim' -c "set ft=json" -
+            -c 'runtime! macros/less.vim' -c "set filetype=$OUTPUT_TYPE" -
     fi
-}
+    unset JSON_XS_CMD VIM_CMD WGET_CMD
+} # view a downloaded file, pretty printed and syntax highlighted
+
+viewjson () {
+    _download_viewer "json" "$1"
+} # json front end to _download_viewer
+
+viewyaml () {
+    _download_viewer "yaml" "$1"
+} # yaml front end to _download_viewer
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
