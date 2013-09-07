@@ -1,0 +1,34 @@
+#!/bin/bash
+
+CT_ROOT="/opt/cross/armv6-lack_rpi-linux-gnueabi"
+CT_CMD_BASE="${CT_ROOT}/bin/armv6-lack_rpi-linux-gnueabi"
+
+function ct-list {
+    echo "Listing commands in '${CT_ROOT}/bin'"
+    cd ${CT_ROOT}/bin
+    dir
+    cd ${OLDPWD}
+}
+
+function ct-ldd {
+    if [ "x$1" != "x" ]; then
+        ${CT_CMD_BASE}-ldd --root ${CT_ROOT} $1
+    else
+        "ct-ldd: need a file to compute shared library dependencies for"
+    fi
+}
+
+function ct-cmd {
+    if [ "x$1" != "x" ]; then
+        if [ -e "${CT_CMD_BASE}-${1}" ]; then
+            ${CT_CT_CMD_BASE}-${1} "$@"
+        else
+            "ct-cmd: crosstool command '${1}' doesn't exist"
+        fi
+    else
+        "ct-cmd: Usage: 'ct-cmd <crosstool command to run>"
+    fi
+}
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
