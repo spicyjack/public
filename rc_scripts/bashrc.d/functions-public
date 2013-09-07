@@ -73,7 +73,9 @@ viewjson () {
         echo "(Hint: quote URL to prevent shell from interpreting URL)"
         return 1
     else
-        $WGET_CMD -O - "$1" | $JSON_XS_CMD | $VIM_CMD -R -c "set ft=json" -
+        $WGET_CMD -O - "$1" | $JSON_XS_CMD \
+            | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+            -c 'runtime! macros/less.vim' -c "set ft=json" -
     fi
 }
 
