@@ -57,5 +57,25 @@ ctree () {
     fi
 } # show a colorized tree, and pipe to colorized less
 
+viewjson () {
+    JSON_XS_CMD=$(which json_xs)
+    VIM_CMD=$(which vim)
+    WGET_CMD=$(which wget)
+    if [ ! -x $JSON_XS_CMD -o ! -x $VIM_CMD -o ! $WGET_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "JSON_XS_CMD: ${JSON_XS_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
+        echo "WGET_CMD: ${WGET_CMD}"
+        return 1
+    fi
+    if [ "x$1" == "x" ]; then
+        echo 'Usage: viewjson "http://example.com/api/request.json"'
+        echo "(Hint: quote URL to prevent shell from interpreting URL)"
+        return 1
+    else
+        $WGET_CMD -O - "$1" | $JSON_XS_CMD | $VIM_CMD -R -c "set ft=json" -
+    fi
+}
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
