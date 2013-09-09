@@ -26,6 +26,8 @@ Things to check/think about when you're writing new code
 ## Creating Frameworks/Static Libraries ##
 - Creating a library to be shared between iOS and Mac OS X
   - http://tinyurl.com/c5nrhul
+- Developing Cocoa Frameworks using Xcode 4's Workspace Feature
+  - http://tinyurl.com/pu9n5q2
 - https://github.com/jverkoey/iOS-Framework
 - Framework Programming Guide - http://tinyurl.com/cp7zt9p
   - Mentions "Universal Framework for iOS" - http://tinyurl.com/6e2nxj9
