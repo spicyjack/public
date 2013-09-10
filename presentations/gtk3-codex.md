@@ -1,6 +1,6 @@
 # Gtk3 Codex #
 
-How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl refugee.
+How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl veteran. 
 
 ## What to talk about? ##
 - What's different about Gtk3
