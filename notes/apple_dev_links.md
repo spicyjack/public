@@ -177,6 +177,13 @@ Things to check/think about when you're writing new code
 - Linking two storyboards - http://tinyurl.com/a49vxy4
 - Storyboard best practices - http://tinyurl.com/avcs4dp
 
+## Designing for iOS 7 ##
+- iOS 7 UI Transition Guide - http://tinyurl.com/naueoh2
+- Updated Mobile HIG - http://tinyurl.com/q6f9uzg
+- What's new in iOS - http://tinyurl.com/nrnzb6c
+- UIKit UI Catalog - http://tinyurl.com/nmec7td
+- Code:explained; Adventure - http://tinyurl.com/pfykvem
+
 ## Problems using UISplitView on the last Final Project
 http://www.raywenderlich.com/forums/viewtopic.php?t=1546&p=10620
 http://timroadley.com/2012/03/24/core-data-universal-ipad-storyboard/
