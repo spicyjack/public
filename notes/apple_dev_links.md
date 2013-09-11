@@ -183,6 +183,7 @@ Things to check/think about when you're writing new code
 - What's new in iOS - http://tinyurl.com/nrnzb6c
 - UIKit UI Catalog - http://tinyurl.com/nmec7td
 - Code:explained; Adventure - http://tinyurl.com/pfykvem
+- http://www.creativebloq.com/apple/designers-need-know-ios7-6133221
 
 ## Problems using UISplitView on the last Final Project
 http://www.raywenderlich.com/forums/viewtopic.php?t=1546&p=10620
