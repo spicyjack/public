@@ -80,7 +80,7 @@ set_ps1 () {
                 # FIXME no check for stashed files (original symbol: $)
             fi
         fi
-        PS1_GIT_STATUS="${GIT_STATUS}(${PS1_GIT_STATUS})${C_END}"
+        PS1_GIT_STATUS="${GIT_STATUS}[${PS1_GIT_STATUS}]${C_END}"
     fi
     ### Set up PS1_PATH
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
