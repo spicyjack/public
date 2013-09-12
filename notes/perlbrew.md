@@ -31,28 +31,28 @@ Install a different version of Perl
 Install Perl with specific options (64-bit platforms)
 
     perlbrew install --switch --thread --multi --64int --64all --ld \
-    --as perl-5.18.0-with_threads -j 4 perl-5.18.0
+    --as perl-5.18.1-with_threads -j 4 perl-5.18.1
 
 Install Perl with specific options (32-bit platforms)
 
     perlbrew install --switch --thread --multi --64int --ld \
-    --as perl-5.18.0-with_threads -j 4 perl-5.18.0
+    --as perl-5.18.1-with_threads -j 4 perl-5.18.1
 
 Create an alias to an existing install of Perl
 
-    perlbrew alias create perl-5.18.0 5.18.0-no_threads
+    perlbrew alias create perl-5.18.1 5.18.1-no_threads
 
 Uninstall an existing install
 
-    perlbrew uninstall perl-5.18.0
+    perlbrew uninstall perl-5.18.1
 
 Delete a previously created alias
 
-    perlbrew alias delete 5.18.0-no_threads
+    perlbrew alias delete 5.18.1-no_threads
 
 Use a different installed Perl
 
-    perlbrew use perl-5.18.0-with_threads
+    perlbrew use perl-5.18.1-with_threads
 
 Install `cpanminus/cpanm`
 
