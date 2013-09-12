@@ -169,8 +169,10 @@ When trying to install, you'll get this error:
         Linking /usr/local/Cellar/gtk+3/3.8.2... 267 symlinks created
 
 ### Pango, Cairo and Gtk2 Perl Modules ###
+Install order is Cairo, Glib, Pango, Gtk2/Gtk3
 
     PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Cairo
+    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Glib
     PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Pango
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ cpanm Gtk2
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
@@ -180,10 +182,10 @@ When trying to install, you'll get this error:
       cpanm Gtk3
 
 When running `Gtk3` scripts, `GI_TYPELIB_PATH` needs to point to the directory
-that has the `*.typelib` files; this is usually
+that has the `.typelib` files; this is usually
 `/usr/local/lib/girepository-X.X`.  Probably best to set it either in the
 environment, or in scripts themselves.  There's also another directory with
-`*.gir` files that may be needed, to build `GTK+3` and friends I think.  The
-`*.gir` files are located at `/usr/local/share/gir-1.0`.
+`.gir` files that may be needed, to build `GTK+3` and friends I think.  The
+`.gir` files are located at `/usr/local/share/gir-1.0`.
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
