@@ -72,6 +72,9 @@ Or, if you don't want/need launchctl, you can just run:
 
 ### gobject-introspection ###
 - Install `gobject-introspection`
+- On Debian, you need to install the `-dev` file `libgirepository1.0-dev` in
+  order to get `gobject-introspection-1.0.pc` installed to
+  `/usr/lib/pkgconfig`
 
 ### cairo ###
 - Install `cairo` via Homebrew
