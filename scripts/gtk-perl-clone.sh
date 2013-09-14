@@ -8,7 +8,8 @@ GIT_EMAIL="bmanning@src.gnome.org"
 GIT_GPG_KEY="8D7CEDE6"
 
 # base URL for all of the git source stored on gnome.org
-GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
+GNOME_GIT_BASE_URL="https://git.gnome.org/browse"
+#GNOME_GIT_BASE_URL="ssh://bmanning@git.gnome.org/git"
 #GNOME_GIT_BASE_URL="http://git.gnome.org/browse"
 
 ## List of current gtk2-perl repos
