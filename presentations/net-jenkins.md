@@ -8,9 +8,9 @@
     - Automation
       - Show a demo of automation/building
 - Jenkins Perl modules
-  - `Net::Jenkins`
-    - Why did I choose `Net::Jenkins`?
   - `App::Jenkins`
+  - `Net::Jenkins`
+  - Why did I choose `Net::Jenkins`?
 
 ## How I build with Jenkins ##
 - Build trees, not build pipelines
@@ -32,6 +32,13 @@
 ## Changes I've made to Net::Jenkins ##
 - Cookbook
 - Retrieving Jenkins version from HTTP headers
+- Parsing of URLs to allow for non-standard ports/Jenkins URL paths
+- Saving of error message after each HTTP request
+- Building jobs with parameters
+  - Encoding parameters in a JSON HTTP POST message
+- Updates/completion of POD documentation
+- `next_build_number` method
+- Tests for `$jenkins->summary` and `$jenkins->build_version`
 
 ## How to scale with Jenkins ##
 - Build with params
@@ -62,10 +69,12 @@
   - Upgrade any plugins that need upgrading
 
 ## Demos ##
+- Preflighting
 - Setting up a job
   - `arm-busybox`
 - Setting up a view
 - Console access
 - Running a Perl script that uses `Net::Jenkins`
 - Build pipelines
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
