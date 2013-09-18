@@ -145,6 +145,7 @@ Things to check/think about when you're writing new code
   - Mastering Threads on Mac OS X - http://drdobbs.com/parallel/232602177
   - The _Clockwise/Spiral Rule_ for parsing C declarations
     - http://c-faq.com/decl/spiral.anderson.html
+  - Exception Programming Topics - http://tinyurl.com/lalpoc7
 
 ### C Programming ###
   - Unary Expressions (& \* - + ! ~)
