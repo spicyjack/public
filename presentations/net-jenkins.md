@@ -82,6 +82,7 @@ Jenkins Perl modules
 - Setting up a job
   - `arm-busybox`
 - Setting up a view
+- Showing job dependencies
 - Console access
 - Running a Perl script that uses `Net::Jenkins`
 - Build pipelines
