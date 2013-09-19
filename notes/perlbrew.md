@@ -54,6 +54,12 @@ Use a different installed Perl
 
     perlbrew use perl-5.18.1-with_threads
 
+Install modules from one Perl into another Perl (from
+http://perlbrew.pl/Reinstall-All-Modules-On-New-Perl.html)
+
+    perlbrew list-modules \
+      | perlbrew exec --with perl-5.18.1-with_threads cpanm
+
 Install `cpanminus/cpanm`
 
     perlbrew install-cpanm
