@@ -25,6 +25,9 @@ Popular features
   - IRC
   - E-mail
   - IM
+- Non-web management
+  - CLI
+  - API
 
 Jenkins Perl modules
 - `App::Jenkins`
