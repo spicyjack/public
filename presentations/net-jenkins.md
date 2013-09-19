@@ -1,15 +1,34 @@
 # Net::Jenkins Presentation #
 
 ## What to talk about? ##
-- What is Jenkins?
-  - What it does
-  - How you can use it
-    - Software testing
-    - Automation
-      - Show a demo of automation/building
-- Jenkins Perl modules
-  - `App::Jenkins`
-  - `Net::Jenkins`
+ What is Jenkins?
+- What it does
+- How you can use it
+  - Software testing
+  - Automation
+    - Show a demo of automation/building
+
+Popular features
+- Views
+  - Groups jobs togehter
+  - Completely customizable, except for **All** view
+- Plugins
+  - Change views/Jenkins behaivor
+  - What's interesting?
+  - Examine plugins multiple times, make lots of notes, easy to miss
+    interesting things.
+- Security 
+  - internal user database
+  - LDAP
+  - web server authentication
+- Notification
+  - IRC
+  - E-mail
+  - IM
+
+Jenkins Perl modules
+- `App::Jenkins`
+- `Net::Jenkins`
   - Why did I choose `Net::Jenkins`?
 
 ## How I build with Jenkins ##
@@ -40,33 +59,20 @@
 - `next_build_number` method
 - Tests for `$jenkins->summary` and `$jenkins->build_version`
 
+## How to manage Jenkins ##
+- Backups
+  - Create a tarball of the `jenkins` directory
+  - Copy `config.xml` files for jobs and for Jenkins itself
+    - Lose history and previous builds/artifacts
+- Upgrading
+  - Upgrade in place, restart
+  - Upgrade any plugins that need upgrading
+
 ## How to scale with Jenkins ##
 - Build with params
 - Create custom build jobs without params using CLI/API and hacked up XML
   - Delete jobs for old versions, you should be able to recreate them later if
     you need to
-
-## Misc Jenkins Notes ##
-- Security 
-  - internal user database
-  - LDAP
-  - web server authentication
-- Notification
-  - IRC
-  - E-mail
-  - IM
-- Backups
-  - Create a tarball of the `jenkins` directory
-  - Copy `config.xml` files for jobs and for Jenkins itself
-    - Lose history and previous builds/artifacts
-- Plugins
-  - Change views/Jenkins behaivor
-  - What's interesting?
-  - Examine plugins multiple times, make lots of notes, easy to miss
-    interesting things.
-- Upgrading
-  - Upgrade in place, restart
-  - Upgrade any plugins that need upgrading
 
 ## Demos ##
 - Preflighting
