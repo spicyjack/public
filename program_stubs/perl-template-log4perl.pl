@@ -49,8 +49,9 @@ our @options = (
     # script options
     q(verbose|v+),
     q(help|h),
+    q(colorize|c), # always colorize output
     # other options
-    q(catalog|c=s),
+
     q(dumpdir|dir|dump|d=s),
     q(show-empty|empty),
     q(show-tables|tables),
@@ -219,20 +220,28 @@ use Log::Log4perl::Level;
     # set up the logger
     #my $log_conf = qq(log4perl.rootLogger = WARN, Screen\n);
     my $log_conf = qq(log4perl.rootLogger = INFO, Screen\n);
-#    if ( ! -t STDOUT ) {
-#        $log_conf .= qq(log4perl.appender.Screen = )
-#            . qq(Log::Log4perl::Appender::Screen\n);
-#    } else {
+    if ( ! -t STDOUT ) {
         $log_conf .= qq(log4perl.appender.Screen = )
             . qq(Log::Log4perl::Appender::ScreenColoredLevels\n);
-#    } # if ( $Config->get(q(o_colorlog)) )
+    } else {
+       $log_conf .= qq(log4perl.appender.Screen = )
+            . qq(Log::Log4perl::Appender::Screen\n);
+    }
 
     $log_conf .= qq(log4perl.appender.Screen.stderr = 1\n)
         . qq(log4perl.appender.Screen.utf8 = 1\n)
         . qq(log4perl.appender.Screen.layout = PatternLayout\n)
-        #. q(log4perl.appender.Screen.layout.ConversionPattern = %d %p %m%n)
         . q(log4perl.appender.Screen.layout.ConversionPattern )
-        . qq(= %d{HH.mm.ss} %p -> %m%n\n);
+        # %r: number of milliseconds elapsed since program start
+        # %p{1}: first letter of event priority
+        # %4L: line number where log statement was used, four numbers wide
+        # %M{1}: Name of the method name where logging request was issued
+        # %m: message
+        # %n: newline
+        . qq|= [%8r] %p{1} %4L (%M{1}) %m%n\n|;
+        #. qq( = %d %p %m%n\n)
+        #. qq(= %d{HH.mm.ss} %p -> %m%n\n);
+
     # create a logger object, and prime the logfile for this session
     Log::Log4perl::init( \$log_conf );
     my $log = get_logger("");
