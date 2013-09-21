@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# shell functions to download and view in various programs
+_download_viewer () {
+    local OUTPUT_TYPE="$1"
+    local WGET_URL="$2"
+    JSON_XS_CMD=$(which json_xs)
+    VIM_CMD=$(which vim)
+    WGET_CMD=$(which wget)
+    if [ ! -x $JSON_XS_CMD -o ! -x $VIM_CMD -o ! $WGET_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "JSON_XS_CMD: ${JSON_XS_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
+        echo "WGET_CMD: ${WGET_CMD}"
+        return 1
+    fi
+    if [ "x$1" == "x" ]; then
+        echo "Usage: view${OUTPUT_TYPE} \"http://example.com/api/request.json\""
+        echo "(Hint: quote URL to prevent shell from interpreting URL)"
+        return 1
+    else
+        $WGET_CMD -O - "$WGET_URL" | $JSON_XS_CMD \
+            | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+            -c 'runtime! macros/less.vim' -c "set filetype=$OUTPUT_TYPE" -
+    fi
+    unset JSON_XS_CMD VIM_CMD WGET_CMD
+} # view a downloaded file, pretty printed and syntax highlighted
+
+viewjson () {
+    _download_viewer "json" "$1"
+} # json front end to _download_viewer
+
+viewyaml () {
+    _download_viewer "yaml" "$1"
+} # yaml front end to _download_viewer
+
+xxdfetch () {
+    local WGET_URL=$1
+    local XXD_CMD=$(which xxd)
+    local VIM_CMD=$(which vim)
+    local WGET_CMD=$(which wget)
+    if [ ! -x $XXD_CMD -o ! -x $VIM_CMD -o ! $WGET_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "XXD_CMD: ${XXD_CMD}"
+        echo "WGET_CMD: ${WGET_CMD}"
+        return 1
+    fi
+    if [ "x${WGET_URL}" == "x" ]; then
+        echo "Usage: xxdfetch \"http://example.com/api/request.json\""
+        echo "(Hint: quote URL to prevent shell from interpreting URL)"
+        return 1
+    else
+        $WGET_CMD -O - "${WGET_URL}" | $XXD_CMD \
+            | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+            -c 'runtime! macros/less.vim' -c "set filetype=xxd" -
+    fi
+} # xxd downloader and viewer
+
+lessjson () {
+    local LESS_FILE=$1
+    if [ "x$LESS_FILE" = "x" ]; then
+        echo "Usage: lessjson <filename>"
+        return 1
+    fi
+    JSON_XS_CMD=$(which json_xs)
+    VIM_CMD=$(which vim)
+    if [ ! -x $JSON_XS_CMD -o ! -x $VIM_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "JSON_XS_CMD: ${JSON_XS_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
+    fi
+    if [ -f $LESS_FILE ]; then
+        cat $LESS_FILE | $JSON_XS_CMD \
+            | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+            -c 'runtime! macros/less.vim' -c "set filetype=json" -
+    else
+        echo "ERROR: file $LESS_FILE not found/readable"
+        return 1
+    fi
+}
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# конец!
