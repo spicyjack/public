@@ -1,6 +1,7 @@
 # Virtual Machine Setup #
 
-What to put on your virtual machine after you set it up.
+What to put on your virtual machine after you set it up.  See also
+`notes/qemu/host_setup.md`.
 
 ## Installing Debian ##
 - Create 'lack' user with lack's password
@@ -20,9 +21,9 @@ What to put on your virtual machine after you set it up.
   - less
   - bzip2
   - lvm2
-  - vim
+  - vim-nox
   - screen
-  - git-core
+  - git
   - zip
   - sudo
   - linuxlogo
