@@ -23,22 +23,19 @@ our $VERSION = '0.01';
  perl perl-template-log4perl.pl [OPTIONS]
 
  Script options:
- -v|--verbose       Verbose script execution
  -h|--help          Shows this help text
+ -d|--debug         Debug script execution
+ -v|--verbose       Verbose script execution
+ -c|--colorize      Always colorize script output
 
  Other script options:
- -c|--catalog       Catalog spreadsheet file
- -d|--dumpdir       Dump file objects to this directory (Create if needed)
- --show-empty       Show empty cells (cells containing only whitespace)
- --show-tables      Show all parts tables worksheets
- --show-diagrams    Show all diagram worksheets
- --show-groups      Show all group worksheets
- --show-all         Show all worksheets
+ -o|--option        A script option
+ --some-option      Another script option
 
  Example usage:
 
  # list the structure of an XLS file
- perl-template-log4perl.pl --catalog /path/to/UralCatalog.xls \
+ perl-template-log4perl.pl --option /path/to/a/file \
 
 You can view the full C<POD> documentation of this file by calling C<perldoc
 perl-template-log4perl.pl>.
@@ -47,17 +44,14 @@ perl-template-log4perl.pl>.
 
 our @options = (
     # script options
-    q(verbose|v+),
+    q(debug|d),
+    q(verbose|v),
     q(help|h),
     q(colorize|c), # always colorize output
     # other options
 
-    q(dumpdir|dir|dump|d=s),
-    q(show-empty|empty),
-    q(show-tables|tables),
-    q(show-groups|groups),
-    q(show-diagrams|diagrams),
-    q(show-all|all),
+    q(option|o=s),
+    q(some-option),
 );
 
 =head1 DESCRIPTION
@@ -217,15 +211,24 @@ use Log::Log4perl::Level;
     # create a logger object
     my $config = Template::Config->new();
 
-    # set up the logger
-    #my $log_conf = qq(log4perl.rootLogger = WARN, Screen\n);
-    my $log_conf = qq(log4perl.rootLogger = INFO, Screen\n);
-    if ( ! -t STDOUT ) {
-        $log_conf .= qq(log4perl.appender.Screen = )
-            . qq(Log::Log4perl::Appender::ScreenColoredLevels\n);
+    # Start setting up the Log::Log4perl object
+    my $log4perl_conf = qq(log4perl.rootLogger = WARN, Screen\n);
+    if ( $cfg->defined(q(verbose)) && $cfg->defined(q(debug)) ) {
+        die(q(Script called with --debug and --verbose; choose one!));
+    } elsif ( $cfg->defined(q(debug)) ) {
+        $log4perl_conf = qq(log4perl.rootLogger = DEBUG, Screen\n);
+    } elsif ( $cfg->defined(q(verbose)) ) {
+        $log4perl_conf = qq(log4perl.rootLogger = INFO, Screen\n);
+    }
+
+    # Use color when outputting directly to a terminal, or when --colorize was
+    # used
+    if ( -t STDOUT || $cfg->get(q(colorize)) ) {
+        $log4perl_conf .= q(log4perl.appender.Screen )
+            . qq(= Log::Log4perl::Appender::ScreenColoredLevels\n);
     } else {
-       $log_conf .= qq(log4perl.appender.Screen = )
-            . qq(Log::Log4perl::Appender::Screen\n);
+        $log4perl_conf .= q(log4perl.appender.Screen )
+            . qq(= Log::Log4perl::Appender::Screen\n);
     }
 
     $log_conf .= qq(log4perl.appender.Screen.stderr = 1\n)
