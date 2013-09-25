@@ -372,10 +372,10 @@ use warnings;
 #use bytes; # I think this is used for the sysread call when reading MP3 files
 
     # create a logger object
-    my $config = Template::Config->new();
+    my $cfg = Template::Config->new();
 
     # create a logger object, and prime the logfile for this session
-    my $logger = Template::Logger->new($config);
+    my $logger = Template::Logger->new($cfg);
     $logger->timelog(qq(INFO: Starting template.pl, version $VERSION));
     $logger->timelog(qq(INFO: my PID is $$));
 
