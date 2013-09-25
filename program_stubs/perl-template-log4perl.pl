@@ -209,7 +209,7 @@ use Log::Log4perl::Level;
     binmode(STDOUT, ":utf8");
     #my $catalog_file = q(/srv/www/purl/html/Ural_Catalog/UralCatalog.xls);
     # create a logger object
-    my $config = Template::Config->new();
+    my $cfg = Template::Config->new();
 
     # Start setting up the Log::Log4perl object
     my $log4perl_conf = qq(log4perl.rootLogger = WARN, Screen\n);
@@ -249,10 +249,10 @@ use Log::Log4perl::Level;
     Log::Log4perl::init( \$log_conf );
     my $log = get_logger("");
 
-    $log->logdie(qq(Missing '--catalog' spreadsheet file argument))
-        unless ( $config->defined(q(catalog)) );
-    $log->logdie(qq(Can't read catalog file ) . $config->get(q(catalog)) )
-        unless ( -r $config->get(q(catalog)) );
+    $log->logdie(qq(Missing '--option' file argument))
+        unless ( $cfg->defined(q(option)) );
+    $log->logdie(qq(Can't read option file ) . $cfg->get(q(option)) )
+        unless ( -r $cfg->get(q(option)) );
 
     # print a nice banner
     $log->info(qq(Starting perl-template-log4perl.pl, version $VERSION));
