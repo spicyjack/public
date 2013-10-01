@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ### VARIABLES ###
+# NOTE: if you plan on uploading to git.gnome.org, change the below to match
+# your Gnome.org user ID and GPG key ID
 GIT_USER="Brian Manning"
 GIT_EMAIL="bmanning@src.gnome.org"
 GIT_GPG_KEY="8D7CEDE6"
@@ -35,7 +37,7 @@ perl-Gtk2-Unique perl-Gtk3 perl-Pango
         git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
         if [ $? -gt 0 ]; then
             echo "ERROR: 'git clone' returned non-zero status"
-            return
+            exit 1
         fi
         if [ -d ${PROJECT}.git ]; then
             cd ${PROJECT}.git
@@ -45,8 +47,8 @@ perl-Gtk2-Unique perl-Gtk3 perl-Pango
             git config user.signkey "${GIT_GPG_KEY}"
             cd $SOURCE_DIR
         else
-            echo "ERROR: project directory ${PROJECT}.git doesn't exist!"
-            return
+            echo "ERROR: project ${PROJECT}.git was not cloned!"
+            exit 1
         fi
     done
     cd $GTK_CLONE_OLDPWD
