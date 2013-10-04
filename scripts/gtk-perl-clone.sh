@@ -34,11 +34,22 @@ perl-Gtk2-Unique perl-Gtk3 perl-Pango
     GTK_CLONE_OLDPWD=$PWD
     cd $SOURCE_DIR
     for PROJECT in $GTK_PERL_REPOS; do
-        echo "=== git clone ${PROJECT} into ${SOURCE_DIR} ===";
-        git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
-        if [ $? -gt 0 ]; then
-            echo "ERROR: 'git clone' returned non-zero status"
-            exit 1
+        if [ -d ${PROJECT}.git ]; then
+            echo "=== Running 'git pull' on ${SOURCE_DIR}/${PROJECT}.git ===";
+            cd ${PROJECT}.git
+            git pull
+            if [ $? -gt 0 ]; then
+                echo "ERROR: 'git clone' returned non-zero status"
+                exit 1
+            fi
+            cd $OLDPWD
+        else
+            echo "=== Running 'git clone ${PROJECT}' into ${SOURCE_DIR} ===";
+            git clone ${GNOME_GIT_BASE_URL}/$PROJECT ${PROJECT}.git
+            if [ $? -gt 0 ]; then
+                echo "ERROR: 'git clone' returned non-zero status"
+                exit 1
+            fi
         fi
         if [ -d ${PROJECT}.git ]; then
             cd ${PROJECT}.git
