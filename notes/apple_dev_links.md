@@ -152,6 +152,7 @@ Things to check/think about when you're writing new code
     - http://en.wikibooks.org/wiki/C_Programming/Simple_math#Unary_expressions
 
 ## Xcode ##
+- http://www.1729.us/xcode/Xcode%20Shortcuts.png
 - Keyboard gestures and shortcuts - http://tinyurl.com/7tnxmgd
 - Xcode 4 User Guide - http://tinyurl.com/7pkzaqe
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
