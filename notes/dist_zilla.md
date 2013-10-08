@@ -16,16 +16,18 @@
   - https://metacpan.org/module/Dist::Zilla::Plugin::MetaYAML
   - https://metacpan.org/module/Dist::Zilla::Plugin::MetaResources
 
-## Commands ##
-Build (a tarball of) your distribution
-- `dzil build`
+## Build (a tarball of) your distribution ##
+`dzil build`
 
-Run the test suite for your distribution
-- `dzil test`
+## Run the test suite for your distribution ##
+`dzil test`
 
-Release your distribution, including making release commits and uploading the
-resulting tarball to CPAN
+## Release your distribution ##
+Including making release commits and uploading the resulting tarball to CPAN
 - **Edit dist.ini and change version number**
 - `dzil release`
+
+## Create a new distribution ##
+`dzil new Your::Library`
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
