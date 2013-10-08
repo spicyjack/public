@@ -5,6 +5,7 @@ Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
 ## Links ##
 - Keyboard gestures and shortcuts - http://tinyurl.com/7tnxmgd
 - Xcode 4 User Guide - http://tinyurl.com/7pkzaqe
+- http://www.1729.us/xcode/Xcode%20Shortcuts.png
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
 
@@ -45,7 +46,7 @@ Switch between source and header file
 _Continue_ - Continue program execution
 - `⌃⌘Y`
 
-_Step Over_ - Execute the current line of code and if it is a routine) return
+_Step Over_ - Execute the current line of code and (if it is a routine) return
 to the next line in the current file
 - Step Over - `F6`
 - Step Over Thread - `⌃⇧F6`
