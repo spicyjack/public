@@ -146,6 +146,8 @@ Things to check/think about when you're writing new code
   - The _Clockwise/Spiral Rule_ for parsing C declarations
     - http://c-faq.com/decl/spiral.anderson.html
   - Exception Programming Topics - http://tinyurl.com/lalpoc7
+  - NY Times Style Guide
+    - https://github.com/NYTimes/objective-c-style-guide
 
 ### C Programming ###
   - Unary Expressions (& \* - + ! ~)
