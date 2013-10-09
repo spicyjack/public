@@ -42,6 +42,7 @@ xxdfetch () {
     if [ ! -x $XXD_CMD -o ! -x $VIM_CMD -o ! $WGET_CMD ]; then
         echo "ERROR: missing commands needed to run this function!"
         echo "XXD_CMD: ${XXD_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
         echo "WGET_CMD: ${WGET_CMD}"
         return 1
     fi
@@ -55,6 +56,25 @@ xxdfetch () {
             -c 'runtime! macros/less.vim' -c "set filetype=xxd" -
     fi
 } # xxd downloader and viewer
+
+xxdless () {
+    local LESS_FILE=$1
+    if [ "x$LESS_FILE" = "x" ]; then
+        echo "Usage: xxdless <filename>"
+        return 1
+    fi
+    local XXD_CMD=$(which xxd)
+    local VIM_CMD=$(which vim)
+    if [ ! -x $XXD_CMD -o ! -x $VIM_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "XXD_CMD: ${XXD_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
+        return 1
+    fi
+    $XXD_CMD $LESS_FILE \
+        | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+        -c 'runtime! macros/less.vim' -c "set filetype=xxd" -
+} # xxd "less" command
 
 lessjson () {
     local LESS_FILE=$1
