@@ -78,6 +78,8 @@ To add the Raspbian GPG package signing keys:
   - https://github.com/raspberrypi
     - https://github.com/raspberrypi/firmware
       - Firmware updates, including binary blobs that get loaded at boot time
+      - https://github.com/raspberrypi/firmware/tree/master/opt/vc/src/hello_pi
+        - Demos of different hardware subsystems
     - https://github.com/raspberrypi/quake3
       - Includes cross-compilation scripts
 - Quick Start Guide
@@ -93,6 +95,11 @@ To add the Raspbian GPG package signing keys:
     http://elinux.org/RPi_Software
   - Configuration file: http://elinux.org/RPiconfig
     - Includes how to check CPU speed and temperature
+  - VideoCore APIs
+    - Info about different demos of OpenGL ES on the Pi
+    - http://elinux.org/Raspberry_Pi_VideoCore_APIs#OpenGL_ES
+  - Kernel Compilation notes
+    - http://elinux.org/RPi_Kernel_Compilation
 
 ## Distros ##
 - Raspbian
