@@ -50,6 +50,7 @@ Added to my `~/.vimrc`
 
 # Utility Plugins #
 
+
 ## BufExplorer ##
 http://www.vim.org/scripts/script.php?script_id=42
 - `,be` - switch between files in buffers, full screen
@@ -80,5 +81,15 @@ Use ranges for `Align` shortcuts; `'a,.` (from mark `a` to current line)
 - `,t,` - align on comma
 - `,t|` - align on pipes
 - `,tsp` - align on whitespace
+
+# Troubleshooting #
+Troubleshoot plugins:
+- Use the `:scriptnames` command
+
+Troubleshoot commands/settings:
+- Use the `:verbose <command>` option
+  - `:verbose autocmd BufEnter`
+- Use the command name by itself
+  - `:autocmd`
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
