@@ -8,7 +8,7 @@
 - `^n` - Find the next match for words that start with the keyword in front of
   the cursor (`keywords`, `compl-keyword`)
 - `:map` - Show current keymappings
-- `,ha` - Print `hardcopy` of the current file to _~/<filename>.ps_
+- `,ha` - Print `hardcopy` of the current file to _~/(filename).ps_
 
 ### Moving around using tags ###
 Help files and source code indexed with the `ctags` command have the concept
@@ -24,7 +24,7 @@ commands below to move around.
 - `^t`, `Ctrl-t`, `^o`, or `Ctrl-o` will go back through your tag "history"
 - `:tags` will show you  your "tag history"
 
-## Changing the <Leader> ##
+## Changing the "Leader" ##
 The `mapleader` is the key that is pressed prior to entering in custom
 commands.  You can change the `mapleader` from it's default of "\" to
 something else using this command in your `$HOME/.vimrc`:
