@@ -159,6 +159,11 @@ Things to check/think about when you're writing new code
 - Xcode 4 User Guide - http://tinyurl.com/7pkzaqe
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - LLDB Debugger - http://lldb.llvm.org/tutorial.html
+- Using versioning with Xcode projects
+  - `man 1 agvtool` - http://tinyurl.com/mhv4j25 
+  - Setting iPhone application build versions - http://tinyurl.com/lbwhgw3
+  - http://kswizz.com/post/2686511526/git-xcode-versioning
+  - Version and build numbers with Xcode - http://tinyurl.com/36y624x
 
 ## Developer Videos ##
 - https://developer.apple.com/videos/wwdc/2011/
