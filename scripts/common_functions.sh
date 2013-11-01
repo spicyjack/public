@@ -9,6 +9,70 @@
 # Clone:    https://github.com/spicyjack/public.git
 # Issues:   https://github.com/spicyjack/public.git/issues
 
+### OUTPUT COLORIZATION VARIABLES ###
+START="\x1b["
+END="m"
+
+# text attributes
+NONE=0; BOLD=1; NORM=2; BLINK=5; INVERSE=7; CONCEALED=8
+
+# background colors
+B_BLK=40; B_RED=41; B_GRN=42; B_YLW=43
+B_BLU=44; B_MAG=45; B_CYN=46; B_WHT=47
+
+# foreground colors
+F_BLK=30; F_RED=31; F_GRN=32; F_YLW=33
+F_BLU=34; F_MAG=35; F_CYN=36; F_WHT=37
+
+# some shortcuts
+MSG_FAIL="${BOLD};${F_YLW};${B_RED}"
+MSG_WARN="${F_YLW};${B_BLK}"
+MSG_DRYRUN="${BOLD};${F_CYN};${B_BLU}"
+#MSG_OK="${BOLD};${F_WHT};${B_GRN}"
+MSG_OK="${BOLD};${F_BLU};${B_BLK}"
+MSG_REMOTE="${F_CYN};${B_BLK}"
+MSG_INFO="${BOLD};${F_WHI};${B_BLU}"
+MSG_FLUFF="${BOLD};${F_BLU};${B_BLK}"
+
+# BSD's getopt is simpler than the GNU getopt; we need to detect it
+if [ -x /usr/bin/uname ]; then
+    OSDETECT=$(/usr/bin/uname -s)
+elif [ -x /bin/uname ]; then
+    OSDETECT=$(/bin/uname -s)
+else
+    echo "ERROR: can't run 'uname -s' command to determine system type"
+    exit 1
+fi
+
+# compensate for different 'echo' commands on different platforms
+# we need an echo that works with backslash escaped characters
+if [ $OSDETECT = "Darwin" ]; then
+    ECHO_CMD="builtin echo"
+elif [ $OSDETECT = "Linux" ]; then
+    ECHO_CMD="builtin echo -e"
+else
+    ECHO_CMD="echo"
+fi
+
+### FUNCTIONS ###
+# wrap text inside of ANSI tags, unless --nocolor is set
+colorize () {
+    local TEXT="$1"
+    local COLOR="$2"
+
+    if [ $COLORIZE -ne 0 ]; then
+        COLORIZE_OUT="${COLORIZE_OUT}${START}${COLOR}${END}${TEXT}"
+        COLORIZE_OUT="${COLORIZE_OUT}${START};${NONE}${END}"
+    else
+        COLORIZE_OUT="${COLORIZE_OUT}${TEXT}"
+    fi
+}
+
+# clear the COLORIZE_OUT variable
+colorize_clear () {
+    COLORIZE_OUT=""
+}
+
 ## FUNC: say()
 ## ARG:  MESSAGE to be written on STDOUT
 ## ENV:  QUIET - the quietness level of the script
@@ -16,7 +80,9 @@
 function say {
     local MESSAGE="$1"
     if [ $QUIET -ne 1 ]; then
-        echo "$MESSAGE"
+        colorize "$MESSAGE" "${MSG_OK}"
+        $ECHO_CMD "${COLORIZE_OUT}"
+        colorize_clear
     fi
 }
 
@@ -27,7 +93,9 @@ function say {
 function info {
     local MESSAGE="$1"
     if [ $QUIET -ne 1 ]; then
-        echo "-> $MESSAGE"
+        colorize "-> ${MESSAGE}" "${MSG_INFO}"
+        $ECHO_CMD "${COLORIZE_OUT}"
+        colorize_clear
     fi
 }
 
@@ -36,7 +104,9 @@ function info {
 ## DESC: Always writes MESSAGE to STDERR (ignores $QUIET)
 function warn {
     local MESSAGE="$1"
-    echo $MESSAGE >&2
+    colorize "${MESSAGE}" "${MSG_WARN}"
+    $ECHO_CMD "${COLORIZE_OUT}"
+    colorize_clear
 }
 
 ## FUNC: check_exit_status()
