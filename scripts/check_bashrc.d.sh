@@ -115,7 +115,7 @@ do
 done
 info "Searching for scripts in ${SOURCE_PATHS}"
 TOTAL_BASHRC_SCRIPTS=$(/bin/ls -1 ~/.bashrc.d/* | wc -l)
-BASHRC_SCRIPTS_FOUND_COUNTER=0
+BASHRC_MATCHED_COUNTER=0
 info "Total scripts found in ~/.bashrc.d: ${TOTAL_BASHRC_SCRIPTS}"
 for BASHRC_SCRIPT_FULLPATH in ~/.bashrc.d/*
 do
@@ -127,6 +127,7 @@ do
         if [ $FOUND_FLAG -eq 0 -a -f ${SOURCE_PATH}/${BASHRC_SCRIPT} ]; then
             info "Found ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
             FOUND_FLAG=1
+            BASHRC_MATCHED_COUNTER=$((BASHRC_MATCHED_COUNTER + 1))
         fi
 #        diff --brief "${JENKINS_CFG}" "${TARGET_FILE}" 1>/dev/null 2>&1
 #    DIFF_STATUS=$?
@@ -142,7 +143,12 @@ do
 #        fi
 #    fi
     done
+    if [ $FOUND_FLAG -eq 0 ]; then
+        warn "No match for bashrc script '${BASHRC_SCRIPT}'"
+    fi
 done
+info "Total scripts found in ~/.bashrc.d: ${TOTAL_BASHRC_SCRIPTS}"
+info "Total scripts matched in repos: ${BASHRC_MATCHED_COUNTER}"
 
 if [ $EXIT_STATUS -gt 0 ]; then
     warn "ERROR: ${SCRIPTNAME} completed with errors"
