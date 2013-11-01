@@ -141,8 +141,8 @@ do
             if [ $DIFF_STATUS -gt 0 ]; then
                 DIFF_FILES=$((${DIFF_FILES} + 1))
                 say "- Found difference in script '${BASHRC_SCRIPT}';"
-                say "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
-                say "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
+                echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
+                echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
             fi
         fi
     done
