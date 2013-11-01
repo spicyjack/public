@@ -33,8 +33,8 @@ BASHRCD_PATH="~/.bashrc.d"
 # source jenkins functions
 source ~/src/public.git/scripts/common_functions.sh
 
-GETOPT_SHORT="hqv"
-GETOPT_LONG="help,quiet,view"
+GETOPT_SHORT="hqve:"
+GETOPT_LONG="help,quiet,view,editor:"
 # sets GETOPT_TEMP
 # pass in $@ unquoted so it expands, and run_getopt() will then quote it "$@"
 # when it goes to re-parse script arguments
@@ -49,6 +49,7 @@ cat <<-EOF
     -h|--help       Displays this help message
     -q|--quiet      No script output (unless an error occurs)
     -v|--view       View 'diff' of bashrc.d files in your \$EDITOR
+    -e|--editor     Use this program instead of the contents of \$EDITOR
 
     Example usage:
     # view diffs of bashrc.d files when diffs are found
@@ -74,10 +75,18 @@ while true ; do
         -q|--quiet)
             QUIET=1
             shift;;
-        # don't actually do anything
+        # run a diff between the two files, pipe to $EDITOR
         -v|--view)
             VIEW_DIFFS=1
             shift;;
+        # Use a custom $EDITOR
+        -e|--editor)
+            EDITOR=$2
+            if [ ! -x $EDITOR ]; then
+                echo "ERROR: editor $EDITOR does not exist/is not executable"
+                exit 1
+            fi
+            shift 2;;
         # separator between options and arguments
         # note that arguments in this case is one or more repos with bashrc.d
         # scripts
@@ -143,6 +152,10 @@ do
                 say "- Found difference in script '${BASHRC_SCRIPT}';"
                 echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
                 echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
+                if [ $VIEW_DIFFS -eq 1 ]; then
+                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
+                fi
             fi
         fi
     done
