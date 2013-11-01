@@ -18,8 +18,11 @@ SCRIPTNAME=$(basename $0)
 # verbose script output by default
 QUIET=0
 
-# verbose script output by default
+# execute script and modify files by default
 DRY_RUN=0
+
+# colorize? yes please (1=yes, colorize, 0=no, don't colorize)
+COLORIZE=1
 
 # default exit status
 EXIT_STATUS=0
@@ -30,8 +33,8 @@ BASHRCD_PATH="~/.bashrc.d"
 # source jenkins functions
 source ~/src/public.git/scripts/common_functions.sh
 
-GETOPT_SHORT="hqns:"
-GETOPT_LONG="help,quiet,dry-run,source:"
+GETOPT_SHORT="hqv"
+GETOPT_LONG="help,quiet,view"
 # sets GETOPT_TEMP
 # pass in $@ unquoted so it expands, and run_getopt() will then quote it "$@"
 # when it goes to re-parse script arguments
@@ -45,11 +48,14 @@ cat <<-EOF
     SCRIPT OPTIONS
     -h|--help       Displays this help message
     -q|--quiet      No script output (unless an error occurs)
-    -n|--dry-run    Explain what would be done, don't actually do it
+    -v|--view       View 'diff' of bashrc.d files in your \$EDITOR
 
     Example usage:
-    ${SCRIPTNAME} --dry-run -- ~/src/path1.git ~/src/path2.git
-    ${SCRIPTNAME} --source -- ~/src/path1.git ~/src/path2.git
+    # view diffs of bashrc.d files when diffs are found
+    ${SCRIPTNAME} --view -- ~/src/path1.git ~/src/path2.git
+
+    # don't view diffs of bashrc.d files, just show what's different
+    ${SCRIPTNAME} -- ~/src/path1.git ~/src/path2.git
 EOF
 }
 
@@ -69,14 +75,12 @@ while true ; do
             QUIET=1
             shift;;
         # don't actually do anything
-        -n|--dry-run)
-            DRY_RUN=1
+        -v|--view)
+            VIEW_DIFFS=1
             shift;;
-        # Source path(s)
-        #-s|--source)
-        #    REPO_SOURCE_PATHS="$2";
-        #    shift 2;;
         # separator between options and arguments
+        # note that arguments in this case is one or more repos with bashrc.d
+        # scripts
         --)
             shift;
             break;;
@@ -116,6 +120,7 @@ done
 info "Searching for scripts in ${SOURCE_PATHS}"
 TOTAL_BASHRC_SCRIPTS=$(/bin/ls -1 ~/.bashrc.d/* | wc -l)
 BASHRC_MATCHED_COUNTER=0
+DIFF_FILES=0
 info "Total scripts found in ~/.bashrc.d: ${TOTAL_BASHRC_SCRIPTS}"
 for BASHRC_SCRIPT_FULLPATH in ~/.bashrc.d/*
 do
@@ -123,32 +128,31 @@ do
     FOUND_FLAG=0
     for SOURCE_PATH in ${SOURCE_PATHS}
     do
+        SOURCE_PATH=$(echo ${SOURCE_PATH} | sed 's!/$!!')
         #info "Checking for ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
         if [ $FOUND_FLAG -eq 0 -a -f ${SOURCE_PATH}/${BASHRC_SCRIPT} ]; then
-            info "Found ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
+            #info "Found ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
             FOUND_FLAG=1
             BASHRC_MATCHED_COUNTER=$((BASHRC_MATCHED_COUNTER + 1))
+            diff --brief "${BASHRC_SCRIPT_FULLPATH}" \
+                "${SOURCE_PATH}/${BASHRC_SCRIPT}" \
+                1>/dev/null 2>&1
+            DIFF_STATUS=$?
+            if [ $DIFF_STATUS -gt 0 ]; then
+                DIFF_FILES=$((${DIFF_FILES} + 1))
+                say "- Found difference in script '${BASHRC_SCRIPT}';"
+                say "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
+                say "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
+            fi
         fi
-#        diff --brief "${JENKINS_CFG}" "${TARGET_FILE}" 1>/dev/null 2>&1
-#    DIFF_STATUS=$?
-#    if [ $DIFF_STATUS -gt 0 ]; then
-#        CONFIGS_COPIED=$((${CONFIGS_COPIED} + 1))
-#        echo $CONFIGS_COPIED > $BACKUP_JENKINS_STATEFILE
-#        if [ $DRY_RUN -eq 0 ]; then
-#            say "- Has changes: $JENKINS_CFG"
-#            /bin/cp --force --verbose "$JENKINS_CFG" "$TARGET_FILE"
-#            EXIT_STATUS=$?
-#        else
-#            echo "  Would have copied: $JENKINS_CFG"
-#        fi
-#    fi
     done
     if [ $FOUND_FLAG -eq 0 ]; then
-        warn "No match for bashrc script '${BASHRC_SCRIPT}'"
+        warn "- No match for bashrc script '${BASHRC_SCRIPT}'"
     fi
 done
 info "Total scripts found in ~/.bashrc.d: ${TOTAL_BASHRC_SCRIPTS}"
 info "Total scripts matched in repos: ${BASHRC_MATCHED_COUNTER}"
+info "Total bashrc.d scripts different from repo copies: ${DIFF_FILES}"
 
 if [ $EXIT_STATUS -gt 0 ]; then
     warn "ERROR: ${SCRIPTNAME} completed with errors"
