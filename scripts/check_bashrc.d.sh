@@ -89,8 +89,9 @@ while true ; do
     esac
 done
 
-if [ "x$REPO_SOURCE_PATHS" = "x" ]; then
-    warn "ERROR: Please pass a source path to bashrc.d repos (--source)"
+if [ $# -eq 0 ]; then
+    warn "ERROR: Please pass paths to bashrc.d directories after '--'"
+    show_help
     exit 1
 fi
 
@@ -98,18 +99,34 @@ fi
 show_script_header
 info "Checking for differences in '~/.bashrc.d' files"
 CONFIGS_DIFF_COUNT=0
-SOURCE_PATHS=$(echo $REPO_SOURCE_PATHS | sed 's/:/ /')
+SOURCE_PATHS=""
+while [ $# -gt 0 ];
+do
+    DASH_PATH=$1
+    if [ -d "${DASH_PATH}" ]; then
+        info "Found valid path: ${DASH_PATH}"
+        SOURCE_PATHS="${SOURCE_PATHS} ${DASH_PATH}"
+    else
+        warn "WARNING: ${DASH_PATH} not found"
+        EXIT_STATUS=1
+    fi
+    # pop the file off of the arg stack
+    shift
+done
 info "Searching for scripts in ${SOURCE_PATHS}"
 TOTAL_BASHRC_SCRIPTS=$(/bin/ls -1 ~/.bashrc.d/* | wc -l)
+BASHRC_SCRIPTS_FOUND_COUNTER=0
 info "Total scripts found in ~/.bashrc.d: ${TOTAL_BASHRC_SCRIPTS}"
 for BASHRC_SCRIPT_FULLPATH in ~/.bashrc.d/*
 do
     BASHRC_SCRIPT=$(basename ${BASHRC_SCRIPT_FULLPATH})
+    FOUND_FLAG=0
     for SOURCE_PATH in ${SOURCE_PATHS}
     do
-        info "Checking for ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
-        if [ -f ${SOURCE_PATH}/${BASHRC_SCRIPT} ]; then
+        #info "Checking for ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
+        if [ $FOUND_FLAG -eq 0 -a -f ${SOURCE_PATH}/${BASHRC_SCRIPT} ]; then
             info "Found ${BASHRC_SCRIPT} in ${SOURCE_PATH}"
+            FOUND_FLAG=1
         fi
 #        diff --brief "${JENKINS_CFG}" "${TARGET_FILE}" 1>/dev/null 2>&1
 #    DIFF_STATUS=$?
