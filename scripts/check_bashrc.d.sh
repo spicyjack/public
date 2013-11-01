@@ -46,12 +46,10 @@ cat <<-EOF
     -h|--help       Displays this help message
     -q|--quiet      No script output (unless an error occurs)
     -n|--dry-run    Explain what would be done, don't actually do it
-    -s|--source     Repo source directory path(s);
-                    Multiple paths should be separated with a colon ":"
 
     Example usage:
-    ${SCRIPTNAME} --dry-run --source ~/src/path1.git:~/src/path2.git
-    ${SCRIPTNAME} --source ~/src/path1.git:~/src/path2.git
+    ${SCRIPTNAME} --dry-run -- ~/src/path1.git ~/src/path2.git
+    ${SCRIPTNAME} --source -- ~/src/path1.git ~/src/path2.git
 EOF
 }
 
@@ -75,9 +73,9 @@ while true ; do
             DRY_RUN=1
             shift;;
         # Source path(s)
-        -s|--source)
-            REPO_SOURCE_PATHS="$2";
-            shift 2;;
+        #-s|--source)
+        #    REPO_SOURCE_PATHS="$2";
+        #    shift 2;;
         # separator between options and arguments
         --)
             shift;
