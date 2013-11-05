@@ -16,6 +16,7 @@ After installing code plugins with help files (which usually get placed in
 - OpenGL Shading - http://www.vim.org/scripts/script.php?script_id=1002
 - jquery - http://www.vim.org/scripts/script.php?script_id=2416
 - Cocoa/Objective-C - https://github.com/msanders/cocoa.vim
+- Git - https://github.com/tpope/vim-git
 
 ## Other Syntax Plugins ##
 - googlecodewiki - http://www.vim.org/scripts/script.php?script_id=3173
