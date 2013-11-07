@@ -9,4 +9,10 @@
 - After the image has been created, convert to ISO with:
   - `hdiutil makehybrid -iso -joliet -o Master.iso Master.cdr`
 
+Create an install disk for Mavericks
+
+    sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled \
+    --applicationpath /Applications/Install\ OS\ X\ Mavericks.app \
+    --nointeraction
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
