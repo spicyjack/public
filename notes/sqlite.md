@@ -31,6 +31,9 @@ Headers are turned off by default; to enable them, run:
 Turn on headers
 - `.headers ON`
 
+Turn on the CPU timer
+- `.timer ON`
+
 Create a new table;
 - `CREATE TABLE example(first TEXT);`
 
