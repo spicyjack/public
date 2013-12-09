@@ -24,6 +24,9 @@ DRY_RUN=0
 # colorize? yes please (1=yes, colorize, 0=no, don't colorize)
 COLORIZE=1
 
+# view differences in RC files? (0=no, 1=yes)
+VIEW_DIFFS=0
+
 # default exit status
 EXIT_STATUS=0
 

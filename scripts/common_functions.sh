@@ -47,7 +47,7 @@ fi
 # compensate for different 'echo' commands on different platforms
 # we need an echo that works with backslash escaped characters
 if [ $OSDETECT = "Darwin" ]; then
-    ECHO_CMD="builtin echo"
+    ECHO_CMD="echo -e"
 elif [ $OSDETECT = "Linux" ]; then
     ECHO_CMD="builtin echo -e"
 else
