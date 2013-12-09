@@ -9,6 +9,9 @@ alias gtkinchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} inchk"
 alias gtkoutchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} outchk"
 alias gtkpullall="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} pullorigin"
 alias gtkpullgh="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} pullgithub"
+alias gtkupdatechk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} updatechk"
+alias gtkcolorchk="/bin/sh ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
+    updatechk"
 unset GIT_PATH
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
