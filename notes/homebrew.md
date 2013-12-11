@@ -68,10 +68,11 @@ Or, if you don't want/need launchctl, you can just run:
 - `libtiff` not linking it's `include` files
   - `brew unlink libtiff && brew link libtiff`
 
-## Compiling a Gtk+3 stack under Homebrew ##
+## Compiling a Gtk+3 stack under Homebrew and/or Debian ##
 
 ### gobject-introspection ###
 - Install `gobject-introspection`
+- Install `gettext`, and `--force link`
 - On Debian, you need to install the `-dev` file `libgirepository1.0-dev` in
   order to get `gobject-introspection-1.0.pc` installed to
   `/usr/lib/pkgconfig`
@@ -174,13 +175,23 @@ When trying to install, you'll get this error:
 ### Pango, Cairo and Gtk2 Perl Modules ###
 Install order is Cairo, Glib, Pango, Gtk2/Gtk3
 
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Cairo
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Glib
-    PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig/ cpanm Pango
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ cpanm Gtk2
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
+For Lion with built-in X server, use `/usr/X11/lib/pkgconfig/` for the path to
+`pkg-config` files.
+- `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/X11/lib/pkgconfig`
+
+For Mavericks with XQuartz, use `/opt/X11/lib/pkgconfig` for the path to
+`pkg-config` files.
+- `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/opt/X11/lib/pkgconfig`
+
+
+    cpanm Cairo
+    cpanm Glib
+    cpanm Pango
+    cpanm Glib::Object::Introspection
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH cpanm Gtk2
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH \
       cpanm Cairo::GObject
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/X11/lib/pkgconfig/ \
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH \
       GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0/ \
       cpanm Gtk3
 
