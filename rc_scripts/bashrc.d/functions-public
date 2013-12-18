@@ -35,7 +35,7 @@ function sudogrep {
     sudo grep $1 /etc/sudoers | less
 } # look for the string passed in as arg 1 in the sudoers file
 
-cless () {
+function cless {
     if [ "x$1" != "x" ]; then
         less -R $1
     else
@@ -43,7 +43,7 @@ cless () {
     fi
 } # color less
 
-ctree () {
+function ctree {
     if [ "x$1" != "x" ]; then
         tree -C "$1" | less -R
     else
