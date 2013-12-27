@@ -23,13 +23,12 @@ You can query the `master` table and get database schema info returned;
     WHERE type IN ('table','view') 
     ORDER BY 1
 
-Headers are turned off by default; to enable them, run:
-
-    .headers ON
-
 ## Demonstrating changes to sqlite_master ##
-Turn on headers
+(Optional) Turn on headers
 - `.headers ON`
+
+(Optional) Turn on "line" output, one column per line
+- `.mode line`
 
 Turn on the CPU timer
 - `.timer ON`
