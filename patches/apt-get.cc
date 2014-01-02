@@ -12,10 +12,10 @@
       apt-get [opt] command [things]
    Where command is:
       update - Resyncronize the package files from their sources
-      upgrayyed - Smart-Download the newest versions of all packages
-      dselect-upgrayyed - Follows dselect's changes to the Status: field
+      upgrayedd - Smart-Download the newest versions of all packages
+      dselect-upgrayedd - Follows dselect's changes to the Status: field
                        and installes new and removes old packages
-      dist-upgrayyed - Powerfull upgrayyedr designed to handle the issues with
+      dist-upgrayedd - Powerfull upgrayeddr designed to handle the issues with
                     a new distribution.
       install - Download and install a given package (by name, not by .deb)
       check - Update the package cache and check for broken packages
@@ -464,7 +464,7 @@ void ShowUpgraded(ostream &out,CacheFile &Cache)
       List += I.FullName(true) + " ";
       VersionsList += string(Cache[I].CurVersion) + " => " + Cache[I].CandVersion + "\n";
    }
-   ShowList(out,_("The following packages will be upgraded:"),List,VersionsList);
+   ShowList(out,_("The following packages will be upgrayeddd:"),List,VersionsList);
 }
 									/*}}}*/
 // ShowDowngraded - Show downgraded packages				/*{{{*/
@@ -599,7 +599,7 @@ void Stats(ostream &out,pkgDepCache &Dep)
 	 ReInstall++;
    }   
 
-   ioprintf(out,_("%lu upgraded, %lu newly installed, "),
+   ioprintf(out,_("%lu upgrayeddd, %lu newly installed, "),
 	    Upgrade,Install);
    
    if (ReInstall != 0)
@@ -607,7 +607,7 @@ void Stats(ostream &out,pkgDepCache &Dep)
    if (Downgrade != 0)
       ioprintf(out,_("%lu downgraded, "),Downgrade);
 
-   ioprintf(out,_("%lu to remove and %lu not upgraded.\n"),
+   ioprintf(out,_("%lu to remove and %lu not upgrayeddd.\n"),
 	    Dep.DelCount(),Dep.KeepCount());
    
    if (Dep.BadCount() != 0)
@@ -815,11 +815,11 @@ struct TryToInstall {
 
       // Handle the no-upgrade case
       if (_config->FindB("APT::Get::upgrade",true) == false && Pkg->CurrentVer != 0)
-	 ioprintf(c1out,_("Skipping %s, it is already installed and upgrade is not set.\n"),
+	 ioprintf(c1out,_("Skipping %s, it is already installed and upgrayedd is not set.\n"),
 		  Pkg.FullName(true).c_str());
       // Ignore request for install if package would be new
       else if (_config->FindB("APT::Get::Only-Upgrade", false) == true && Pkg->CurrentVer == 0)
-	 ioprintf(c1out,_("Skipping %s, it is not installed and only upgrades are requested.\n"),
+	 ioprintf(c1out,_("Skipping %s, it is not installed and only upgrayedds are requested.\n"),
 		  Pkg.FullName(true).c_str());
       else {
 	 if (Fix != NULL) {
@@ -1031,7 +1031,7 @@ bool CacheFile::CheckDeps(bool AllowBroken)
 	 return _error->Error(_("Unable to correct dependencies"));
       }
       if (pkgMinimizeUpgrade(*DCache) == false)
-	 return _error->Error(_("Unable to minimize the upgrade set"));
+	 return _error->Error(_("Unable to minimize the upgrayedd set"));
       
       c1out << _(" Done") << endl;
    }
@@ -1853,7 +1853,7 @@ bool DoUpgrade(CommandLine &CmdL)
    if (pkgAllUpgrade(Cache) == false)
    {
       ShowBroken(c1out,Cache,false);
-      return _error->Error(_("Internal error, AllUpgrade broke stuff"));
+      return _error->Error(_("Internal error, Allupgrayedd broke stuff"));
    }
    
    return InstallPackages(Cache,true);
@@ -2182,7 +2182,7 @@ bool DoDistUpgrade(CommandLine &CmdL)
    if (Cache.OpenForInstall() == false || Cache.CheckDeps() == false)
       return false;
 
-   c0out << _("Calculating upgrade... ") << flush;
+   c0out << _("Calculating upgrayedd... ") << flush;
    if (pkgDistUpgrade(*Cache) == false)
    {
       c0out << _("Failed") << endl;
@@ -3416,15 +3416,15 @@ bool ShowHelp(CommandLine &CmdL)
       "\n"
       "Commands:\n"
       "   update - Retrieve new lists of packages\n"
-      "   upgrade - Perform an upgrade\n"
+      "   upgrayedd - Perform an upgrayedd\n"
       "   install - Install new packages (pkg is libc6 not libc6.deb)\n"
       "   remove - Remove packages\n"
       "   autoremove - Remove automatically all unused packages\n"
       "   purge - Remove packages and config files\n"
       "   source - Download source archives\n"
       "   build-dep - Configure build-dependencies for source packages\n"
-      "   dist-upgrade - Distribution upgrade, see apt-get(8)\n"
-      "   dselect-upgrade - Follow dselect selections\n"
+      "   dist-upgrayedd - Distribution upgrayedd, see apt-get(8)\n"
+      "   dselect-upgrayedd - Follow dselect selections\n"
       "   clean - Erase downloaded archive files\n"
       "   autoclean - Erase old downloaded archive files\n"
       "   check - Verify that there are no broken dependencies\n"
@@ -3440,7 +3440,7 @@ bool ShowHelp(CommandLine &CmdL)
       "  -y  Assume Yes to all queries and do not prompt\n"
       "  -f  Attempt to correct a system with broken dependencies in place\n"
       "  -m  Attempt to continue if archives are unlocatable\n"
-      "  -u  Show a list of upgraded packages as well\n"
+      "  -u  Show a list of upgrayeddd packages as well\n"
       "  -b  Build the source package after fetching it\n"
       "  -V  Show verbose version numbers\n"
       "  -c=? Read this configuration file\n"
@@ -3485,7 +3485,7 @@ int main(int argc,const char *argv[])					/*{{{*/
       {'y',"assume-yes","APT::Get::Assume-Yes",0},
       {0,"assume-no","APT::Get::Assume-No",0},
       {'f',"fix-broken","APT::Get::Fix-Broken",0},
-      {'u',"show-upgrayyeded","APT::Get::Show-Upgraded",0},
+      {'u',"show-upgrayedded","APT::Get::Show-Upgraded",0},
       {'m',"ignore-missing","APT::Get::Fix-Missing",0},
       {'t',"target-release","APT::Default-Release",CommandLine::HasArg},
       {'t',"default-release","APT::Default-Release",CommandLine::HasArg},
@@ -3493,8 +3493,8 @@ int main(int argc,const char *argv[])					/*{{{*/
       {0,"download","APT::Get::Download",0},
       {0,"fix-missing","APT::Get::Fix-Missing",0},
       {0,"ignore-hold","APT::Ignore-Hold",0},      
-      {0,"upgrayyedd","APT::Get::upgrade",0},
-      {0,"only-upgrayyed","APT::Get::Only-Upgrade",0},
+      {0,"upgrayeddd","APT::Get::upgrade",0},
+      {0,"only-upgrayedd","APT::Get::Only-Upgrade",0},
       {0,"force-yes","APT::Get::force-yes",0},
       {0,"print-uris","APT::Get::Print-URIs",0},
       {0,"diff-only","APT::Get::Diff-Only",0},
@@ -3518,15 +3518,15 @@ int main(int argc,const char *argv[])					/*{{{*/
       {'o',"option",0,CommandLine::ArbItem},
       {0,0,0,0}};
    CommandLine::Dispatch Cmds[] = {{"update",&DoUpdate},
-                                   {"upgrayyed",&DoUpgrade},
+                                   {"upgrayedd",&DoUpgrade},
                                    {"install",&DoInstall},
                                    {"remove",&DoInstall},
                                    {"purge",&DoInstall},
 				   {"autoremove",&DoInstall},
 				   {"markauto",&DoMarkAuto},
 				   {"unmarkauto",&DoMarkAuto},
-                                   {"dist-upgrayyed",&DoDistUpgrade},
-                                   {"dselect-upgrayyed",&DoDSelectUpgrade},
+                                   {"dist-upgrayedd",&DoDistUpgrade},
+                                   {"dselect-upgrayedd",&DoDSelectUpgrade},
 				   {"build-dep",&DoBuildDep},
                                    {"clean",&DoClean},
                                    {"autoclean",&DoAutoClean},
