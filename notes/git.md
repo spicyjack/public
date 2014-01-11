@@ -170,6 +170,14 @@ origin (tagname)
 
     git push --tags
 
+To delete a tag, deleted it from the local repo:
+
+    git tag -d <tag name>
+
+Then push the name of the deleted tag to the remote repo
+
+    git push origin :refs/tags/<tag name>
+
 ### Showing Things ###
 
 #### Listing the contents of tags ####
