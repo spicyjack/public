@@ -12,6 +12,22 @@
 - Introduction to the C/C++ Interface
   - http://sqlite.org/cintro.html
 
+## Helpful metacommands ##
+Show the current database
+- `.database`
+
+Turn on headers
+- `.headers ON`
+
+Turn on "line" output, one column per line
+- `.mode line`
+
+Turn on "tabs" output, columns are separated by **\t** characters
+- `.mode tabs`
+
+Turn on the CPU timer
+- `.timer ON`
+
 ## Querying for database schema ##
 SQLite has a `master` table that stores schema information for the database.
 You can query the `master` table and get database schema info returned;
