@@ -14,7 +14,12 @@
   - based on "How to Build a cross-compiler" - http://tinyurl.com/c9fuofd
 
 ## Installation ##
-- Unpack
+Package dependencies:
+
+    gperf bison flex libtool automake libncurses5-dev libncursesw5-dev
+
+Installation:
+- Unpack: `tar -jxvf crosstool-ng-1.X.X`
 - `./configure --prefix=/path/to/stow`
 - `time make`
 - `sudo make install`
@@ -27,6 +32,12 @@
   - `ct-ng list-samples`
 - Select a specific sample (which can be customized)
   - `ct-ng <sample name>`
+
+To modify existing environments, you need to `cd` to the directory where the
+`.config` files are stored.  Usually, this means `~/.ct-ng`.  If you don't
+have any configs stored, pull them out of Git
+(`lack-projects.git/lack/buildroot/crosstool-ng.config`)
+
 - Customize an existing sample
   - `ct-ng menuconfig`
 - Build it
