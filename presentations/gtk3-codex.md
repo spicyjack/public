@@ -18,6 +18,7 @@ How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl veteran.
 - Building by hand using Homebrew/Perlbrew
 
 ## Learing Gtk3 ##
+- See also `gtk-perl-notes.git/todos.md`
 - How to find documentation
 - How widgets are laid out (packing)
 - Controls in Gtk3
