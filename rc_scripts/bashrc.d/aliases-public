@@ -11,5 +11,14 @@ alias vi='/usr/local/bin/vim'
 # convert epoch time to a normal date/time
 alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
     localtime(\$1))/e"'
+
+#if [ $KERNEL_NAME = "Linux" -o $KERNEL_NAME = "SunOS" ]; then
+#   alias cls='cd; clear'
+#else
+   # MinGW/MSYS shell
+#   alias cls='cd; clsb'
+#   alias clear='clsb'
+#fi
+
 # vim: set filetype=sh shiftwidth=4 tabstop=4:
 # fin!
