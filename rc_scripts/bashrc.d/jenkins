@@ -8,7 +8,7 @@ function jenkcli {
 
 # run a command as the 'jenkins' user
 function jenksudo {
-    sudo -u jenkins "$*"
+    sudo -u jenkins $*
 }
 
 # vi: set ft=sh sw=4 ts=4
