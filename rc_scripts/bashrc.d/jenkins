@@ -6,5 +6,10 @@ function jenkcli {
     $JAVA_BIN -jar ~/bin/jenkins-cli.jar -s http://localhost:8080/jenkins "$@"
 }
 
+# run a command as the 'jenkins' user
+function jenksudo {
+    sudo -u jenkins "$*"
+}
+
 # vi: set ft=sh sw=4 ts=4
 # fin!
