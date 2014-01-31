@@ -40,9 +40,9 @@ To modify existing environments, you need to `cd` to the directory where the
 have any configs stored, pull them out of Git
 (`lack-projects.git/lack/buildroot/crosstool-ng.config`)
 
-- Customize an existing sample
+- Customize an existing sample using a menu of options (like the Linux kernel)
   - `ct-ng menuconfig`
-- Build it
+- Build the toolchain
   - `ct-ng build`
   - `ct-ng build.4` (build with 4 parallel processes)
 - Show currently configured toolchain/architecture (tuple)
@@ -53,6 +53,12 @@ have any configs stored, pull them out of Git
 - Show all build steps
   - `ct-ng list-steps`
   - You can start/stop the build on given steps if there are issues compiling
+- Remove generated files
+  - `ct-ng clean`
+- Remove generated files, configuration and build directories
+  - **Note**: if you want to keep the `.config` file, make sure you make a
+    backup of it first prior to running this command:
+  - `ct-ng distclean`
 
 Build logfile is located in:
 - `/opt/cross/arm-unknown-linux-gnueabi/build.log`
