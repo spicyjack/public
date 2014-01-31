@@ -9,6 +9,9 @@ How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl veteran.
 - What to write the document in?
   - `asciidoc`?
     - Can `ascidooc` do code blocks?
+    - Yes, via source filters;
+      - http://www.methods.co.nz/asciidoc/userguide.html#X59
+      - http://asciidoc.org/source-highlight-filter.html
 
 ## What to talk about? ##
 - What's different about Gtk3
@@ -26,6 +29,10 @@ How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl veteran.
 - Project culture
 - Cookbook
   - Show as many examples of the `Gtk-Perl` API and widgets as possible
+  - Compare `C` and `Perl` versions of GTK library calls, in order to show how
+    similar the method/function names are
+  - Show the differences between `C` and `Perl`, so that people know what to
+    expect
 
 ## How to build Gtk3 ##
 - Distro install instructions
@@ -37,6 +44,7 @@ How to use Perl Gtk3, for the compleat newb to the Gtk2-Perl veteran.
   - How to navigate the `Gtk-Perl` documentation tree/structure
     - How widgets inherit from each other, and what this means as far as
       widget methods/attributes
+  - How to use the docs for other GTK3 projects; Python, Ruby
 - How widgets are laid out (packing)
 - Controls in Gtk3
 - How to skin/theme controls (using CSS)
