@@ -30,6 +30,8 @@ Installation:
   - `ct-ng help`
 - List all of the possible architectures that can be built
   - `ct-ng list-samples`
+- Show more information about a given sample
+  - `ct-ng show-<sample name>`
 - Select a specific sample (which can be customized)
   - `ct-ng <sample name>`
 
