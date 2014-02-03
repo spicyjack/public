@@ -48,7 +48,7 @@ Things to check/think about when you're writing new code
 - Core Data Programming Guide - http://tinyurl.com/b6782vc
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - Instruments User Guide - http://tinyurl.com/6r6szns
-- Unit Testing - http://tinyurl.com/7sgjq3v
+- Unit Testing - http://tinyurl.com/kylmr2f
 - Creating custom Xcode templates
   - http://www.bobmccune.com/2012/03/04/creating-custom-xcode-4-file-templates/
     - Lots of tables with the key/value pairs that are usually used in
@@ -165,18 +165,19 @@ Things to check/think about when you're writing new code
   - Setting iPhone application build versions - http://tinyurl.com/lbwhgw3
   - http://kswizz.com/post/2686511526/git-xcode-versioning
   - Version and build numbers with Xcode - http://tinyurl.com/36y624x
+  - https://gist.github.com/sekati/3172554
+  - http://chanson.livejournal.com/125568.html
+  - http://stackoverflow.com/questions/6851660/version-vs-build-in-xcode-4
 
 ## Developer Videos ##
 - https://developer.apple.com/videos/wwdc/2011/
 - https://developer.apple.com/videos/wwdc/2012/
 
 ## Unit Testing Docs ##
-- Xcode 4 User Guide - http://tinyurl.com/7pkzaqe
-  - Building and Running your code; Unit Tests - http://tinyurl.com/7wa8ulc
+- XCode Help - Test Navigator - http://tinyurl.com/kylmr2f
+- XCode Overview - Unit Test Your App - http://tinyurl.com/mpljsd4
 - iOS App Development Workflow Guide - http://tinyurl.com/7wp84dv
-  - Unit Testing Applications - http://tinyurl.com/6nms3zk
-- Xcode Unit Testing Guide - http://tinyurl.com/7w5zzme
-  - Unit Test Macro Reference - http://tinyurl.com/byapuo8
+- https://github.com/spicyjack/public/blob/master/notes/apple_xctest_macro_reference.md
 
 ## Community tips on iOS testing ##
 - https://testflightapp.com/about/
@@ -195,13 +196,22 @@ Things to check/think about when you're writing new code
 - Code:explained; Adventure - http://tinyurl.com/pfykvem
 - http://www.creativebloq.com/apple/designers-need-know-ios7-6133221
 
+## Problems with Gesture Recognizers
+- http://www.mindtreatstudios.com/how-its-made/ios-gesture-recognizer-tips-tricks/
+- http://robogestures.blogspot.com/2011/10/shake-it-like-high-pass-filter.html
+- http://games.ianterrell.com/learn-the-basics-of-opengl-with-glkit-in-ios-5/
+- http://games.ianterrell.com/opengl-basics-with-glkit-in-ios5-encapsulated-drawing-and-animation/
+- http://games.ianterrell.com/how-to-render-multiple-objects-with-glkit/
+- http://www.raywenderlich.com/5223/beginning-opengl-es-2-0-with-glkit-part-1
+- http://www.raywenderlich.com/5235/beginning-opengl-es-2-0-with-glkit-part-2
+
 ## Problems using UISplitView on the last Final Project
-http://www.raywenderlich.com/forums/viewtopic.php?t=1546&p=10620
-http://timroadley.com/2012/03/24/core-data-universal-ipad-storyboard/
-http://stackoverflow.com/questions/10538231/ios-uisplitviewcontroller-with-storyboard-multiple-master-views-and-multiple
-http://www.scienceathand.com/idevblogaday/adventures-in-uisplitviewcontroller-2/
-http://stackoverflow.com/questions/5635267/ios-how-to-dynamically-change-detailview-in-splitview-template
-http://www.perfectline.ee/blog/uisplitviewcontroller-replacing-the-detail-view
-https://www.google.com/search?q=splitviewcontroller+replacing+detail+view
+- http://www.raywenderlich.com/forums/viewtopic.php?t=1546&p=10620
+- http://timroadley.com/2012/03/24/core-data-universal-ipad-storyboard/
+- http://stackoverflow.com/questions/10538231/ios-uisplitviewcontroller-with-storyboard-multiple-master-views-and-multiple
+- http://www.scienceathand.com/idevblogaday/adventures-in-uisplitviewcontroller-2/
+- http://stackoverflow.com/questions/5635267/ios-how-to-dynamically-change-detailview-in-splitview-template
+- http://www.perfectline.ee/blog/uisplitviewcontroller-replacing-the-detail-view
+- https://www.google.com/search?q=splitviewcontroller+replacing+detail+view
 
 # vim: filetype=markdown tabstop=2 
