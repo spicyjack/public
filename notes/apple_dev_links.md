@@ -70,6 +70,7 @@ Things to check/think about when you're writing new code
   - Tools Workflow Guide for iOS - http://tinyurl.com/79rrum8
   - іOS Technology Overview - http://tinyurl.com/3qku7f9
   - iOS App Programming Guide - http://tinyurl.com/2wqg955
+  - iOS 7 UI Transition Guide - http://tinyurl.com/osr4q2t
   - Your First iOS App - http://tinyurl.com/25qemtb
   - Your First App Store Submission - http://tinyurl.com/7fp2rz4
   - Adding runtime checks for newer symbols - http://tinyurl.com/cb2e8k5
