@@ -16,9 +16,6 @@
 - http://blog.plover.com/prog/git-habits.html
 - http://perlbrew.pl/Perlbrew-development-and-the-git-flow.html
 
-### Questions to be answered? ###
-- Notes from git presentation(s)?  Where are they hiding?
-
 ### Specifying revisions ###
 http://schacon.github.com/git/gitrevisions.html
 
@@ -49,22 +46,28 @@ Create the git repo in your local directory;
 
     git init .
 
+
 Add the remote;
 
+
     git remote add origin git@example.com:/path/to/repo.git
+
 
 Test pushing code to the new remote;
 
     git push --dry-run origin master
 
+
 Do the actual push;
 
     git push origin master
+
 
 ### Git Pull ###
 Pull from a remote repo, updating an older cloned version of the same repo:
 
     git pull git://github.com/wakaleo/game-of-life.git master
+
 
 Pull from a remote repo, updating an older cloned version of the same repo;
 set this repo to be the default repo for futher pulls/pushes:
@@ -72,9 +75,11 @@ set this repo to be the default repo for futher pulls/pushes:
     git pull --set-upstream git://github.com/wakaleo/game-of-life.git master
     git pull -u git://github.com/wakaleo/game-of-life.git master
 
+
 Pull a remote branch
 
     git checkout <branchname>; git pull origin
+
 
 ### Git Push ###
 - Push to a different branch;
@@ -84,6 +89,13 @@ Pull a remote branch
   - pushing a local branch that does not exist on the server will create the
     new branch on the server
   - see the git-push documentation page for more examples
+
+### Summary of changes between two commits
+Use `git diff`
+
+    git diff --stat
+
+There are other `--stat` options that can be used with `git diff`
 
 ### Creating/Merging Branches ###
 Quick summary:
@@ -136,7 +148,6 @@ cherry-pick` for more info.
     git fetch
     git rebase
     git stash pop
-
     git stash list
     git stash save stashing prior to pulling, possible duplicate code
     git pull
@@ -150,6 +161,7 @@ cherry-pick` for more info.
 
 ### Listing what files/directories are tracked ###
 
+
     git ls-tree -r HEAD
 
 ### Untracking files/directories ###
@@ -157,6 +169,7 @@ cherry-pick` for more info.
 Untrack a file:
 
     git rm --cached file
+
 
 Untrack a directory full of files
 
