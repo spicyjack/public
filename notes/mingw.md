@@ -17,7 +17,7 @@
   - `mingw-get update`
 - List packages
   - `mingw-get list`
-- List just package names (requires `UnxUtils`)
+- List just package names (requires `msys-less` to be installed)
   - `mingw-get list | grep Package | less`
 - Install basically everything:
   - `mingw-get install mingw-developer-toolkit --start-menu`
