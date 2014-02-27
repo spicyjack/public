@@ -12,10 +12,11 @@ Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
 ## Unicode Hex Input ##
 Hold down the Option (`⌥`) key and type in the 4 digit hex code for that
 character
-- Command: 0x2318 ⌘
-- Control: 0x2303 ^
-- Option:  0x2325 ⌥
-- Shift:   0x21e7 ⇧
+- Command:         0x2318 ⌘
+- Control:         0x2303 ^
+- Option:          0x2325 ⌥
+- Shift:           0x21e7 ⇧
+- Carriage return: 0x21a9 ↩
 
 ## Showing/Hiding Views ##
 Show/Hide Utilities (Inspectors)
@@ -23,6 +24,15 @@ Show/Hide Utilities (Inspectors)
 
 Show/Hide Debug Area
 - `⌘⇧Y`
+
+Show Standard Editor
+- `⌘↩`
+
+Show Assistant Editor
+- `⌥⌘↩`
+
+Show Version Editor
+- `⇧⌥⌘↩`
 
 Show/Hide Project Navigator
 - `⌘0`
