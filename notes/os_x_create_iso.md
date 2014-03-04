@@ -9,6 +9,10 @@
 - After the image has been created, convert to ISO with:
   - `hdiutil makehybrid -iso -joliet -o Master.iso Master.cdr`
 
+Convert ISO to DMG
+
+    hdiutil convert file.iso -format UDRW -o file.dmg
+
 Create an install disk for Mavericks
 
     sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled \
