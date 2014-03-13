@@ -99,5 +99,32 @@ lessjson () {
     fi
 }
 
+lessxml () {
+    local LESS_FILE=$1
+    if [ "x$LESS_FILE" = "x" ]; then
+        echo "Usage: lessxml <filename>"
+        return 1
+    fi
+    #XML_PP_CMD=$(which tidy)
+    XML_PP_CMD=$(which xml_pp)
+    VIM_CMD=$(which vim)
+    if [ ! -x $XML_PP_CMD -o ! -x $VIM_CMD ]; then
+        echo "ERROR: missing commands needed to run this function!"
+        echo "XML_PP_CMD: ${XML_PP_CMD}"
+        echo "VIM_CMD: ${VIM_CMD}"
+    fi
+    if [ -f $LESS_FILE ]; then
+        # for 'tidy'
+        #cat $LESS_FILE | $XML_PP_CMD -xml -quiet \
+        # for 'xml_pp'
+        cat $LESS_FILE | $XML_PP_CMD \
+            | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+            -c 'runtime! macros/less.vim' -c "set filetype=xml" -
+    else
+        echo "ERROR: file $LESS_FILE not found/readable"
+        return 1
+    fi
+}
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
