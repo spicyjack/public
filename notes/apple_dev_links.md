@@ -121,6 +121,8 @@ Things to check/think about when you're writing new code
   - Objective-C types; 
     - Jumping Monkey - http://tinyurl.com/7ddrdmb
     - http://stackoverflow.com/questions/2107544/types-in-objective-c-on-iphone
+  - How to declare blocks in Objective-C
+    - http://fuckingblocksyntax.com/
   - Learn C for Cocoa - http://cocoadevcentral.com/articles/000081.php
   - http://www.cocotron.org/Info
   - http://rosettacode.org/wiki/Command-line_arguments#Objective-C
