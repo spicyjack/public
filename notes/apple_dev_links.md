@@ -123,6 +123,8 @@ Things to check/think about when you're writing new code
     - http://stackoverflow.com/questions/2107544/types-in-objective-c-on-iphone
   - How to declare blocks in Objective-C
     - http://fuckingblocksyntax.com/
+  - Objective-C Categories
+    - http://raptureinvenice.com/dont-write-a-class-write-a-category/
   - Learn C for Cocoa - http://cocoadevcentral.com/articles/000081.php
   - http://www.cocotron.org/Info
   - http://rosettacode.org/wiki/Command-line_arguments#Objective-C
