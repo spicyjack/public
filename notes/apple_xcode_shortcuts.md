@@ -9,6 +9,12 @@ Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
 
+## Comments and compiler warnings ##
+- If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, Xcode will
+  make jump bar targets for them
+- To make compiler warnings, use the `#warning` compiler directive
+- To make compiler errors, use the `#error` compiler directive
+
 ## Unicode Hex Input ##
 Hold down the Option (`⌥`) key and type in the 4 digit hex code for that
 character

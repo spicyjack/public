@@ -8,6 +8,12 @@ This is a symlink to the current version installed on the machine.  The order
 of test assertions below is the same order as they appear in
 `XCTestAssertions.h`.
 
+## Comments and compiler warnings ##
+- If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, Xcode will
+  make jump bar targets for them
+- To make compiler warnings, use the `#warning` compiler directive
+- To make compiler errors, use the `#error` compiler directive
+
 ### Unconditional Failure ###
 - _XCTFail_ - Generates a failure unconditionally.
 
