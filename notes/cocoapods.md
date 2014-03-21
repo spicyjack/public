@@ -6,7 +6,7 @@
   - Using CocoaPods - http://guides.cocoapods.org/using/using-cocoapods.html
   - The Podfile - http://guides.cocoapods.org/using/the-podfile.html
 
-## Installing ##
+## Installing CocoaPods ##
 If you are using [Homebrew](http://brew.sh/), then you can use the `Ruby` that
 comes with Homebrew to install/manage CocoaPods.  With the `Ruby` provided by
 Homebrew, you don't need to use `SUDO` to manage CocoaPods.
@@ -32,5 +32,19 @@ To install using the system copy of `Ruby`:
   - `sudo gem install cocoapods`
 
 To update CocoaPods, just follow the install steps above.
+
+## Working with CocoaPods ##
+Parts borrowed from:
+http://raptureinvenice.com/my-concise-introduction-to-cocoapods/
+
+- Create a `Podfile` with:
+  - `pod init`
+- Edit the resulting `Podfile`, adding any dependencies that you want to use
+- Install dependency/dependencies with:
+  - `pod install`
+
+To search CocoaPods:
+- `pod search <search string>`
+
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
