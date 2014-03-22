@@ -150,7 +150,8 @@ run_getopt() {
     shift
 
     # these two paths cover a majority of my test machines
-    for GETOPT_CHECK in "/opt/local/bin/getopt" "/usr/bin/getopt";
+    for GETOPT_CHECK in \
+        "/usr/local/bin/getopt" "/opt/local/bin/getopt" "/usr/bin/getopt";
     do
         if [ -x "${GETOPT_CHECK}" ]; then
             GETOPT_BIN=$GETOPT_CHECK
@@ -165,11 +166,12 @@ run_getopt() {
     fi
 
     OS_NAME=$(/usr/bin/env uname -s)
-    if [ $OS_NAME = "Darwin" -a $GETOPT_BIN != "/opt/local/bin/getopt" ]; then
-        # Use short options if we're using Darwin's getopt
+    # check to see if we're using Darwin's (BSD's) getopt
+    if [ $OS_NAME = "Darwin" -a $GETOPT_BIN = "/usr/bin/getopt" ]; then
+        # Yes, use short options only
         GETOPT_TEMP=$(${GETOPT_BIN} ${GETOPT_SHORT} $*)
     else
-        # Use short and long options with GNU's getopt
+        # No, use both short and long options with GNU's getopt
         GETOPT_TEMP=$(${GETOPT_BIN} -o ${GETOPT_SHORT} \
             --long ${GETOPT_LONG} \
             -n "${SCRIPTNAME}" -- "$@")
@@ -178,6 +180,11 @@ run_getopt() {
     # if getopts exited with an error code, then exit the script
     #if [ $? -ne 0 -o $# -eq 0 ] ; then
     if [ $? != 0 ] ; then
+        if [ $OS_NAME = "Darwin" -a $GETOPT_BIN = "/usr/bin/getopt" ]; then
+            warn "GNU long options will not work with Darwin's 'getopt';"
+            warn "If you used double-dash options (--help for example),"
+            warn "they won't work, you need to switch to short options (-h)."
+        fi
         warn "Run '${SCRIPTNAME} --help' to see script options"
         exit 1
     fi
