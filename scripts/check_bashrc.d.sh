@@ -27,6 +27,11 @@ COLORIZE=1
 # view differences in RC files? (0=no, 1=yes)
 VIEW_DIFFS=0
 
+# use this command to view files:
+# $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+# -c 'runtime! macros/less.vim' -c "set filetype=diff" -
+VIM_LESS=1
+
 # default exit status
 EXIT_STATUS=0
 
@@ -53,6 +58,7 @@ cat <<-EOF
     -q|--quiet      No script output (unless an error occurs)
     -v|--view       View 'diff' of bashrc.d files in your \$EDITOR
     -e|--editor     Use this program instead of the contents of \$EDITOR
+    -l|--vimless    Use 'vimless' to view diffs
 
     Example usage:
     # view diffs of bashrc.d files when diffs are found
@@ -82,6 +88,10 @@ while true ; do
         -v|--view)
             VIEW_DIFFS=1
             shift;;
+        # run a diff between the two files, pipe to $EDITOR
+        -l|--vimless)
+            VIM_LESS=1
+            shift;;
         # Use a custom $EDITOR
         -e|--editor)
             EDITOR=$2
@@ -109,6 +119,13 @@ if [ $# -eq 0 ]; then
     warn "ERROR: Please pass paths to bashrc.d directories after '--'"
     show_help
     exit 1
+fi
+
+# check for vim
+VIM_CMD=$(which vim)
+if [ $? -gt 0 ]; then
+    warn "'vim' command not found in your \$PATH"
+    VIM_LESS=0
 fi
 
 ### SCRIPT MAIN LOOP ###
@@ -156,8 +173,16 @@ do
                 echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
                 echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
                 if [ $VIEW_DIFFS -eq 1 ]; then
-                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
-                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
+                    if [ $VIM_LESS -eq 0 ]; then
+                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
+                    else
+                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
+                            $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+                            -c 'runtime! macros/less.vim' \
+                            -c "set filetype=diff" -
+                    fi
                 fi
             fi
         fi
