@@ -41,8 +41,8 @@ BASHRCD_PATH="~/.bashrc.d"
 # source jenkins functions
 source ~/src/public.git/scripts/common_functions.sh
 
-GETOPT_SHORT="hqve:"
-GETOPT_LONG="help,quiet,view,editor:"
+GETOPT_SHORT="hqve:l"
+GETOPT_LONG="help,quiet,view,editor:,vimless"
 # sets GETOPT_TEMP
 # pass in $@ unquoted so it expands, and run_getopt() will then quote it "$@"
 # when it goes to re-parse script arguments
@@ -58,11 +58,14 @@ cat <<-EOF
     -q|--quiet      No script output (unless an error occurs)
     -v|--view       View 'diff' of bashrc.d files in your \$EDITOR
     -e|--editor     Use this program instead of the contents of \$EDITOR
-    -l|--vimless    Use 'vimless' to view diffs
+    -l|--vimless    Use 'less' (via vim) to view diffs; implies --diff
 
     Example usage:
     # view diffs of bashrc.d files when diffs are found
     ${SCRIPTNAME} --view -- ~/src/path1.git ~/src/path2.git
+
+    # view diffs (using vim clone of 'less')
+    ${SCRIPTNAME} --vimless -- ~/src/path1.git ~/src/path2.git
 
     # don't view diffs of bashrc.d files, just show what's different
     ${SCRIPTNAME} -- ~/src/path1.git ~/src/path2.git
@@ -172,17 +175,15 @@ do
                 say "- Found difference in script '${BASHRC_SCRIPT}';"
                 echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
                 echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
-                if [ $VIEW_DIFFS -eq 1 ]; then
-                    if [ $VIM_LESS -eq 0 ]; then
-                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
-                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
-                    else
-                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
-                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
-                            $VIM_CMD --cmd 'let no_plugin_maps = 1' \
-                            -c 'runtime! macros/less.vim' \
-                            -c "set filetype=diff" -
-                    fi
+                if [ $VIM_LESS -eq 0 ]; then
+                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
+                elif [ $VIEW_DIFFS -eq 1 ]; then
+                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
+                        $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+                        -c 'runtime! macros/less.vim' \
+                        -c "set filetype=diff" -
                 fi
             fi
         fi
