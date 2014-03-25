@@ -21,7 +21,7 @@ function ct-ldd {
 function ct-cmd {
     if [ "x$1" != "x" ]; then
         if [ -e "${CT_CMD_BASE}-${1}" ]; then
-            ${CT_CT_CMD_BASE}-${1} "$@"
+            ${CT_CMD_BASE}-${1} "$@"
         else
             "ct-cmd: crosstool command '${1}' doesn't exist"
         fi
