@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # environment variables for the product of crosstool-ng
-ADDITIONAL_PATHS="/opt/cross/armv6-lack_rpi-linux-gnueabi/bin"
+ADDITIONAL_PATHS="/home/cross/armv6-lack_rpi-linux-gnueabi/bin"
 for ADDPATH in $(echo ${ADDITIONAL_PATHS});
 do
     if [ $(echo ${PATH} | grep -c ${ADDPATH}) -eq 0 ]; then
@@ -11,7 +11,7 @@ do
     fi
 done
 
-CT_ROOT="/opt/cross/armv6-lack_rpi-linux-gnueabi"
+CT_ROOT="/home/cross/armv6-lack_rpi-linux-gnueabi"
 
 function ct-ldd () {
     if [ -n $1 ]; then
