@@ -63,9 +63,19 @@ Things to check/think about when you're writing new code
 
 ## iOS Documentation ##
   - License - http://tinyurl.com/7mhvwpz (Dated October 4th 2011)
-  - Human Interface Guidelines - http://tinyurl.com/2alg7qc
-    - UI Element Usage Guidelines; has images of all of the UI elements
-      http://tinyurl.com/6gmn662
+  - iOS 7 Human Interface Guidelines - http://tinyurl.com/ld3vdmt
+    - Controls; http://tinyurl.com/ou5o6y2 - has images of all of the UI
+      elements
+    - UIKit UI Catalog - http://tinyurl.com/kp659wr - also has images and
+      descriptions of all of the UI elements
+    - Toolbar, Navigation bar and Tab bar icons: http://tinyurl.com/pzufzku
+    - UITabBarItem class reference; constants for Tab Bar icons;
+      http://tinyurl.com/kxryj2n
+    - UIBarButton Item class reference; constants for Nav Bar icons;
+      http://tinyurl.com/mfzzx2h
+    - UISearchBar class reference; constants for Search Bar icons, and how to
+      define a "scope bar", which allows users to select different fields to
+      search for
   - Coding How-Tos (list of howtos) - http://tinyurl.com/clmfkxs
   - Tools Workflow Guide for iOS - http://tinyurl.com/79rrum8
   - іOS Technology Overview - http://tinyurl.com/3qku7f9
