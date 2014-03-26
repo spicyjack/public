@@ -14,11 +14,11 @@ _fetchview () {
     if [ $FETCH_CMD = "wget" ]; then
         local WGET_CMD=$(which wget)
         local FULL_FETCH_CMD="${WGET_CMD} -O -"
-    elif [ $VIEW_CMD = "cat" ]; then
-        local FULL_FETCH_CMD="cat"
+    elif [ $FETCH_CMD = "cat" ]; then
+        local FULL_FETCH_CMD=$(which cat)
     else
         echo "ERROR: unknown fetch command '${FETCH_CMD}'"
-        exit 1
+        return 1
     fi
 
     $FULL_FETCH_CMD "$URL" | $FULL_VIEW_CMD \
@@ -41,7 +41,7 @@ _fetchview_check_cmds () {
         fi
     done
     if [ $CHECK_ERROR -gt 0 ]; then
-        exit 1
+        return 1
     fi
 }
 
@@ -53,7 +53,7 @@ _fetchview_url_check () {
         echo "ERROR: Missing file URL"
         echo "Usage: fetch${TYPE} \"http://example.com/api/request.${TYPE}\""
         echo "(Hint: quote URL to prevent shell from interpreting URL)"
-        exit 1
+        return 1
     fi
 }
 
@@ -64,7 +64,7 @@ _fetchview_file_check () {
     if [ ! -e "$URL" ]; then
         echo "ERROR: Missing file ${URL} on the local filesystem"
         echo "Usage: less${TYPE} /path/to/file.${TYPE}"
-        exit 1
+        return 1
     fi
 }
 
