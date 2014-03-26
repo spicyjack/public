@@ -175,15 +175,17 @@ do
                 say "- Found difference in script '${BASHRC_SCRIPT}';"
                 echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
                 echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
-                if [ $VIM_LESS -eq 0 ]; then
+                if [ $VIEW_DIFFS -eq 1 ]; then
                     diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
                         "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
-                elif [ $VIEW_DIFFS -eq 1 ]; then
+                    continue
+                elif [ $VIM_LESS -eq 1 ]; then
                     diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
                         "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
                         $VIM_CMD --cmd 'let no_plugin_maps = 1' \
                         -c 'runtime! macros/less.vim' \
                         -c "set filetype=diff" -
+                    continue
                 fi
             fi
         fi
