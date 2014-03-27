@@ -9,6 +9,9 @@
   the cursor (`keywords`, `compl-keyword`)
 - `:map` - Show current keymappings
 - `,ha` - Print `hardcopy` of the current file to _~/(filename).ps_
+- `^v` + cursor movement; select characters in a vertical column
+  - Use `:s/^/<foo>/` to perform substitution on the first column of the
+    selected lines
 
 ### Using Registers ###
 You use registers in `VIM` to hold text for cutting/copying.
