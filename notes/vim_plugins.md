@@ -48,4 +48,4 @@ After installing code plugins with help files (which usually get placed in
   - Creates a "Project", helping organize a set of files/directories
 - eqalignsimple - http://tinyurl.com/l8d8ay3 (From Damian Conway)
 
-# vim: filetype=markdown tabstop=2
+vim: filetype=markdown tabstop=2
