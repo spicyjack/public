@@ -59,6 +59,9 @@
   - `jhbuild shell`
 - To update all sources without building:
   - `jhbuild update`
+- To generate a graph of dependencies using `dot`:
+  - `jhbuild dot gtk+ | dot -Tpng > /path/to/output/gtk3-deps.png`
+  - `jhbuild dot gtk+-2 | dot -Tpng > /path/to/output/gtk2-deps.png`
 
 See http://developer.gnome.org/jhbuild/unstable/getting-started.html.en for
 more info on different build commands
