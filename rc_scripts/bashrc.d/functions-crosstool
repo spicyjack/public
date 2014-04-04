@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CT_ROOT="/opt/cross/armv6-lack_rpi-linux-gnueabi"
+CT_ROOT="/home/cross/armv6-lack_rpi-linux-gnueabi"
 CT_CMD_BASE="${CT_ROOT}/bin/armv6-lack_rpi-linux-gnueabi"
 
 function ct-list {

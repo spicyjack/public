@@ -1,16 +1,16 @@
 #!/bin/bash
 # git aliases
-GIT_PATH="/Users/brian/src/gtk-perl"
-alias gtkrefchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} refchk"
+GIT_PATH="/home/brian/src/gtk-perl"
+alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} refchk"
 # these next two are the same
-alias gtkstat="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
-alias gtkrepostat="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
-alias gtkinchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} inchk"
-alias gtkoutchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} outchk"
-alias gtkpullall="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} pullorigin"
-alias gtkpullgh="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} pullgithub"
-alias gtkupdatechk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} updatechk"
-alias gtkcolorchk="/bin/sh ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
+alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
+alias gtkrepostat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} repostat"
+alias gtkinchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} inchk"
+alias gtkoutchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} outchk"
+alias gtkpullall="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} pullorigin"
+alias gtkpullgh="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} pullgithub"
+alias gtkupdatechk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} updatechk"
+alias gtkcolorchk="/bin/bash ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
     updatechk"
 unset GIT_PATH
 # vi: set filetype=sh shiftwidth=4 tabstop=4

@@ -5,6 +5,8 @@ alias cp='cp -i'
 alias datesync='sudo ntpdate pool.ntp.org'
 # dircolors sets up 'dir' now
 alias lessr='less -R'
+alias grep='grep --color=auto'
+alias cgrep='grep --color=yes'
 alias mv='mv -i'
 alias rm='rm -i'
 # convert epoch time to a normal date/time
