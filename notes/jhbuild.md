@@ -24,13 +24,15 @@
 ## Running ##
 - `jhbuild sanitycheck`
 - `jhbuild sysdeps --install`
-- On Wheezy, install the following:
-  - python2.7-dev (jhbuild)
-  - python-libxml2 (yelp-xsl)
-  - xsltproc (yelp-tools)
-- Create symlinks so jhbuild can find different Python tools;
-  - `sudo ln -s /usr/lib/pkgconfig/python-2.7.pc /usr/lib/pkgconfig/python.pc`
-  - `sudo ln -s /usr/bin/python2.7-config /usr/bin/python-config`
+- On Wheezy
+  - Install the following:
+      - python-dev (`libglib`)
+      - python-libxml2 (yelp-xsl)
+      - xsltproc (yelp-tools)
+      - libjpeg-dev
+    - Create symlink so `jhbuild` can find the package config file;
+      - `sudo ln -s /usr/lib/pkgconfig/python-2.7.pc \
+          /usr/lib/pkgconfig/python2.pc`
 - `jhbuild build gtk+`
 
 ## jhbuild usage ##
