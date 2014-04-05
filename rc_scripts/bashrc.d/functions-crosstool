@@ -1,33 +1,78 @@
 #!/bin/bash
 
-CT_ROOT="/home/cross/armv6-lack_rpi-linux-gnueabi"
-CT_CMD_BASE="${CT_ROOT}/bin/armv6-lack_rpi-linux-gnueabi"
+# paths are added to $PATH in 'crosstool-ng-env'
 
-function ct-list {
-    echo "Listing commands in '${CT_ROOT}/bin'"
+CT_ARM_TUPLE="armv6-lack_rpi-linux-gnueabi"
+CT_ARM_ROOT="/home/cross/${CT_ARM_TUPLE}"
+CT_PPC_TUPLE="powerpc-lack-linux-gnu"
+CT_PPC_ROOT="/home/cross/${CT_PPC_TUPLE}"
+
+### RUN TOOLCHAIN LDD ON A FILE ###
+function _ct_ldd () {
+    local CT_ARCH="$1"
+    local CT_ROOT="$2"
+    local CT_TUPLE="$3"
+    local CT_COMMAND="$4"
+
+    if [ -n $CT_COMMAND ]; then
+        ${CT_ROOT}/bin/${CT_TUPLE}-ldd --root ${CT_ROOT} ${CT_COMMAND}
+    else
+        "${CT_ARCH}ldd: need a file to compute shared library dependencies for"
+    fi
+}
+
+function armldd () {
+    _ct_ldd "arm" "${CT_ARM_ROOT}" "${CT_ARM_TUPLE}" "$1"
+}
+
+function ppcldd () {
+    _ct_ldd "ppc" "${CT_PPC_ROOT}" "${CT_PPC_TUPLE}" "$1"
+}
+
+### LIST TOOLCHAIN BINARIES ###
+function _ct_list {
+    local CT_NAME="$1"
+    local CT_ROOT="$2"
+
+    echo "Listing ${CT_NAME} toolchain commands in '${CT_ROOT}/bin'"
     cd ${CT_ROOT}/bin
     dir
     cd ${OLDPWD}
 }
 
-function ct-ldd {
-    if [ "x$1" != "x" ]; then
-        ${CT_CMD_BASE}-ldd --root ${CT_ROOT} $1
+function armlist {
+    _ct_list "ARM" "${CT_ARM_ROOT}"
+}
+
+function ppclist {
+    _ct_list "PPC" "${CT_PPC_ROOT}"
+}
+
+### RUN A TOOLCHAIN COMMAND ###
+function _ct_cmd {
+    local CT_ARCH="$1"
+    local CT_ROOT="$2"
+    local CT_TUPLE="$3"
+    local CT_COMMAND="$4"
+
+    if [ "x$CT_COMMAND" != "x" ]; then
+        if [ -x "${CT_ROOT}/bin/${CT_TUPLE}-${1}" ]; then
+            ${CT_ROOT}/bin/${CT_TUPLE}-${1} "$@"
+        else
+            echo "${CT_ARCH}cmd: toolchain command '${1}' doesn't exist"
+            echo "use '${CT_ARCH}list' command to see all toolchain commands"
+        fi
     else
-        "ct-ldd: need a file to compute shared library dependencies for"
+        "${CT_ARCH}cmd: Usage: '${CT_ARCH}cmd <toolchain command to run>"
     fi
 }
 
-function ct-cmd {
-    if [ "x$1" != "x" ]; then
-        if [ -e "${CT_CMD_BASE}-${1}" ]; then
-            ${CT_CMD_BASE}-${1} "$@"
-        else
-            "ct-cmd: crosstool command '${1}' doesn't exist"
-        fi
-    else
-        "ct-cmd: Usage: 'ct-cmd <crosstool command to run>"
-    fi
+function armcmd () {
+    _ct_ldd "arm" "${CT_ARM_ROOT}" "${CT_ARM_TUPLE}" "$1"
+}
+
+function ppccmd () {
+    _ct_ldd "ppc" "${CT_PPC_ROOT}" "${CT_PPC_TUPLE}" "$1"
 }
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
