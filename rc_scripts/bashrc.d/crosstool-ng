@@ -14,27 +14,6 @@ do
     fi
 done
 
-CT_ARM_TUPLE="armv6-lack_rpi-linux-gnueabi"
-CT_ARM_ROOT="/home/cross/${CT_ARM_TUPLE}"
-CT_PPC_TUPLE="powerpc-lack-linux-gnu"
-CT_PPC_ROOT="/home/cross/${CT_PPC_TUPLE}"
-
-function armldd () {
-    if [ -n $1 ]; then
-        ${CT_ARM_ROOT}/bin/${CT_ARM_TUPLE}-ldd --root ${CT_ARM_ROOT} $1
-    else
-        "armldd: need a file to compute shared library dependencies for"
-    fi
-}
-
-function ppcldd () {
-    if [ -n $1 ]; then
-        ${CT_PPC_ROOT}/bin/${CT_PPC_TUPLE}-ldd --root ${CT_ARM_ROOT} $1
-    else
-        "ppcldd: need a file to compute shared library dependencies for"
-    fi
-}
-
 unset ADDITIONAL_PATHS ADDPATH
 export PATH
 
