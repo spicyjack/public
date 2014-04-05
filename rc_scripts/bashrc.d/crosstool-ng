@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # environment variables for the product of crosstool-ng
-ADDITIONAL_PATHS="/home/cross/armv6-lack_rpi-linux-gnueabi/bin"
+ADDITIONAL_PATHS="
+    /home/cross/armv6-lack_rpi-linux-gnueabi/bin
+    /home/cross/powerpc-lack-linux-gnu/bin
+" # ADDITIONAL_PATHS
 for ADDPATH in $(echo ${ADDITIONAL_PATHS});
 do
     if [ $(echo ${PATH} | grep -c ${ADDPATH}) -eq 0 ]; then
@@ -11,13 +14,24 @@ do
     fi
 done
 
-CT_ROOT="/home/cross/armv6-lack_rpi-linux-gnueabi"
+CT_ARM_TUPLE="armv6-lack_rpi-linux-gnueabi"
+CT_ARM_ROOT="/home/cross/${CT_ARM_TUPLE}"
+CT_PPC_TUPLE="powerpc-lack-linux-gnu"
+CT_PPC_ROOT="/home/cross/${CT_PPC_TUPLE}"
 
-function ct-ldd () {
+function armldd () {
     if [ -n $1 ]; then
-        ${CT_ROOT}/bin/armv6-lack_rpi-linux-gnueabi-ldd --root ${CT_ROOT} $1
+        ${CT_ARM_ROOT}/bin/${CT_ARM_TUPLE}-ldd --root ${CT_ARM_ROOT} $1
     else
-        "ct-ldd: need a file to compute shared library dependencies for"
+        "armldd: need a file to compute shared library dependencies for"
+    fi
+}
+
+function ppcldd () {
+    if [ -n $1 ]; then
+        ${CT_PPC_ROOT}/bin/${CT_PPC_TUPLE}-ldd --root ${CT_ARM_ROOT} $1
+    else
+        "ppcldd: need a file to compute shared library dependencies for"
     fi
 }
 
