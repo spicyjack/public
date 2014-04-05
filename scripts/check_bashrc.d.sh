@@ -30,7 +30,7 @@ VIEW_DIFFS=0
 # use this command to view files:
 # $VIM_CMD --cmd 'let no_plugin_maps = 1' \
 # -c 'runtime! macros/less.vim' -c "set filetype=diff" -
-VIM_LESS=1
+VIM_LESS=0
 
 # default exit status
 EXIT_STATUS=0
