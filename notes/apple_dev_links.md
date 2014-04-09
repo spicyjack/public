@@ -148,6 +148,8 @@ Things to check/think about when you're writing new code
   - Cocoaheads object literals: http://tinyurl.com/7v5wtf5
   - Boxed enums in LLVM: http://clang.llvm.org/docs/ObjectiveCLiterals.html
   - `NS_ENUM` in 10.8/iOS 6: http://nshipster.com/ns_enum-ns_options/
+  - How to dump all of the information about an object
+    - http://stackoverflow.com/questions/2299841/objective-c-introspection-reflection
   - Concepts in Objective-C Programming - http://tinyurl.com/bhcotgw
   - The Objective C Programming Language - http://tinyurl.com/2ex4ezy
     - Protocols - http://tinyurl.com/7u6m7rp
