@@ -7,14 +7,16 @@
 - http://iicns.com/
 - http://iconhandbook.co.uk/downloads/
 - http://mashable.com/2010/06/17/minimalist-icon-sets/
-  - http://www.tutorial9.net/resources/108-mono-icons-huge-set-of-minimal-icons/
-  - http://somerandomdude.com/work/iconic/
-  - http://pictoico.com/
-  - http://www.gentleface.com/free_icon_set.html
-  - http://picol.org/index.php
-  - http://brsev.deviantart.com/art/Token-128429570
-  - http://blog.twg.ca/2009/09/free-iphone-toolbar-icons/
-  - http://www.pixelresort.com/blog/app-icon-template/
+- http://www.tutorial9.net/resources/108-mono-icons-huge-set-of-minimal-icons/
+- http://somerandomdude.com/work/iconic/
+- http://pictoico.com/
+- http://www.gentleface.com/free_icon_set.html
+- http://picol.org/index.php
+- http://brsev.deviantart.com/art/Token-128429570
+- http://blog.twg.ca/2009/09/free-iphone-toolbar-icons/
+- http://www.pixelresort.com/blog/app-icon-template/
+- http://stackoverflow.com/questions/1554646
+  - May have some duplicates of the above
 
 ## App Templates ##
 - https://github.com/nvk/sketch-ios
