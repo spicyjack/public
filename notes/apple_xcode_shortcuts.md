@@ -10,8 +10,8 @@ Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
 
 ## Comments and compiler warnings ##
-- If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, Xcode will
-  make jump bar targets for them
+- If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, _outside of
+  methods_, Xcode will make jump bar targets for them
 - To make compiler warnings, use the `#warning` compiler directive
 - To make compiler errors, use the `#error` compiler directive
 
@@ -23,6 +23,10 @@ character
 - Option:          0x2325 ⌥
 - Shift:           0x21e7 ⇧
 - Carriage return: 0x21a9 ↩
+
+## Navigation ##
+Show current file in Project Navigator
+- `⌘⇧J`
 
 ## Showing/Hiding Views ##
 Show/Hide Utilities (Inspectors)
