@@ -2,6 +2,7 @@
 
 ## App Icons ##
 - http://www.glyphish.com/
+- http://glyphicons.com/
 - http://www.iconbeast.com/
 - 20 excellent icon sets - http://tinyurl.com/y49pra3
 - http://iicns.com/
