@@ -26,6 +26,9 @@ To install under Homebrew:
     your shell will then find the new executables that are installed with
     CocoaPods
 
+To update CocoaPods under Homebrew:
+- `gem install cocoapods`
+
 To install using the system copy of `Ruby`:
 - Taken from: http://guides.cocoapods.org/using/getting-started.html
 - Install CocoaPods
