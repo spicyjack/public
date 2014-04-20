@@ -2,24 +2,24 @@
 # git aliases
 GIT_EXCLUDES="archived"
 GIT_PATH="/Users/brian/src/gtk-perl"
-alias gtkrefchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" refchk"
 # these next two are the same
-alias gtkstat="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" repostat"
-alias gtkrepostat="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkrepostat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" repostat"
-alias gtkinchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkinchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" inchk"
-alias gtkoutchk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkoutchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" outchk"
-alias gtkpullall="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkpullall="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" pullorigin"
-alias gtkpullgh="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkpullgh="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" pullgithub"
-alias gtkupdatechk="/bin/sh ~/bin/git-tool.sh --path=${GIT_PATH} \
+alias gtkupdatechk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" updatechk"
-alias gtkcolorchk="/bin/sh ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
+alias gtkcolorchk="/bin/bash ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
     --exclude \"${GIT_EXCLUDES}\" updatechk"
 unset GIT_PATH GIT_EXCLUDES
 # vi: set filetype=sh shiftwidth=4 tabstop=4
