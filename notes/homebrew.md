@@ -177,11 +177,17 @@ Install order is Cairo, Glib, Pango, Gtk2/Gtk3
 
 For Lion with built-in X server, use `/usr/X11/lib/pkgconfig/` for the path to
 `pkg-config` files.
-- `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/X11/lib/pkgconfig`
+- With existing PKG_CONFIG_PATH:
+  - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/X11/lib/pkgconfig`
+- No existing PKG_CONFIG_PATH:
+  - `export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig`
 
 For Mavericks with XQuartz, use `/opt/X11/lib/pkgconfig` for the path to
 `pkg-config` files.
-- `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/opt/X11/lib/pkgconfig`
+- With existing PKG_CONFIG_PATH:
+  - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/opt/X11/lib/pkgconfig`
+- No existing PKG_CONFIG_PATH:
+  - `export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig`
 
 
     cpanm Cairo
