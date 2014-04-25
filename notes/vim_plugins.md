@@ -7,6 +7,19 @@ After installing code plugins with help files (which usually get placed in
 
     :helptags ~/.vim/doc
 
+## Compiling VIM ##
+Requires: `libperl-dev`, `gcc`, `libncursesw5-dev`
+
+    ./configure --prefix=/usr/local/stow/vim-X.X \
+    --disable-darwin --disable-selinux --enable-perlinterp \
+    --enable-cscope --enable-multibyte --enable-gui=no \
+    --disable-gpm --disable-sysmouse --disable-gtktest
+    time make
+    time make test
+    make install
+    cd /usr/local/stow
+    stow -v vim-X.X
+
 ## Syntax Plugins ##
 - markdown - http://www.vim.org/scripts/script.php?script_id=2882
 - ciscoasa - http://www.vim.org/scripts/script.php?script_id=3055
