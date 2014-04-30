@@ -18,6 +18,8 @@ You use registers in `VIM` to hold text for cutting/copying.
 
 - To copy a line to register `a`: `"aY`
 - To cut a line to register `a`: `"add`
+- To paste register `a` after the cursor: `"ap`
+- To paste register `a` before the cursor: `"aP`
 
 ### Moving around using tags ###
 Help files and source code indexed with the `ctags` command have the concept
