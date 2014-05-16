@@ -10,6 +10,10 @@
   - Build on Lagrange for testing
 
 ## Installation ##
+- Prerequisites:
+  - `intltool`
+  - If you're using Perlbrew:
+    - `XML::Parser`, `expat-devel`
 - `git clone git://git.gnome.org/jhbuild jhbuild.git`
 - `cd jhbuild.git`
 - `./autogen.sh`
