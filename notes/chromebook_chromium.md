@@ -22,6 +22,15 @@
 - Software Architecture
   - http://www.chromium.org/chromium-os/chromiumos-design-docs/software-architecture
 
+## Chromebook Keystrokes ##
+Once you put the Chromebook into developer mode, you have a few boot options
+that you can take;
+- To boot Chromium: `Ctrl-D`
+- To boot off of the USB/MMC: `Ctrl-U`
+
+To switch to a developer console in Chromium:
+- `Ctrl+Alt+Forward`
+
 ## Google Native Client (NaCL) ##
 - http://en.wikipedia.org/wiki/Google_Native_Client
 - Technical Overview
