@@ -1,26 +1,33 @@
 #!/bin/bash
 # git aliases
-GIT_EXCLUDES="archived"
-GIT_PATH="/Users/brian/src/gtk-perl"
-alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" refchk"
+GTK_GIT_EXCLUDES="archived"
+GTK_GIT_PATH="/Users/username/src/gtk-perl"
+alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" refchk"
 # these next two are the same
-alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" repostat"
-alias gtkrepostat="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" repostat"
-alias gtkinchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" inchk"
-alias gtkoutchk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" outchk"
-alias gtkpullall="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" pullorigin"
-alias gtkpullgh="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" pullgithub"
-alias gtkupdatechk="/bin/bash ~/bin/git-tool.sh --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" updatechk"
-alias gtkcolorchk="/bin/bash ~/bin/git-tool.sh --colorize --path=${GIT_PATH} \
-    --exclude \"${GIT_EXCLUDES}\" updatechk"
-unset GIT_PATH GIT_EXCLUDES
+alias gtkstat="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" repostat"
+alias gtkrepostat="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" repostat"
+alias gtkinchk="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" inchk"
+alias gtkoutchk="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" outchk"
+alias gtkpullall="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" pullorigin"
+alias gtkpullgh="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+    --exclude \"${GTK_GIT_EXCLUDES}\" pullgithub"
+
+# these are functions because we need to pass along arguments to 'updatechk'
+function gtkupdatechk {
+    /bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
+        --exclude="${GTK_GIT_EXCLUDES}" updatechk "$1"
+}
+
+function gtkcolorchk {
+    /bin/bash ~/bin/git-tool.sh --colorize --path=${GTK_GIT_PATH} \
+        --exclude="${GTK_GIT_EXCLUDES}" updatechk "$1"
+}
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
