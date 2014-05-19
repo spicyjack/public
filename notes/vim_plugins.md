@@ -55,6 +55,10 @@ Requires: `libperl-dev`, `gcc`, `libncursesw5-dev`
 - tasklist - http://www.vim.org/scripts/script.php?script_id=2607
   - Search for `FIXME`, `XXX`, or `TODO` in code, and make a list that shows
     you the contents of those comments and where they're located in the file
+- vawa - From Ovid
+  - http://blogs.perl.org/users/ovid/2014/05/automatic-variable-highlighting-in-vim.html
+  - https://github.com/pjcj/vim-hl-var
+  - Install both scripts, `vawa.vim` and `hl-var.vim` to `~/.vim/plugin`
 
 ## Other Utility Plugins ##
 - Project - http://www.vim.org/scripts/script.php?script_id=69
