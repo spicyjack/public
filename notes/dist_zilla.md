@@ -27,6 +27,9 @@ Including making release commits and uploading the resulting tarball to CPAN
 - **Edit dist.ini and change version number**
 - `dzil release`
 
+## Create a config file with info that Dist::Zilla needs to build new distros ##
+`dzil setup`
+
 ## Create a new distribution ##
 `dzil new Your::Library`
 
