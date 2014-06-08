@@ -27,6 +27,11 @@ Create an install disk for Mavericks
     --applicationpath /Applications/Install\ OS\ X\ Mavericks.app \
     --nointeraction
 
+Or, just use `dd` (from http://superuser.com/questions/85987):
+
+    sudo umount /dev/disk?
+    sudo dd if=/dev/disk? of=CD.iso bs=2048 conv=sync,notrunc
+
 ## Copy DMG image to Flash Disk ##
 - Open Disk Utility
 - Find the flash disk, and repartition it with one partition, making sure to
