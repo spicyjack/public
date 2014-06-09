@@ -16,6 +16,25 @@
 - http://blog.plover.com/prog/git-habits.html
 - http://perlbrew.pl/Perlbrew-development-and-the-git-flow.html
 
+### Git Apps ###
+- http://gitolite.com/gitolite/gitolite.html
+  - Written in Perl
+  - Only handles access/auth
+- http://gitblit.com/
+  - Java
+- http://getgitorious.com/install-gitorious
+  - Only handles access/auth
+- http://www.gitlab.com
+  - Access/auth, issue tracking, repo browsing
+  - Written in Ruby
+- http://phabricator.org/
+  - Written in PHP
+  - Access/auth, issue tracking, repo browsing
+  - Wants extra setup (SUDO access) to use either HTTPS or SSH
+    - SSH wants to use port 22 by default (phabricator runs it's own SSH
+      daemon), unless you want to use a non-standard port
+      - You can't use an existing system account like Gitolite or GitBlit uses
+
 ### Specifying revisions ###
 http://schacon.github.com/git/gitrevisions.html
 
