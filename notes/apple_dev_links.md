@@ -96,6 +96,11 @@ Things to check/think about when you're writing new code
     - http://developer.apple.com/library/ios/#technotes/tn2239/
   - NSLogv (Foundations reference) - http://tinyurl.com/mvh55gg
     - NSLogv string format specifiers: http://tinyurl.com/kyz783n
+  - iTunes Connect Guide - http://tinyurl.com/lokcnm8
+  - In-App Purchase Programming Guide - http://tinyurl.com/pohsrwp
+  - Adding In-App Purchase to your Apps - http://tinyurl.com/qbgjjcb
+  - iOS Device Compatability Matrix - http://tinyurl.com/msp9bor
+  - App Review - https://developer.apple.com/app-store/review/
 
 ## iOЅ Tutorials ##
   - GKTapper - how to support leaderboards and achievements
