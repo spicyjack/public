@@ -11,7 +11,7 @@
 
 ## Installation ##
 - Prerequisites:
-  - `intltool`
+  - `intltool`, GNU C compiler (`gcc`)
   - If you're using Perlbrew:
     - `XML::Parser`, `expat-devel`
 - `git clone git://git.gnome.org/jhbuild jhbuild.git`
