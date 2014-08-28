@@ -7,6 +7,8 @@ Originally posted at:
 
 *FIXME* - See about automating the tasks below; Windows batch files and
 registry policies?
+*FIXME* - For each of the changes, document the registry key that makes that
+change
 
 ## Patches/Service Packs to Apply ##
 - SP3
@@ -14,6 +16,7 @@ registry policies?
 - IE8
 
 ## Settings to change ##
+- Control Panel -> Switch to Classic View
 - Control Panel -> Regional and Language, switch the system time to show
   HH:mm:ss instead of AM/PM
 
