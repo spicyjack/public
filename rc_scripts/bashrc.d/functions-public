@@ -51,5 +51,9 @@ function ctree {
     fi
 } # show a colorized tree, and pipe to colorized less
 
-# vi: set filetype=sh shiftwidth=4 tabstop=4
+function vi {
+    echo "HEY! Don't use 'vi', use 'vim' instead"
+} # warn the user about using VI instead of VIM
+
+# vim: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
