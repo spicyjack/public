@@ -14,6 +14,7 @@ change
 - IE8
 
 ## Registry settings to research ##
+- Opening new pages in tabs instead of new windows in IE8
 
 ## Settings to change ##
 Notes on registry hacking
