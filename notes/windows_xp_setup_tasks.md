@@ -5,20 +5,63 @@ Tweaking installs of Windows to create a base Windows image.
 Originally posted at:
   http://wiki.portaboom.com/pmwiki.php?n=HowTos.BuildingWindowsImage
 
-*FIXME* - See about automating the tasks below; Windows batch files and
-registry policies?
-*FIXME* - For each of the changes, document the registry key that makes that
+For each of the changes below, document the registry key that makes that
 change
 
 ## Patches/Service Packs to Apply ##
 - SP3
-- Windows Security Essentials
+- Windows Security Essentials (includes virus checker)
 - IE8
 
+## Registry settings to research ##
+
 ## Settings to change ##
-- Control Panel -> Switch to Classic View
-- Control Panel -> Regional and Language, switch the system time to show
-  HH:mm:ss instead of AM/PM
+Notes on registry hacking
+- http://www.howtogeek.com/167579/how-to-make-your-own-windows-registry-hacks/
+- http://www.tweakhound.com/xp/xptweaks/regfiles_2.htm
+  - A bunch of different registry settings, with comments
+
+Suppressing Windows Tour prompts
+- http://support.microsoft.com/kb/311489
+
+
+    [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Applets\Tour]
+    "RunCount"="0"
+
+Control Panel ^ Switch to Classic View
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+    "ForceClassicControlPanel"="1"
+
+Control Panel ^ Internet Properties ^ Home Page ^ about:blank
+- http://www.howtogeek.com/howto/windows/registry-hack-to-set-internet-explorer-start-page/
+
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+    "Start Page"="about:blank"
+
+Control Panel ^ Regional and Language, switch the system time to show
+HH:mm:ss instead of AM/PM
+- http://windowsitpro.com/windows-server/jsi-tip-0311-regional-settings-registry
+
+
+    [HKEY_CURRENT_USER\Control Panel\International]
+    "iTime"="1"
+    "sTimeFormat"="HH:mm:ss"
+
+Enable Terminal Services
+- http://technet.microsoft.com/en-us/library/cc782195(v=ws.10).aspx
+- Computer will need to be rebooted
+
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]
+    "fDenyTSConnections"="0"
+
+Disable End of Support notification
+- https://4sysops.com/archives/prevent-the-windows-xp-end-of-support-notification/
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion]
+    "DisableEOSNotification"="1"
 
 ## Windows Applications that can be removed ##
 - Boot into Safe Mode by pressing *F8* after the BIOS finishes with POST
