@@ -15,12 +15,44 @@ change
 
 ## Registry settings to research ##
 - Opening new pages in tabs instead of new windows in IE8
+- Change Start menu to use Classic Start menu
+- Change Start menu to use small icons
+- Remove the extra (unneeded) icons from the Start menu
+- Set up `cmd.exe` so it's usable
+- Create `lack` user, disable automatic login
+- Disable "unused icons" balloon
+- Change search providers for IE
+  - Remove the "Bing" search provider
+- Remove background fade when "Turn Off Computer" is selected
+  - Takes way too long to display the fade under VNC
+- Windows Explorer
+  - Small iconѕ
+  - Default view: List
+- Disable _Remote Assistance_
+  - Remove that port in Windows Firewall
+- Add the Terminal Services port to Windows Firewall
+- Create a password for `lack`, so you can log in via Terminal Services
 
 ## Settings to change ##
 Notes on registry hacking
+- Use _System Restore_ to create restore points prior to testing any Registry
+  files
 - http://www.howtogeek.com/167579/how-to-make-your-own-windows-registry-hacks/
 - http://www.tweakhound.com/xp/xptweaks/regfiles_2.htm
   - A bunch of different registry settings, with comments
+- How to add, modify or delete registry subkeys and values by using a `.reg`
+  file
+  - http://support.microsoft.com/kb/310516
+  - http://tinyurl.com/37zu9k
+- Description of the Windows registry
+  - http://support.microsoft.com/kb/256986
+- How to back up and restore the registry
+  - http://support.microsoft.com/kb/322756
+- Examples of importing and exporting registry entries
+  - http://www.robvanderwoude.com/regedit.php
+- There's a `reg` command that can be used from the command line
+  - http://stackoverflow.com/questions/445167
+  - http://technet.microsoft.com/en-us/library/cc732643.aspx
 
 Suppressing Windows Tour prompts
 - http://support.microsoft.com/kb/311489
@@ -52,6 +84,7 @@ HH:mm:ss instead of AM/PM
 
 Enable Terminal Services
 - http://technet.microsoft.com/en-us/library/cc782195(v=ws.10).aspx
+- http://www.windows-commandline.com/enable-remote-desktop-command-line/
 - Computer will need to be rebooted
 
 
