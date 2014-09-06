@@ -1,14 +1,16 @@
 # Database design and implementation #
 Entities:
 
-# CRUD (create, retrieve, update, delete) #
-Client API requests can be made for the following:
+# CRUD
+Client API requests (create, retrieve, update, delete) can be made for the
+following:
 
 # Business logic/processing #
 
 # Reports and other outputs #
 
-# External interfaces - connections to other components or systems #
+# External interfaces #
+Connections to other components or systems
 
 # Internationalization #
 
