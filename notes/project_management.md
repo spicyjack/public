@@ -72,9 +72,10 @@ Calculating project length
   - If it's a new project, figure six hours
   - Seven or more hours is probably too optimistic
   - Assume only 40 hour work-weeks
-- All _Type 2 tasks_ (above) get an additional factor of 1.5x, because the
-  estimates were rough
-- All of the _Type 3 tasks_ get a factor of 3x
+- All _Type 2 tasks_ (above) get their time estimates multiplied by factor of
+  **1.5x**, because the estimates were rough
+- All of the _Type 3 tasks_ get their time estimates multiplied by a factor of
+  **3x**
 - Total the scheduled task, multiplied by any difficulty factor, and that
   becomes the number of days your project will take
 - Figure there are about 46 working weeks in a year
