@@ -81,17 +81,17 @@ Calculating project length
 - Figure there are about 46 working weeks in a year
   - 52 minus vacations, holidays, and illness
 - Example _Type 1_ task:
-  - 1.5 half days estimate for the task, 2x average productivity factor, and
-    1x risk factor
-  - 3 half days total
+  - 1.5 half days estimate for the task, 2x average productivity factor
+    (estimate is now 3 half days), and 1x risk factor
+    - 3 half days total
 - Example _Type 2_ task:
-  - 3 half days estimate for the task, 2x average productivity factor, and
-    1.5x risk factor
-  - 9 half days total
+  - 3 half days estimate for the task, 2x average productivity factor
+    (estimate becomes 6 half days), and 1.5x risk factor
+    - 9 half days total
 - Example _Type 3_ task:
-  - 6 half days estimate for the task, 2x average productivity factor, and
-    3x risk factor
-  - 36 half days total
+  - 6 half days estimate for the task, 2x average productivity factor
+    (eѕtimate becomes 12 half days), and 3x risk factor
+    - 36 half days total
 
 Project phases and implementation schedule
 - Split any project into two phases
