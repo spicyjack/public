@@ -189,12 +189,17 @@ For Mavericks with XQuartz, use `/opt/X11/lib/pkgconfig` for the path to
 - No existing PKG_CONFIG_PATH:
   - `export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig`
 
+The module **Cairo::GObject** needs to use the `Cairo` that's been built with
+`--with-gobject` support.  XQuartz supplies a version of `Cairo`, but without
+GObject support.  Changing the order of the `PKG_CONFIG_PATH` environment
+variable should make everything happy.
 
     cpanm Cairo
     cpanm Glib
     cpanm Pango
     cpanm Glib::Object::Introspection
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH cpanm Gtk2
+    # Homebrew PKG_CONFIG_PATH first, then XQuartz PKG_CONFIG_PATH
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH \
       cpanm Cairo::GObject
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH \
