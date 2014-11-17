@@ -20,6 +20,10 @@
 - http://gitolite.com/gitolite/gitolite.html
   - Written in Perl
   - Only handles access/auth
+- Gitprep - http://www.gitprep.org
+  - GitHub "clone"
+  - Written in Perl
+  - No issue tracking, repo viewing only
 - http://gitblit.com/
   - Java
 - http://getgitorious.com/install-gitorious
@@ -27,6 +31,7 @@
 - http://www.gitlab.com
   - Access/auth, issue tracking, repo browsing
   - Written in Ruby
+  - Needs 450M of system RAM to run
 - http://phabricator.org/
   - Written in PHP
   - Access/auth, issue tracking, repo browsing
