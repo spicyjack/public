@@ -2,6 +2,9 @@
 
 Taken from: Expert PHP and MySQL (http://www.apress.com/9781430260073)
 
+See also: http://www.joelonsoftware.com/items/2007/10/26.html for more ideas
+on coming up with time multiplier numbers
+
 People determine success; the success of your application is determined by
 whether or not people are satisified with it.
 - Who are these people?
