@@ -40,5 +40,9 @@
     - `servername user=root password=foo sudo=false`
   - This throws an error in `Rex.pm` at line 300, the comparison for `sudo`
     at that point is numeric, not textual
+- `run_task()` opens a new SSH connection each time it's used
+- `do_task()` opens 2 new SSH connections each time it's used
+  - Best to group all related commands under a single task, which opens only
+    one SSH connection to run all of the commands in that task
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
