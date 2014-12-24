@@ -3,7 +3,9 @@
 - Homepage: http://www.vagrantup.com/
 - Docs: http://docs.vagrantup.com/
 - Downloads: http://downloads.vagrantup.com/
-- List of publicly available boxes - http://www.vagrantbox.es/
+- List of publicly available boxes 
+  - https://atlas.hashicorp.com/boxes/search
+  - http://www.vagrantbox.es/ (old)
 
 ## Creating a new box ##
 Change into the directory where you want to host the VirtualBox files in, and
