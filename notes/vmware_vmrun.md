@@ -23,6 +23,13 @@ Setup
 
     vmrun snapshot /Path/to/VMware/Virtual/Machine.vmwarevm snapshot_name
 
+## Reverting to a Snapshot ##
+
+    vmrun revertToSnapshot /Path/to/VMware/Virtual/Machine.vmwarevm \
+      snapshot_name
+
+After reverting the snapshot, you will need to restart the VM again.
+
 ## Merging Snapshots ##
 
 http://tinyurl.com/a723odx
