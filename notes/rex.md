@@ -30,9 +30,13 @@
 
 ## (R)?ex Commands ##
 - Show what tasks and groups are set up
-  - `rex -T Rexfile`
+  - `rex -T`
+  - `rex -T -f alternate_rex_file_name`
+  - `rex -T -y` - print in YAML format
+  - `rex -T -m` - print in "machine parseable" format
 - Run a task
   - `rex <taskname>`
+  - `rex -f alternate_rex_file_name <taskname>`
 
 ## Problems using (R)?ex ##
 - Found a bug using the example INI file for `groups_file`
