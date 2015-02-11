@@ -5,7 +5,6 @@ alias conv1000='convert -resize 1000'
 alias cp='cp -i'
 alias datesync='sudo ntpdate pool.ntp.org'
 # dircolors sets up 'dir' now
-alias journal_headers='grep "^[A-Z]" *'
 alias lessr='less -R'
 alias grep='grep --color=auto'
 alias cgrep='grep --color=yes'
