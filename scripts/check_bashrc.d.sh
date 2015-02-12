@@ -30,7 +30,7 @@ VIEW_DIFFS=0
 # use this command to view files:
 # $VIM_CMD --cmd 'let no_plugin_maps = 1' \
 # -c 'runtime! macros/less.vim' -c "set filetype=diff" -
-VIM_LESS=0
+VIM_LESS=1
 
 # default exit status
 EXIT_STATUS=0
@@ -176,16 +176,16 @@ do
                 echo "  bashrc.d script: ${BASHRC_SCRIPT_FULLPATH}"
                 echo "  repo script: ${SOURCE_PATH}/${BASHRC_SCRIPT}"
                 if [ $VIEW_DIFFS -eq 1 ]; then
-                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
-                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
-                    continue
-                elif [ $VIM_LESS -eq 1 ]; then
-                    diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
-                        "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
-                        $VIM_CMD --cmd 'let no_plugin_maps = 1' \
-                        -c 'runtime! macros/less.vim' \
-                        -c "set filetype=diff" -
-                    continue
+                    if [ $VIM_LESS -eq 1 ]; then
+                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | \
+                            $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+                            -c 'runtime! macros/less.vim' \
+                            -c "set filetype=diff" -
+                    else
+                        diff --unified "${BASHRC_SCRIPT_FULLPATH}" \
+                            "${SOURCE_PATH}/${BASHRC_SCRIPT}" | $EDITOR -
+                    fi
                 fi
             fi
         fi
