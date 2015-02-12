@@ -119,7 +119,7 @@ lessyaml () {
     _fetchview_file_check "$URL" "yaml"
     _fetchview_check_cmds "vim" "wget" "json_xs"
     # $1 = fetch command, $2 = view command, $3 = file type, $4 = URL
-    _fetchview "wget" "json_xs" "yaml" "$URL"
+    _fetchview "cat" "json_xs" "yaml" "$URL"
 }
 
 # view a local XML file
@@ -139,7 +139,6 @@ lessxxd () {
     # $1 = fetch command, $2 = view command, $3 = file type, $4 = URL
     _fetchview "cat" "xxd" "xxd" "$URL"
 }
-
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
