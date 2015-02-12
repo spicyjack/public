@@ -28,7 +28,7 @@ elif [ -x /usr/bin/dircolors ]; then
         LSCOLORS=ExFxCxDxBxegedabagacad
         export CLICOLOR LSCOLORS
         alias dir='/bin/ls -F'
-        alias dir='CLICOLOR_FORCE=1 /bin/ls -F'
+        alias cdir='CLICOLOR_FORCE=1 /bin/ls -F'
         DIRCOLORS="/usr/bin/dircolors"
         eval $($DIRCOLORS ~/.dircolors)
     else
