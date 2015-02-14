@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# set up docker environment variables
+
+# boot2docker site: http://boot2docker.io/
+# idea for DOCKER_HOST from sample given in
+# http://stackoverflow.com/questions/25372781 by "Lt."
+DOCKER_HOST="tcp://$(boot2docker ip 2>/dev/null):2375"
+DOCKER_CERT_PATH=/Volumes/Raid/Users/brian/.boot2docker/certs/boot2docker-vm
+DOCKER_TLS_VERIFY=1
+export DOCKER_HOST DOCKER_CERT_PATH DOCKER_TLS_VERIFY
