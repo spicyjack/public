@@ -172,8 +172,8 @@ When trying to install, you'll get this error:
         [гром][brian local](master)$ brew link --overwrite gtk+3
         Linking /usr/local/Cellar/gtk+3/3.8.2... 267 symlinks created
 
-### Pango, Cairo and Gtk2 Perl Modules ###
-Install order is Cairo, Glib, Pango, Gtk2/Gtk3
+### Gtk-Perl Modules ###
+Install order is Cairo, Glib, Pango, Gtk2, Glib::Object::Introspection, Gtk3
 
 For Lion with built-in X server, use `/usr/X11/lib/pkgconfig/` for the path to
 `pkg-config` files.
