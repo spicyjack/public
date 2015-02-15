@@ -117,7 +117,7 @@ lessjson () {
 lessyaml () {
     local URL="$1"
     _fetchview_file_check "$URL" "yaml"
-    _fetchview_check_cmds "vim" "wget" "json_xs"
+    _fetchview_check_cmds "vim" "cat" "json_xs"
     # $1 = fetch command, $2 = view command, $3 = file type, $4 = URL
     _fetchview "cat" "json_xs" "yaml" "$URL"
 }
@@ -138,6 +138,12 @@ lessxxd () {
     _fetchview_check_cmds "vim" "cat" "xxd"
     # $1 = fetch command, $2 = view command, $3 = file type, $4 = URL
     _fetchview "cat" "xxd" "xxd" "$URL"
+}
+
+# run VIM in "less" mode
+vimless () {
+    local VIM_CMD=$(which vim)
+    $VIM_CMD --cmd 'let no_plugin_maps = 1' -c 'runtime! macros/less.vim' -
 }
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
