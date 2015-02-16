@@ -46,4 +46,10 @@ Display the version of `plenv`
 Locate a program file in `plenv's` path
 
     plenv which cpanm
+
+To run a binary/script that Perl or a module will install into the `bin/`
+directory:
+
+    plenv exec <binary or script name> <arguments>
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
