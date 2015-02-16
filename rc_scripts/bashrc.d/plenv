@@ -1,5 +1,7 @@
 #!/bin/bash
-export PATH="${HOME}/.plenv/bin:${PATH}"
-#eval "$(plenv init -)"
-if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
+#eval "$(plenv init -)"
+if which plenv > /dev/null; then
+    eval "$(plenv init -)"
+    export PATH="${HOME}/.plenv/bin:${PATH}"
+fi
