@@ -43,4 +43,11 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
   `USB`, a Partition Map Scheme of `Apple Partition Map`, and the mounted disk
   should have a format of `Mac OS Extended`
 
+## Creating a bootable USB flash disk from a bootable ISO ##
+
+    diskutil list
+    # find out which device the USB drive is seen as by the OS
+    diskutil unmountDisk /dev/<name of whole disk device>
+    sudo cp image.iso /dev/<name of whole disk device>
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
