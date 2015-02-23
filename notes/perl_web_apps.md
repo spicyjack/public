@@ -28,17 +28,13 @@ which will reload the web app automagically when you make changes to it
 
     morbo ./myapp.pl
 
-Start a full _Mojolicious_ app
+Start a daemonized _Mojolicious_ app
 
-    script/<name of app>
+    script/<name of app> daemon
 
 Start a full _Mojolicious_ app under `morbo`
 
     morbo script/<name of app>
-
-Start a daemonized _Mojolicious_ app
-
-    script/<name of app> daemon
 
 Start a _Mojolicious_ app meant to run under CGI
 
@@ -48,7 +44,7 @@ Start a _Mojolicious_ app meant to run under PCGI
 
     script/<name of app> pcgi
 
-See a full list of options available to run _Mojolicious_ apps
+See a full list of help options for a _Mojolicious_ app
 
     script/<name of app>
 
