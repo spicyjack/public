@@ -1,9 +1,21 @@
 # Perl Web App Framework Notes #
 
 ## Dancer2 ##
-Create the web app
+Create the _Dancer2_ web app
 
     dancer2 --application HelloWorld
+
+Start a _Dancer2_ app
+
+    plackup -p 3000 bin/app.psgi
+
+Fatpacking a _Dancer2_ app
+
+    fatpack pack bin/app.psgi > app.packed.psgi
+
+Starting a fatpacked _Dancer2_ app
+
+    plackup -p 3000 app.packed.psgi
 
 ## Mojolicious ##
 
@@ -14,10 +26,6 @@ Create a _Mojolicious::Lite_ app
 Create a full _Mojolicious_ app
 
     mojo generate app <HelloWorld>
-
-Start a Dancer2 app
-
-    plackup -p 3000 bin/app.psgi
 
 Start a _Mojolicious::Lite_ app
 
@@ -47,5 +55,14 @@ Start a _Mojolicious_ app meant to run under PCGI
 See a full list of help options for a _Mojolicious_ app
 
     script/<name of app>
+
+Fatpacking a _Mojolicious_ app
+
+    fatpack pack bin/app.psgi > app.packed.psgi
+
+Starting a fatpacked _Mojolicious_ app
+
+    chmod 744 script.packed
+    script.packed daemon
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
