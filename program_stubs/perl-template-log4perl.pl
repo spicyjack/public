@@ -231,7 +231,7 @@ use Log::Log4perl::Level;
             . qq(= Log::Log4perl::Appender::Screen\n);
     }
 
-    $log_conf .= qq(log4perl.appender.Screen.stderr = 1\n)
+    $log4perl_conf .= qq(log4perl.appender.Screen.stderr = 1\n)
         . qq(log4perl.appender.Screen.utf8 = 1\n)
         . qq(log4perl.appender.Screen.layout = PatternLayout\n)
         . q(log4perl.appender.Screen.layout.ConversionPattern )
@@ -246,7 +246,7 @@ use Log::Log4perl::Level;
         #. qq(= %d{HH.mm.ss} %p -> %m%n\n);
 
     # create a logger object, and prime the logfile for this session
-    Log::Log4perl::init( \$log_conf );
+    Log::Log4perl::init( \$log4perl_conf );
     my $log = get_logger("");
 
     $log->logdie(qq(Missing '--option' file argument))
