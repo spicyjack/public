@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PLANTUML_VERSION="8020"
+
+# run the Jenkins CLI jar file
+function plantuml {
+    if [ $# -gt 0 ]; then
+        JAVA_BIN=$(which java)
+        $JAVA_BIN -jar ~/bin/plantuml.${PLANTUML_VERSION}.jar $@
+    else
+        echo "ERROR: Missing names of PlantUML files to render"
+        echo "ERROR: Usage: plantuml file1.pu file2.pu file3.pu"
+    fi
+}
+
+# vi: set ft=sh sw=4 ts=4
+# fin!
