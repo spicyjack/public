@@ -19,13 +19,14 @@ Starting a fatpacked _Dancer2_ app
 
 ## Mojolicious ##
 
-Create a _Mojolicious::Lite_ app
+Create a _Mojolicious::Lite_ app; note that _Mojolicious::Lite_ doesn't use
+app names.
 
     mojo generate lite_app
 
-Create a full _Mojolicious_ app
+Create a full _Mojolicious_ app, with an app name (app object name)
 
-    mojo generate app <HelloWorld>
+    mojo generate app <App name>
 
 Start a _Mojolicious::Lite_ app
 
