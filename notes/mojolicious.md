@@ -176,6 +176,8 @@ Helpers are modules written to make common tasks easier
   templates for shortcuts to HTML tags
 - _Mojolicious::Plugin::DefaultHelpers_ is a collection of helpers, some of
   which can be used in templates, others which can be used in routes/actions
+  - This module has code for running in `development` mode, so that all error
+    pages are returned with the pretty error page
 
 ## Perldoc Documentation ##
 By default, _Mojolicious_ apps will serve documentation when the
