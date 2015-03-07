@@ -3,62 +3,6 @@
 The flow of a _Mojolicious_ application is outlined in the
 _Mojolicious::Guides::Growing_ POD document, in the section "A birds-eye view"
 
-## Basic Operations ##
-Create a _Mojolicious::Lite_ app; note that _Mojolicious::Lite_ doesn't use
-app names.
-
-    mojo generate lite_app
-
-Create a full _Mojolicious_ app, with an app name (app object name)
-
-    mojo generate app <App name>
-
-Start a _Mojolicious::Lite_ app
-
-    ./myapp.pl daemon
-
-Start a _Mojolicious::Lite_ app using the `morbo` development web server,
-which will reload the web app automagically when you make changes to it
-
-    morbo ./myapp.pl
-
-Get a list of routes in a _Mojolicious::Lite_ app
-
-    ./myapp.pl routes
-
-Start a daemonized _Mojolicious_ app
-
-    script/<name of app> daemon
-
-Start a full _Mojolicious_ app under `morbo`
-
-    morbo script/<name of app>
-
-Start a _Mojolicious_ app meant to run under CGI
-
-    script/<name of app> cgi
-
-Start a _Mojolicious_ app meant to run under PCGI
-
-    script/<name of app> pcgi
-
-See a list of routes for a _Mojolicious_ app
-
-    script/<name of app> routes
-
-See a full list of help options for a _Mojolicious_ app
-
-    script/<name of app>
-
-Fatpacking a _Mojolicious_ app
-
-    fatpack pack bin/app.psgi > app.packed.psgi
-
-Starting a fatpacked _Mojolicious_ app
-
-    chmod 744 script.packed
-    script.packed daemon
-
 ## Mojolicious Configuration ##
 You can create configuration files that _Mojolicious_ will read when it starts
 up, via the _Mojolicious::Plugin::Config_ class.  Use the `plugin()` method to
@@ -222,5 +166,61 @@ Running a single test via the `test` command
 Running a single test via `prove`
 
     prove -l -v t/basic.t
+
+## Basic Operations ##
+Create a _Mojolicious::Lite_ app; note that _Mojolicious::Lite_ doesn't use
+app names.
+
+    mojo generate lite_app
+
+Create a full _Mojolicious_ app, with an app name (app object name)
+
+    mojo generate app <App name>
+
+Start a _Mojolicious::Lite_ app
+
+    ./myapp.pl daemon
+
+Start a _Mojolicious::Lite_ app using the `morbo` development web server,
+which will reload the web app automagically when you make changes to it
+
+    morbo ./myapp.pl
+
+Get a list of routes in a _Mojolicious::Lite_ app
+
+    ./myapp.pl routes
+
+Start a daemonized _Mojolicious_ app
+
+    script/<name of app> daemon
+
+Start a full _Mojolicious_ app under `morbo`
+
+    morbo script/<name of app>
+
+Start a _Mojolicious_ app meant to run under CGI
+
+    script/<name of app> cgi
+
+Start a _Mojolicious_ app meant to run under PCGI
+
+    script/<name of app> pcgi
+
+See a list of routes for a _Mojolicious_ app
+
+    script/<name of app> routes
+
+See a full list of help options for a _Mojolicious_ app
+
+    script/<name of app>
+
+Fatpacking a _Mojolicious_ app
+
+    fatpack pack bin/app.psgi > app.packed.psgi
+
+Starting a fatpacked _Mojolicious_ app
+
+    chmod 744 script.packed
+    script.packed daemon
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
