@@ -68,7 +68,27 @@ load the Config object
 
 ## Module notes ##
 
+### Mojo ###
+Base class for a lot of objects in Mojolicious.
+
+### Mojo::Log ###
+Simple logging class for Mojolicious.
+- The _Mojo_ class creates a _Mojo::Log_ object at startup, and sets the log
+  level to **debug** if the `Mojolicious->mode` attribute is set to
+  `development`.
+- The default log level can be set by grabbing a copy of the _Mojo::Log_
+  class inside the running copy of the _Mojolicious_ object, and using the
+  `->level()` method to set a new log level
+  - `my $log = $app->log;`
+  - `$app->log->level('<new level>');`
+  - The default log level can also be overridded by the `MOJO_LOG_LEVEL`
+    environment variable
+  - The _Mojo::Log_ class is created by the _Mojo_ class at startup; the
+    _Mojolicious_ object inherits the _Mojo_ class
+
 ### Mojolicious ###
+Inherits from _Mojo_. See that class for additional methods/attributes.
+
 Attributes
 - `mode` will set the operating mode for the application
   - Also settable via the environment variables `MOJO_MODE` or `PLACK_ENV`
@@ -84,10 +104,10 @@ Attributes
     needs to be changed
 
 Methods
+- `->defaults()` will set up default values that will be used
+  `Mojolicious::Controller->stash()` for every new request
 - `->plugin()` registers a plugin, which is generally a subclass of
   _Mojolicious::Plugins_
-- `->defaults()` will set defaults for `Mojolicious::Controller->stash()`
-
 
 ## Mojolicious::Commands ##
 - `mojo version` will show the versions of Perl, _Mojolicious_, and the
@@ -95,7 +115,9 @@ Methods
 
 ## Mojolicious::Controller ##
 Methods (from _Mojolicious::Guides::Tutorial_)
-- `->stash()` is used to pass data to templates
+- `->stash()` is used for non-persistant storage for the current request
+  - For example, it can be used to pass data to templates before rendering
+    those templates
 - There's a reserved list of stash values that can't be used in `->stash()` in
   `Mojolicious::Controller->stash()`
 - Setting/clearing values from the stash:
