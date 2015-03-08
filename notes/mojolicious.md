@@ -5,10 +5,18 @@ _Mojolicious::Guides::Growing_ POD document, in the section "A birds-eye view"
 
 ## Mojolicious Configuration ##
 You can create configuration files that _Mojolicious_ will read when it starts
-up, via the _Mojolicious::Plugin::Config_ class.  Use the `plugin()` method to
-load the Config object
+up, via the _Mojolicious::Plugin::Config_
+(https://metacpan.org/pod/Mojolicious::Plugin::Config) class.  Use the
+`plugin()` method in the `startup()` method of your web app's base class
+(the class which inherits directly from _Mojolicious_) to load the Config
+object:
 
-    plugin q(Config);
+    $self->plugin(q(Config));
+
+The name of the config file is the same as the `Mojolicious->moniker`
+attribute in your main Mojolicious class.  You can view the current moniker
+on the default error page for Mojolicious, by clicking the `tap for more`
+block at the bottom of the server headers block.
 
 ## Module notes ##
 
@@ -80,8 +88,22 @@ Methods (from _Mojolicious::Guides::Tutorial_)
     # /bye -> {controller => 'foo', action => 'bye', mymessage => 'Bye'}
     $r->get('/bye')->to('foo#bye', mymessage => 'Bye');
 
+- If there are `controller` and `action` values in the stash, the Mojo
+  dispatcher will always try to turn them into a class and method to dispatch
+  to (from _Mojolicious::Guides::Routing_)
+  - The dispatcher uses the _Mojo::Util->camelize()_ method to do this
+  - During camelization `-` characters get replaced with `::`, this allows
+    multi-level controller hierarchies.
+  - When trying to find the controller class, Mojo searches in the controller
+    namespace based on the application class (_MyApp::Controller_), as well as
+    the bare application class (_MyApp_)
 - Render JSON directly in _Mojolicious_ using a Perl data structure:
     `$c->render(json => {foo => [1, 'test', 3]});`
+- Use the content negotiation built in to _Mojolicious_ to determine what type
+  of content to return for a given request
+  - https://metacpan.org/pod/Mojolicious::Guides::Rendering#Content-negotiation
+- _Mojolicious_ uses it's own templating system called "Embedded Perl", which
+  is documented in _Mojolicious::Guides::Rendering_
 
 Parameters (from _Mojolicious::Guides::Tutorial_)
 - The controller object that's passed in as part of an action contains a
