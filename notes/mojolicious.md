@@ -102,6 +102,8 @@ Methods (from _Mojolicious::Guides::Tutorial_)
 - Use the content negotiation built in to _Mojolicious_ to determine what type
   of content to return for a given request
   - https://metacpan.org/pod/Mojolicious::Guides::Rendering#Content-negotiation
+  - This is what will let you serve JSON or HTML depending on things like the
+    `Content-Type:` header, or the `?format=<type>` parameter
 - _Mojolicious_ uses it's own templating system called "Embedded Perl", which
   is documented in _Mojolicious::Guides::Rendering_
 
