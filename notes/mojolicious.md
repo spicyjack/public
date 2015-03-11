@@ -94,6 +94,11 @@ Methods (from _Mojolicious::Guides::Tutorial_)
   - The dispatcher uses the _Mojo::Util->camelize()_ method to do this
   - During camelization `-` characters get replaced with `::`, this allows
     multi-level controller hierarchies.
+  - Underscores tell `camelize()` that the next string needs to be camelized
+  - Examples
+    - `camelize q(foo_bar)` -> _FooBar_
+    - `camelize q(foo_bar-baz)` -> _FooBar::Baz_
+    - `camelize q(FooBar::Baz)` -> _FooBar::Baz_
   - When trying to find the controller class, Mojo searches in the controller
     namespace based on the application class (_MyApp::Controller_), as well as
     the bare application class (_MyApp_)
