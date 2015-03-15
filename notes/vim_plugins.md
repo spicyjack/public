@@ -30,6 +30,8 @@ Requires: `libperl-dev`, `gcc`, `libncursesw5-dev`
 - jquery - http://www.vim.org/scripts/script.php?script_id=2416
 - Cocoa/Objective-C - https://github.com/msanders/cocoa.vim
 - Git - https://github.com/tpope/vim-git
+- TOML markup language - https://github.com/cespare/vim-toml
+  - https://github.com/toml-lang/toml
 
 ## Other Syntax Plugins ##
 - googlecodewiki - http://www.vim.org/scripts/script.php?script_id=3173
@@ -44,6 +46,12 @@ Requires: `libperl-dev`, `gcc`, `libncursesw5-dev`
   - * http://www.vim.org/scripts/script.php?script_id=3425
 
 ## Utility Plugins ##
+- Pathogen
+  - https://github.com/tpope/vim-pathogen
+  - To install new VIM plugins, clone the Git repo into `~/.vim/bundle`,
+    witout the `*.git` extension
+  - Pathogen will automatically set up links from the files in the
+    `~/.vim/bundle` directory to the correct VIM directories
 - BufExplorer - http://www.vim.org/scripts/script.php?script_id=42
 - Align - http://www.vim.org/scripts/script.php?script_id=294
 - taglist - http://www.vim.org/scripts/script.php?script_id=273
