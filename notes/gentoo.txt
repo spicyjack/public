@@ -121,7 +121,72 @@ Set the root password
 
     passwd
 
+## Managing Packages ##
+Update the Portage tree (the list of packages that `emerge` knows about) via
+`rsync`
+
+    emerge --sync
+
+Update the Portage tree via a pre-generated sync file over HTTP
+
+    emerge-webrsync
+
+Searching for packages
+
+    emerge --search <package name>
+
+Search package descriptions
+
+    emerge --searchdesc <package name>
+
+See the USE flags for a given package (requires `app-portage/gentoolkit`)
+
+    emerge --ask app-portage/gentoolkit
+    equery --nocolor uses =<package name> -a
+
+Installing software
+
+    emerge --ask <package cluster>/<package name>
+
+Show what would be installed
+
+    emerge --pretend <package cluster>/<package name>
+
+Uninstalling a package
+
+    emerge --unmerge <package name>
+
+Updating installed packages
+
+    emerge --update --ask @world
+
+Updating installed packages, including all dependencies
+
+    emerge --update --deep --with-bdeps=y --ask @world
+
+If you have changed the `USE` settings in `/etc/portage/make.conf`, use the
+`--newuse` flag to tell Portage to use the new settings
+
+    emerge --update --deep --with-bdeps=y --newuse --ask @world
+
+To remove packages installed by a metapackage (requires
+`app-portage/gentoolkit`)
+
+    emerge --update --deep --newuse @world
+    emerge --depclean
+    revdep-rebuild
+
+List installed packages (requires `app-portage/gentoolkit`)
+
+    equery list '*'
+
+Other `equery` searches
+
+    equery list perl
+    equery list virtual/'*'
+
 ## Misc Notes ##
+
 The available list of Portage "use flags" can be found in
 `/usr/portage/profiles/use.desc`.
 
