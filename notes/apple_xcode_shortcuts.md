@@ -1,6 +1,8 @@
 # Xcode Keyboard/Gesture Shortcuts #
 
-Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
+Works on: OS X 10.9.X (Lion) and Xcode 6.x.x
+
+Log debugging command: `p (void)NSLog(@"%s %@", _cmd, foo)`
 
 ## Links ##
 - Keyboard gestures and shortcuts - http://tinyurl.com/7tnxmgd
@@ -9,9 +11,10 @@ Works on: OS X 10.7.X (Lion) and Xcode 4.6.x
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
 
-## Comments and compiler warnings ##
-- If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, _outside of
-  methods_, Xcode will make jump bar targets for them
+## Jump Bar Comments and compiler warnings ##
+- In Xcode 6, if you add **FIXME:**/**TODO:**/**???:**/**!!!:** (keyword,
+  then a colon) comments to code, _outside of methods_, Xcode will make jump
+  bar targets for them
 - To make compiler warnings, use the `#warning` compiler directive
 - To make compiler errors, use the `#error` compiler directive
 
