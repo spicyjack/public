@@ -21,36 +21,25 @@ Log debugging command: `p (void)NSLog(@"%s %@", _cmd, foo)`
 ## Unicode Hex Input ##
 Hold down the Option (`⌥`) key and type in the 4 digit hex code for that
 character
-- Command:         0x2318 ⌘
-- Control:         0x2303 ^
-- Option:          0x2325 ⌥
-- Shift:           0x21e7 ⇧
-- Carriage return: 0x21a9 ↩
+- Command: 0x2318 ⌘
+- Control: 0x2303 ^
+- Option:  0x2325 ⌥
+- Shift:   0x21e7 ⇧
+- Enter:   0x21a9 ↩
 
 ## Navigation ##
 Show current file in Project Navigator
-- `⌘⇧J`
+- `⌘-⇧-J` (Command-Option-J)
 
 ## Showing/Hiding Views ##
-Show/Hide Utilities (Inspectors)
-- `⌘⌥0`
-
-Show/Hide Debug Area
-- `⌘⇧Y`
-
-Show Standard Editor
-- `⌘↩`
-
-Show Assistant Editor
-- `⌥⌘↩`
-
-Show Version Editor
-- `⇧⌥⌘↩`
-
-Show/Hide Project Navigator
-- `⌘0`
+- Show/Hide Utilities (Inspectors) - `⌘-⌥-0` (Command-Option-0)
+- Show/Hide Debug Area - `⌘-⇧-Y` (Command-Shift-Y)
+- Show Standard Editor - `⌘-↩` (Command-Enter)
+- Show Assistant Editor - `⌘-⌥-↩` (Command-Option-Enter)
+- Show Version Editor - `⌘-⌥-⇧-↩` (Command-Option-Shift-Enter)
 
 Show specific Navigator panes
+- `⌘0` - Toggle Project Navigator
 - `⌘1` - Project Navigator
 - `⌘2` - Symbol Navigator
 - `⌘3` - Search Navigator
@@ -66,9 +55,6 @@ Switch between source and header file
     Counterpart"
 
 ## Debugging Programs ##
-_Continue_ - Continue program execution
-- `⌃⌘Y`
-
 _Step Over_ - Execute the current line of code and (if it is a routine) return
 to the next line in the current file
 - Step Over - `F6`
@@ -91,7 +77,7 @@ _Breakpoints and Console_
 - Clear Console - `⌘K`
 
 _Continuing code execution_ 
-- Keyboard shortcut: `⌘⌃Y`
+- `⌘-⌃-Y` (Command-Control-Y)
 - After you reach a breakpoint in code, you can continue code execution to a
   given point by hovering over a line of code in the editor, and then clicking
   on the green button that appears there.
