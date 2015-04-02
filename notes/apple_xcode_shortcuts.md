@@ -48,10 +48,16 @@ Show specific Navigator panes
 - `⌘6` - Breakpoint Navigator
 - `⌘7` - Log Navigator
 
+Expanding/collapsing folders in Project Navigator
+- `→` (Right arrow) - Expand highlighted folder
+- `⌥→` (Option-Right arrow) - Expand all folders underneath highlighted folder
+- `←` (Left arrow) - Collapse highlighted folder
+- `⌥←` (Option-Left arrow) - Collapse all folders underneath highlighted folder
+
 ## Editing Text ##
 Switch between source and header file
 - `Cmd-Ctrl-Up` (`⌘-⌃-↑`) and `Cmd-Ctrl-Down` (`⌘-⌃-↓`)
-  - "Navigate->Jump to Next Counterpart" and "Navigate->Jump to Previous
+  - "Navigate -> Jump to Next Counterpart" and "Navigate -> Jump to Previous
     Counterpart"
 
 ## Debugging Programs ##
