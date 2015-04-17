@@ -16,24 +16,23 @@ elif [ -x /usr/local/bin/gdircolors ]; then
     eval $($DIRCOLORS ~/.dircolors)
     return
 elif [ -x /usr/bin/dircolors ]; then
-    if [ $(uname -s) = "Linux" ]; then
-        # GNU/Linux
-        alias dir='/bin/ls --classify --color=auto'
-        alias cdir='/bin/ls --color=yes --classify'
-        DIRCOLORS="/usr/bin/dircolors --bourne-shell"
-    elif [ $(uname -s) = "Darwin" ]; then
-        # BSD/Mac OS X
-        # moved this in from the 'darwin' bashrc.d file
-        CLICOLOR=1
-        LSCOLORS=ExFxCxDxBxegedabagacad
-        export CLICOLOR LSCOLORS
-        alias dir='/bin/ls -F'
-        alias cdir='CLICOLOR_FORCE=1 /bin/ls -F'
-        DIRCOLORS="/usr/bin/dircolors"
-        eval $($DIRCOLORS ~/.dircolors)
-    else
-        echo "Unknown system type, unable to run 'dircolors'"
-    fi
+    # GNU/Linux
+    alias dir='/bin/ls --classify --color=auto'
+    alias cdir='/bin/ls --color=yes --classify'
+    DIRCOLORS="/usr/bin/dircolors --bourne-shell"
+    eval $($DIRCOLORS ~/.dircolors)
+    return
+elif [ $(uname -s) = "Darwin" ]; then
+    # BSD/Mac OS X
+    # moved this in from the 'darwin' bashrc.d file
+    CLICOLOR=1
+    LSCOLORS=ExFxCxDxBxegedabagacad
+    export CLICOLOR LSCOLORS
+    alias dir='/bin/ls -F'
+    alias cdir='CLICOLOR_FORCE=1 /bin/ls -F'
+    return
+else
+    echo "Unknown system type, unable to run 'dircolors'"
 fi
 # vi: set ft=sh sw=4 ts=4
 # fin!
