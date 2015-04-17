@@ -35,6 +35,9 @@ After installing code plugins with help files (which usually get placed in
 ## Utility Plugins ##
 - Pathogen
   - https://github.com/tpope/vim-pathogen
+  - To install:
+    - `mkdir -p ~/.vim/autoload ~/.vim/bundle`
+    - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
   - To install new VIM plugins, clone the Git repo into `~/.vim/bundle`,
     witout the `*.git` extension
   - Pathogen will automatically set up links from the files in the
