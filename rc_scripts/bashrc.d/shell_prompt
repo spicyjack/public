@@ -4,9 +4,9 @@ set_ps1 () {
     LAST_CMD=$?
 
     # list of hostnames that receive special colors
-    HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko"
+    HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko|yozhik"
     # list of usernames that receive special colors
-    SERVICE_USERS="jenkins|icinga|icinga-cmd"
+    SERVICE_USERS="jenkins|webapps"
 
     # ANSI tail, sets color to normal
     C_END="\[\e[0m\]"
@@ -33,8 +33,10 @@ set_ps1 () {
     else
         HOST_COLOR=${C_BLUE}
     fi
-    # speshul case for grom
-    if [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
+    # speshul cases for hostnames that we want in Cyrillic
+    if [ $(echo ${HOSTNAME} | egrep -c "yozhik") -gt 0 ]; then
+        HOST_STRING="ёжик"
+    elif [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
         HOST_STRING="гром"
     else
         HOST_STRING="\h"
