@@ -6,6 +6,10 @@ See also `plenv-contrib`, which has the `use` command.
 - https://github.com/miyagawa/plenv-contrib
 
 ## Installation ##
+List available Perls
+
+    plenv install --list
+
 64-bit systems:
 
     plenv install <Perl version> -Dusethreads -Uuselargefiles -Dusemorebits
