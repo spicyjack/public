@@ -146,5 +146,12 @@ vimless () {
     $VIM_CMD --cmd 'let no_plugin_maps = 1' -c 'runtime! macros/less.vim' -
 }
 
+# view the output of 'set' in VIM with syntax highlighting
+setless () {
+    local VIM_CMD=$(which vim)
+    set | $VIM_CMD --cmd 'let no_plugin_maps = 1' \
+        -c 'runtime! macros/less.vim' -c 'set filetype=sh' -
+}
+
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
