@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Shell functions for running under Darwin (OS X)
+function launchlist {
+    launchctl list | sort -k 3
+}
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# конец!
