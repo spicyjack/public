@@ -1,2 +1,4 @@
+# VIM swap files
 *.swp
+# Mac metadata files
 .DS_Store
