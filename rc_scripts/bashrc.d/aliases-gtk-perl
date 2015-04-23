@@ -1,7 +1,7 @@
 #!/bin/bash
 # git aliases
 GTK_GIT_EXCLUDES="archived"
-GTK_GIT_PATH="/Users/username/src/gtk-perl"
+GTK_GIT_PATH="${HOME}/src/gtk-perl"
 alias gtkrefchk="/bin/bash ~/bin/git-tool.sh --path=${GTK_GIT_PATH} \
     --exclude \"${GTK_GIT_EXCLUDES}\" refchk"
 # these next two are the same
