@@ -17,6 +17,8 @@ Automates setup of VIM plugins cloned into `~/.vim/bundle`
     - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
 - To install new VIM plugins, clone the Git repo into `~/.vim/bundle`, witout
   the `*.git` extension
+  - See the file `public.git/notes/git.md` for an example of using `git
+    submodule` to clone and keep VIM plugin Git repos up to date
 - Pathogen will automatically set up links from the files in the
 `~/.vim/bundle` directory to the correct VIM directories
 
@@ -75,7 +77,10 @@ Automates setup of VIM plugins cloned into `~/.vim/bundle`
   - http://blogs.perl.org/users/ovid/2014/05/automatic-variable-highlighting-in-vim.html
     - https://github.com/pjcj/vim-hl-var
     - Install both scripts, `vawa.vim` and `hl-var.vim` to `~/.vim/plugin`
-
+- INI-syntax highlighting
+  - May already be up to date, it's part of VIM now
+  - https://github.com/xuhdev/syntax-dosini.vim
+  - http://www.vim.org/scripts/script.php?script_id=3747
 ## Older (Unused) Syntax Plugins ##
 - nsh - http://www.vim.org/scripts/script.php?script_id=2864
 - Redcode  (Core War)
