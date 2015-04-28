@@ -285,6 +285,28 @@ Git config looks like:
             remote = origin
             merge = refs/heads/master
 
+
+### Git Submodules ###
+Submodules are a way of organizing multiple different repos into one tree.
+- http://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+Cloning a project with submodules:
+
+    git clone https://example.com/MainProject
+    git submodule init
+
+Or...
+
+    git clone --recursive https://example.com/MainProject
+
+Adding more submodules to an existing Git repo
+
+    git submodule add https://example.com/NewProject
+
+Updating a project with submodules
+
+    git submodule update --remote
+
 ### Copying commits from one repo to another ###
 To copy all of the commits (complete commit including author and date
 timestamp), use `git format-patch` followed by `git am`;
