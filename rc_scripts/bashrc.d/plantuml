@@ -6,7 +6,11 @@ PLANTUML_VERSION="8020"
 function plantuml {
     if [ $# -gt 0 ]; then
         JAVA_BIN=$(which java)
-        $JAVA_BIN -jar ~/bin/plantuml.${PLANTUML_VERSION}.jar $@
+        if [ "x${JAVA_BIN}" != "x" ]; then
+            $JAVA_BIN -jar ~/bin/plantuml.${PLANTUML_VERSION}.jar $@
+        else
+            echo "plantuml: No Java binary installed"
+        fi
     else
         echo "ERROR: Missing names of PlantUML files to render"
         echo "ERROR: Usage: plantuml file1.pu file2.pu file3.pu"

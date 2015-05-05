@@ -3,7 +3,12 @@
 # run the Jenkins CLI jar file
 function jenkcli {
     JAVA_BIN=$(which java)
-    $JAVA_BIN -jar ~/bin/jenkins-cli.jar -s http://localhost:8080/jenkins "$@"
+    if [ "x${JAVA_BIN}" != "x" ]; then
+        $JAVA_BIN -jar ~/bin/jenkins-cli.jar \
+            -s http://localhost:8080/jenkins "$@"
+    else
+        echo "jenkcli: No Java binary installed"
+    fi
 }
 
 # run a command as the 'jenkins' user
