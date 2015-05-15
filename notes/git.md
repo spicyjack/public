@@ -8,6 +8,8 @@
 - Git for the confused:
   http://www.gelato.unsw.edu.au/archives/git/0512/13748.html
 - Git Magic; http://www-cs-students.stanford.edu/~blynn/gitmagic/ch08.html
+- How to make references (to people, or issues) in commits/markdown on GitHub
+  - https://help.github.com/articles/writing-on-github/
 
 ### Git Workflow Links ###
 - http://search.cpan.org/perldoc?Dancer::Development
@@ -365,14 +367,14 @@ names.  The format of the file is explained in the `git-cvsimport` help page
 ### Git Configs ###
 Multiple remote branches:
 
-        [remote "origin"]
-            fetch = +refs/heads/*:refs/remotes/origin/*
-            url = git@github.com:spicyjack/yadex.git
-        [branch "master"]
-            remote = origin
-            merge = refs/heads/master
-        [branch "wesleyjohnson"]
-            remote = origin
-            merge = refs/heads/master
+    [remote "origin"]
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        url = git@github.com:spicyjack/yadex.git
+    [branch "master"]
+        remote = origin
+        merge = refs/heads/master
+    [branch "wesleyjohnson"]
+        remote = origin
+        merge = refs/heads/master
 
-vim: filetype=markdown tabstop=2
+vim: filetype=markdown shiftwidth=2 tabstop=2
