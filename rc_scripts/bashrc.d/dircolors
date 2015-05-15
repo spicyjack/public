@@ -1,14 +1,7 @@
 #!/bin/bash
 
 # add the user's .dir_colors directives
-if [ -x /opt/local/bin/gdircolors ]; then
-    # MacPorts
-    alias dir='/opt/local/bin/gls --color=auto --classify'
-    alias cdir='/opt/local/bin/gls --color=yes --classify'
-    DIRCOLORS="/opt/local/bin/gdircolors"
-    eval $($DIRCOLORS ~/.dircolors)
-    return
-elif [ -x /usr/local/bin/gdircolors ]; then
+if [ -x /usr/local/bin/gdircolors ]; then
     # Homebrew
     alias dir='/usr/local/bin/gls --color=auto --classify'
     alias cdir='/usr/local/bin/gls --color=yes --classify'
