@@ -16,5 +16,6 @@
 - WP-GeSHi-Highlight - http://wordpress.org/extend/plugins/wp-geshi-highlight/
 - http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/
 - Vivid Chalk (from markw) - https://github.com/tpope/vim-vividchalk
+- https://github.com/google/code-prettify
 
 # vim: filetype=markdown tabstop=2
