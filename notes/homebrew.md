@@ -45,16 +45,11 @@ Unmount all FUSE filesystems and then unload the kernel extension:
     sudo kextunload -b org.fuse4x.kext.fuse4x
 
 ### MySQL ###
-A "/etc/my.cnf" from another install may interfere with a Homebrew-built
+An `/etc/my.cnf` file from another install may interfere with a Homebrew-built
 server starting up correctly.
 
-To connect:
-
-    mysql -uroot
-
-To set a password:
-
-    SET PASSWORD FOR 'user'@'host' = PASSWORD('password');
+The Homebrew installed `my.cnf` is located in
+`/usr/local/Cellar/mysql/<version>/my.cnf`
 
 To have launchd start mysql at login:
 
@@ -67,6 +62,14 @@ Then to load mysql now:
 Or, if you don't want/need launchctl, you can just run:
 
     mysql.server start
+
+To connect to MySQL once it's running:
+
+    mysql -uroot
+
+To set a password for user `user`:
+
+    SET PASSWORD FOR 'user'@'host' = PASSWORD('password');
 
 ## Homebrew problems encountered ##
 - `libtiff` not linking it's `include` files
