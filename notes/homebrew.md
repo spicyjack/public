@@ -52,6 +52,10 @@ To connect:
 
     mysql -uroot
 
+To set a password:
+
+    SET PASSWORD FOR 'user'@'host' = PASSWORD('password');
+
 To have launchd start mysql at login:
 
     ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
