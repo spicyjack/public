@@ -23,6 +23,10 @@ function xssh {
     SSH_AUTH_SOCK= /usr/bin/ssh $1
 } # SSH to the user/host specified in $1, don't use ssh-agent for auth
 
+function xscp {
+    SSH_AUTH_SOCK= /usr/bin/scp "$@"
+} # SCP the file to the user/host specified in $@, don't use ssh-agent for auth
+
 function r97 {
     rdesktop -a 16 -g 900x700 $1 &
 } # remote desktop to a host with 900x700 with 16 bit color
