@@ -33,6 +33,8 @@ VirtualBox to simulate "running" Docker.
 - `boot2docker [down|stop]` - Stop the `boot2docker`/Docker VM
 - `boot2docker [save|suspend]` - Suspend the `boot2docker`/Docker VM and save
   state to disk
+- `boot2docker download` - Download the latest `boot2docker.iso` image, which
+  runs `docker` in a Linux VM
 
 ### Docker Commands ###
 - `sudo docker info` - Shows info about Docker on the host system
