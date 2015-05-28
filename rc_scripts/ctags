@@ -1,6 +1,6 @@
 --langdef=perl
 --langmap=perl:+(Rexfile)
---regex-perl=/^task[ \t]* "([a-zA-Z0-9_]+)"\s{0,},/\1/s,subroutines/
---regex-perl=/^task[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/s,subroutines/
---regex-perl=/^batch[ \t]*"([a-zA-Z0-9_-]+)"\s{0,},/\1/s,subroutines/
---regex-perl=/^batch[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/s,subroutines/
+--regex-perl=/^task[ \t]* "([a-zA-Z0-9_]+)"\s{0,},/\1/t,task/
+--regex-perl=/^task[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/t,task/
+--regex-perl=/^batch[ \t]*"([a-zA-Z0-9_-]+)"\s{0,},/\1/b,batch task/
+--regex-perl=/^batch[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/b,batch task/
