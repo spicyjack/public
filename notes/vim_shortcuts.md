@@ -13,6 +13,16 @@
   - Use `:s/^/<foo>/` to perform substitution on the first column of the
     selected lines
 
+### Using Named Marks ###
+http://vimdoc.sourceforge.net/htmldoc/usr_03.html#03.10
+- To set a mark using mark `a`: _ma_
+- To jump to the exact position of mark `a`: _`a_
+- To jump to the beginning of the line containing mark `a`: _'a_
+- To return to your last cursor position before a jump: _''_
+- To return to the last cursor position when last editing the file: _"_
+- To jump to the start of the last change: _[_
+- To jump to the end of the last change: _]_
+
 ### Using Registers ###
 You use registers in `VIM` to hold text for cutting/copying.
 
