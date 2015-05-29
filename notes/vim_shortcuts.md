@@ -22,6 +22,7 @@ http://vimdoc.sourceforge.net/htmldoc/usr_03.html#03.10
 - To return to the last cursor position when last editing the file: _"_
 - To jump to the start of the last change: _[_
 - To jump to the end of the last change: _]_
+- To see the current list of marks: _:marks_
 
 ### Using Registers ###
 You use registers in `VIM` to hold text for cutting/copying.
