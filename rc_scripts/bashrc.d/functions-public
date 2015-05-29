@@ -1,36 +1,5 @@
 #!/bin/bash
 
-# shell functions
-function find_agent {
-    /usr/bin/find /tmp 2>/dev/null | grep agent
-} # find a list of agent sockets on the host
-
-function histgrep  {
-    history | grep "$@" | tail -22
-} # history, one screenful please
-
-function jdate {
-    echo -n "The current julian date in GMT is: "
-    TZ=GMT date +%j
-} # show the current Julian date in GMT time zone
-
-# for QEMU instances
-function lssh {
-    /usr/bin/ssh -v -X -o "StrictHostKeyChecking no" -l $1 -p $2 localhost
-} # ssh to localhost as a specific user on a specific port
-
-function xssh {
-    SSH_AUTH_SOCK= /usr/bin/ssh $1
-} # SSH to the user/host specified in $1, don't use ssh-agent for auth
-
-function xscp {
-    SSH_AUTH_SOCK= /usr/bin/scp "$@"
-} # SCP the file to the user/host specified in $@, don't use ssh-agent for auth
-
-function r97 {
-    rdesktop -a 16 -g 900x700 $1 &
-} # remote desktop to a host with 900x700 with 16 bit color
-
 function ar97 {
     rdesktop -a 16 -u Administrator -g 900x700 $1 &
 } # remote desktop to a host with 900x700 with 16 bit color, admin user
@@ -38,10 +7,6 @@ function ar97 {
 function ar107 {
     rdesktop -a 16 -u Administrator -g 1024x768 $1 &
 } # remote desktop to a host with 900x700 with 16 bit color, admin user
-
-function sudogrep {
-    sudo grep $1 /etc/sudoers | less
-} # look for the string passed in as arg 1 in the sudoers file
 
 function cless {
     if [ "x$1" != "x" ]; then
@@ -61,9 +26,78 @@ function ctree {
     fi
 } # show a colorized tree, and pipe to colorized less
 
+# shell functions
+function find_agent {
+    /usr/bin/find /tmp 2>/dev/null | grep agent
+} # find a list of agent sockets on the host
+
+function histgrep  {
+    history | grep "$@" | tail -22
+} # history, one screenful please
+
+function jdate {
+    echo -n "The current julian date in GMT is: "
+    TZ=GMT date +%j
+} # show the current Julian date in GMT time zone
+
+# for QEMU instances
+function lssh {
+    /usr/bin/ssh -v -X -o "StrictHostKeyChecking no" -l $1 -p $2 localhost
+} # ssh to localhost as a specific user on a specific port
+
+function r97 {
+    rdesktop -a 16 -g 900x700 $1 &
+} # remote desktop to a host with 900x700 with 16 bit color
+
+function sudogrep {
+    sudo grep $1 /etc/sudoers | less
+} # look for the string passed in as arg 1 in the sudoers file
+
 function vi {
     echo "HEY! Don't use 'vi', use 'vim' instead"
 } # warn the user about using VI instead of VIM
+
+# for VMware Fusion on OS X
+function vmnet {
+    local VMNET_BIN="/Applications/VMware Fusion.app/Contents/Library/vmnet-cli"
+    local VMNET_USAGE="Usage: vmnet [start|stop|restart|status]"
+    local VMNET_CMD=""
+    if [ $# -eq 0 ]; then
+        echo "ERROR: vmnet requires an argument"
+        echo $VMNET_USAGE
+        return 1
+    fi
+
+    if [ $(echo $1 | egrep -c "start|stop|restart|status") -eq 0 ]; then
+        echo "ERROR: $1 is not a valid argument"
+        echo $VMNET_USAGE
+        return 1
+    fi
+
+    # choose which command to run
+    if [ $1 == "start" ]; then
+        VMNET_CMD="--start"
+    elif [ $1 == "stop" ]; then
+        VMNET_CMD="--stop"
+    elif [ $1 == "restart" ]; then
+        VMNET_CMD="--restart"
+    elif [ $1 == "status" ]; then
+        VMNET_CMD="--status"
+    fi
+    echo "Enter SUDO password if prompted for 'vmnet-cli' command;"
+    sudo "$VMNET_BIN" $VMNET_CMD
+    local EXIT_STATUS=$?
+    return $EXIT_STATUS
+}
+
+# for SSH
+function xssh {
+    SSH_AUTH_SOCK= /usr/bin/ssh $1
+} # SSH to the user/host specified in $1, don't use ssh-agent for auth
+
+function xscp {
+    SSH_AUTH_SOCK= /usr/bin/scp "$@"
+} # SCP the file to the user/host specified in $@, don't use ssh-agent for auth
 
 # vim: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
