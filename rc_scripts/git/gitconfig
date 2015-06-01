@@ -1,56 +1,101 @@
 [user]
-    name = Example User
-    email = user@example.com
-
+  name = Example User
+  email = user@example.com
 
 [alias]
-    bare        = init --bare --shared=true
-    br          = branch -v
-    co          = checkout
-    graph       = log --oneline --decorate --graph
-    hist        = log --graph --pretty='[%h]%d %cd %s'
-    # from http://coderwall.com/p/euwpig?i=3&p=1&t=git
-    lg          = log --graph --pretty=format:'%Cred%h%Creset \
-        -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-        --abbrev-commit
-    ls          = ls-tree --abbrev=8 -r HEAD
-    pudr        = push --dry-run
-    puall       = push --all
-    puallset    = push --set-upstream --all
-    pualldr     = push --all --dry-run
-    pualldrset  = push --set-upstream --all --dry-run
-    puor        = push origin master
-    puorset     = push --set-upstream origin master
-    puordr      = push --dry-run origin master
-    puordrset   = push --set-upstream --dry-run origin master
-    # 'lg' (above) will also show tags with commit hashes
-    showtags    = show-ref --tags
-    stat        = status
-    # shows annotation along with tag name
-    tagn        = tag -n
-    tags        = tag
-    re          = remote -v
-    untrack     = rm --cached
+  # create a shared repo to be used on a server somewhere
+  bare    = init --bare --shared=true
+
+  # shortcuts
+  br      = branch -v
+  co      = checkout
+  last    = log -1
+  re      = remote -v
+  remv    = remote -v
+  stat    = status
+  tags    = tag
+
+  # stash-y things
+  app     = stash apply
+  drop    = stash drop
+  list    = stash list
+  sap     = stash apply
+  save    = stash save
+
+  # submodule-y things
+  subadd    = submodule add
+  subinit   = submodule init
+
+  # pushing things
+  backup       = push --all backup
+  pushall      = push --all
+  pushallset   = push --set-upstream --all
+  pushalldr    = push --all --dry-run
+  pushalldrset = push --set-upstream --all --dry-run
+
+  # showing repo information
+  ds        = diff --stat
+  dh        = diff HEAD
+  graph     = log --oneline --decorate --graph
+  hist      = log --graph --pretty='[%h]%d %cd %s'
+  # branch-date is from
+  # http://www.jamielennox.net/blog/2014/08/15/git-commands-for-messy-people/
+  bd        = "!git for-each-ref \
+    --sort=committerdate \
+    --format='%1B[30;1m%(objectname:short)%1b[0;m %1B[32m%(committerdate:iso8601) %1B[34m%(committerdate:relative) %1B[0;m%(refname:short)' refs/heads/"
+  branch-date = "!git for-each-ref \
+    --sort=committerdate \
+    --format='%1B[30;1m%(objectname:short)%1b[0;m %1B[32m%(committerdate:iso8601) %1B[34m%(committerdate:relative) %1B[0;m%(refname:short)' refs/heads/"
+  # from http://coderwall.com/p/euwpig?i=3&p=1&t=git
+  # shows log info with colors and lots of extra info
+  graphdate = log --graph \
+    --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+    --abbrev-commit
+  gd        = log --graph \
+    --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+    --abbrev-commit
+  # shows what files git is tracking
+  ls        = ls-tree --abbrev=8 -r HEAD
+  # show commit logs, one commit per line
+  one       = log --oneline
+  # show what tags are in the repo;
+  # 'lg' (above) will also show tags with commit hashes
+  showtags  = show-ref --tags
+  # shows annotation along with tag name
+  tagn      = tag -n
+  # remove a file from git that has been added, but not committed
+  untrack   = rm --cached
 
 [color]
 	ui = true
 
 #[color]
-#        branch = auto
-#        diff = auto
-#        status = auto
+#  branch = auto
+#  diff = auto
+#  status = auto
 #[color "branch"]
-#        current = yellow reverse
-#        local = yellow
-#        remote = green
+#  current = yellow reverse
+#  local = yellow
+#  remote = green
 #[color "diff"]
-#        meta = yellow bold
-#        frag = magenta bold
-#        old = red bold
-#        new = green bold
+#  meta = yellow bold
+#  frag = magenta bold
+#  old = red bold
+#  new = green bold
 #[color "status"]
-#        added = yellow
-#        changed = green
-#        untracked = cyan
+#  added = yellow
+#  changed = green
+#  untracked = cyan
 
-# vim: filetype=gitconfig:
+[push]
+	default = simple
+[core]
+#	excludesfile = /Users/username/.gitignore_global
+  autocrlf = input
+
+[help]
+  # http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+  # Number of deciseconds to wait until running the suggested command
+  autocorrect = 30
+
+# vim: filetype=gitconfig tabstop=2 shiftwidth=2
