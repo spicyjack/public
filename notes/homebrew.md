@@ -20,6 +20,12 @@ List installed packages
 List files installed by a package
 - `brew list <package name>`
 
+Show a list of what would be cleaned out with `brew cleanup`
+- `brew cleanup -n`
+
+Actually clean out old packages
+- `brew cleanup`
+
 How to find out what files belong to which packages?
 - Do an `ls -l` on the file, it will pount back to the location of the
   installing package.
