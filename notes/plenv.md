@@ -37,7 +37,7 @@ with:
 
 Migrate modules from one version of Perl to another
 
-    plenv migrate-modules
+    plenv migrate-modules <from version> <to version>
 
 List modules installed in the current Perl
 
