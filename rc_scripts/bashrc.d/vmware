@@ -1,4 +1,53 @@
 #!/bin/bash
 
-# aliases/environment variables for VMware
+# aliases/functions/environment variables for VMware
+
+# vmrun; start/stop VMs
 alias vmrun='/Applications/VMware\ Fusion.app/Contents/Library/vmrun'
+
+# shortcut to work with VMware's networking daemon
+function vmnet {
+   local VMNET_BIN="/Applications/VMware Fusion.app/Contents/Library/vmnet-cli"
+   local VMNET_USAGE="Usage: vmnet [start|stop|restart|status|help]"
+   local VMNET_CMD=""
+   if [ $# -eq 0 ]; then
+      echo "ERROR: vmnet requires an argument"
+      echo $VMNET_USAGE
+      return 1
+   fi
+
+   if [ $(echo $1 | egrep -c "start|stop|restart|status|help") -eq 0 ]; then
+      echo "ERROR: $1 is not a valid argument"
+      echo $VMNET_USAGE
+      return 1
+   fi
+
+   # choose which command to run
+   if [ $1 == "start" ]; then
+      VMNET_CMD="--start"
+   elif [ $1 == "stop" ]; then
+      VMNET_CMD="--stop"
+   elif [ $1 == "restart" ]; then
+      VMNET_CMD="--restart"
+   elif [ $1 == "status" ]; then
+      VMNET_CMD="--status"
+   elif [ $1 == "help" ]; then
+      echo $VMNET_USAGE
+      echo
+      echo "-> This shell function is a wrapper around VMware's 'vmnet-cli';"
+      echo "-> 'vmnet-cli' controls VMware's virtual machine networking."
+      echo "-> To allow access to VMware virtual machines, edit the file"
+      echo "-> '/Library/Preferences/VMware Fusion/vmnet8/nat.conf';"
+      echo "-> make changes in sections '[incomingtcp]' and '[incomingudp]'"
+      echo "-> as desired.  Once you've completed your changes, issue"
+      echo "-> the command 'vmnet restart' in your shell, and enter your"
+      echo "-> password for SUDO, if prompted"
+      return 0
+   fi
+   echo "Enter SUDO password if prompted for 'vmnet-cli' command;"
+   sudo "$VMNET_BIN" $VMNET_CMD
+   local EXIT_STATUS=$?
+   return $EXIT_STATUS
+}
+
+# vim: set filetype=sh shiftwidth=3 tabstop=3:
