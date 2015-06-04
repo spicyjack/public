@@ -57,39 +57,6 @@ function vi {
     echo "HEY! Don't use 'vi', use 'vim' instead"
 } # warn the user about using VI instead of VIM
 
-# for VMware Fusion on OS X
-function vmnet {
-    local VMNET_BIN="/Applications/VMware Fusion.app/Contents/Library/vmnet-cli"
-    local VMNET_USAGE="Usage: vmnet [start|stop|restart|status]"
-    local VMNET_CMD=""
-    if [ $# -eq 0 ]; then
-        echo "ERROR: vmnet requires an argument"
-        echo $VMNET_USAGE
-        return 1
-    fi
-
-    if [ $(echo $1 | egrep -c "start|stop|restart|status") -eq 0 ]; then
-        echo "ERROR: $1 is not a valid argument"
-        echo $VMNET_USAGE
-        return 1
-    fi
-
-    # choose which command to run
-    if [ $1 == "start" ]; then
-        VMNET_CMD="--start"
-    elif [ $1 == "stop" ]; then
-        VMNET_CMD="--stop"
-    elif [ $1 == "restart" ]; then
-        VMNET_CMD="--restart"
-    elif [ $1 == "status" ]; then
-        VMNET_CMD="--status"
-    fi
-    echo "Enter SUDO password if prompted for 'vmnet-cli' command;"
-    sudo "$VMNET_BIN" $VMNET_CMD
-    local EXIT_STATUS=$?
-    return $EXIT_STATUS
-}
-
 # for SSH
 function xssh {
     SSH_AUTH_SOCK= /usr/bin/ssh $1
