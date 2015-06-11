@@ -1,0 +1,38 @@
+## PostgreSQL 9.2 Notes ##
+
+Some of these notes may be applicable to older versions; they'll definitely be
+applicable to newer versions
+
+_psql backslash commands_
+- Get help inside of `psql`: `\? `
+- List default privileges: `\ddp `
+- List roles: `\dg `
+- List all databases: ` \l `
+- List tables/views/sequences: `\d `
+- List table/view/sequence access privileges: `\dp ` **or** ` \z `
+- List system tables/views/sequences: `\dS `
+- List system tables/views/sequences with extended info: `\dS+ `
+- Describe a table/view/sequence: `\d <name> `
+
+Setting up a new PostgreSQL user from a shell
+- `createuser <username>`
+
+Deleting a PostgreSQL user from a shell
+- `dropuser <username>`
+
+Creating a database from a shell
+- `createdb <dbname>`
+
+Creating a database with a specific owner from a shell
+- `createdb -O <rolename> <dbname>`
+
+Create a database from `psql` for someone besides the logged in user
+- `CREATE DATABASE dbname OWNER rolename;`
+
+What are the "template0" and "template1" databases for?
+- http://www.postgresql.org/docs/9.2/static/manage-ag-templatedbs.html
+- New databases are copied from `template1`
+- `template0` should be the "always good" copy, that can be used to restore
+  `template1` to it's defaults, if desired
+
+vim: filetype=markdown shiftwidth=2 tabstop=2
