@@ -3,6 +3,7 @@
 Some of these notes may be applicable to older versions; they'll definitely be
 applicable to newer versions
 
+Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
 
 Starting `psql`
 - If no user is set up by default in `pg_ident.conf`
