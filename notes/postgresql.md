@@ -3,7 +3,16 @@
 Some of these notes may be applicable to older versions; they'll definitely be
 applicable to newer versions
 
-_psql backslash commands_
+
+Starting `psql`
+- If no user is set up by default in `pg_ident.conf`
+  - `postgres $ psql`
+- If some users are set up in `pg_ident.conf`
+  - `root # psql -Uroot dbname`
+  - `root # psql -Uusername dbname`
+  - `user # psql -Upostgres postgres`
+
+`psql` backslash commands
 - Get help inside of `psql`: `\? `
 - List default privileges: `\ddp `
 - List roles: `\dg `
