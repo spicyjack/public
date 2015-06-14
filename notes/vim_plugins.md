@@ -12,15 +12,22 @@ After installing code plugins with help files (which usually get placed in
 
 Automates setup of VIM plugins cloned into `~/.vim/bundle`
 
-- To install Pathogen:
-    - `mkdir -p ~/.vim/autoload ~/.vim/bundle`
-    - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
+To install Pathogen:
+  - `mkdir -p ~/.vim/autoload ~/.vim/bundle`
+  - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
 - To install new VIM plugins, clone the Git repo into `~/.vim/bundle`, witout
   the `*.git` extension
   - See the file `public.git/notes/git.md` for an example of using `git
     submodule` to clone and keep VIM plugin Git repos up to date
 - Pathogen will automatically set up links from the files in the
 `~/.vim/bundle` directory to the correct VIM directories
+
+To set up the Git submodule with all of the configured Pathogen plugins
+- `cd ~/.vim/bundle`
+- `git clone https://example.com/vim_bundle_submodule.git .`
+- `git submodule update --remote`
+- Make sure you copy the `public.git/rc_files/ctags` file to `~/.ctags` to
+  enable new tag maps in exuberant-ctags
 
 ## Syntax Plugins ##
 - markdown
