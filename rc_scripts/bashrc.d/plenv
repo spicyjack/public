@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #eval "$(plenv init -)"
+if [ $(echo $PATH | grep -c "plenv") -eq 0 ]; then
+   export PATH="${HOME}/.plenv/bin:${PATH}"
+fi
 if which plenv > /dev/null; then
     eval "$(plenv init -)"
-    export PATH="${HOME}/.plenv/bin:${PATH}"
 fi
