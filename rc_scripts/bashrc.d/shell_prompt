@@ -1,10 +1,13 @@
 #!/bin/bash
 
+# Set the contents of PS1, PS2 and PS4 based on hostname and whether or not
+# the current shell session is interactive
+
 set_ps1 () {
     LAST_CMD=$?
 
-    # list of hostnames that receive special colors
-    HOSTNAMES="pig|pigwidgeon|grom|lagrange|observer|yabloko|yozhik"
+    # list of SERVICE_HOSTS that receive special colors
+    SERVICE_HOSTS="pig|pigwidgeon|grom|lagrange|observer|yabloko|yozhik"
     # list of usernames that receive special colors
     SERVICE_USERS="jenkins|webapps"
 
@@ -28,12 +31,12 @@ set_ps1 () {
     # - red - current branch is dirty
 
     ### Set up PS1_HOST
-    if [ $(echo ${HOSTNAME} | egrep -c "${HOSTNAMES}") -gt 0 ]; then
+    if [ $(echo ${HOSTNAME} | egrep -c "${SERVICE_HOSTS}") -gt 0 ]; then
         HOST_COLOR=${C_GREEN}
     else
         HOST_COLOR=${C_BLUE}
     fi
-    # speshul cases for hostnames that we want in Cyrillic
+    # speshul cases for SERVICE_HOSTS that we want in Cyrillic
     if [ $(echo ${HOSTNAME} | egrep -c "yozhik") -gt 0 ]; then
         HOST_STRING="ёжик"
     elif [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
@@ -82,7 +85,7 @@ set_ps1 () {
                 # FIXME no check for stashed files (original symbol: $)
             fi
         fi
-        PS1_GIT_STATUS="${GIT_STATUS}[${PS1_GIT_STATUS}]${C_END}"
+        PS1_GIT_STATUS="[${GIT_STATUS}${PS1_GIT_STATUS}${C_END}]"
     fi
     ### Set up PS1_PATH
     PS1_PATH=" \[\e[0;35;40m\]\W\[\e[0m\]]"
@@ -90,7 +93,7 @@ set_ps1 () {
 
     # unset things so they don't pollute the environment
     unset PS3 PS1_HOST PS1_USER PS1_PATH PS1_GIT_STATUS
-    unset SERVICE_USERS HOSTNAMES HOST_STRING HOST_COLOR
+    unset SERVICE_USERS SERVICE_HOSTS HOST_STRING HOST_COLOR
     unset C_END C_BLUE C_GREEN C_RED C_CYAN C_MAGENTA C_YELLOW
 }
 
