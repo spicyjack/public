@@ -19,7 +19,8 @@ function _vmnet_run_cmd {
 
 # shortcut to work with VMware's networking daemon
 function vmnet {
-   local VMNET_USAGE="Usage: vmnet [start|stop|restart|status|help]"
+   local VMNET_OPTIONS="start|stop|reload|restart|status|help"
+   local VMNET_USAGE="Usage: vmnet [${VMNET_OPTIONS}]"
 
    if [ $# -eq 0 ]; then
       echo "ERROR: 'vmnet' requires an argument"
@@ -27,7 +28,7 @@ function vmnet {
       return 1
    fi
 
-   if [ $(echo $1 | egrep -c "start|stop|restart|status|help") -eq 0 ]; then
+   if [ $(echo $1 | egrep -c "${VMNET_OPTIONS}") -eq 0 ]; then
       echo "ERROR: '$1' is not a valid argument"
       echo $VMNET_USAGE
       return 1
@@ -40,7 +41,7 @@ function vmnet {
    elif [ $1 == "stop" ]; then
       _vmnet_run_cmd "--stop"
       return $?
-   elif [ $1 == "restart" ]; then
+   elif [ $1 == "restart" -o $1 == "reload" ]; then
       _vmnet_run_cmd "--stop"
       VMNET_CLI_ERROR=$?
       if [ $VMNET_CLI_ERROR -gt 0 ]; then
