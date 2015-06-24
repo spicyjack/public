@@ -13,8 +13,13 @@ Starting `psql`
   - `root # psql -Uusername dbname`
   - `user # psql -Upostgres postgres`
 
-`psql` backslash commands
+`psql` backslash metacommands
 - Get help inside of `psql`: `\? `
+- Status of the current connection: `\conninfo`
+- Show the contents/history of the query buffer: ` \p `
+- Reset/clear the contents/history of the query buffer: ` \r `
+
+Describing things in `psql`
 - List default privileges: `\ddp `
 - List roles: `\dg `
 - List all databases: ` \l `
@@ -38,6 +43,9 @@ Creating a database with a specific owner from a shell
 
 Create a database from `psql` for someone besides the logged in user
 - `CREATE DATABASE dbname OWNER rolename;`
+
+Showing specific information about all of the users in PostgreSQL
+- `SELECT * FROM pg_user;`
 
 What are the "template0" and "template1" databases for?
 - http://www.postgresql.org/docs/9.2/static/manage-ag-templatedbs.html
