@@ -68,6 +68,7 @@
 
 [color]
 	ui = true
+  diff = always
 
 #[color]
 #  branch = auto
