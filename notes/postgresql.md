@@ -10,6 +10,14 @@ Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
   - http://www.postgresql.org/docs/9.2/static/functions-info.html
 - PostgreSQL data types
   - http://www.postgresql.org/docs/9.2/static/datatype.html
+- List and disconnect sessions
+  - http://www.devopsderek.com/blog/2012/11/13/list-and-disconnect-postgresql-db-sessions/
+- Questions/tutorials about roles and/or schemas
+  - http://stackoverflow.com/questions/24918367
+  - http://dba.stackexchange.com/questions/91953
+  - http://dba.stackexchange.com/questions/33943
+  - https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2
+  - http://stackoverflow.com/questions/11046152
 
 Starting `psql`
 - If no user is set up by default in `pg_ident.conf`
