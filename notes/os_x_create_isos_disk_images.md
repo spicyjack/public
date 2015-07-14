@@ -56,4 +56,12 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
     diskutil unmountDisk /dev/<name of whole disk device>
     sudo cp image.iso /dev/<name of whole disk device>
 
+## Creating a DMG image from a bootable USB flash disk ##
+- Select the OS X installer volume on the device (OS X up to Yosemite) or the
+  whole device itself (OS X Yosemite) in Disk Utility
+  - Click on `New Image` in the toolbar
+    - Image Format: compressed
+    - Name your image file, then press `Save`
+
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
