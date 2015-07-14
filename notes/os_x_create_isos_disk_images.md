@@ -35,13 +35,19 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
 ## Copy DMG image to Flash Disk ##
 - Open Disk Utility
 - Find the flash disk, and repartition it with one partition, making sure to
-  choose **Apple Partition Map** by clicking on the **Options** button
-- Click on the disk image that's mounted, and click the `Restore` button
-- Drag the DMG file into the `Source:` box, and the mounted disk image into
-  the `Destionation:` box, then click **Restore**
+  choose **Apple Partition Map** or **GUID Partition Map** by clicking on the
+  **Options** button
+  - **Apple Partition Map** is for PPC Macs
+  - **GUID Partition Map** is for Intel Macs
+- Unmount the mounted partition on the flash disk by choosing it on the left
+  hand side, and clicking the **Unmount** button in the toolbar
+- Click on the disk image in the left hand window that you want to copy to
+  flash, and click the `Restore` button
+- Drag the unmounted partition from the flash disk into the `Destination:`
+  box, then click **Restore**
 - Once the restore is complete, the raw device should have a Connection Bus of
-  `USB`, a Partition Map Scheme of `Apple Partition Map`, and the mounted disk
-  should have a format of `Mac OS Extended`
+  `USB`, a Partition Map Scheme of `Apple Partition Map` or `GUID Partition
+  Map`, and the mounted disk should have a format of `Mac OS Extended`
 
 ## Creating a bootable USB flash disk from a bootable ISO ##
 
