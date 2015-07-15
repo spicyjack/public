@@ -120,4 +120,16 @@ What are the "template0" and "template1" databases for?
 - `template0` should be the "always good" copy, that can be used to restore
   `template1` to it's defaults, if desired
 
+Simple sample tables
+
+    CREATE TABLE foo (
+      intcolumn integer,
+      textcolumn char(10)
+    );
+
+    CREATE TABLE bar (
+      columnint integer,
+      columntext char(10)
+    );
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
