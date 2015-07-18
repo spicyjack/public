@@ -63,5 +63,4 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
     - Image Format: compressed
     - Name your image file, then press `Save`
 
-
 vim: filetype=markdown shiftwidth=2 tabstop=2
