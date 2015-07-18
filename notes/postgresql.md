@@ -19,13 +19,17 @@ Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
   - https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps--2
   - http://stackoverflow.com/questions/11046152
 
+Reloading `postmaster` after changing a configuration file
+- `su -c "pg_ctl reload -D/path/to/pg/data/dir" postgres`
+
 Starting `psql`
 - If no user is set up by default in `pg_ident.conf`
-  - `postgres $ psql`
+  - `su -c 'psql' postgres`
 - If some users are set up in `pg_ident.conf`
-  - `root # psql -Uroot dbname`
-  - `root # psql -Uusername dbname`
-  - `user # psql -Upostgres postgres`
+  - `psql -Uroot dbname`
+  - `psql -Uusername dbname`
+  - `psql -Upostgres postgres`
+  - `psql -Upostgres` (default database is `postgres`)
 
 `psql` backslash metacommands
 - Get help inside of `psql`: `\? `
