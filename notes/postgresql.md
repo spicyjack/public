@@ -13,6 +13,9 @@ Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
 - List and disconnect sessions
   - http://www.devopsderek.com/blog/2012/11/13/list-and-disconnect-postgresql-db-sessions/
 - Questions/tutorials about roles and/or schemas
+  - http://stackoverflow.com/questions/10352695
+  - http://stackoverflow.com/questions/760210
+  - http://stackoverflow.com/questions/21513996
   - http://stackoverflow.com/questions/24918367
   - http://dba.stackexchange.com/questions/91953
   - http://dba.stackexchange.com/questions/33943
@@ -111,6 +114,17 @@ above
 Use `GRANT` to add users to `somegroup`
 - `GRANT somerole TO someuser, otheruser;`
 
+- http://dba.stackexchange.com/questions/35316/why-is-a-new-user-allowed-to-create-a-table
+- `GRANT ALL` on a database means;
+  - `CONNECT`: Connect to the database
+  - `CREATE`: Allows a new SCHEMA to be created (not a new TABLE)
+  - `TEMP`: Create temporary objects
+- `GRANT ALL ON SCHEMA` means;
+  - `CREATE`: Allows a new TABLE to be created in the schema (not a new
+    SCHEMA)
+  - `USAGE`: List objects in the schema and access them if their
+    permissions permit
+
 ### Querying system metadata ###
 Showing specific information about all of the users in PostgreSQL
 - `SELECT * FROM pg_user;`
@@ -126,14 +140,21 @@ What are the "template0" and "template1" databases for?
 
 Simple sample tables
 
+    SET ROLE pdb_admin;
     CREATE TABLE foo (
       intcolumn integer,
       textcolumn char(10)
     );
+    INSERT INTO foo VALUES (1, 'foo');
+    RESET ROLE;
 
+    SET ROLE pdb_access;
     CREATE TABLE bar (
       columnint integer,
       columntext char(10)
     );
+    INSERT INTO bar VALUES (2, 'bar');
+    RESET ROLE;
+
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
