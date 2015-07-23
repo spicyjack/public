@@ -114,6 +114,15 @@ above
 Use `GRANT` to add users to `somegroup`
 - `GRANT somerole TO someuser, otheruser;`
 
+The `SET|RESET ROLE` commands can  be used to change roles, and to change back
+to the role you logged in as
+
+- `psql -Uorig_user some_db`
+- `SET ROLE someuser;`
+  - Now commands will be run as if logged in as `someuser`
+- `RESET ROLE;`
+  - Commands will be run as `orig_user` again
+
 - http://dba.stackexchange.com/questions/35316/why-is-a-new-user-allowed-to-create-a-table
 - `GRANT ALL` on a database means;
   - `CONNECT`: Connect to the database
@@ -124,6 +133,37 @@ Use `GRANT` to add users to `somegroup`
     SCHEMA)
   - `USAGE`: List objects in the schema and access them if their
     permissions permit
+
+If you use `ALTER DEFAULT PRIVILEGES` to set default privileges in a database,
+the user(s) you specify in the `FOR [ROLE|USER]` expression is the user that
+needs to be used when creating objects in the database that you want these
+default permissions to apply to.
+
+For example, if you want the `db_access` group to have `SELECT` permissions on
+any new tables in the database, you need to create the new tables with
+whatever user/role that the `ALTER DEFAULT PRIVILEGES` is used with
+
+Log in as a user who has permissions to change privileges on the database.
+This is usually the "owner" of the database (as seen with the `\l ` command in
+`psql`), or any user with `Superuser` access (usually, only the default
+`postgres` user).
+
+    psql -Udb_admin db_name
+
+Alter default privileges in a database
+
+    ALTER DEFAULT PRIVILEGES FOR USER db_admin
+    GRANT SELECT ON TABLES TO db_access;
+
+Now when you create a new table, it will have the `SELECT` privilege assigned
+to the user `db_access`
+
+    CREATE TABLE foo ( intcolumn integer, textcolumn char(10) );
+
+View ownership/permissions with
+
+    \d
+    \z
 
 ### Querying system metadata ###
 Showing specific information about all of the users in PostgreSQL
@@ -140,15 +180,13 @@ What are the "template0" and "template1" databases for?
 
 Simple sample tables
 
-    SET ROLE pdb_admin;
+    SET ROLE db_create_user;
     CREATE TABLE foo (
       intcolumn integer,
       textcolumn char(10)
     );
     INSERT INTO foo VALUES (1, 'foo');
-    RESET ROLE;
 
-    SET ROLE pdb_access;
     CREATE TABLE bar (
       columnint integer,
       columntext char(10)
