@@ -113,6 +113,7 @@ To set up the Git submodule with all of the configured Pathogen plugins
     same shortcut
     - The `tt` shortcut for `Align` is defined in
       `~/.vim/plugin/AlignMapsPlugin.vim`, line 172
+    - The `no_tt_map` branch in `Align` will comment out the mapping
 - tasklist
   - http://www.vim.org/scripts/script.php?script_id=2607
   - https://github.com/vim-scripts/TaskList.vim
