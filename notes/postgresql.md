@@ -45,12 +45,12 @@ Starting `psql`
 
 Describing things in `psql`
 - List all databases: `\l `
-- List tables/views/sequences: `\d `
+- List tables/views/sequences (also shows table owner): `\d `
 - Describe a table/view/sequence: `\d <name> `
 - List table/view/sequence access privileges: `\dp ` **or** ` \z `
-- List default privileges: `\ddp `
-- List roles: `\dg ` or `\du `
-- List schemas: `\dn `
+- List default privileges for a schema: `\ddp `
+- List roles (users/groups): `\dg ` or `\du `
+- List schemas: `\dn+`
 
 Describing things in the system
 - List system tables/views/sequences: `\dS `
