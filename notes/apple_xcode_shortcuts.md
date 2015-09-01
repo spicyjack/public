@@ -11,6 +11,11 @@ Log debugging command: `p (void)NSLog(@"%s %@", _cmd, foo)`
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
 
+## Helpful Objective-C Links ##
+- Objective-C object literals: http://tinyurl.com/7v5wtf5
+- Block syntax explained: http://fuckingblocksyntax.com/
+- Objective-C types: http://tinyurl.com/7ddrdmb or http://tinyurl.com/nqw8klf
+
 ## Jump Bar Comments and compiler warnings ##
 - In Xcode 6, if you add **FIXME:**/**TODO:**/**???:**/**!!!:** (keyword,
   then a colon) comments to code, _outside of methods_, Xcode will make jump
