@@ -1,0 +1,12 @@
+#!/bin/sh
+# .bashrc.d file for Mac OS X hardware/operating system
+
+# user aliases
+AIRPORT_FRAMEWORK_DIR="/System/Library/PrivateFrameworks"
+AIRPORT_FRAMEWORK_DIR="${AIRPORT_FRAMEWORK_DIR}/Apple80211.framework"
+AIRPORT_FRAMEWORK_DIR="${AIRPORT_FRAMEWORK_DIR}/Versions/Current/Resources"
+# System commands
+alias airport="${AIRPORT_FRAMEWORK_DIR}/airport"
+
+# vi: set filetype=sh shiftwidth=3 tabstop=3
+# конец!
