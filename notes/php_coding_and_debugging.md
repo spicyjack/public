@@ -4,10 +4,12 @@
 - String operators - http://php.net/manual/en/language.operators.string.php
 
 ### Debugging ###
-- _`print_r_ - Prints human-readable information about a variable
+- `print_r` - Prints human-readable information about a variable
   - http://php.net/manual/en/function.print-r.php
-- _error_log_ - Send an error message to the defined error handling routines
+- `error_log` - Send an error message to the defined error handling routines
   - http://php.net/manual/en/function.error-log.php
+- `var_dump` - Dumps information about a variable
+  - http://us2.php.net/manual/en/function.var-dump.php
 
 ### Helpful functions ###
 - _getcwd_ - Gets the current working directory
