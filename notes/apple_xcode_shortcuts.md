@@ -2,7 +2,10 @@
 
 Works on: OS X 10.9.X (Lion) and Xcode 6.x.x
 
-Log debugging command: `p (void)NSLog(@"%s %@", _cmd, foo)`
+Handy debugging statements
+- Log debugging command: `p (void)NSLog(@"%s %@", _cmd, foo)`
+- Log a stack backtrace: `NSLog(@"%@", [NSThread callStackSymbols]);`
+- Use macros to replace calls to _NSLog_
 
 ## Links ##
 - Keyboard gestures and shortcuts - http://tinyurl.com/7tnxmgd
