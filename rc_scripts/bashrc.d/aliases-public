@@ -6,6 +6,7 @@ alias cp='cp -i'
 alias datesync='sudo ntpdate pool.ntp.org'
 # dircolors sets up the 'dir' alias now
 alias cgrep='grep --color=yes'
+alias cegrep='egrep --color=yes'
 alias grep='grep --color=auto'
 alias lessr='less -R'
 alias mv='mv -i'
