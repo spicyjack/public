@@ -2,6 +2,9 @@
 
 ### Language Syntax ###
 - String operators - http://php.net/manual/en/language.operators.string.php
+- Naming things - http://us2.php.net/manual/en/userlandnaming.php
+- Connection handling -
+  http://us2.php.net/manual/en/features.connection-handling.php
 
 ### Debugging ###
 - `print_r` - Prints human-readable information about a variable
@@ -16,5 +19,9 @@
   - http://php.net/manual/en/function.getcwd.php
 - _preg_replace_ - Perform a regular expression search and replace
   - http://php.net/manual/en/function.preg-replace.php
+
+### Misc Notes ###
+- PHP function names are case-insensitive
+  - http://us2.php.net/manual/en/functions.user-defined.php
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
