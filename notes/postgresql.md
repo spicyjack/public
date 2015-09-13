@@ -67,7 +67,7 @@ Creating a database from a shell
 - `createdb <dbname>`
 
 Creating a database with a specific owner from a shell
-- `createdb -O <rolename> <dbname>`
+- `createdb --owner <rolename> <dbname>`
 
 Create a database from `psql` for someone besides the logged in user
 - `CREATE DATABASE dbname OWNER rolename;`
