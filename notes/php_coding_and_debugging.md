@@ -19,9 +19,16 @@
   - http://php.net/manual/en/function.getcwd.php
 - _preg_replace_ - Perform a regular expression search and replace
   - http://php.net/manual/en/function.preg-replace.php
+  - All of the POSIX Regex functions are deprecated in PHP 5.3.x
 
 ### Misc Notes ###
 - PHP function names are case-insensitive
   - http://us2.php.net/manual/en/functions.user-defined.php
+
+### Logging Frameworks ###
+- https://github.com/jbroadway/analog
+- https://github.com/Seldaek/monolog
+- https://github.com/katzgrau/KLogger
+- http://www.php-fig.org/psr/psr-3/
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
