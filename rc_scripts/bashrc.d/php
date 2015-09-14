@@ -2,7 +2,8 @@
 # .bashrc.d file for use with PHP
 
 # user aliases
-alias phpunit="phpunit --tap"
+alias phpunit="phpunit"
+alias tphpunit="phpunit --tap"
 
 # vi: set filetype=sh shiftwidth=3 tabstop=3
 # конец!
