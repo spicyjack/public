@@ -49,8 +49,9 @@ Describing things in `psql`
 - Describe a table/view/sequence: `\d <name> `
 - List table/view/sequence access privileges: `\dp ` **or** ` \z `
 - List default privileges for a schema: `\ddp `
-- List roles (users/groups): `\dg ` or `\du `
-- List schemas: `\dn+`
+- List roles (users/groups): `\dg`/`\dg+` or `\du`/`\du+`
+- List schemas: `\dn` or `\dnS+`
+- List indexes: `\di` or `\diS+`
 
 Describing things in the system
 - List system tables/views/sequences: `\dS `
