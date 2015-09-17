@@ -4,10 +4,10 @@ What to put on your virtual machine after you set it up.  See also
 `notes/qemu/host_setup.md`.
 
 ## Installing Debian ##
-- Create 'lack' user with lack's password
+- Create a normal user during the Debian install process
 - Add SSH Server in tasksel
 
-## Basics ##
+## Things to set up ##
 - GRUB splashscreen image
   - URL:
   - what does the filename need to be?
