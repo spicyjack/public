@@ -9,7 +9,10 @@ Handy debugging statements
 
 ## Links ##
 - Keyboard gestures and shortcuts - http://tinyurl.com/7tnxmgd
-- Xcode 4 User Guide - http://tinyurl.com/7pkzaqe
+- Simulator User Guide - http://tinyurl.com/nbu97fa
+- iPhone resolution
+  - http://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
+  - http://stackoverflow.com/questions/25969533
 - http://www.1729.us/xcode/Xcode%20Shortcuts.png
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
