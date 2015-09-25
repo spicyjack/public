@@ -13,6 +13,8 @@ Handy debugging statements
 - iPhone resolution
   - http://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
   - http://stackoverflow.com/questions/25969533
+- Testing with Xcode (PDF) - http://tinyurl.com/nct32aq
+- http://iosunittesting.com/xctest-assertions/
 - http://www.1729.us/xcode/Xcode%20Shortcuts.png
 - Finding Documentation Quickly - http://tinyurl.com/ce8mlww
 - http://en.wikibooks.org/wiki/Unicode/Character_reference/2000-2FFF
