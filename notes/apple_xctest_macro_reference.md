@@ -1,5 +1,11 @@
 # Apple/XCTest Macro Reference #
 
+## Links ##
+- Testing with Xcode (PDF) - http://tinyurl.com/nct32aq
+- http://iosunittesting.com/xctest-assertions/
+
+## Assertions ##
+
 The full list of assertions is located in:
 
     Applications/Xcode.app/Contents/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h
