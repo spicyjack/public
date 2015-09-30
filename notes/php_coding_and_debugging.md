@@ -1,10 +1,20 @@
 ## PHP Notes and Debugging ##
 
 ### Language Syntax ###
-- String operators - http://php.net/manual/en/language.operators.string.php
-- Naming things - http://us2.php.net/manual/en/userlandnaming.php
+- Array functions - http://us2.php.net/manual/en/ref.array.php
 - Connection handling -
   http://us2.php.net/manual/en/features.connection-handling.php
+- Filesystem functions - http://us2.php.net/manual/en/ref.filesystem.php
+- Naming things - http://us2.php.net/manual/en/userlandnaming.php
+- Operator Precedence -
+  http://us2.php.net/manual/en/language.operators.precedence.php
+- PHP Data Objects - http://us2.php.net/manual/en/book.pdo.php
+- Program execution functions - http://us2.php.net/manual/en/ref.exec.php
+- Regular Expressions (Perl-compatible) -
+  http://us2.php.net/manual/en/book.pcre.php
+- String functions - http://us2.php.net/manual/en/ref.strings.php
+- String operators - http://php.net/manual/en/language.operators.string.php
+- Variable handling functions - http://us2.php.net/manual/en/ref.var.php
 
 ### Debugging ###
 - `print_r` - Prints human-readable information about a variable
@@ -14,12 +24,18 @@
 - `var_dump` - Dumps information about a variable
   - http://us2.php.net/manual/en/function.var-dump.php
 
-### Helpful functions ###
+### Helpful functions/classes ###
 - _getcwd_ - Gets the current working directory
   - http://php.net/manual/en/function.getcwd.php
+- _implode_ - Join array elements with a string
+  - http://us2.php.net/manual/en/function.implode.php
 - _preg_replace_ - Perform a regular expression search and replace
   - http://php.net/manual/en/function.preg-replace.php
   - All of the POSIX Regex functions are deprecated in PHP 5.3.x
+- _strftime_ - Format a local time/date according to locale settings
+  - http://us2.php.net/manual/en/function.strftime.php
+- _ZipArchive_ - Transparently read or write ZIP compressed archives
+  - http://us2.php.net/manual/en/class.ziparchive.php
 
 ### Misc Notes ###
 - PHP function names are case-insensitive
