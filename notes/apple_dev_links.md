@@ -149,7 +149,9 @@ Things to check/think about when you're writing new code
   - Learning Objective C: A Primer - http://tinyurl.com/3s9uqxy
   - Object Oriented Programming with Objective-C - http://tinyurl.com/7xyauxz
   - Programming with Objective-C - http://tinyurl.com/qa3oc5o
-    - Has examples of object literals for NSArray, NSDictionary
+    - Has examples of object literal syntax for NSArray, NSDictionary
+      - http://tinyurl.com/qfbvwmx
+    - Coding conventions: http://tinyurl.com/p5bkyet
   - Cocoaheads object literals: http://tinyurl.com/7v5wtf5
   - Boxed enums in LLVM: http://clang.llvm.org/docs/ObjectiveCLiterals.html
   - `NS_ENUM` in 10.8/iOS 6: http://nshipster.com/ns_enum-ns_options/
