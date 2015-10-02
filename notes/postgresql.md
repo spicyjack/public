@@ -52,6 +52,7 @@ Describing things in `psql`
 - List roles (users/groups): `\dg`/`\dg+` or `\du`/`\du+`
 - List schemas: `\dn` or `\dnS+`
 - List indexes: `\di` or `\diS+`
+- List views: `\dv` or `\dvS+`
 
 Describing things in the system
 - List system tables/views/sequences: `\dS `
