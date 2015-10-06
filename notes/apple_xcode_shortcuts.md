@@ -25,9 +25,8 @@ Handy debugging statements
 - Objective-C types: http://tinyurl.com/7ddrdmb or http://tinyurl.com/nqw8klf
 
 ## Jump Bar Comments and compiler warnings ##
-- In Xcode 6, if you add **FIXME:**/**TODO:**/**???:**/**!!!:** (keyword,
-  then a colon) comments to code, _outside of methods_, Xcode will make jump
-  bar targets for them
+- If you add **FIXME:**/**TODO:**/**???:**/**!!!:** (keyword, then a colon)
+  comments to code, Xcode will make jump bar targets for them
 - To make compiler warnings, use the `#warning` compiler directive
 - To make compiler errors, use the `#error` compiler directive
 
