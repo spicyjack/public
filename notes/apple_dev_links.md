@@ -170,6 +170,8 @@ Things to check/think about when you're writing new code
   - The _Clockwise/Spiral Rule_ for parsing C declarations
     - http://c-faq.com/decl/spiral.anderson.html
   - Exception Programming Topics - http://tinyurl.com/lalpoc7
+  - _NSNumber_ versus _NSInteger_
+    - http://iosdevelopertips.com/cocoa/nsnumber-and-nsinteger.html
   - NY Times Style Guide
     - https://github.com/NYTimes/objective-c-style-guide
 
