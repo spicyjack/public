@@ -9,12 +9,18 @@
 - Operator Precedence -
   http://us2.php.net/manual/en/language.operators.precedence.php
 - PHP Data Objects - http://us2.php.net/manual/en/book.pdo.php
-- Program execution functions - http://us2.php.net/manual/en/ref.exec.php
+- PHP Tags - http://us2.php.net/manual/en/language.basic-syntax.phptags.php
+- Predefined variables in PHP -
+  http://us2.php.net/manual/en/reserved.variables.php
 - Regular Expressions (Perl-compatible) -
   http://us2.php.net/manual/en/book.pcre.php
 - String functions - http://us2.php.net/manual/en/ref.strings.php
 - String operators - http://php.net/manual/en/language.operators.string.php
-- Variable handling functions - http://us2.php.net/manual/en/ref.var.php
+- Variable handling functions
+  - Classes and Objects - http://us2.php.net/manual/en/ref.classobj.php
+  - Variable handling functions - http://us2.php.net/manual/en/ref.var.php
+    - Has all of the `is_*()` functions
+- Variable scope - http://us2.php.net/manual/en/language.variables.scope.php
 
 ### Debugging ###
 - `print_r` - Prints human-readable information about a variable
@@ -38,6 +44,8 @@
   - http://us2.php.net/manual/en/class.ziparchive.php
 
 ### Misc Notes ###
+- PHP The Right Way
+  - http://www.phptherightway.com/
 - PHP function names are case-insensitive
   - http://us2.php.net/manual/en/functions.user-defined.php
 
@@ -46,5 +54,8 @@
 - https://github.com/Seldaek/monolog
 - https://github.com/katzgrau/KLogger
 - http://www.php-fig.org/psr/psr-3/
+
+### More PHP Frameworks ###
+- http://mashable.com/2014/04/04/php-frameworks-build-applications
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
