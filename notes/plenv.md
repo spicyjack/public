@@ -13,6 +13,8 @@ List available Perls
 64-bit systems:
 
     plenv install <Perl version> -Dusethreads -Uuselargefiles -Dusemorebits
+    plenv install --as=Perl-Foo <Perl version> \
+      -Dusethreads -Uuselargefiles -Dusemorebits
 
 32-bit systems
 
