@@ -10,12 +10,7 @@ Start a _Dancer2_ app
 
     plackup -p 3000 bin/app.psgi
 
-Fatpacking a _Dancer2_ app
-
-    fatpack pack bin/app.psgi > app.packed.psgi
-
-Starting a fatpacked _Dancer2_ app
-
-    plackup -p 3000 app.packed.psgi
+Fatpacking a _Dancer2_ app see the `app_fatpacker.md` notes file for
+fatpacking and app running instructions
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
