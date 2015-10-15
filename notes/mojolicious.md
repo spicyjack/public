@@ -243,13 +243,7 @@ See a full list of help options for a _Mojolicious_ app
 
     script/<name of app>
 
-Fatpacking a _Mojolicious_ app
-
-    fatpack pack bin/app.psgi > app.packed.psgi
-
-Starting a fatpacked _Mojolicious_ app
-
-    chmod 744 script.packed
-    script.packed daemon
+Fatpacking a _Mojolicious_ app; see the `app_fatpacker.md` notes file for
+explicit instructions.
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
