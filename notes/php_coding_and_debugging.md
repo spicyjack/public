@@ -20,6 +20,8 @@
   - Classes and Objects - http://us2.php.net/manual/en/ref.classobj.php
   - Variable handling functions - http://us2.php.net/manual/en/ref.var.php
     - Has all of the `is_*()` functions
+- Variables from external sources -
+  http://php.net/manual/en/language.variables.external.php
 - Variable scope - http://us2.php.net/manual/en/language.variables.scope.php
 
 ### Debugging ###
