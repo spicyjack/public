@@ -33,42 +33,42 @@ Handy debugging statements
 ## Unicode Hex Input ##
 Hold down the Option (`⌥`) key and type in the 4 digit hex code for that
 character
-- Command: 0x2318 ⌘
-- Control: 0x2303 ^
-- Option:  0x2325 ⌥
-- Shift:   0x21e7 ⇧
-- Enter:   0x21a9 ↩
+- Command: 0x2318 `⌘ `
+- Control: 0x2303 `^`
+- Option:  0x2325 `⌥ `
+- Shift:   0x21e7 `⇧ `
+- Enter:   0x21a9 `↩ `
 
 ## Navigation ##
 Show current file in Project Navigator
-- `⌘-⇧-J` (Command-Option-J)
+- `⌘ - ⇧ - J` (Command-Option-J)
 
 ## Showing/Hiding Views ##
-- Show/Hide Utilities (Inspectors) - `⌘-⌥-0` (Command-Option-0)
-- Show/Hide Debug Area - `⌘-⇧-Y` (Command-Shift-Y)
-- Show Standard Editor - `⌘-↩` (Command-Enter)
-- Show Assistant Editor - `⌘-⌥-↩` (Command-Option-Enter)
-- Show Version Editor - `⌘-⌥-⇧-↩` (Command-Option-Shift-Enter)
+- Show/Hide Utilities (Inspectors) - `⌘ - ⌥ - 0` (Command-Option-0)
+- Show/Hide Debug Area - `⌘ - ⇧ - Y` (Command-Shift-Y)
+- Show Standard Editor - `⌘ - ↩` (Command-Enter)
+- Show Assistant Editor - `⌘ - ⌥ - ↩` (Command-Option-Enter)
+- Show Version Editor - `⌘ - ⌥ - ⇧ - ↩` (Command-Option-Shift-Enter)
 
 Show specific Navigator panes
-- `⌘0` - Toggle Project Navigator
-- `⌘1` - Project Navigator
-- `⌘2` - Symbol Navigator
-- `⌘3` - Search Navigator
-- `⌘4` - Issue Navigator
-- `⌘5` - Debug Navigator
-- `⌘6` - Breakpoint Navigator
-- `⌘7` - Log Navigator
+- `⌘ 0` - Toggle (show/hide) Project Navigator
+- `⌘ 1` - Project Navigator
+- `⌘ 2` - Symbol Navigator
+- `⌘ 3` - Search Navigator
+- `⌘ 4` - Issue Navigator
+- `⌘ 5` - Debug Navigator
+- `⌘ 6` - Breakpoint Navigator
+- `⌘ 7` - Log Navigator
 
 Expanding/collapsing folders in Project Navigator
 - `→` (Right arrow) - Expand highlighted folder
-- `⌥→` (Option-Right arrow) - Expand all folders underneath highlighted folder
+- `⌥ →` (Option-Right arrow) - Expand all folders underneath highlighted folder
 - `←` (Left arrow) - Collapse highlighted folder
-- `⌥←` (Option-Left arrow) - Collapse all folders underneath highlighted folder
+- `⌥ ←` (Option-Left arrow) - Collapse all folders underneath highlighted folder
 
 ## Editing Text ##
 Switch between source and header file
-- `Cmd-Ctrl-Up` (`⌘-⌃-↑`) and `Cmd-Ctrl-Down` (`⌘-⌃-↓`)
+- `Cmd-Ctrl-Up` (`⌘ - ⌃ - ↑`) and `Cmd-Ctrl-Down` (`⌘ - ⌃ - ↓`)
   - "Navigate -> Jump to Next Counterpart" and "Navigate -> Jump to Previous
     Counterpart"
 
@@ -76,14 +76,14 @@ Switch between source and header file
 _Step Over_ - Execute the current line of code and (if it is a routine) return
 to the next line in the current file
 - Step Over - `F6`
-- Step Over Thread - `⌃⇧F6`
-- Step Over Instruction - `⇧F6`
+- Step Over Thread - `⌃ ⇧ F6`
+- Step Over Instruction - `⇧ F6`
 
 _Step Into_ - Execute the current line of code and (if it is a routine) jump
 to its first line
 - Step Into - `F7`
-- Step Into Thread - `⌃⇧F7`
-- Step Into Instruction - `⇧F7`
+- Step Into Thread - `⌃ ⇧ F7`
+- Step Into Instruction - `⇧ F7`
 
 _Step Out_ - Complete the current routine and step to the next routine or back
 to the calling routine
@@ -91,11 +91,11 @@ to the calling routine
 
 _Breakpoints and Console_
 - Add Breakpoint at Current Line - `⌘-backslash`
-- Toggle breakpoints - `⌘Y`
-- Clear Console - `⌘K`
+- Toggle breakpoints - `⌘ Y`
+- Clear Console - `⌘ K`
 
 _Continuing code execution_ 
-- `⌘-⌃-Y` (Command-Control-Y)
+- `⌘ - ⌃ - Y` (Command-Control-Y)
 - After you reach a breakpoint in code, you can continue code execution to a
   given point by hovering over a line of code in the editor, and then clicking
   on the green button that appears there.
