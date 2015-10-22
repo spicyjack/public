@@ -52,12 +52,19 @@
   - http://us2.php.net/manual/en/functions.user-defined.php
 
 ### Logging Frameworks ###
+- https://github.com/katzgrau/KLogger
 - https://github.com/jbroadway/analog
 - https://github.com/Seldaek/monolog
-- https://github.com/katzgrau/KLogger
 - http://www.php-fig.org/psr/psr-3/
 
 ### More PHP Frameworks ###
 - http://mashable.com/2014/04/04/php-frameworks-build-applications
+- From SIO journal `1003.2015.md`
+  - http://webdesignmoo.com/2014/10-useful-php-testing-frameworks-2014/
+  - http://www.phptherightway.com/#test_driven_development
+  - http://tutorialzine.com/projects/testify/
+  - Found a new PHP testing framework, http://codeception.com/
+    - You can automate Selenium testing with it, and you don't really have to
+      muck with setting up Selenium
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
