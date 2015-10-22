@@ -73,6 +73,12 @@ Switch between source and header file
     Counterpart"
 
 ## Debugging Programs ##
+_Continuing code execution_
+- `⌘ - ⌃ - Y` (Command-Control-Y)
+- After you reach a breakpoint in code, you can continue code execution to a
+  given point by hovering over a line of code in the editor, and then clicking
+  on the green button that appears there.
+
 _Step Over_ - Execute the current line of code and (if it is a routine) return
 to the next line in the current file
 - Step Over - `F6`
@@ -93,12 +99,6 @@ _Breakpoints and Console_
 - Add Breakpoint at Current Line - `⌘-backslash`
 - Toggle breakpoints - `⌘ Y`
 - Clear Console - `⌘ K`
-
-_Continuing code execution_ 
-- `⌘ - ⌃ - Y` (Command-Control-Y)
-- After you reach a breakpoint in code, you can continue code execution to a
-  given point by hovering over a line of code in the editor, and then clicking
-  on the green button that appears there.
 
 _Setting CoreLocation for debugging_ - You can set a location for
 `CoreLocation` apps in the debug toolbar by clicking on the "location arrow"
