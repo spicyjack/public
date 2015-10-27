@@ -67,4 +67,20 @@
     - You can automate Selenium testing with it, and you don't really have to
       muck with setting up Selenium
 
+### PHP Application Folder Structure ###
+- Most people recommend looking at existing projects in order to see how they
+  are laid out
+  - https://github.com/symfony/symfony
+  - http://stackoverflow.com/questions/29850964 (for Docker/Vagrant)
+  - https://github.com/yiisoft/yii2
+  - https://github.com/bcit-ci/CodeIgniter
+- "Official" layout from the Zend team
+  - http://framework.zend.com/manual/1.12/en/project-structure.project.html
+- `app`
+  - `configs`
+  - `controllers`
+  - `models`
+  - `views`
+- `tests`
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
