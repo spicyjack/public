@@ -5,6 +5,7 @@
 - Connection handling -
   http://us2.php.net/manual/en/features.connection-handling.php
 - Filesystem functions - http://us2.php.net/manual/en/ref.filesystem.php
+- Magic constants - http://php.net/manual/en/language.constants.predefined.php
 - Naming things - http://us2.php.net/manual/en/userlandnaming.php
 - Operator Precedence -
   http://us2.php.net/manual/en/language.operators.precedence.php
@@ -76,11 +77,31 @@
   - https://github.com/bcit-ci/CodeIgniter
 - "Official" layout from the Zend team
   - http://framework.zend.com/manual/1.12/en/project-structure.project.html
-- `app`
-  - `configs`
-  - `controllers`
-  - `models`
-  - `views`
+- `src`
+  - Application files and directory structure
 - `tests`
+
+### PHP Composer ###
+- https://getcomposer.org
+  - https://getcomposer.org/doc/01-basic-usage.md
+  - https://getcomposer.org/doc/02-libraries.md
+  - https://getcomposer.org/doc/03-cli.md
+- Install dependencies
+  - `composer install`
+- Update dependencies
+  - `composer update`
+- Validate your `composer.json` file (for example, before committing the file
+  to Git)
+  - `composer validate`
+- Show the status of any local changes
+  - `composer status -v`
+- Show the list of packages available to `composer`
+  - `composer show`
+- Show the list of packages suggested by the current install of packages
+  - `composer suggests`
+- Show the list of packages that the current install of packages depends on
+  - `composer depends`
+- Update `composer`
+  - `composer self-update`
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
