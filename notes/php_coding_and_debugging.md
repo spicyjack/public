@@ -103,5 +103,7 @@
   - `composer depends`
 - Update `composer`
   - `composer self-update`
+- Regenerate the autoloader library script
+  - `composer dump-autoload`
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
