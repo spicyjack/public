@@ -1,13 +1,16 @@
 #!/bin/bash
 
-PLANTUML_VERSION="8020"
+# source plantuml from Homebrew now
+PLANTUML_VERSION=$(brew info plantuml 2>/dev/null |head -n 1 |awk '{print $3;}')
+PLANTUML_JAR="/usr/local/Cellar/plantuml/${PLANTUML_VERSION}"
+PLANTUML_JAR="${PLANTUML_JAR}/plantuml.${PLANTUML_VERSION}.jar"
 
-# run the Jenkins CLI jar file
+# run the PlantUML JAR file
 function plantuml {
     if [ $# -gt 0 ]; then
         JAVA_BIN=$(which java)
         if [ "x${JAVA_BIN}" != "x" ]; then
-            $JAVA_BIN -jar ~/bin/plantuml.${PLANTUML_VERSION}.jar $@
+            $JAVA_BIN -jar $PLANTUML_JAR $@
         else
             echo "plantuml: No Java binary installed"
         fi
