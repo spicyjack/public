@@ -25,7 +25,7 @@ Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
 Reloading `postmaster` after changing a configuration file
 - `su -c "pg_ctl reload -D/path/to/pg/data/dir" postgres`
 
-Starting `psql`
+Using `psql` to access a database
 - If no user is set up by default in `pg_ident.conf`
   - `su -c 'psql' postgres`
 - If some users are set up in `pg_ident.conf`
