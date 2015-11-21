@@ -2,7 +2,8 @@
 
 Note that the original MinGW project was forked in 2007, and now there's
 multiple MinGW projects (MinGW, Mingw-w64) out there.
-## MinGW Links ##
+
+## Original MinGW Links ##
 - Homepage - http://www.mingw.org/
   - Original GNU toolchain for Windows
   - http://www.mingw.org/wiki/Getting_Started
@@ -13,6 +14,8 @@ multiple MinGW projects (MinGW, Mingw-w64) out there.
   - http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/
 
 ### mingw-get usage ###
+`mingw-get` is part of the original MinGW distribution.
+
 - Get help
   - `mingw-get --help`
 - Update available packages
