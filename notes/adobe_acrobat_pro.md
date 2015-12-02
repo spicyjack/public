@@ -2,6 +2,9 @@
 
 ### Links ###
 - https://helpx.adobe.com/acrobat/using/keyboard-shortcuts.html
+- Grids, guides and measurements in PDFs
+  - https://helpx.adobe.com/acrobat/using/grids-guides-measurements-pdfs.html
+  - How to use the measuring tools built in to Adobe Acrobat DC
 
 You need to enable the keyboard shortcuts in Preferences for the single key
 shortcuts to work
