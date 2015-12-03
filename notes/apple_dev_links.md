@@ -5,8 +5,12 @@ Things to check/think about when you're writing new code
 - ability to localize
 - testability (modules are written in such a way so that they can be tested
   without a lot of setup or hassle)
-- creating objects; what do objects keep track of (what are the object's
-  attributes), and what can objects do (what are the object's methods)
+- Creating objects
+  - What do objects require (object arguments)?
+  - What do objects keep track of (object attributes)?
+  - What can objects do (object methods)?
+  - What do objects return (return values/objects)?
+  - How do objects handle errors (exception handling in the program)?
 
 ## Documenting source code ##
   - http://www.doxygen.org/
