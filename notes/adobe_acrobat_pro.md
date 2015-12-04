@@ -20,7 +20,7 @@ Keyboard shortcuts
 
 Showing dialogs/controls
 - Show the "mini" properties dialog of a form element: `⌘ - E`
-- Show the full properties dialog of a form element: `⌘ - ⏎ `
+- Show the full properties dialog of a form element: `⌘ -↩ `
 - Show the ruler: `⌘ - R`
 
 Navigating Task Panes
