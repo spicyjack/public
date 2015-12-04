@@ -2,6 +2,7 @@
 
 ### Links ###
 - https://helpx.adobe.com/acrobat/using/keyboard-shortcuts.html
+- https://helpx.adobe.com/acrobat/how-to/convert-word-excel-paper-pdf-forms.html
 - Grids, guides and measurements in PDFs
   - https://github.com/libharu/libharu/wiki/Graphics
   - https://helpx.adobe.com/acrobat/using/grids-guides-measurements-pdfs.html
@@ -18,7 +19,8 @@ Keyboard shortcuts
   - "Select" tool: `v`
 
 Showing dialogs/controls
-- Show the properties of a form element: `⌘ - E`
+- Show the "mini" properties dialog of a form element: `⌘ - E`
+- Show the full properties dialog of a form element: `⌘ - ⏎ `
 - Show the ruler: `⌘ - R`
 
 Navigating Task Panes
