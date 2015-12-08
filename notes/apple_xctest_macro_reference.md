@@ -6,13 +6,8 @@
 
 ## Assertions ##
 
-The full list of assertions is located in:
-
-    Applications/Xcode.app/Contents/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h
-
-This is a symlink to the current version installed on the machine.  The order
-of test assertions below is the same order as they appear in
-`XCTestAssertions.h`.
+The full list of assertions is located in the file `XCTTestAssertions.h` in
+the `/Applications/Xcode.app` folder.
 
 ## Comments and compiler warnings ##
 - If you add **FIXME**/**TODO**/**???**/**!!!** comments to code, Xcode will
