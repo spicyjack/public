@@ -25,6 +25,7 @@ To install Pathogen:
 To set up the Git submodule with all of the configured Pathogen plugins
 - `cd ~/.vim/bundle`
 - `git clone https://example.com/vim_bundle_submodule.git .`
+- `git submodule init`
 - `git submodule update --remote`
 - Make sure you copy the `public.git/rc_files/ctags` file to `~/.ctags` to
   enable new tag maps in exuberant-ctags
