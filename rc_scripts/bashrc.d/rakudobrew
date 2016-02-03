@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#eval "$(rakudobrew init -)"
+if [ $(echo $PATH | grep -c "rakudobrew") -eq 0 ]; then
+   export PATH="${HOME}/.rakudobrew/bin:${PATH}"
+fi
