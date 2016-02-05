@@ -16,7 +16,8 @@ object:
 The name of the config file is the same as the `Mojolicious->moniker`
 attribute in your main Mojolicious class.  You can view the current moniker
 on the default error page for Mojolicious, by clicking the `tap for more`
-block at the bottom of the server headers block.
+block at the bottom of the server headers block on the Mojolicious "default"
+page.
 
 ## Module notes ##
 
