@@ -30,6 +30,15 @@ To set up the Git submodule with all of the configured Pathogen plugins
 - Make sure you copy the `public.git/rc_files/ctags` file to `~/.ctags` to
   enable new tag maps in exuberant-ctags
 
+To add a new submodule
+- `cd ~/.vim/bundle`
+- `git submodule add https://example.com/repo.git`
+- `git commmit`
+
+Updating all submodules
+- `cd ~/.vim/bundle`
+- `git submodule update`
+
 ## Syntax Plugins ##
 - markdown
   - http://www.vim.org/scripts/script.php?script_id=2882
