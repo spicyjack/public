@@ -41,22 +41,32 @@ Using `psql` to access a database
 - Show the contents/history of the query buffer: `\p `
 - Reset/clear the contents/history of the query buffer: `\r `
 - Show `psql` history: `\s `
+- Edit the query buffer: `\e `
+- Show the contents of the query buffer: `\p `
 - List query output in a line-by-line format: `\x on`
+- Set/show the current character encoding: `\encoding`
 
 Describing things in `psql`
 - List all databases: `\l `
+- List database collations: `\dO[S+]`
 - List tables/views/sequences (also shows table owner): `\d `
-- Describe a table/view/sequence: `\d <name> `
-- List table/view/sequence access privileges: `\dp ` **or** ` \z `
-- List default privileges for a schema: `\ddp `
-- List roles (users/groups): `\dg`/`\dg+` or `\du`/`\du+`
-- List schemas: `\dn` or `\dnS+`
-- List indexes: `\di` or `\diS+`
-- List views: `\dv` or `\dvS+`
+- Describe a table/view/sequence: `\d <name>`
+- List table/view/sequence access privileges: `\dp` **or** ` \z `
+- List default privileges for a schema: `\ddp`
+- List roles (users/groups): `\dg[+]` or `\du[+]`
+- List schemas: `\dn` or `\dnS[+]`
+- List indexes: `\di` or `\diS[+]`
+- List views: `\dv` or `\dvS[+]`
+- List [agg/normal/trigger/window] functions: `\df[antw][S+]`
+- List enabled languages: `\dL` or `\dLS+`
+
+Showing/editing functions
+- Show a function's definition: `\sf[+] <function name>`
+- Edit a function definition: `ef <function name>`
 
 Describing things in the system
-- List system tables/views/sequences: `\dS `
-- List system tables/views/sequences with extended info: `\dS+ `
+- List system tables/views/sequences: `\dS`
+- List system tables/views/sequences with extended info: `\dS[+]`
 
 ### Setting up users and databases ###
 Setting up a new PostgreSQL user from a shell
@@ -174,6 +184,11 @@ Showing specific information about all of the users in PostgreSQL
 Showing information about connections to a database
 - `SELECT * FROM pg_stat_activity;`
 
+### Enabling Procedural Languages ###
+- From `psql`: `CREATE EXTENSION plperl`
+- From the command line: `createlang plperl`
+
+### Miscellaneous ###
 What are the "template0" and "template1" databases for?
 - http://www.postgresql.org/docs/9.2/static/manage-ag-templatedbs.html
 - New databases are copied from `template1`
