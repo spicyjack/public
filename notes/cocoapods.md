@@ -48,6 +48,16 @@ http://raptureinvenice.com/my-concise-introduction-to-cocoapods/
 
 To search CocoaPods:
 - `pod search <search string>`
+  - There's no `info` command for a given pod, the only way to get info about
+    a pod is to `search` for it
+  - When you run `pod search <project>`, it will display URLs, versions, and
+    descriptions of all of the matches it finds
 
+To update pods available on CocoaPods:
+- Update the list of pods by running `pod repo update`
+
+More `repo` commands
+- Show the list of repos with `pod repo list`
+- Show more repo help with `pod --help repo`
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
