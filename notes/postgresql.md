@@ -57,7 +57,7 @@ Describing things in `psql`
 - List schemas: `\dn` or `\dnS[+]`
 - List indexes: `\di` or `\diS[+]`
 - List views: `\dv` or `\dvS[+]`
-- List [agg/normal/trigger/window] functions: `\df[antw][S+]`
+- List [aggregate/normal/trigger/window] functions: `\df[antw][S+]`
 - List enabled languages: `\dL` or `\dLS+`
 
 Showing/editing functions
