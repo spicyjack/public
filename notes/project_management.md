@@ -59,13 +59,15 @@ Schedule
 
 Tasks
 - Tasks should be tagged as being one of three types, depending on how
-  accurately they can be estimated
-  - _Type 1 tasks_ are similar to something that's been done before, so their
-    implementation time can be fairly accurately predicted
-  - _Type 2 tasks_ are new, but it's well understood how to do them
-  - _Type 3 tasks_ are those for which the requirements are vague or the
-    implementation approach is unknown, and estimates for them are wild
-    guesses
+  accurately they can be estimated (`Rummy Scale` names in parenthesis;
+  https://en.wikipedia.org/wiki/There_are_known_knowns)
+  - _Type 1 tasks_ (known knowns) are similar to something that's been done
+    before, so their implementation time can be fairly accurately predicted
+  - _Type 2 tasks_ (unknown knowns) are new, but it's well understood how to
+    do them
+  - _Type 3 tasks_ (unknown unknowns) are those for which the requirements are
+    vague or the implementation approach is unknown, and estimates for them
+    are wild guesses
 
 Calculating project length
 - Apply a productivity factor to the estimates, between 2x and 4x
