@@ -10,7 +10,7 @@ function plantuml {
     if [ $# -gt 0 ]; then
         JAVA_BIN=$(which java)
         if [ "x${JAVA_BIN}" != "x" ]; then
-            $JAVA_BIN -jar $PLANTUML_JAR $@
+            $JAVA_BIN -jar $PLANTUML_JAR $@ 2>/dev/null
         else
             echo "plantuml: No Java binary installed"
         fi
