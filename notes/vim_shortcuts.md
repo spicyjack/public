@@ -13,6 +13,15 @@
   - Use `:s/^/<foo>/` to perform substitution on the first column of the
     selected lines
 
+## Mapped Keys ##
+- `<F5>` - Toggle syntax highlighting
+- `<F6>` - Toggle Syntastic mode (active/passive)
+- `<F7>` - Syntastic "check now" command
+
+- `nmap <F5>      :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>`
+- `nmap <F6>      :SyntasticToggleMode<CR>`
+- `nmap <F7>      :SyntasticCheck<CR>`
+
 ### Using Named Marks ###
 http://vimdoc.sourceforge.net/htmldoc/usr_03.html#03.10
 - To set a mark using mark `a`: _ma_
