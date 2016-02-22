@@ -21,6 +21,12 @@ Convert ISO to DMG
 
     hdiutil convert file.iso -format UDRW -o file.dmg
 
+Convert DMG to ISO; you'll need to rename the output file to `*.iso`, instead
+of `*.iso.cdr`
+
+    hdiutil convert imagefile.dmg -format UDTO -o imagefile.cdr
+    hdiutil makehybrid -iso -joliet -o imagefile.iso imagefile.cdr
+
 Create an install disk for Mavericks
 
     sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled \
