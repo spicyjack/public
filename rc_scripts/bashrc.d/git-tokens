@@ -1,0 +1,3 @@
+#!/bin/bash
+GITHUB_TOKEN_OCTOCAT=deadb33f
+export GITHUB_TOKEN_OCTOCAT
