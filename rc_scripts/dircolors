@@ -1,0 +1,180 @@
+# Configuration file for the color ls utility
+# This file goes in the /etc directory, and must be world readable.
+# You can copy this file to .dir_colors in your $HOME directory to override
+# the system defaults.
+
+# COLOR needs one of these arguments: 'tty' colorizes output to ttys, but not
+# pipes. 'all' adds color characters to all output. 'none' shuts colorization
+# off.
+COLOR tty
+#COLOR all
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM console
+TERM gnome-terminal
+TERM linux
+TERM rxvt
+TERM screen
+TERM vt100
+TERM xterm
+TERM xterm-256color
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+EIGHTBIT 1
+
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes: 
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+NORMAL 00	# global default, although everything should be something.
+FILE 00 	# normal file
+DIR 01;34 	# directory
+LINK 01;36 	# symbolic link
+FIFO 40;33	# pipe
+SOCK 01;35	# socket
+BLK 40;33;01	# block device driver
+CHR 40;33;01 	# character device driver
+ORPHAN 01;05;37;41  # orphaned syminks
+MISSING 01;05;37;41 # ... and the files they point to
+
+# This is for files with execute permission:
+EXEC 01;32 
+
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+
+# archive files and disc images
+.iso    00;31
+.dmg    00;31
+.img    00;31
+.bin    00;31
+.flp    00;31
+.sfs    00;31
+# archives or compressed (bold red)
+.7z     01;31
+.arj    01;31
+.bz2    01;31
+.deb    01;31
+.hqx    01;31
+.gz     01;31
+.lzh    01;31
+.rpm    01;31
+.tar    01;31 
+.taz    01;31
+.tgz    01;31
+.xz     01;31
+.zip    01;31
+.z      01;31
+.Z      01;31
+# scripts
+.asp    00;32 # active server pages
+.cgi    00;32 # cgi scripts
+.inc    00;32 # PHP include files
+.ksh    00;32 # shell scripts
+.php    00;32 # PHP scripts
+.php3   00;32 # More of the same
+.pl     00;32 # perl scripts
+.plx    00;32 # perl scripts
+.py     00;32 # python
+.sh     00;32 # shell scripts
+.t      00;32 # perl tests
+.vim    00;32 # vim script files
+# binaries
+.bat    01;32
+.btm    01;32
+.class  01;32 # Java class files
+.cmd    01;32 # executables (bright green)
+.com    01;32
+.exe    01;32
+# source code
+.c      00;36 # added 000615 for source code files
+.cpp    00;36
+.css    00;36 # Cascading Style Sheets
+.h      00;33 
+.diff   01;33 # diff files (2013-08-18)
+.java   00;36
+.js     00;36 # Javascript files
+.m      00;36 # Objective-C
+.mm     00;36 # Objective-C
+.rs     00;36 # 2016-03-08 - Rustlang - https://www.rust-lang.org/
+# OpenGL shader files
+.vsh    00;36 # OpenGL Vertex shader file 2013-03-28
+.fsh    00;36 # OpenGL Framgent shader file 2013-03-28
+# images
+.bmp    00;35
+.crw    00;35 # Canon RAW files 2005-11-20
+.gif    00;35
+.jpg    00;35 
+.jpeg   01;35 # Brother Scanner calls them 'jpeg's
+.ico    01;35 # icon files
+.png    00;35
+.svg    01;35
+.thm    00;35 # Canon JPEG thumbnail files 2005-11-20
+.xbm    00;35
+.xcf    00;35
+.xpm    00;35
+# moving pictures
+.avi    01;35
+.mpg    01;35
+.m4v    01;35
+.mov    01;35
+# audio
+.au     01;35
+.mp3    01;35 # changed 2000-06-15
+.wav    01;35 # 1999-11-17
+# encrypted files
+.asc    40;31 # 
+.gpg    40;31 # 
+.pem    40;31 # PEM encoded encryption keys
+.pub    40;31 # SSH public keys
+# plain text files
+.cfg    00;33 # configuration files
+.conf   00;33 # configuration files
+.dia    00;33 # dia diagram files
+.dns    00;33 # for DNS zones
+.faq    00;33 # faq's
+.htm    00;33 
+.html   00;33 # html files
+.json   00;33 # 2016-03-08 - https://en.wikipedia.org/wiki/JSON
+.log    00;33 # log files
+.md     00;33 # Markdown; http://daringfireball.net/projects/markdown/syntax
+.pu     00;33 # 2016-02-16 - PlantUML; http://plantuml.com/
+.sgml   00;33 # sgml files 2001-10-17
+.sql    00;33 # SQL data files
+.txt    00;33 # added 1999-05-11
+.yaml   00;33 # YAML: http://yaml.org/spec/1.2/spec.html
+.yml    00;33 # http://en.wikipedia.org/wiki/YAML
+.xml    00;33 
+# binary document files
+.doc    01;33 # doc files
+.lyx    01;33 # Lyx files
+#.mm    00;33 # Freemind mind map files; prefer mapping to Objective-C instead
+.odg    01;33 # openoffice graphics files
+.odp    01;33 # openoffice presentation files
+.ods    01;33 # openoffice spreadsheets
+.odt    01;33 # openoffice text files
+.pdf    01;33 # Acrobat files
+.ppt    01;33 # powerpoint files
+.ps     01;33 # PostScript files
+.reg    01;33 # 2014-09-02 - Windows Registry files
+.sxc    01;33 # staroffice spreadsheets
+.sxd    00;33 # staroffice write files
+.sxw    01;33 # staroffice write files
+.tex    01;33 # latex files
+.xls    01;33 # excel spreadsheets
+# vim: ft=dircolors ts=4 sw=4:
