@@ -1,6 +1,11 @@
 # One-liners #
 One-liners, or mini-programs that can be used to do things.
 
+2016-03-08
+- One-liner to concat a bunch of text files into one output file
+  - `for FILE in rex.*.txt; do echo "Filename: ${FILE}" >> tasklist.txt;
+    cat$FILE >> tasklist.txt; echo -e "\n" >> tasklist.txt; done`
+
 2015-09-03
 - Grep a list of files output from the `find` command
   - `grep 'grep_text' $(find . -type f -name foo)`
