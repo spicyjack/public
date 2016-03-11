@@ -3,6 +3,9 @@
 Rust programs have a file extension of `*.rs`.  You can compile programs with
 the `rustc` program.
 
+## Links ##
+- Common macros - https://doc.rust-lang.org/book/macros.html
+
 ## Cargo ##
 Cargo helps manage dependencies and compiling Rust programs.
 
@@ -14,9 +17,13 @@ Create a new project to build a binary file:
 
     cargo new --vcs git --bin <project name>
 
-Create a new project to build a library file:
+Create a new project to build a library:
 
     cargo new --vcs git <project name>
+
+Compile a binary file via Cargo:
+
+    cargo build
 
 Compile and run a binary file via Cargo:
 
@@ -25,5 +32,14 @@ Compile and run a binary file via Cargo:
 Add a dependency to the current project:
 
     cargo add <dependency name>
+
+List all installed packages, and their versions:
+
+    cargo install --list
+
+## 'rustc' Compiler Usage ##
+To see the results of expanding macros:
+
+    rustc --pretty expanded
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
