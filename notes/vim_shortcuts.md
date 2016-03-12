@@ -62,6 +62,23 @@ something else using this command in your `$HOME/.vimrc`:
 
     let mapleader = ","
 
+## QuickFix Mode ##
+Use the QuickFix commands to move around after errors are detected
+- Get help: `:he quickfix`
+- List all errors: `:cl`
+- Jump to the next error in the edit window: `:cc`
+- Jump to the previous error in the edit window: `:cp`
+- Quit VIM with an error code, so the error checking is not rerun: `:cq`
+- Jump to the next error in the quickfix list: `:ll`
+- Jump to the previous error in the quickfix list: `:lp`
+
+## Syntax Highlighting ##
+- Show current syntax highlighting mappings: `:sy[ntax] list`
+- Show the syntax highlighting colors: `:high[light]`
+- Change the current color scheme `:colorscheme <scheme name`
+  - You can use `:colorscheme <TAB>` to scroll through all of the available
+    color schemes
+
 ## My Custom Commands ##
 Given the above change to `mapleader`, all custom commands are now prefixed
 with commas (`,`) instead of backslashes ("\").
