@@ -78,6 +78,8 @@ Use the QuickFix commands to move around after errors are detected
 - Change the current color scheme `:colorscheme <scheme name`
   - You can use `:colorscheme <TAB>` to scroll through all of the available
     color schemes
+- List of valid color identifiers:
+  - https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 
 ## My Custom Commands ##
 Given the above change to `mapleader`, all custom commands are now prefixed
