@@ -86,6 +86,8 @@
   - https://getcomposer.org/doc/01-basic-usage.md
   - https://getcomposer.org/doc/02-libraries.md
   - https://getcomposer.org/doc/03-cli.md
+- Interactively create a new `composer.json` file
+  - `composer init`
 - Install dependencies
   - `composer install`
 - Update dependencies
