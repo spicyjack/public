@@ -244,7 +244,22 @@ See a full list of help options for a _Mojolicious_ app
 
     script/<name of app>
 
+## Fatpacking Mojolicious Apps ##
 Fatpacking a _Mojolicious_ app; see the `app_fatpacker.md` notes file for
 explicit instructions.
+
+## Mojolicious Environment Variables ##
+`MOJO_LISTEN` - Running `morbo` on a different port than 3000
+
+    MOJO_LISTEN=http://*:3001 morbo script/mojo_app
+
+`MOJO_CONFIG` - Start _Mojolicious_ with a different config file
+
+    MOJO_CONFIG=~/mojo_app.conf perl script/mojo_app daemon
+
+The default log level can be overridden by the `MOJO_LOG_LEVEL` environment
+variable
+
+    MOJO_LOG_LEVEL=[debug|info|warn|error|fatal] perl script/mojo_app daemon
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
