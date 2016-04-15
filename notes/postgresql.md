@@ -49,13 +49,14 @@ Using `psql` to access a database
 Describing things in `psql`
 - List all databases: `\l `
 - List database collations: `\dO[S+]`
-- List tables/views/sequences (also shows table owner): `\d `
+- List all tables/views/sequences (also shows table owner): `\d `
 - Describe a table/view/sequence: `\d <name>`
 - List table/view/sequence access privileges: `\dp` **or** ` \z `
 - List default privileges for a schema: `\ddp`
 - List roles (users/groups): `\dg[+]` or `\du[+]`
 - List schemas: `\dn` or `\dnS[+]`
 - List indexes: `\di` or `\diS[+]`
+- List tables (only): `\dt`
 - List views: `\dv` or `\dvS[+]`
 - List [aggregate/normal/trigger/window] functions: `\df[antw][S+]`
 - List enabled languages: `\dL` or `\dLS+`
