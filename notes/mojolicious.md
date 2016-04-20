@@ -19,6 +19,40 @@ on the default error page for Mojolicious, by clicking the `tap for more`
 block at the bottom of the server headers block on the Mojolicious "default"
 page.
 
+## Command Line Commands ##
+_Mojolicious_ has a set of built-in commands that can be used to do things
+like show module versions, run tests, or even create a new _Mojolicious_ or
+_Mojolicious::Lite_ project from scratch.
+
+The difference between running `mojo <command>` and `script/my_app <command>`
+is that if you run the `<command>` using `script/my_app`, all of the paths to
+modules are set up correctly by `script/my_app`, where running them from
+`mojo`, your application modules won't be seen by that command.
+
+Running `[script/my_app|mojo] help` will display all of the
+_Mojolicious::Commands_ that are available.
+
+You can run `[script/my_app|mojo] help <command>` to display the help text in
+the POD for the given commmand.
+
+Commands:
+- `[script/my_app|mojo] cgi` - Start application with CGI
+- `[script/my_app|mojo] cpanify` - Upload distribution to CPAN
+- `[script/my_app|mojo] daemon` - Start application with HTTP and WebSocket
+  server
+- `[script/my_app|mojo] eval` - Run code against application
+- `[script/my_app|mojo] generate` - Generate files and directories from
+  templates
+- `[script/my_app|mojo] get` - Perform HTTP GET/POST request
+- `[script/my_app|mojo] inflate` - Inflate embedded files to real files
+- `[script/my_app|mojo] prefork` - Start application with preforking HTTP and
+  WebSocket server
+- `[script/my_app|mojo] psgi` - Start application with PSGI
+- `[script/my_app|mojo] routes` - Show available routes
+- `[script/my_app|mojo] test` - Run all of the unit tests
+- `[script/my_app|mojo] version` - show the versions of Perl,
+  _Mojolicious_, and the optional dependencies that _Mojolicious_ can use
+
 ## Module notes ##
 
 ### Mojo ###
@@ -61,10 +95,6 @@ Methods
   `Mojolicious::Controller->stash()` for every new request
 - `->plugin()` registers a plugin, which is generally a subclass of
   _Mojolicious::Plugins_
-
-## Mojolicious::Commands ##
-- `mojo version` will show the versions of Perl, _Mojolicious_, and the
-  optional dependencies that _Mojolicious_ can use
 
 ## Mojolicious::Controller ##
 Methods (from _Mojolicious::Guides::Tutorial_)
