@@ -5,6 +5,12 @@ applicable to newer versions
 
 Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
 
+### Restarting PostgreSQL on Mac OS X ###
+
+    brew services restart postgresql
+
+(Installs the `homebrew/services` package)
+
 ### Links ###
 - System Information functions
   - http://www.postgresql.org/docs/9.2/static/functions-info.html
@@ -98,6 +104,12 @@ access to all databases using the `public` schema
     pdb_access;
     GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to pdb_admin;
 
+In the `REVOKE` statement above, the first "public" is the schema, the second
+"public" means "every user". In the first sense it is an identifier, in the
+second sense it is a key word, hence the different capitalization; recall the
+guidelines from Section 4.1.1. (from:
+http://www.postgresql.org/docs/9.2/static/ddl-schemas.html)
+
 ### Schemas ###
 Schemas are a way to create different namespaces in the same database.  Two
 different schemas can have the same table names in the same database and not
@@ -175,8 +187,8 @@ to the user `db_access`
 
 View ownership/permissions with
 
-    \d
-    \z
+    \d - List all tables/views/sequences (also shows table owner)
+    \z - List table/view/sequence access privileges
 
 ### Querying system metadata ###
 Showing specific information about all of the users in PostgreSQL
