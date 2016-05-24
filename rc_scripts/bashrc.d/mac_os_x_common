@@ -7,6 +7,8 @@ AIRPORT_FRAMEWORK_DIR="${AIRPORT_FRAMEWORK_DIR}/Apple80211.framework"
 AIRPORT_FRAMEWORK_DIR="${AIRPORT_FRAMEWORK_DIR}/Versions/Current/Resources"
 # System commands
 alias airport="${AIRPORT_FRAMEWORK_DIR}/airport"
+alias allfonts_ps="ftxinstalledfonts -p | sort -k2"
+alias allfonts_unique="ftxinstalledfonts -u | sort -k2"
 
 # vi: set filetype=sh shiftwidth=3 tabstop=3
 # конец!
