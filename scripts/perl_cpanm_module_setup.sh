@@ -123,7 +123,7 @@ colorize_clear () {
 check_exit_status() {
    local ERROR=$1
    local CMD_RUN="$2"
-   local CMD_OUT="$3"
+   #local CMD_OUT="$3"
 
    # check for errors from the script
    if [ $ERROR -ne 0 ] ; then
@@ -132,12 +132,12 @@ check_exit_status() {
          colorize $MSG_FAIL "${CMD_RUN} exited with error: $ERROR"
          $ECHO_CMD $COLORIZE_OUT
          colorize_clear
-         colorize $MSG_FAIL "${CMD_RUN} output: "
-         $ECHO_CMD $COLORIZE_OUT
-         colorize_clear
-         colorize $MSG_WARN "${CMD_OUT}"
-         $ECHO_CMD $COLORIZE_OUT
-         colorize_clear
+         #colorize $MSG_FAIL "${CMD_RUN} output: "
+         #$ECHO_CMD $COLORIZE_OUT
+         #colorize_clear
+         #colorize $MSG_WARN "${CMD_OUT}"
+         #$ECHO_CMD $COLORIZE_OUT
+         #colorize_clear
       fi
       EXIT_STATUS=1
    fi
@@ -387,7 +387,7 @@ do
    fi
    if [ $DRY_RUN -eq 0 ]; then
       cpanm $CPAN_MOD
-      check_exit_status $? "Module: $CPAN_MOD"
+      check_exit_status $? "Installing '$CPAN_MOD'"
    else
       echo "cpanm $CPAN_MOD"
    fi
