@@ -387,6 +387,7 @@ do
    fi
    if [ $DRY_RUN -eq 0 ]; then
       cpanm $CPAN_MOD
+      check_exit_status $? "Module: $CPAN_MOD"
    else
       echo "cpanm $CPAN_MOD"
    fi
