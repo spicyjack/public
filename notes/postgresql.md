@@ -60,7 +60,9 @@ Describing things in `psql`
 - List table/view/sequence access privileges: `\dp` **or** ` \z `
 - List default privileges for a schema: `\ddp`
 - List roles (users/groups): `\dg[+]` or `\du[+]`
-- List schemas: `\dn` or `\dnS[+]`
+- List schemas: `\dn`
+- List schemas with schema priviledges: `\dn+`
+- List schemas with full priviledge info: `\dnS+`
 - List indexes: `\di` or `\diS[+]`
 - List tables (only): `\dt`
 - List views: `\dv` or `\dvS[+]`
