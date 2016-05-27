@@ -12,7 +12,7 @@ BASE_MODULES="
    Digest::SHA1 Dist::Zilla Error File::Find::Rule
    File::Path::Tiny File::Slurp::Tiny Getopt::Long
    IO::Socket::SSL Image::ExifTool JSON JSON::Any JSON::XS
-   Log::Log4perl LWP LWP::Protocol::https Moo
+   Log::Log4perl LWP LWP::Protocol::https Moo MooX::Aliases
    MooX::Types::MooseLike Net::OpenSSH Number::Format
    Path::Tiny Rex Role::Tiny Template Test::More Throwable
    Tree::Simple Try::Tiny Type::Tiny YAML YAML::Tiny
