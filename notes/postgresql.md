@@ -96,6 +96,12 @@ Create a database from `psql` for someone besides the logged in user
 To change users while logged in to an existing database
 - `SET ROLE <rolename>;`
 
+To create a user (a role that can log in) in SQL
+- `CREATE USER foouser WITH ENCRYPTED PASSWORD '<foobar>';`
+
+To set/reset a password
+- `ALTER USER "user_name" WITH ENCRYPTED PASSWORD '<foobar>';`
+
 ### Removing public access from a database ###
 In order to lock down a database in PostgreSQL, you need to revoke access to
 it from the 'public' schema, then add back the roles that you do want to have
