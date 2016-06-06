@@ -125,6 +125,7 @@ EXEC 01;32
 .png    00;35
 .svg    01;35
 .thm    00;35 # Canon JPEG thumbnail files 2005-11-20
+.tiff   01;35 # TIFF files; scanners and Grab on the Mac; 2016-06-06
 .xbm    00;35
 .xcf    00;35
 .xpm    00;35
