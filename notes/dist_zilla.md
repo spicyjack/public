@@ -1,20 +1,24 @@
 # Notes for Dist::Zilla, the Perl distribution builder #
 
 ## Links ##
-- https://metacpan.org/module/Dist::Zilla
+- https://metacpan.org/pod/Dist::Zilla
   - https://metacpan.org/release/Dist-Zilla
 - http://dzil.org/
   - http://dzil.org/tutorial/start.html
-- https://metacpan.org/module/Dist::Zilla::Tutorial
+- https://metacpan.org/pod/Dist::Zilla::Tutorial
 
 ## Plugin Links ##
-- https://metacpan.org/search?q=Dist%3A%3AZilla%3A%3APlugin
-  - https://metacpan.org/module/Dist::Zilla::Plugin::Git
-  - https://metacpan.org/module/Dist::Zilla::Plugin::Run
-  - https://metacpan.org/module/Dist::Zilla::Plugin::Pod2Html
-  - https://metacpan.org/module/Dist::Zilla::Plugin::License
-  - https://metacpan.org/module/Dist::Zilla::Plugin::MetaYAML
-  - https://metacpan.org/module/Dist::Zilla::Plugin::MetaResources
+Search link: https://metacpan.org/search?q=Dist%3A%3AZilla%3A%3APlugin
+- https://metacpan.org/pod/Dist::Zilla::Plugin::Git
+- https://metacpan.org/pod/Dist::Zilla::Plugin::License
+- https://metacpan.org/pod/Dist::Zilla::Plugin::MetaYAML
+- https://metacpan.org/pod/Dist::Zilla::Plugin::MetaResources
+- https://metacpan.org/pod/Dist::Zilla::Plugin::OurPkgVersion
+- https://metacpan.org/pod/Dist::Zilla::Plugin::Pod2Html
+- https://metacpan.org/pod/Dist::Zilla::Plugin::Run
+
+See also the _Lingua::ManagementSpeak_ module for more _Dist::Zilla_ plugin
+ideas.
 
 ## Build (a tarball of) your distribution ##
 `dzil build`
