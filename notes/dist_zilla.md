@@ -17,8 +17,8 @@ Search link: https://metacpan.org/search?q=Dist%3A%3AZilla%3A%3APlugin
 - https://metacpan.org/pod/Dist::Zilla::Plugin::Pod2Html
 - https://metacpan.org/pod/Dist::Zilla::Plugin::Run
 
-See also the _Lingua::ManagementSpeak_ module for more _Dist::Zilla_ plugin
-ideas.
+See also the _Lingua::ManagementSpeak_ repo for more _Dist::Zilla_ plugin
+ideas (https://github.com/gryphonshafer/Lingua-ManagementSpeak)
 
 ## Build (a tarball of) your distribution ##
 `dzil build`
