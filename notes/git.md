@@ -168,6 +168,12 @@ You can also use one of the shortcuts listed in `gitrevisions` to specify what
 commit to cherry-pick back on to the current branch.  See `git help
 cherry-pick` for more info.
 
+### Orphan Branches ###
+Create a new orphan branch in Git, an empty branch without files
+
+    git checkout --orphan <branch name>
+    git rm -rf .
+
 ### Git Stash ###
 
     git stash
