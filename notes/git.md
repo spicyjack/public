@@ -207,6 +207,11 @@ Untrack a directory full of files
 
     git rm --cached -r directory 
 
+### Clean a repo of untracked files ###
+Clean a Git repo from all untracked files and directories
+
+    git clean -d -f
+
 ### Tags ###
 By default, the git push command doesn’t transfer tags to remote servers. You
 will have to explicitly push tags to a shared server after you have created
