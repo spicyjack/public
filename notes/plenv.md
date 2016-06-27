@@ -5,7 +5,16 @@ https://github.com/tokuhirom/plenv
 See also `plenv-contrib`, which has the `use` command.
 - https://github.com/miyagawa/plenv-contrib
 
-## Installation ##
+## Installing plenv ##
+
+    # make sure 'plenv' is set up in your ~/.bashrc or ~/.bash_profile
+    git clone https://github.com/tokuhirom/plenv.git ~/.plenv
+    # install perl-build inside the ~/.plenv directory
+    git clone https://github.com/tokuhirom/Perl-Build.git \
+      ~/.plenv/plugins/perl-build/
+
+
+## Installing a Perl ##
 List available Perls
 
     plenv install --list
