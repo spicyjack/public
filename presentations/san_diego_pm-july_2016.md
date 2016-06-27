@@ -5,12 +5,16 @@
   to enhance web performance
   - Most "modern" web applications are using the "Ruby on Rails" model, where
     the application starts and runs on a local port, and a webserver of some
-    kind (Apache, Nginx) proxies HTTP requests for it
+    kind (Apache, Nginx, perlbal, load balancer) proxies HTTP requests for it.
+    This is similar to how FastCGI works
     - _Dancer2_
     - _Mojolicious_
     - _Catalyst_
 - Packaging programs for easy deployment
-  - Define: "easy deployment"
+  - Please define: "What is easy deployment?"
+  - _Carton_
+  - _PAR_
+  - _App::FatPacker_
 - Perl interview questions
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
