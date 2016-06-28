@@ -12,6 +12,7 @@
     - _Catalyst_
 - Packaging programs for easy deployment
   - Please define: "What is easy deployment?"
+  - `cpanminus` (aka `cpanm`, aka _App::cpanminus_)
   - _Carton_
   - _PAR_
   - _App::FatPacker_
