@@ -98,6 +98,7 @@ Updating all submodules
   - May already be up to date, it's part of VIM now
   - https://github.com/xuhdev/syntax-dosini.vim
   - http://www.vim.org/scripts/script.php?script_id=3747
+
 ## Older (Unused) Syntax Plugins ##
 - nsh - http://www.vim.org/scripts/script.php?script_id=2864
 - Redcode  (Core War)
