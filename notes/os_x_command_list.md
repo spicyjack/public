@@ -1,5 +1,9 @@
 ## OS X Interesting Command List ##
 
+OS X Keyboard shortcuts (See also `apple_xcode_shortcuts.md`)
+- Look up a highlighted word: ⌘ - ⌃ - D (Cmd-Ctrl-D)
+  - You can also click with three fingers on the word to look it up
+
 From Homebrew:
 - pstree (no man page) ₋ Shows process table as a "tree"
 - tree(1) - Shows files/directories as a "tree"
