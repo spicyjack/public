@@ -75,7 +75,7 @@ To connect to MySQL once it's running:
 
 To set a password for user `user`:
 
-    SET PASSWORD FOR 'user'@'host' = PASSWORD('password');
+    ALTER USER "user" IDENTIFIED BY '<foobar>';
 
 ## Homebrew problems encountered ##
 - `libtiff` not linking it's `include` files
