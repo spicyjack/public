@@ -4,6 +4,6 @@
 if [ $(echo $PATH | grep -c "plenv") -eq 0 ]; then
    export PATH="${HOME}/.plenv/bin:${PATH}"
 fi
-if which plenv > /dev/null; then
+if which plenv > /dev/null 2>&1; then
     eval "$(plenv init -)"
 fi
