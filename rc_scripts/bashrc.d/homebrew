@@ -1,7 +1,7 @@
 #!/bin/bash
-BREW_BIN=$(which brew)
+BREW_BIN=$(which brew 2>/dev/null)
 if [ "x${BREW_BIN}" != "x" ]; then
-    source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+    source $(brew --prefix)/etc/bash_completion.d/brew
 else
     echo "homebrew: 'brew' binary not installed"
 fi
