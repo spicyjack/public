@@ -125,6 +125,9 @@ Updating all submodules
     - The `tt` shortcut for `Align` is defined in
       `~/.vim/plugin/AlignMapsPlugin.vim`, line 172
     - The `no_tt_map` branch in `Align` will comment out the mapping
+  - There's a branch called `rex_perl_tags` which will add all of the _Rex_
+    commands to tags and tag lists, so that you can jump around a `Rexfile`
+    when one is loaded in VIM
 - tasklist
   - http://www.vim.org/scripts/script.php?script_id=2607
   - https://github.com/vim-scripts/TaskList.vim
