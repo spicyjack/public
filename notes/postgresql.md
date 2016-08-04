@@ -204,6 +204,7 @@ Showing specific information about all of the users in PostgreSQL
 
 Showing information about connections to a database
 - `SELECT * FROM pg_stat_activity;`
+- `SELECT usesysid, usename FROM pg_stat_activity;`
 
 ### Enabling Procedural Languages ###
 - From `psql`: `CREATE EXTENSION plperl`
