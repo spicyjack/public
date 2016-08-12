@@ -31,9 +31,10 @@ Docs: http://www.postgresql.org/docs/9.2/interactive/index.html
 Reloading `postmaster` after changing a configuration file
 - `su -c "pg_ctl reload -D/path/to/pg/data/dir" postgres`
 
-Using `psql` to access a database
+## Using psql to access a database ##
 - If no user is set up by default in `pg_ident.conf`
   - `su -c 'psql' postgres`
+  - `sudo -u postgres psql`
 - If some users are set up in `pg_ident.conf`
   - `psql -Uroot dbname`
   - `psql -Uusername dbname`
@@ -76,6 +77,10 @@ Showing/editing functions
 Describing things in the system
 - List system tables/views/sequences: `\dS`
 - List system tables/views/sequences with extended info: `\dS[+]`
+
+## Checking PostgreSQL connectivity/operation ##
+
+    echo "SELECT * from current_timestamp;" | psql postgres
 
 ### Setting up users and databases ###
 Setting up a new PostgreSQL user from a shell
