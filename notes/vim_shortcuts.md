@@ -21,6 +21,10 @@
 - `nmap <F5>      :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>`
 - `nmap <F6>      :SyntasticToggleMode<CR>`
 - `nmap <F7>      :SyntasticCheck<CR>`
+- `<Leader>gda` - `git dsf`
+- `<Leader>gdf` - `git dsf <current filename>`
+- `<Leader>gha` - `git dsf HEAD`
+- `<Leader>ghf` - `git dsf HEAD <current filename>`
 
 ### Using Named Marks ###
 http://vimdoc.sourceforge.net/htmldoc/usr_03.html#03.10
