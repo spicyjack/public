@@ -65,10 +65,10 @@ Describing things in `psql`
 - List schemas with schema priviledges: `\dn+`
 - List schemas with full priviledge info: `\dnS+`
 - List indexes: `\di` or `\diS[+]`
+- List languages (with owners): `\dL[S+]`
 - List tables (only): `\dt`
 - List views: `\dv` or `\dvS[+]`
 - List [aggregate/normal/trigger/window] functions: `\df[antw][S+]`
-- List enabled languages: `\dL` or `\dLS+`
 
 Showing/editing functions
 - Show a function's definition: `\sf[+] <function name>`
