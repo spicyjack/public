@@ -79,7 +79,7 @@ Use the QuickFix commands to move around after errors are detected
 ## Syntax Highlighting ##
 - Show current syntax highlighting mappings: `:sy[ntax] list`
 - Show the syntax highlighting colors: `:high[light]`
-- Change the current color scheme `:colorscheme <scheme name`
+- Change the current color scheme `:colorscheme <scheme name>`
   - You can use `:colorscheme <TAB>` to scroll through all of the available
     color schemes
 - List of valid color identifiers:
