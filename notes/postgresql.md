@@ -210,6 +210,12 @@ Showing specific information about all of the users in PostgreSQL
 Showing information about connections to a database
 - `SELECT * FROM pg_stat_activity;`
 - `SELECT usesysid, usename FROM pg_stat_activity;`
+- `SELECT pid, datname, usename, application_name, client_hostname,
+	client_port, backend_start, query_start, query
+	FROM pg_stat_activity
+	WHERE state <> 'idle'
+	AND pid<>pg_backend_pid();`
+
 
 ### Enabling Procedural Languages ###
 - From `psql`: `CREATE EXTENSION plperl`
