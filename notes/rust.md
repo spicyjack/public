@@ -5,6 +5,9 @@ the `rustc` program.
 
 ## Links ##
 - Common macros - https://doc.rust-lang.org/book/macros.html
+- `cargo-modules` - https://github.com/regexident/cargo-modules
+  - Shows cargo module dependencies in a "tree" structure
+  - Install with: `cargo install cargo-modules`
 
 ## Cargo ##
 Cargo helps manage dependencies and compiling Rust programs.
