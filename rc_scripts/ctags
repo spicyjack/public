@@ -4,3 +4,6 @@
 --regex-perl=/^task[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/t,task/
 --regex-perl=/^batch[ \t]*"([a-zA-Z0-9_-]+)"\s{0,},/\1/b,batch task/
 --regex-perl=/^batch[ \t]*q{1,2}\(([a-zA-Z0-9_-]+)\)\s{0,},/\1/b,batch task/
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^[#]*[ \t](.*)[ \t][#]*$/\1/h,heading,headings/
