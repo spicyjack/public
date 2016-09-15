@@ -26,6 +26,11 @@
 - `<Leader>gha` - `git dsf HEAD`
 - `<Leader>ghf` - `git dsf HEAD <current filename>`
 
+Show existing mappings
+- `:nmap` - Normal mode mappings
+- `:vmap` - Visual mode mappings
+- `:imap` - Insert mode mappings
+
 ### Using Named Marks ###
 http://vimdoc.sourceforge.net/htmldoc/usr_03.html#03.10
 - To set a mark using mark `a`: _ma_
@@ -117,6 +122,10 @@ http://www.vim.org/scripts/script.php?script_id=273
 - `,tt` - Taglist; toggle `taglist` window
 - `,to` - Taglist; open `taglist` window
 - `,tc` - Taglist; close `taglist` window
+
+Verify `~/.ctags` config with:
+
+    ctags  -f - --format=2 --excmd=pattern --fields=nks <filename>
 
 ## TaskList ##
 http://www.vim.org/scripts/script.php?script_id=2607
