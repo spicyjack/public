@@ -34,7 +34,7 @@ EIGHTBIT 1
 
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
-# Attribute codes: 
+# Attribute codes:
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
 # 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
@@ -52,7 +52,7 @@ ORPHAN 01;05;37;41  # orphaned syminks
 MISSING 01;05;37;41 # ... and the files they point to
 
 # This is for files with execute permission:
-EXEC 01;32 
+EXEC 01;32
 
 # List any file extensions like '.gz' or '.tar' that you would like ls
 # to colorize below. Put the extension, a space, and the color init string.
@@ -74,7 +74,7 @@ EXEC 01;32
 .gz     01;31
 .lzh    01;31
 .rpm    01;31
-.tar    01;31 
+.tar    01;31
 .taz    01;31
 .tgz    01;31
 .xz     01;31
@@ -102,15 +102,16 @@ EXEC 01;32
 .com    01;32
 .exe    01;32
 # source code
-.c      00;36 # added 000615 for source code files
+.c      00;36 # added 2000-06-15 for source code files
 .cpp    00;36
 .css    00;36 # Cascading Style Sheets
-.h      00;33 
 .diff   01;33 # diff files (2013-08-18)
+.h      00;33
 .java   00;36
 .js     00;36 # Javascript files
 .m      00;36 # Objective-C
 .mm     00;36 # Objective-C
+.p8     00;36 # PICO-8 (added 2016-10-13)
 .rs     00;36 # 2016-03-08 - Rustlang - https://www.rust-lang.org/
 # OpenGL shader files
 .vsh    00;36 # OpenGL Vertex shader file 2013-03-28
@@ -119,7 +120,7 @@ EXEC 01;32
 .bmp    00;35
 .crw    00;35 # Canon RAW files 2005-11-20
 .gif    00;35
-.jpg    00;35 
+.jpg    00;35
 .jpeg   01;35 # Brother Scanner calls them 'jpeg's
 .ico    01;35 # icon files
 .png    00;35
@@ -139,8 +140,8 @@ EXEC 01;32
 .mp3    01;35 # changed 2000-06-15
 .wav    01;35 # 1999-11-17
 # encrypted files
-.asc    40;31 # 
-.gpg    40;31 # 
+.asc    40;31 #
+.gpg    40;31 #
 .pem    40;31 # PEM encoded encryption keys
 .pub    40;31 # SSH public keys
 # plain text files
@@ -149,7 +150,7 @@ EXEC 01;32
 .dia    00;33 # dia diagram files
 .dns    00;33 # for DNS zones
 .faq    00;33 # faq's
-.htm    00;33 
+.htm    00;33
 .html   00;33 # html files
 .json   00;33 # 2016-03-08 - https://en.wikipedia.org/wiki/JSON
 .log    00;33 # log files
@@ -160,7 +161,7 @@ EXEC 01;32
 .txt    00;33 # added 1999-05-11
 .yaml   00;33 # YAML: http://yaml.org/spec/1.2/spec.html
 .yml    00;33 # http://en.wikipedia.org/wiki/YAML
-.xml    00;33 
+.xml    00;33
 # binary document files
 .doc    01;33 # doc files
 .lyx    01;33 # Lyx files
