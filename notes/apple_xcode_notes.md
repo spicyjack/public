@@ -3,15 +3,6 @@
 ## Xcode Concepts ##
 - http://tinyurl.com/o3prlfu 
 
-Targets
-- http://tinyurl.com/q2zqfk6
-- A target specifies a product to build and contains the instructions for
-  building the product from a set of files in a project or workspace.
-- A target defines a single product; it organizes the inputs into the build
-  system - the source files and instructions for processing those source
-  files - required to build that product.
-- Projects can contain one or more targets, each of which produces one product.
-
 Xcode Project
 - http://tinyurl.com/p43wjzc
 - An Xcode project is a repository for all the files, resources, and
@@ -22,6 +13,16 @@ Xcode Project
 - A project defines default build settings for all the targets in the project
   (each target can also specify its own build settings, which override the
   project build settings).
+
+Targets
+- http://tinyurl.com/q2zqfk6
+- A target specifies a product to build and contains the instructions for
+  building the product from a set of files in a project or workspace.
+- A target defines a single product; it organizes the inputs into the build
+  system - the source files and instructions for processing those source
+  files - required to build that product.
+- Projects can contain one or more targets, each of which produces one product.
+
 
 Build Settings
 - http://tinyurl.com/nhd7tcc
