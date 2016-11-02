@@ -29,13 +29,13 @@ DB_MODULES="
 # NOTE: XML::LibXML requires that `brew link libxml2 --force` be run, so that
 # the symlink to `xml2-config` is created in `/usr/local/bin`
 MISC_MODULES="
-   Algorithm::Diff Class::Tiny Config::Tiny Config::Std Data::Compare
-   Date::Parse Date::Tiny DateTime DateTime::Locale DateTime::TimeZone
-   DateTime::Tiny Mac::SystemDirectory Markdent PDF::API2 PDF::Table
-   Parse::RecDescent Perl::Critic Perl::Tidy Pod::Weaver
-   Pod::Webserver Template::Tiny Text::CSV Text::CSV_XS Text::Markdown
-   Text::MultiMarkdown WWW::Shorten::Simple XML::LibXML XML::Parser
-   XML::Simple App::Ack strictures syntax
+   Algorithm::Diff Class::Tiny Config::Tiny Config::Std Contenticious
+   Data::Compare Date::Parse Date::Tiny DateTime DateTime::Locale
+   DateTime::TimeZone DateTime::Tiny Mac::SystemDirectory Markdent
+   PDF::API2 PDF::Table Parse::RecDescent Perl::Critic Perl::Tidy
+   Pod::Weaver Pod::Webserver Template::Tiny Text::CSV Text::CSV_XS
+   Text::Markdown Text::MultiMarkdown WWW::Shorten::Simple XML::LibXML
+   XML::Parser XML::Simple App::Ack strictures syntax
 "
 
 GTK_MODULES="
