@@ -31,11 +31,11 @@ DB_MODULES="
 MISC_MODULES="
    Algorithm::Diff Class::Tiny Config::Tiny Config::Std Data::Compare
    Date::Parse Date::Tiny DateTime DateTime::Locale DateTime::TimeZone
-   DateTime::Tiny Mac::SystemDirectory PDF::API2 PDF::Table
+   DateTime::Tiny Mac::SystemDirectory Markdent PDF::API2 PDF::Table
    Parse::RecDescent Perl::Critic Perl::Tidy Pod::Weaver
    Pod::Webserver Template::Tiny Text::CSV Text::CSV_XS Text::Markdown
-   WWW::Shorten::Simple XML::LibXML XML::Parser XML::Simple
-   App::Ack strictures syntax
+   Text::MultiMarkdown WWW::Shorten::Simple XML::LibXML XML::Parser
+   XML::Simple App::Ack strictures syntax
 "
 
 GTK_MODULES="
