@@ -1,16 +1,5 @@
 # PICO-8 Notes #
 
-## Keyboard Shortcuts ##
-- Toggle Fullscreen: `Alt+Enter`
-- Quit: `Alt+F4` or `⌘ - Q`
-- Reload/Run/Restart cart: `Ctrl+R`
-- Quick-Save: `Ctrl+S`
-- Mute/Unmute: `Ctrl+M`
-- Player 1 defaults: Cursors + ZX / NM / CV
-- Player 2 defaults: SDFE + tab,Q / shift A
-- `Enter` for pause menu (while running)
-
-
 ## PICO-8 Specifications ##
 - Display: 128x128, fixed 16 colour palette
 - Input: 6 buttons
@@ -20,16 +9,46 @@
 - Sprites: Single bank of 128 8x8 sprites (+128 shared)
 - Map: 128x32 8-bit cels (+128x32 shared)
 
+
+## Keyboard Shortcuts ##
+- Toggle Fullscreen: `Alt+Enter`
+- Quit: `Alt+F4` or `⌘ - Q`
+- Reload/Run/Restart cart: `Ctrl+R`
+- Quick-Save: `Ctrl+S`
+- Mute/Unmute: `Ctrl+M`
+- Player 1 defaults
+  - Movement (left/right/up/down): Cursors
+  - Button 'O': `Z`
+  - Button 'X': `X`
+- Player 2 defaults
+  - Movement (left/right/up/down): `S`/`F`/`E`/`D`
+  - Button 'O': `Tab`
+  - Button 'X': `Q`
+- Pause: `P`
+- `Enter` for pause menu (while running)
+- `F6`: Save a screenshot to desktop
+- `F7`: Capture a cartridge label image
+- `F8`: Start recording a video
+- `F9`: Save a give video to the desktop folder (max 8 seconds by default)
+
+
+## Monitor Commands ##
+- `CLS`: Clears the screen
+- `KEYCONFIG`: Change the keyboard key mappings for games
+
 ## Filesystem Commands ##
-- `DIR`: list the current directory
 - `CD BLAH`: change directory
 - `CD ..`: go up a directory
 - `CD /`: change back to top directory (on pico-8's virtual drive)
-- `MKDIR`: make a directory
+- `DIR`: list the current directory
+- `EXPORT BLAH.HTML`: export the cartridge in an HTML5 format (HTML file and
+  JavaScript engine file)
 - `FOLDER`: open the current directory in the host operating system's file
   browser
 - `LOAD BLAH`: load a cart from the current directory
+- `MKDIR`: make a directory
 - `SAVE BLAH`: save a cart to the current directory
+
 
 ## Configuration ##
 You can find some settings in config.txt. Edit the file when PICO-8 is not
