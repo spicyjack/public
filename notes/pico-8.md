@@ -22,11 +22,11 @@ Common gotchas to watch out for:
   - If you add 1 to a counter each frame, it will overflow after around 18
     minutes!
 - Lua arrays are 1-based by default, not 0-based.
-  - FOREACH starts at T[1], not T[0].
+  - `FOREACH` starts at `T[1]`, not `T[0]`.
 - `cos()` and `sin()` take `0..1` instead of `0..PI*2`, and `sin()` is
   inverted.
-- sgn(0) returns 1.
-- Toggle fullscreen: use alt-enter on OSX (command-F is used for searching
+- `sgn(0)` returns 1.
+- Toggle fullscreen: use `ALT-Enter` on OSX (`⌘ -F` is used for searching
   text).
 - When you want to export a `.png` cartridge, use `SAVE`, not `EXPORT`.
   `EXPORT` will save only the spritesheet!
