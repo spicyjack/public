@@ -161,7 +161,7 @@ ${SCRIPTNAME} [options] <command>
    -d|--db        Database modules
    -m|--misc      Misc. modules
    -g|--gtk       Gtk-Perl modules
-   -w|--webap     WebApp (Mojolicious/Dancer2) modules
+   -w|--webapp    Web application (Mojolicious/Dancer2) modules
 
 NOTES:
 - Long switches (GNU extension) do not work with BSD 'getopt'
@@ -211,9 +211,9 @@ if [ $OSDETECT = "Darwin" -a $GETOPT_BIN = "/usr/bin/getopt" ]; then
     GETOPT_TEMP=$(${GETOPT_BIN} hqnclabzdmgj $*)
 else
 # Use short and long options with GNU's getopt
-    GETOPT_TEMP=$(${GETOPT_BIN} -o hqnclabzdmgj \
+    GETOPT_TEMP=$(${GETOPT_BIN} -o hqnclabzdmgw \
         --long help,quiet,dry-run,colorize \
-        --long list,all,base,archive,db,database,misc,gtk,mojo \
+        --long list,all,base,archive,db,database,misc,gtk,webapp \
         -n "${SCRIPTNAME}" -- "$@")
 fi
 
@@ -280,8 +280,8 @@ while true ; do
         -g|--gtk)
             INSTALL_GTK=1
             shift ;;
-        # Install Mojolicious modules
-        -j|--mojo)
+        # Install web application frameworks/modules
+        -w|--webapp)
             INSTALL_WEBAPP=1
             shift ;;
         # everything else
