@@ -28,6 +28,8 @@ List available Perls
 32-bit systems
 
     plenv install <Perl version> -Dusethreads -Uuselargefiles -Duse64bitint
+    plenv install --as=Perl-Foo <Perl version> \
+      -Dusethreads -Uuselargefiles -Duse64bitint
 
 Change the Perl binary used globally
 
