@@ -309,6 +309,7 @@ fi
 CPANM_CMD=$(which cpanm)
 if [ $? -gt 0 ]; then
    colorize "$MSG_FAIL" "ERROR: can't find 'cpanm' command in your \$PATH"
+   $ECHO_CMD $COLORIZE_OUT
    exit 1
 fi
 
