@@ -5,5 +5,7 @@
 alias phpunit="phpunit"
 alias tphpunit="phpunit --tap"
 
+# set Brew's PHP path ahead of the other PATH elements
+#export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 # vi: set filetype=sh shiftwidth=3 tabstop=3
 # конец!
