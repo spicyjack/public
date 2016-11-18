@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Script to set up the environment/$PATH for 'rustup'
+# https://github.com/rust-lang-nursery/rustup.rs
+
+# don't add 'rustup' multiple times to $PATH
+if [ $(echo $PATH | grep -c '.cargo/bin') -eq 0 ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
