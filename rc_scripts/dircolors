@@ -179,4 +179,7 @@ EXEC 01;32
 .sxw    01;33 # staroffice write files
 .tex    01;33 # latex files
 .xls    01;33 # excel spreadsheets
+# Misc filetypes
+# I can't believe WAD files weren't in here before :/
+.wad    01;05;30;41  # Doom WAD Files; 2016-11-30
 # vim: ft=dircolors ts=4 sw=4:
