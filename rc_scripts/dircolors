@@ -181,5 +181,6 @@ EXEC 01;32
 .xls    01;33 # excel spreadsheets
 # Misc filetypes
 # I can't believe WAD files weren't in here before :/
-.wad    01;05;30;41  # Doom WAD Files; 2016-11-30
+.wad    00;05;30;41  # Doom WAD Files; 2016-11-30
+.deh    01;05;30;41  # Doom "DeHackEd" Files; 2016-11-30
 # vim: ft=dircolors ts=4 sw=4:
