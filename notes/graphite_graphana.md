@@ -10,8 +10,14 @@ Links
 
 ## Installing Graphite ##
 
-    sudo yum install epel-release
-    sudo yum install gcc stow stow-doc fontconfig mod_wsgi python-pip
+    # Create a 'graphite' user for running things like collectors and
+    # databases and whatnot
+    useradd --comment "Graphite/Graphana User" --system graphite
+
+    # Install required packages
+    sudo yum install epel-release screen
+    sudo yum install gcc stow stow-doc fontconfig mod_wsgi python-pip \
+      python-devel libffi-devel cairo tree
     sudo pip install cairocffi django-tagging pytz
     export PYTHONPATH="/opt/graphite/lib/:/opt/graphite/webapp/"
     sudo pip install \
@@ -28,22 +34,68 @@ Links
     PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py collectstatic \
       --noinput --settings=graphite.settings
     # Just change the storage database so it's writeable by Apache
+    sudo chown -R graphite.graphite /opt/graphite/storage
+    # Apache needs to own the 'storage' directory, so lockfiles can be created
+    # for the DB
+    sudo chown -R apache.apache /opt/graphite/storage
+    # Apache needs to own the Graphite DB
     sudo chown -R apache.apache /opt/graphite/storage/graphite.db
+    # Apache needs to own Graphite's log directory
     sudo chown -R apache.apache /opt/graphite/storage/log/webapp
 
     cd /opt/graphite/examples
     sudo cp example-graphite-vhost.conf /etc/httpd/conf.d/graphite.conf
-    # Make the /opt/graphite/static directory available to requests by using
-    # an Apache <Directory> block in the `graphite.conf` file
     sudo mkdir /var/run/wsgi
     sudo chown apache.apache /var/run/wsgi
+    cd /etc/httpd/conf.d
+    # Edit /etc/httpd/conf.d/graphite.conf
+    # - Add an Apache <Directory> block for "/opt/graphite/static" in order to
+    # make the static file directory available to requests
+    # - Disable the "mod_wsgi.so" module, it's being loaded somewhere else
+
+    # Go to the Graphite webapp directory and create a local config file
+    cd /opt/graphite/webapp/graphite
+    sudo cp local_settings.py.example local_settings.py
+    sudo vim local_settings.py
+    # Make sure that at least the 'SECRET_KEY' is changed
+
+    # When you're done with all of the editing, run 'apachectl' to test the
+    # Apache config.  Note: the command may take a while on a VM, since DNS
+    # isn't working apparently
+    /usr/sbin/apachectl configtest
+
+    # Start/restart Apache
+    sudo systemctl restart httpd
+
     cd /opt/graphite/conf
-    sudo cp graphite.wsgi.example graphite.wsgi
-    # Copy all of the rest of the sample config files in /opt/graphite/conf so
-    # that they don't have the '.example' extension
+    # Copy all of the sample config files in /opt/graphite/conf so that they
+    # don't have the '.example' extension
+    sudo mkdir examples
+    sudo cp *.example examples/
+    for CFG in *.example; do NEWCFG=$(echo $CFG | sed 's/\.example//');
+      echo "Moving file $CFG to $NEWCFG"; sudo mv $CFG $NEWCFG; done
+
+    # Create the directory for "carbon-cache", and set it's ownership to
+    # "graphite"
+    mkdir /opt/graphite/storage/log/carbon-cache
+    sudo chown graphite.graphite /opt/graphite/storage/log/carbon-cache
 
     # start Carbon, the collector
     /opt/graphite/bin/carbon-cache.py start
+
+    # View Graphite website at:
+    # http://<IP address>/
+
+    # Set up your monitoring heirarchy (host.service.metric maybe), and then
+    # start feeding data into Graphite.  You can send raw Graphite data to
+    # port 2003 of the Graphite host, using the following command: 
+    #
+    # echo "test.bash.stats 42 `date +%s`" | nc graphite.example.com 2003
+    #
+    # http://graphite.readthedocs.io/en/latest/feeding-carbon.html
+
+    # Once the data is in Graphite, you can use the basic Graphite web
+    # interface to view it
 
 ## Install Grafana ##
 
