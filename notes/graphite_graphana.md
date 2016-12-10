@@ -33,15 +33,20 @@ Links
       --settings=graphite.settings --run-syncdb
     PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py collectstatic \
       --noinput --settings=graphite.settings
-    # Just change the storage database so it's writeable by Apache
-    sudo chown -R graphite.graphite /opt/graphite/storage
+
+    # Old instructions
+    # sudo chown -R graphite.graphite /opt/graphite/storage
+
+    # Newer instructions
     # Apache needs to own the 'storage' directory, so lockfiles can be created
     # for the DB
     sudo chown -R apache.apache /opt/graphite/storage
-    # Apache needs to own the Graphite DB
+    # Change the storage database so it's writeable by Apache
     sudo chown -R apache.apache /opt/graphite/storage/graphite.db
     # Apache needs to own Graphite's log directory
     sudo chown -R apache.apache /opt/graphite/storage/log/webapp
+    # Edit '/etc/group', add 'graphite' to the 'apache' group, then...
+    chmod g+ws /opt/graphite/storage
 
     cd /opt/graphite/examples
     sudo cp example-graphite-vhost.conf /etc/httpd/conf.d/graphite.conf
@@ -49,6 +54,8 @@ Links
     sudo chown apache.apache /var/run/wsgi
     cd /etc/httpd/conf.d
     # Edit /etc/httpd/conf.d/graphite.conf
+    # - Add the VIM tag at the bottom of the file, then reopen the file
+    #   - # vim: expandtab shiftwidth=4 tabstop=4
     # - Add an Apache <Directory> block for "/opt/graphite/static" in order to
     # make the static file directory available to requests
     # - Disable the "mod_wsgi.so" module, it's being loaded somewhere else
@@ -101,6 +108,8 @@ Links
 
     sudo vim /etc/yum.repos.d/grafana.repo
     # add stuff...
+    # See http://docs.grafana.org/installation/rpm/ for examples of the
+    # contents of the '.repo' file
     sudo yum install grafana
     sudo systemctl daemon-reload
     sudo systemctl start grafana-server
