@@ -90,6 +90,9 @@ Links
     # start Carbon, the collector
     /opt/graphite/bin/carbon-cache.py start
 
+    # Enable Apache in systemctl and start it
+    sudo systemctl enable --now httpd
+
     # View Graphite website at:
     # http://<IP address>/
 
@@ -112,8 +115,11 @@ Links
     # contents of the '.repo' file
     sudo yum install grafana
     sudo systemctl daemon-reload
-    sudo systemctl start grafana-server
+
+    # Enable Apache in systemctl and start it
+    sudo systemctl enable --now grafana-server
     sudo systemctl status grafana-server
+
     # Add stuff from Graphite via the Graphana UI
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
