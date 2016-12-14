@@ -116,9 +116,35 @@ Links
     sudo yum install grafana
     sudo systemctl daemon-reload
 
-    # Enable Apache in systemctl and start it
+    # Enable Grafana in systemctl and start it
     sudo systemctl enable --now grafana-server
     sudo systemctl status grafana-server
+
+    # Optional: Add a proxy to Grafana in Apache
+		# Modify '/etc/grafana/grafana.ini', change 'root_url' to:
+		root_url = http://<hostname or IP of grafana server>/grafana
+
+    # Create new file /etc/httpd/conf.d/grafana.conf, and add the below
+    # contents: 
+
+    # Don't do forward proxying (security)
+    ProxyRequests Off
+    ProxyPreserveHost On
+
+    # Restrict access to DSpace to only people with the password
+    <Proxy *>
+        AuthType Basic
+        AuthName "Restricted Files"
+        AuthUserFile /etc/httpd/htpasswd/grafana.htpasswd
+        Require valid-user
+        Options None
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Proxy>
+
+    ProxyPass /grafana http://localhost:3000
+    ProxyPassReverse /grafana http://localhost:3000
 
     # Add stuff from Graphite via the Graphana UI
 
