@@ -62,11 +62,12 @@ Describing things in `psql`
 - List default privileges for a schema: `\ddp`
 - List roles (users/groups): `\dg[+]` or `\du[+]`
 - List schemas: `\dn`
-- List schemas with schema priviledges: `\dn+`
+- List schemas with schema privileges: `\dn+`
 - List schemas with full priviledge info: `\dnS+`
 - List indexes: `\di` or `\diS[+]`
 - List languages (with owners): `\dL[S+]`
 - List tables (only): `\dt`
+- List types with privileges: `\dTS+`
 - List views: `\dv` or `\dvS[+]`
 - List [aggregate/normal/trigger/window] functions: `\df[antw][S+]`
 
