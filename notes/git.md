@@ -246,6 +246,20 @@ Move the file in the `.git/refs/tags` directories.
 work.
 
 ### Rebasing changes ###
+Pull the code down to your local machine, switch to the branch that you want
+to rebase, and issue the following command:
+
+    git rebase <branch to rebase from>
+
+For example, if you have branch `foo` that was branched from `master`, and
+`master` has moved on (had new commits applied to it), you can use `git
+rebase` to rebase all of the commits on `foo` so that they're on top of the
+latest commit in `master` with:
+
+    git checkout foo
+    git rebase master
+
+### Interactively rebasing changes ###
 If you have not shared changes on your machine with anyone else, and you want
 to combine a set of small changes into one large change, you can use `git
 rebase -i` to rewrite the changelog to make the small changes into one large
