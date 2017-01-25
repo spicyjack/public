@@ -153,5 +153,14 @@ setless () {
         -c 'runtime! macros/less.vim' -c 'set filetype=sh' -
 }
 
+decode_base36 () {
+   perl -e 'use Math::Base36 qw(:all); use 5.010;
+      my $num = <STDIN>; chomp($num); say decode_base36(uc($num));'
+}
+
+encode_base36 () {
+   perl -e 'use Math::Base36 qw(:all); use 5.010;
+      my $num = <STDIN>; chomp($num); say encode_base36($num);'
+}
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # конец!
