@@ -147,6 +147,7 @@ EXEC 01;32
 # plain text files
 .cfg    00;33 # configuration files
 .conf   00;33 # configuration files
+.csv    00;33 # "Comma Separated Value" files; 2017-03-07
 .dia    00;33 # dia diagram files
 .dns    00;33 # for DNS zones
 .faq    00;33 # faq's
