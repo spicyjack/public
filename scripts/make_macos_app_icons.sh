@@ -22,8 +22,8 @@ for SIZE in 16 32 64 128 256 512; do
    sips -z $SIZE $SIZE $ORIGINAL_ICON --out icon_${SIZE}x${SIZE}.png
 done
 
-# 2x Retina display icons
-for SIZE in 32 64 256 512; do
+# 2x Retina display icons, which will have the 'scale' in the filename
+for SIZE in 32 64 256 512 1024; do
    echo "Calling 'sips -z $SIZE $SIZE $ORIGINAL_ICON'"
    sips -z $SIZE $SIZE $ORIGINAL_ICON \
       --out icon_$(expr $SIZE / 2)x$(expr $SIZE / 2)x2.png
