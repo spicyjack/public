@@ -31,17 +31,37 @@ Handy debugging statements
 - To make compiler errors, use the `#error` compiler directive
 
 ## Unicode Hex Input ##
-Hold down the Option (`⌥`) key and type in the 4 digit hex code for that
+Hold down the Option (`⌥ `) key and type in the 4 digit hex code for that
 character
 - Command: 0x2318 `⌘ `
 - Control: 0x2303 `^`
 - Option:  0x2325 `⌥ `
 - Shift:   0x21e7 `⇧ `
 - Enter:   0x21a9 `↩ `
+- Left arrow: 0x21e6 `⇦ `
+- Up arrow: 0x21e7 `⇧ `
+- Right arrow: 0x21e8 `⇨ `
+- Down arrow: 0x21e9 `⇩ `
 
 ## Navigation ##
 Show current file in Project Navigator
 - `⌘ - ⇧ - J` (Command-Option-J)
+
+Show quick help for a method/object
+- `⌥ - <mouse click>` (Option-<mouse click> on item to get quick help on)
+
+Show method/property defnition in the approproate header file
+- `⌘ - <mouse click>` (Command-<mouse click> on the method/property to view in
+  it's corresponding header file)
+- Use the `<` and `>` arrows at the top of the editor window to navigate back
+  to the source code that you were editing previously
+
+Move the cursor to the beginning of a block of text (not the beginning of a
+line)
+- `⌘ - ←`
+
+Move the cursor to the end of a block of text (probably the end of a line)
+- `⌘ - →`
 
 ## Showing/Hiding Views ##
 - Show/Hide Utilities (Inspectors) - `⌘ - ⌥ - 0` (Command-Option-0)
@@ -61,16 +81,37 @@ Show specific Navigator panes
 - `⌘ 7` - Log Navigator
 
 Expanding/collapsing folders in Project Navigator
-- `→` (Right arrow) - Expand highlighted folder
-- `⌥ →` (Option-Right arrow) - Expand all folders underneath highlighted folder
-- `←` (Left arrow) - Collapse highlighted folder
-- `⌥ ←` (Option-Left arrow) - Collapse all folders underneath highlighted folder
+- `⇨ ` (Right arrow) - Expand highlighted folder
+- `⌥ - ⇨ ` (Option-Right arrow) - Expand all folders underneath highlighted
+  folder
+- `⇦ ` (Left arrow) - Collapse highlighted folder
+- `⌥  - ⇦ ` (Option-Left arrow) - Collapse all folders underneath highlighted
+  folder
 
 ## Editing Text ##
-Switch between source and header file
-- `Cmd-Ctrl-Up` (`⌘ - ⌃ - ↑`) and `Cmd-Ctrl-Down` (`⌘ - ⌃ - ↓`)
+Toggle between source and header file
+- `⌘ - ⌃ - ⇧ ` (Cmd-Ctrl-Up) and `⌘ - ⌃ - ⇩ `(Cmd-Ctrl-Down)
   - "Navigate -> Jump to Next Counterpart" and "Navigate -> Jump to Previous
     Counterpart"
+
+## Code Folding ##
+Fold current method
+- `⌘ - ⌥  - ⇦ ` (Cmd-Option-Left arrow)
+
+Unfold current method
+- `⌘ - ⌥  - ⇨ ` (Cmd-Option-Right arrow)
+
+Fold (all) methods and functions
+- `⇧ - ⌘ - ⌥  - ⇦ ` (Shift-Cmd-Option-Left arrow)
+
+Unfold (all) methods and functions
+- `⇧ - ⌘ - ⌥  - ⇨ ` (Shift-Cmd-Option-Right arrow)
+
+Fold comment blocks
+- `⇧ - ⌘ - ⌃  - ⇦ ` (Shift-Cmd-Ctrl-Left arrow)
+
+Unfold comment blocks
+- `⇧ - ⌘ - ⌃  - ⇨ ` (Shift-Cmd-Ctrl-Right arrow)
 
 ## Debugging Programs ##
 _Continuing code execution_
