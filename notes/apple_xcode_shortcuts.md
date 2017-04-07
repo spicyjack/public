@@ -63,6 +63,12 @@ line)
 Move the cursor to the end of a block of text (probably the end of a line)
 - `⌘ - →`
 
+Move word forward
+- `⌥ - ⌃ - F` (Ctrl-Option-F)
+
+Move word backward
+- `⌥ - ⌃ - B` (Ctrl-Option-B)
+
 ## Showing/Hiding Views ##
 - Show/Hide Utilities (Inspectors) - `⌘ - ⌥ - 0` (Command-Option-0)
 - Show/Hide Debug Area - `⌘ - ⇧ - Y` (Command-Shift-Y)
@@ -152,5 +158,15 @@ debug toolbar
 _LLDB Debugger commands_ 
 - `p` - print variable
 - `po` - print object
+
+## Running Tests ##
+Run all tests
+- `⌘ - U` (Cmd-U)
+
+Test the test method where the cursor is currently located
+- `⌘ - ⌃ - ⌥  - U` (Cmd-Ctrl-Option-U)
+
+Test the most recently tested test method again
+- `⌘ - ⌃ - ⌥  - G` (Cmd-Ctrl-Option-G)
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
