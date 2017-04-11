@@ -1,12 +1,21 @@
 #!/bin/bash
 
+# Remote Desktop
+function r97 {
+    rdesktop -a 16 -g 900x700 $1 &
+} # remote desktop to a host with 900x700 and 16 bit color
+
+function r107 {
+    rdesktop -a 16 -g 1024x768 $1 &
+} # remote desktop to a host with 1024x768 and 16 bit color
+
 function ar97 {
     rdesktop -a 16 -u Administrator -g 900x700 $1 &
-} # remote desktop to a host with 900x700 with 16 bit color, admin user
+} # remote desktop to a host with 900x700 and 16 bit color, admin user
 
 function ar107 {
     rdesktop -a 16 -u Administrator -g 1024x768 $1 &
-} # remote desktop to a host with 900x700 with 16 bit color, admin user
+} # remote desktop to a host with 1024x768 and 16 bit color, admin user
 
 function cless {
     if [ "x$1" != "x" ]; then
@@ -44,10 +53,6 @@ function jdate {
 function lssh {
     /usr/bin/ssh -v -X -o "StrictHostKeyChecking no" -l $1 -p $2 localhost
 } # ssh to localhost as a specific user on a specific port
-
-function r97 {
-    rdesktop -a 16 -g 900x700 $1 &
-} # remote desktop to a host with 900x700 with 16 bit color
 
 function sudogrep {
     sudo grep $1 /etc/sudoers | less
