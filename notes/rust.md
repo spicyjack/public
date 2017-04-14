@@ -45,4 +45,42 @@ To see the results of expanding macros:
 
     rustc --pretty expanded
 
+## 'rustup' Usage ##
+To show currently installed versions of Rust
+
+    rustup show
+
+To switch the default Rust to `nightly`
+
+    rustup default nightly
+
+Installing current `nightly`
+
+    rustup install nightly
+
+To run a single command with a specific Rust version
+
+    rustup run <version> <command>
+
+Keeping Rust up to date
+
+    rustup update
+
+Keeping `rustup` up to date
+
+    rustup self update
+
+Installing `rustup`
+
+    curl https://sh.rustup.rs -sSf | sh
+
+This downloads and runs https://static.rust-lang.org/rustup/rustup-init.sh
+
+Adding Bash shell completions
+
+    rustup completions bash > ~/.bashrc.d/rustup.bash-completion
+
+Note that there's currently also a `rustup` Bash completion script, which sets
+up the path to `rustup`
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
