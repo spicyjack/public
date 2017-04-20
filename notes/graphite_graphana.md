@@ -85,27 +85,34 @@ Links
     # Create the directory for "carbon-cache", and set it's ownership to
     # "graphite"
     mkdir /opt/graphite/storage/log/carbon-cache
-    sudo chown graphite.graphite /opt/graphite/storage/log/carbon-cache
+    sudo chown -R graphite.graphite /opt/graphite/storage/log/carbon-cache
+    sudo chown -R graphite.graphite /opt/graphite/storage/whisper
 
     # start Carbon, the collector
-    /opt/graphite/bin/carbon-cache.py start
+    sudo -u graphite /opt/graphite/bin/carbon-cache.py start
 
     # Enable Apache in systemctl and start it
     sudo systemctl enable --now httpd
 
-    # View Graphite website at:
-    # http://<IP address>/
+View Graphite website at:
 
-    # Set up your monitoring heirarchy (host.service.metric maybe), and then
-    # start feeding data into Graphite.  You can send raw Graphite data to
-    # port 2003 of the Graphite host, using the following command: 
-    #
-    # echo "test.bash.stats 42 `date +%s`" | nc graphite.example.com 2003
-    #
-    # http://graphite.readthedocs.io/en/latest/feeding-carbon.html
+    http://<IP address>/
 
-    # Once the data is in Graphite, you can use the basic Graphite web
-    # interface to view it
+Set up your monitoring heirarchy (host.service.metric maybe), and then start
+feeding data into Graphite.  You can send raw Graphite data to port 2003 of
+the Graphite host, using the following command: 
+
+    echo "test.bash.stats 42 `date +%s`" | nc graphite.example.com 2003
+
+You can use the `test.*` path for testing inputting data into the 'whisper'
+database.  When you're done, delete whatever data you input from the
+`/opt/graphite/storage/whisper/test.*` path on the server
+
+More info on inputting data into Graphite:
+- http://graphite.readthedocs.io/en/latest/feeding-carbon.html
+
+Once the data is in Graphite, you can use the basic Graphite web interface to
+view it
 
 ## Install Grafana ##
 
