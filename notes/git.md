@@ -205,7 +205,7 @@ Untrack a file:
 
 Untrack a directory full of files
 
-    git rm --cached -r directory 
+    git rm --cached -r directory
 
 ### Clean a repo of untracked files ###
 Clean a Git repo from all untracked files and directories
@@ -244,6 +244,11 @@ Move the file in the `.git/refs/tags` directories.
 
 *TODO* test this with --annotated and --signed tags to see if it will also
 work.
+
+#### Showing the contents of individual commits ####
+Show the contents of a specifc commit
+
+    git cat-file -p <commit ID>
 
 ### Rebasing changes ###
 Pull the code down to your local machine, switch to the branch that you want
