@@ -61,26 +61,41 @@ in that case
 Calling a POST URL with JSON data, expecting different types of responses
 
     # JSON data, HTML response
-    curl --verbose --data '{"data": "bop"}' http://127.0.0.1:3001/foo.html
-    curl --verbose --data '{"data": "bop"}' http://127.0.0.1:3001/foo \
-      --header "Accept: text/html"
+    curl --verbose --data '{"data": "bop"}' \
+      --header 'Content-Type: application/json' \
+      http://127.0.0.1:3001/foo.html
+    curl --verbose --data '{"data": "bop"}' \
+      --header 'Content-Type: application/json' \
+      --header "Accept: text/html" \
+      http://127.0.0.1:3001/foo
 
     # JSON data, JSON response
-    curl --verbose --data '{"data": "bop"}' http://127.0.0.1:3001/foo.json
-    curl --verbose --data '{"data": "bop"}' http://127.0.0.1:3001/foo \
-      --header "Accept: application/json"
+    curl --verbose --data '{"data": "bop"}' \
+      http://127.0.0.1:3001/foo.json
+    curl --verbose --data '{"data": "bop"}' \
+      --header 'Content-Type: application/json' \
+      --header "Accept: application/json" \
+      http://127.0.0.1:3001/foo
 
 Calling a POST URL with a JSON file, expecting different types of responses
 
 
     # JSON data, HTML response
-    curl --verbose --data "@data.json" http://127.0.0.1:3001/foo.html
-    curl --verbose --data "@data.json" http://127.0.0.1:3001/foo \
-      --header "Accept: text/html"
+    curl --verbose --data "@data.json" \
+      --header 'Content-Type: application/json' \
+      http://127.0.0.1:3001/foo.html
+    curl --verbose --data "@data.json" \
+      --header "Accept: text/html" \
+      --header 'Content-Type: application/json' \
+      http://127.0.0.1:3001/foo.html
 
     # JSON data, JSON response
-    curl --verbose --data "@data.json" http://127.0.0.1:3001/foo.json
-    curl --verbose --data "@data.json" http://127.0.0.1:3001/foo \
-      --header "Accept: application/json"
+    curl --verbose --data "@data.json" \
+      --header 'Content-Type: application/json' \
+      http://127.0.0.1:3001/foo.json
+    curl --verbose --data "@data.json" \
+      --header 'Content-Type: application/json' \
+      --header "Accept: application/json" \
+      http://127.0.0.1:3001/foo
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
