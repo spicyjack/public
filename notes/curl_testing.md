@@ -98,4 +98,19 @@ Calling a POST URL with a JSON file, expecting different types of responses
       --header "Accept: application/json" \
       http://127.0.0.1:3001/foo
 
+Sample data
+
+    {"data": [
+      {
+         "path": "test.example.foo",
+         "value": "42",
+         "epoch_time": "1492808743"
+      },
+      {
+         "path": "test.example.bar",
+         "value": "41.5",
+         "epoch_time": "1492808743"
+       },
+    ]}
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
