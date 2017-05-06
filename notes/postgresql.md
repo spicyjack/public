@@ -223,6 +223,11 @@ Showing information about connections to a database
 - From the command line: `createlang plperl`
 
 ### Miscellaneous ###
+Using PostgreSQL regular expressions in queries
+(https://www.postgresql.org/docs/9.2/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP)
+
+    SELECT foo, bar FROM bap WHERE foo ~ '[0-9]';
+
 What are the "template0" and "template1" databases for?
 - http://www.postgresql.org/docs/9.2/static/manage-ag-templatedbs.html
 - New databases are copied from `template1`
