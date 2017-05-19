@@ -17,8 +17,6 @@ To install Pathogen:
   - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
 - To install new VIM plugins, clone the Git repo into `~/.vim/bundle`, witout
   the `*.git` extension
-  - See the file `public.git/notes/git.md` for an example of using `git
-    submodule` to clone and keep VIM plugin Git repos up to date
 - Pathogen will automatically set up links from the files in the
 `~/.vim/bundle` directory to the correct VIM directories
 
@@ -37,7 +35,8 @@ To add a new submodule
 
 Updating all submodules
 - `cd ~/.vim/bundle`
-- `git submodule update`
+- `git submodule update` or `git submodule update --remote` depending on which
+  Git version you have available to you
 
 ## Syntax Plugins ##
 - markdown
