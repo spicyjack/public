@@ -251,8 +251,8 @@ Show the contents of a specifc commit
     git cat-file -p <commit ID>
 
 ### Rebasing changes ###
-Pull the code down to your local machine, switch to the branch that you want
-to rebase, and issue the following command:
+Update all of the branches on your local machine, switch to the branch that
+you want to rebase, and issue the following command:
 
     git rebase <branch to rebase from>
 
