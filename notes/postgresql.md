@@ -70,6 +70,7 @@ Describing things in `psql`
 - List types with privileges: `\dTS+`
 - List views: `\dv` or `\dvS[+]`
 - List [aggregate/normal/trigger/window] functions: `\df[antw][S+]`
+  - List normal functions `\dfn[S+]`
 
 Showing/editing functions
 - Show a function's definition: `\sf[+] <function name>`
