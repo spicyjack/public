@@ -1,0 +1,32 @@
+/* Styles for the "Stylish" browser plugin for Chrome */
+/* (http://tinyurl.com/knwsh8f) */
+
+/* Clear Avito.ru (download from userstyles.org) */
+/* https://userstyles.org/styles/112229/clear-avito-ru */
+
+/* Block ads/banners on LinkedIn */
+.has-ad-label {display: none !important;}
+.ad {display: none !important;}
+
+/* Block adѕ/banners on Vkontakte */
+a.ads_ad_box2 {display: none !important;}
+/* .ads_ad_box {display: none !important;} */
+#ads_left {display: none !important;}
+.trg-b-banner-block {display: none !important;}
+
+/* Block ads/banners on MirKvartir */
+div.b-map-tgb-container {
+   display: none !important;
+}
+
+/* Outbrain Blocker */
+.ob_container {display: none !important;}
+.ob_holder {display: none !important;}
+.ob_org_header {display: none !important;}
+.ob-pixels {display: none !important;}
+.ob_strip_container {display: none !important;}
+.ob_what {display: none !important;}
+.ob-widget {display: none !important;}
+.ob-widget-header {display: none !important;}
+.ob-widget-section {display: none !important;}
+.ob-widget-items-container {display: none !important;}
