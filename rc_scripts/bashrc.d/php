@@ -5,7 +5,14 @@
 alias phpunit="phpunit"
 alias tphpunit="phpunit --tap"
 
+RHPHP70_PATH="/opt/rh/rh-php70/root/bin/"
+if [ $(echo $PATH | grep -c "${RHPHP70_PATH}") -eq 0 ]; then
+   export PATH="${PATH}:${RHPHP70_PATH}"
+fi
 # set Brew's PHP path ahead of the other PATH elements
 #export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+
 # vi: set filetype=sh shiftwidth=3 tabstop=3
 # конец!
+
+
