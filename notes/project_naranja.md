@@ -16,8 +16,16 @@ For drives greater than 2T:
 
 ### Create the loop-aes loopback mount ###
 
+    sudo losetup -G . -K disk_key.key -e AES256 /dev/loop2 /dev/sde1
+
 ### Add the LVM logical volumes ###
 
+    sudo pvcreate /dev/loop2
+    sudo vgcreate <volume group> /dev/loop2
+    sudo lvcreate -l476931 -nhomevol <volume group>
+
 ### Add the filesystems to the LVM volumes ###
+
+    sudo mkfs.ext4 /dev/<volume group>/homevol
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
