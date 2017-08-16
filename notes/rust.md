@@ -46,21 +46,22 @@ To see the results of expanding macros:
     rustc --pretty expanded
 
 ## 'rustup' Usage ##
+Install a toolchain
+
+    rustup install [stable|beta|nightly]
+
+Set the default installed toolchain to use (assuming you've previously
+installed a toolchain)
+
+    rustup default [stable|beta|nightly]
+
 To show currently installed versions of Rust
 
     rustup show
 
-To switch the default Rust to `nightly`
+To run a single command with a specific Rust toolchain
 
-    rustup default nightly
-
-Installing current `nightly`
-
-    rustup install nightly
-
-To run a single command with a specific Rust version
-
-    rustup run <version> <command>
+    rustup run <toolchain> <command>
 
 Keeping Rust up to date
 
