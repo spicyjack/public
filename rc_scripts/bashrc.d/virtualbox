@@ -1,0 +1,9 @@
+#!/bin/sh
+# .bashrc.d file for VirtualBox
+
+alias vbh="VBoxHeadless"
+alias vbm="VBoxManage"
+alias vbbc="VBoxBalloonCtrl"
+
+# vi: set filetype=sh shiftwidth=3 tabstop=3
+# конец!
