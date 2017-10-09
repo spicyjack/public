@@ -18,8 +18,11 @@ foreach my $line ( <STDIN> ) {
    next if ( $line =~ /^#/ );
    # look for blocks that start with the 'Host' SSH config param
    if ( $line =~ /Host (.*)/i ) {
-      # print out the existing host block, if defined
+      # save the existing host block, if defined
       if ( defined $hostname ) {
+         # warn before overwriting an existing host
+         warn qq(WARNING: Host $hostname exists twice in SSH config\n)
+            if ( exists($hosts{$hostname}) );
          # set up an array for the given hostname key
          $hosts{$hostname} = [ $host_addr, $username ];
       }
@@ -35,6 +38,15 @@ foreach my $line ( <STDIN> ) {
    if ( $line =~ /User (.*)/i ) {
       $username = $1;
    }
+}
+
+# one last check of $hostname
+if ( defined $hostname ) {
+   # warn before overwriting an existing host key
+   warn qq(WARNING: Host $hostname exists twice in SSH config\n)
+      if ( exists($hosts{$hostname}) );
+   # set up an array for the given hostname key
+   $hosts{$hostname} = [ $host_addr, $username ];
 }
 
 foreach my $hostkey ( sort(keys(%hosts)) ) {
