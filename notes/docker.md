@@ -37,6 +37,20 @@ Running things, connecting to running containers
 Running things, deleting image when the command exits
 - `docker run --rm <image>`
 
+Running things in existing running containers
+- `docker exec --tty <image> /bin/echo foo`
+
+Running more complex things
+- `docker exec --tty <image> sh -c "echo 'SHOW DATABASES;' | \
+    /usr/bin/mysql -u root -h 127.0.0.1 --database='mysql'"`
+
+Running a container and piping a file to that container
+- `docker exec --interactive <image> /usr/bin/mysql --user=root \
+    --host=127.0.0.1 --password='changeme' < cora_db_init.sql`
+
+Getting a shell in a running Docker container
+- `docker exec --tty --interactive <image> bash
+
 Docker Images
 - `docker images` - Shows available Docker images that can be launched
 - `docker images -a` - Shows all local Docker images, images that can be
