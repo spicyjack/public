@@ -1,21 +1,22 @@
 ## Ansible Notes ##
 
-Tagged releases: http://ansibleworks.com/releases
+## Module Lists ##
+- http://docs.ansible.com/ansible/latest/modules_by_category.html
+- http://docs.ansible.com/ansible/latest/list_of_all_modules.html
 
-Prerequisites:
-- python-jinja2 python-yaml python-paramiko 
-  - Install with `aptitude` to catch dependencies
+## Howto ##
+Example of running an Ansible command
 
-You can make Debian packages with `make debian` in the source tree.  Currently
-(26Aug2013), this doesn't work.
+    ansible <hosts> ­-module-name=<module>
 
-Instead, check out the git tree, and run:
+Get setup information about hosts
 
-    cp -r packaging/debian ./
-    chmod 755 debian/rules
-    fakeroot debian/rules clean
-    fakeroot dh_install
-    fakeroot debian/rules binary
+    ansible <hosts> --module-name=setup
 
+Connect as one user, run commands as another user
+
+    ansible <hosts> --inventory inventory.ini \
+      --module-name=setup --user=cogmed --ask-pass \
+      --become --become-method=su --ask-become-pass
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
