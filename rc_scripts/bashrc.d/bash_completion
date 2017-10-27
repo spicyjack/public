@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# use the 'bash_completion' scripts, if they are installed
+if [ -f /usr/local/etc/bash_completion ]; then
+   . /usr/local/etc/bash_completion
+fi
