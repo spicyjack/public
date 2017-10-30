@@ -60,7 +60,13 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
     diskutil list
     # find out which device the USB drive is seen as by the OS
     diskutil unmountDisk /dev/<name of whole disk device>
-    sudo cp image.iso /dev/<name of whole disk device>
+    time sudo dd if=image.iso of=/dev/<name of whole disk device> bs=1m
+
+    # example with /dev/disk2:
+    diskutil unmountDisk /dev/disk2
+    time sudo dd if=image.iso of=/dev/rdisk2 bs=1m
+
+http://osxdaily.com/2015/06/05/copy-iso-to-usb-drive-mac-os-x-command/
 
 ## Creating a DMG image from a bootable USB flash disk ##
 - Select the OS X installer volume on the device (OS X up to Yosemite) or the
