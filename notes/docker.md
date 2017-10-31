@@ -49,7 +49,7 @@ Running a container and piping a file to that container
     --host=127.0.0.1 --password='changeme' < cora_db_init.sql`
 
 Getting a shell in a running Docker container
-- `docker exec --tty --interactive <image> bash
+- `docker exec --tty --interactive <image> bash`
 
 Docker Images
 - `docker images` - Shows available Docker images that can be launched
