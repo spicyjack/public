@@ -2,18 +2,23 @@
 
 # run the Jenkins CLI jar file
 function jenkcli {
-    JAVA_BIN=$(which java)
-    if [ "x${JAVA_BIN}" != "x" ]; then
-        $JAVA_BIN -jar ~/bin/jenkins-cli.jar \
-            -s http://localhost:8080/jenkins "$@"
-    else
-        echo "jenkcli: No Java binary installed"
-    fi
+   JAVA_BIN=$(which java)
+   CLI_PATH=~jenkins/.jenkins/war/WEB-INF/jenkins-cli.jar
+   if [ "x${JAVA_BIN}" != "x" ]; then
+      echo "jenkcli: No Java binary installed"
+      return 1
+   fi
+   if [ ! -f $CLI_PATH ]; then
+      echo "jenkcli: 'jenkins-cli.jar' not found"
+      return 1
+   fi
+
+   $JAVA_BIN -jar $CLI_PATH -s http://localhost:8080/jenkins "$@"
 }
 
 # run a command as the 'jenkins' user
 function jenksudo {
-    sudo -u jenkins $*
+   sudo -u jenkins $*
 }
 
 # vi: set ft=sh sw=4 ts=4
