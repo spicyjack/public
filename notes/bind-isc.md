@@ -32,12 +32,25 @@ Options:
 - `-j`: When loading a zonefile, read the journal, if it exists
 
 ## Fun 'rndc' commands ##
+Reload BIND
 
     rndc reload
+
+Get BIND stats
+
     rndc stats
+
+Get BIND status
+
     rndc status
+
+Get a list of TSIG keys
+
     rndc tsig-list
-    rndc zonestatus
+
+Get the status of zones in BIND
+
+    rndc zonestatus <zone>
 
 ## Generate TSIG keys ##
 
