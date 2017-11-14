@@ -153,12 +153,14 @@ EXEC 01;32
 .faq    00;33 # faq's
 .htm    00;33
 .html   00;33 # html files
+.ini    00;33 # 2017-11-13 - INI-style configs
 .json   00;33 # 2016-03-08 - https://en.wikipedia.org/wiki/JSON
 .log    00;33 # log files
 .md     00;33 # Markdown; http://daringfireball.net/projects/markdown/syntax
 .pu     00;33 # 2016-02-16 - PlantUML; http://plantuml.com/
 .sgml   00;33 # sgml files 2001-10-17
 .sql    00;33 # SQL data files
+.toml   00;33 # 2017-11-13 - TOML - https://github.com/toml-lang/toml
 .txt    00;33 # added 1999-05-11
 .yaml   00;33 # YAML: http://yaml.org/spec/1.2/spec.html
 .yml    00;33 # http://en.wikipedia.org/wiki/YAML
