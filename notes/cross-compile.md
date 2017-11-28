@@ -1,6 +1,7 @@
 # Cross-Compiling Notes #
 
 - http://crosstool-ng.org/
+- http://crosstool-ng.org/download/crosstool-ng/
 
 ## Todos ##
 - Set up a cross-compiler
