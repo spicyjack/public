@@ -4,6 +4,7 @@
 
 # vmrun; start/stop VMs
 alias vmrun='/Applications/VMware\ Fusion.app/Contents/Library/vmrun'
+alias ovftool='/Applications/VMware\ Fusion.app/Contents/Library/VMware\ OVF\ Tool/ovftool'
 
 # function that actually runs 'vmnet-cli'
 function _vmnet_run_cmd {
