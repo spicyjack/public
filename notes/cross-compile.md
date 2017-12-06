@@ -17,16 +17,21 @@
 ## Installation ##
 Package dependencies:
 
-    gperf bison flex libtool automake libncurses5-dev libncursesw5-dev
+    sudo apt-get install gperf bison flex libtool automake \
+      libncurses5-dev libncursesw5-dev help2man
 
 Installation:
-- Unpack: `tar -jxvf crosstool-ng-1.X.X`
-- `./configure --prefix=/path/to/stow`
-- `time make`
-- `sudo make install`
-- `sudo stow -v crosstool-ng-1.X.X`
+
+    tar -jxvf crosstool-ng-1.X.X
+    ./configure --prefix=/path/to/stow
+    time make
+    sudo make install
+    sudo stow -v crosstool-ng-1.X.X
 
 ## Running Crosstool ##
+All commands need to be run from the `~/.ct-ng` directory (by default).  If
+that directory doesn't exist, then create it.
+
 - Get help with commands
   - `ct-ng help`
 - List all of the possible architectures that can be built
@@ -36,10 +41,9 @@ Installation:
 - Select a specific sample (which can be customized)
   - `ct-ng <sample name>`
 
-To modify existing environments, you need to `cd` to the directory where the
-`.config` files are stored.  Usually, this means `~/.ct-ng`.  If you don't
-have any configs stored, pull them out of Git
-(`lack-projects.git/lack/buildroot/crosstool-ng.config`)
+If you don't have any configs stored, you can pull some out of Git:
+
+    lack/projects.git/[arm|powerpc]lack/configs/crosstool-ng.config
 
 - Customize an existing sample using a menu of options (like the Linux kernel)
   - `ct-ng menuconfig`
