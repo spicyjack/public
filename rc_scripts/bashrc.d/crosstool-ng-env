@@ -2,8 +2,8 @@
 
 # environment variables for the product of crosstool-ng
 ADDITIONAL_PATHS="
-    /home/cross/armv6-lack_rpi-linux-gnueabi/bin
-    /home/cross/powerpc-lack-linux-gnu/bin
+    /home/cross/armv7-rpi2-linux-gnueabihf/bin
+    /home/cross/armv8-rpi3-linux-gnueabihf/bin
 " # ADDITIONAL_PATHS
 for ADDPATH in $(echo ${ADDITIONAL_PATHS});
 do
