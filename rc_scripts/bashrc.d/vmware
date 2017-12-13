@@ -3,16 +3,16 @@
 # aliases/functions/environment variables for VMware
 
 # vmrun; start/stop VMs
-export VMWARE_LIB_DIR="/Applications/VMware\ Fusion.app/Contents/Library"
-alias vmrun="${VMWARE_LIB_DIR}/vmrun"
-alias ovftool="${VMWARE_LIB_DIR}/VMware\ OVF\ Tool/ovftool"
+export VMWARE_LIB_DIR="/Applications/VMware Fusion.app/Contents/Library"
+alias vmrun="'${VMWARE_LIB_DIR}/vmrun'"
+alias ovftool="'${VMWARE_LIB_DIR}/VMware OVF Tool/ovftool'"
 
 # function that actually runs 'vmnet-cli'
 function _vmnet_run_cmd {
    local VMNET_ARG="$1"
    echo "-> Running 'vmnet-cli $1';"
    echo "-> Enter SUDO password if prompted for 'vmnet-cli' command;"
-   sudo ${VMWARE_LIB_DIR}/vmnet-bin $VMNET_ARG
+   sudo "${VMWARE_LIB_DIR}/vmnet-cli" $VMNET_ARG
    local EXIT_STATUS=$?
    return $EXIT_STATUS
 }
