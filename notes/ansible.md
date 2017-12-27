@@ -13,6 +13,10 @@ Get setup information about hosts
 
     ansible <hosts> --module-name=setup
 
+Ping all of the hosts in the inventory
+
+    ansible <hosts> --inventory inventory.ini --module-name=ping
+
 Connect as one user, run commands as another user
 
     ansible <hosts> --inventory inventory.ini \
