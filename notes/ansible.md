@@ -47,7 +47,7 @@ Get the `umask`
     ansible all_vms --inventory inventory.ini \
       --module-name shell --args "umask"
 
-- Get a list of `python-*` packages on a given host
+Get a list of `python-*` packages on a given host
 
 
     # Debian/Buntu - 'python-apt' is required
@@ -58,7 +58,7 @@ Get the `umask`
     ansible fedora_vms --inventory inventory.ini \
         --module-name shell --args "rpm -qa | grep python | sort"
 
-- Create a directory as `root` on a remote host
+Create a directory as `root` on a remote host
 
 
     ansible all_vms --inventory inventory.ini \
@@ -66,7 +66,7 @@ Get the `umask`
       --become --become-method=su --ask-become-pass \
       --args "dest=/root/.ssh mode=700 state=directory"
 
-- Copy a file on a remote host
+Copy a file on a remote host
 
 
     ansible all_vms --inventory inventory.ini \
@@ -74,7 +74,7 @@ Get the `umask`
       --become --become-method=su --ask-become-pass \
       --args "cp ~username/.ssh/authorized_keys /root/.ssh/authorized_keys"
 
-- Change file ownership of a file on the remote host
+Change file ownership of a file on the remote host
 
 
     ansible all_vms --inventory inventory.ini --ask-pass \
@@ -86,14 +86,14 @@ Get the `umask`
       --become --become-method=su --ask-become-pass \
       --args "chmod 600 /root/.ssh/authorized_keys"
 
-- Verify the `/root` directory on a remote host
+Verify the `/root` directory on a remote host
 
 
     ansible all_vms --inventory inventory.ini \
       --become --become-method=su --ask-become-pass \
       --module-name shell --args "ls -laR /root"
 
-- Power off all machines
+Power off all machines
 
 
     ansible all_vms --inventory inventory.ini \
