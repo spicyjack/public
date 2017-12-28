@@ -71,6 +71,14 @@ Keeping `rustup` up to date
 
     rustup self update
 
+Showing available toolchain targets
+
+    rustup target list
+
+Adding a new toolchain target
+
+    rustup target add <target toolchain quad identifier>
+
 Installing `rustup`
 
     curl https://sh.rustup.rs -sSf | sh
