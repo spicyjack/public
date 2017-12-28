@@ -60,7 +60,8 @@ set_ps1 () {
         PS1_USER="[${C_CYAN}\u\[\e[0m\]"
     fi
     ### Show Git status
-    PS1_GIT_STATUS=$(__git_ps1 "%s")
+    # redirect any warnings to /dev/null
+    PS1_GIT_STATUS=$(__git_ps1 "%s" 2>/dev/null)
     if [ "x${PS1_GIT_STATUS}" != "x" ]; then
         # default status; no changes, green color
         GIT_STATUS=$C_GREEN
