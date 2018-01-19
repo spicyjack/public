@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Debian-specific shell aliases/functions
-alias dpkg-l='dpkg-query --show --showformat="  ${binary:Package;-40}${Version}\n"'
+alias dpkg-l="dpkg-query --show --showformat='  ${binary:Package;-40}${Version}\n'"
