@@ -153,6 +153,37 @@ view it
     ProxyPass /grafana http://localhost:3000
     ProxyPassReverse /grafana http://localhost:3000
 
-    # Add stuff from Graphite via the Graphana UI
+Add a data source to Grafana
+- Click the "Grafana" symbol -> Data Sources
+  - Click "+ Add data source"
+  - "Name" - give your data source a name
+  - "Type" - Graphite
+  - "URL" 
+    - If you're connecting to the Graphite port
+      - http://localhost:<Graphite port>
+    - If you're connecting via a proxy
+      - http://localhost:<webserver port>/<proxy path>
+  - Click the "Add" button
+    - The data source will be tested to verify that Grafana can connect to it
+
+Add a dashboard to Grafana
+- Click the "Grafana" symbol -> Dashboards -> "+ New"
+- Choose what panels you want to add to your dashboard
+  - Example: Graph
+- For the panel you added, click on it's title
+  - An "Edit" menu should pop up, click it
+    - You will be in the "Metrics" tab of the panel
+  - Data Source: "default"
+  - You can click on "select metric" to browse available metrics
+  - Customizing your new panel
+    - The "General" tab has the panel's title and dimensions
+    - The "Axes" tab lets you customize the units and labels
+    - The "Legend" tab lets you customize the legends of the graph
+    - The "Display" tab lets you customize how your data is displayed (points,
+      lines, bars, fill opacity, line widths, etc)
+- You can export the dashboard's JSON description by choosing the "Share" icon
+  at the top of the dashboard
+- There's an option to import a dashboard JSON description under "Grafana"
+  symbol -> Dashboards -> Import
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
