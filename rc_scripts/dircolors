@@ -145,7 +145,7 @@ EXEC 01;32
 .pem    40;31 # PEM encoded encryption keys
 .pub    40;31 # SSH public keys
 # plain text files
-.dns    00;33 # 2018-02-02 - reverse DNS zones
+.arpa   00;33 # 2018-02-02 - reverse DNS zones
 .cfg    00;33 # configuration files
 .conf   00;33 # configuration files
 .csv    00;33 # "Comma Separated Value" files; 2017-03-07
