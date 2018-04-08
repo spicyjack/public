@@ -140,10 +140,22 @@ lessxxd () {
     _fetchview "cat" "xxd" "xxd" "$URL"
 }
 
-# run VIM in "less" mode
+# run VIM in "less" mode, reading from STDIN
+# NOTE: '--cmd' is different than '-c'
 vimless () {
     local VIM_CMD=$(which vim)
     $VIM_CMD --cmd 'let no_plugin_maps = 1' -c 'runtime! macros/less.vim' -
+}
+
+# run VIM in "less" mode, with syntax highlighting, reading from a file
+vless () {
+    local VIM_CMD=$(which vim)
+    local FILENAME=$1
+    if [ ! -f $FILENAME ]; then
+       echo "Usage: vless <filename>"
+       exit 1
+    fi
+    $VIM_CMD -R -c 'runtime! macros/less.vim' $FILENAME
 }
 
 # view the output of 'set' in VIM with syntax highlighting
