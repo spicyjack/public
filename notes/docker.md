@@ -49,7 +49,14 @@ Running a container and piping a file to that container
     --host=127.0.0.1 --password='changeme' < cora_db_init.sql`
 
 Getting a shell in a running Docker container
-- `docker exec --tty --interactive <image> bash`
+- `docker exec --tty --interactive [<container name>|<container ID>] bash`
+
+Getting info about a running Docker container, or about a Docker image
+- `docker inspect [<container ID>|<container name>|<image name>]`
+
+Filtering the output of `docker inspect` (via `jq`)
+- Note: requires having the `jq` binary installed
+- `docker inspect <container [ID|name]> | jq '.[] | {"Mounts"}'`
 
 Docker Images
 - `docker images` - Shows available Docker images that can be launched
