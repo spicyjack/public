@@ -58,6 +58,9 @@ Filtering the output of `docker inspect` (via `jq`)
 - Note: requires having the `jq` binary installed
 - `docker inspect <container [ID|name]> | jq '.[] | {"Mounts"}'`
 
+Stopping a container
+- `docker stop <image name>`
+
 Docker Images
 - `docker images` - Shows available Docker images that can be launched
 - `docker images -a` - Shows all local Docker images, images that can be
