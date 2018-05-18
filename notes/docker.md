@@ -26,6 +26,8 @@ _Homebrew_
 Docker info
 - `docker info` - Shows info about Docker on the host system
 - `docker ps` - List running images
+- `docker ps --all` - List *all* running images, including images that aren't
+  currently running
 
 Running things, connecting to running containers
 - `docker run <image>:<version> <command> <arguments>` - Launches a
