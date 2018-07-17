@@ -1,10 +1,21 @@
 # One-liners #
 One-liners, or mini-programs that can be used to do things.
 
+2018-07-16
+- Change the URLs of Git repos in a common directory
+
+
+    for CFG_FILE in $(find . -name config | grep .git/config); do \
+      if [ $(grep -c 'ssh://user@git.example.com' $CFG_FILE) -gt 0 ]; then \
+        echo "Updating ${CFG_FILE}"; \
+        gsed -i 's!ssh://user@git\.example\.com!gnome:!' $CFG_FILE; fi; done
+
 2016-03-08
 - One-liner to concat a bunch of text files into one output file
-  - `for FILE in rex.*.txt; do echo "Filename: ${FILE}" >> tasklist.txt;
-    cat$FILE >> tasklist.txt; echo -e "\n" >> tasklist.txt; done`
+
+
+    for FILE in rex.*.txt; do echo "Filename: ${FILE}" >> tasklist.txt;
+    cat $FILE >> tasklist.txt; echo -e "\n" >> tasklist.txt; done`
 
 2015-09-03
 - Grep a list of files output from the `find` command
