@@ -1,0 +1,3 @@
+--langdef=ObjectiveC
+--langmap=ObjectiveC:.m.h
+--language-force=ObjectiveC
