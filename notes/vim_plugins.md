@@ -33,6 +33,12 @@ To add a new submodule
 - `git submodule add https://example.com/repo.git`
 - `git commmit`
 
+To initialize a submodule on a new host that was originally added on a
+different host
+- `cd ~/.vim/bundle/<submodule name>`
+- `git submodule init`
+- `git submodule update`
+
 Updating all submodules
 - `cd ~/.vim/bundle`
 - `git submodule update` or `git submodule update --remote` depending on which
