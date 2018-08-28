@@ -34,7 +34,7 @@ To add a new submodule
 - `git commmit`
 
 To initialize a submodule on a new host that was originally added on a
-different host
+different host (https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 - `cd ~/.vim/bundle/<submodule name>`
 - `git submodule init`
 - `git submodule update`
