@@ -174,10 +174,11 @@ EXEC 01;32
 .odp    01;33 # openoffice presentation files
 .ods    01;33 # openoffice spreadsheets
 .odt    01;33 # openoffice text files
-.pdf    01;33 # Acrobat files
+.pdf    00;33 # Acrobat files
 .ppt    01;33 # powerpoint files
 .ps     01;33 # PostScript files
 .reg    01;33 # 2014-09-02 - Windows Registry files
+.rtf    00;33 # 2018-09-11 - Rich Text Format files
 .sxc    01;33 # staroffice spreadsheets
 .sxd    00;33 # staroffice write files
 .sxw    01;33 # staroffice write files
