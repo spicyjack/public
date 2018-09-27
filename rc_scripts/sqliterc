@@ -1,3 +1,7 @@
 .headers on
+-- 'column' is "formatted columns"
 -- .mode column
-.mode line
+-- 'line' is "one column per line"
+-- .mode line
+-- 'list' is "one row of data per line"
+.mode list
