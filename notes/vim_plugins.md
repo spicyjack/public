@@ -15,7 +15,7 @@ Automates setup of VIM plugins cloned into `~/.vim/bundle`
 To install Pathogen:
   - `mkdir -p ~/.vim/autoload ~/.vim/bundle`
   - `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
-- To install new VIM plugins, clone the Git repo into `~/.vim/bundle`, witout
+- To install new VIM plugins, clone the Git repo into `~/.vim/bundle`, without
   the `*.git` extension
 - Pathogen will automatically set up links from the files in the
 `~/.vim/bundle` directory to the correct VIM directories
