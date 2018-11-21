@@ -12,7 +12,20 @@ functioning correctly:
 
 Same search, remote host
 
-    ldapsearch -x -b '' -s base '(objectclass=\*)' namingContexts
+    ldapsearch -H ldap://ldap.example.com \
+      -x -b '' -s base '(objectClass=*)' namingContexts
+
+Same search, remote host, using a 'binddn' user and password in a file
+
+		# write the password to a file
+		echo -n "foobarbaz" > ~/creds/example.query_user.pass_only.txt
+		chmod 600 ~/creds/example.query_user.pass_only.txt
+
+		# run the search
+		ldapsearch -H ldap://ldap.example.com \
+      -D 'query_user@example.com' \
+      -y ~/creds/example.query_user.pass_only.txt \
+      -x -b '' -s base '(objectClass=*)' namingContexts
 
 ### ldapsearch options ###
 - `-x` - Simple auth, not SASL auth
@@ -86,28 +99,5 @@ to:
       local4.none -/var/log/debug
 
 Restart `rsyslog` for your changes to take effect.
-
-## Installing the MacPorts openldap daemon ##
-- launchctl and !MacPorts - http://tinyurl.com/6benazm
-- http://old.nabble.com/Problems-with-startup-on-OpenLDAP-td23262775.html
-
-- Install openldap via macports
-- Create the directory `/opt/local/var/run/slapd`, and change ownership of
-  that directory so it's owned by user `ldap`
-- Make a copy of the sample config file
-  `/opt/local/etc/openldap/slapd.conf.sample`, and make the following changes
-  - `pidfile` should be `/opt/local/var/run/slapd/slapd.pid`
-  - `argsfile` should be `/opt/local/var/run/slapd/slapd.args`
-  - Change the `suffix` and `rootdn` to match the domain that this copy of
-    `slapd` will be used with
-  - `directory` should be `/opt/local/var/run/openldap-data`
-
-## Starting MacPorts OpenLDAP daemon ##
-
-    sudo port load openldap
-
-## Stopping Macports OpenLDAP daemon ##
-
-    sudo port unload openldap
 
 # vim: filetype=markdown tabstop=2
