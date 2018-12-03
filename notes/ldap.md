@@ -17,15 +17,53 @@ Same search, remote host
 
 Same search, remote host, using a 'binddn' user and password in a file
 
-		# write the password to a file
-		echo -n "foobarbaz" > ~/creds/example.query_user.pass_only.txt
-		chmod 600 ~/creds/example.query_user.pass_only.txt
+    # write the password to a file
+    echo -n "foobarbaz" > ~/creds/example.query_user.pass_only.txt
+    chmod 600 ~/creds/example.query_user.pass_only.txt
 
-		# run the search
-		ldapsearch -H ldap://ldap.example.com \
+    # run the search
+    ldapsearch -H ldap://ldap.example.com \
       -D 'query_user@example.com' \
       -y ~/creds/example.query_user.pass_only.txt \
       -x -b '' -s base '(objectClass=*)' namingContexts
+
+
+## Active Directory LDAP Queries ##
+List all catalogs in the global directory
+
+    ldapsearch -H ldap://ldap.example.com \
+      -D 'query_user@example.com' \
+      -y ~/creds/example.query_user.pass_only.txt \
+      -x -b '' -s base '(objectClass=*)' namingContexts
+
+List all entries in the 'Users' OU
+
+    ldapsearch -H ldap://ldap.example.com \
+      -D 'query_user@example.com' \
+      -y ~/creds/example.query_user.pass_only.txt \
+      -x \
+      -b 'ou=Users,ou=DOMAIN,dc=example,dc=com' \
+      -s sub '(objectClass=*)' namingContexts
+
+List all entries in the 'Computers' OU
+
+    ldapsearch -H ldap://ldap.example.com \
+      -D 'query_user@example.com' \
+      -y ~/creds/example.query_user.pass_only.txt \
+      -x \
+      -b 'ou=Computers,ou=DOMAIN,dc=example,dc=com' \
+      -s sub '(objectClass=*)' namingContexts
+
+
+List all users that have their accounts disabled
+
+    ldapsearch -H ldap://ldap.example.com \
+      -D 'query_user@example.com' \
+      -y ~/creds/example.query_user.pass_only.txt \
+      -x \
+      -b 'ou=Users,ou=DOMAIN,dc=example,dc=com' \
+      -s sub \
+      '(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))' namingContexts
 
 ### ldapsearch options ###
 - `-x` - Simple auth, not SASL auth
