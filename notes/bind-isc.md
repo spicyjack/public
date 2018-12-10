@@ -53,6 +53,7 @@ Get the status of zones in BIND
     rndc zonestatus <zone>
 
 ## Generate TSIG keys ##
+You can create TSIG keys using `tsig-keygen`, if it's available on the machine
 
     /usr/sbin/tsig-keygen -a hmac-sha512 pq-lg.2017-11-02 \
       | sudo tee /etc/bind/key.pq-lg.2017-11-02
@@ -60,7 +61,7 @@ Get the status of zones in BIND
     /usr/sbin/tsig-keygen -a hmac-sha512 rndc-key \
       | sudo tee /etc/bind/rndc.key
 
-## Creating DNSSEC keys ##
+You can also use `dnssec-keygen` to generate TSIG keys
 
     sudo dnssec-keygen -a hmac-md5 -b 512 -n HOST lg-oc
 
@@ -68,10 +69,11 @@ Get the status of zones in BIND
 - `-b` - number of key bits
 - `-n` - key type
 - See `dnssec-keygen` manpage for a list of valid bit sizes and key types
-- Create a new shared secret file using `tsig-keygen` on both machines.  The
-  contents the shared secret file consists of the "Key:" string from the
-  \*.private file, along with a description of the key format.  The new key
-  file should look something like this:
+
+Create a new TЅIG shared secret file on both machines.  The contents the
+shared secret file consists of the "Key:" string from the \*.private file,
+along with a description of the key format.  The new key file should look
+something like this:
 
 
     key host1-host2 {
