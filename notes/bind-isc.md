@@ -63,17 +63,20 @@ You can create TSIG keys using `tsig-keygen`, if it's available on the machine
 
 You can also use `dnssec-keygen` to generate TSIG keys
 
-    sudo dnssec-keygen -a hmac-md5 -b 512 -n HOST lg-oc
+    sudo dnssec-keygen -a hmac-md5 -b 512 -n HOST -K /target/dir <keyname>
 
 - `-a` - algorithm type
 - `-b` - number of key bits
 - `-n` - key type
 - See `dnssec-keygen` manpage for a list of valid bit sizes and key types
 
-Create a new TЅIG shared secret file on both machines.  The contents the
-shared secret file consists of the "Key:" string from the \*.private file,
-along with a description of the key format.  The new key file should look
-something like this:
+From the files output by the `dnssec-keygen` command, create a BIND DNS config
+file snippet that contains the "key" directive.  The contents the "key"
+directive snippet file consists of the "Key" and "Algorithm" strings from the
+`dnssec-keygen` `*.private` file, along with a description of the key format,
+formatted as a "key" directive would be in a BIND configuration file
+(`named.conf` and friends).  The new "key" snippet file should look something
+like this:
 
 
     key host1-host2 {
@@ -81,5 +84,9 @@ something like this:
       secret "La/E5CjG9O+os1jq0a2jdA==";
     };
 
+Copy the TSIG shared secret file to the two machines that will be using it to
+authenticate with each other, and add the TSIG shared secret file to the BIND
+configuration files as needed (server-wide, or per zone where the shared
+secret will be used)
 
 # vim: filetype=markdown shiftwidth=2 tabstop=2
