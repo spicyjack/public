@@ -5,6 +5,10 @@
 - http://docs.ansible.com/ansible/latest/list_of_all_modules.html
 
 ## Howto ##
+Listing what hosts would be interacted with for a given command
+
+    anѕible <hosts> --list-hosts
+
 Example of running an Ansible command
 
     ansible <hosts> ­-module-name=<module>
