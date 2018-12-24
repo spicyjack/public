@@ -28,3 +28,5 @@ for SIZE in 32 64 256 512 1024; do
    sips -z $SIZE $SIZE $ORIGINAL_ICON \
       --out icon_$(expr $SIZE / 2)x$(expr $SIZE / 2)x2.png
 done
+
+# vi: set filetype=sh shiftwidth=3 tabstop=3
