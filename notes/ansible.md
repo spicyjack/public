@@ -17,6 +17,10 @@ Get setup information about hosts
 
     ansible <hosts> --module-name=setup
 
+Get local facts from hosts
+
+    ansible <hosts> --module-name=setup --args 'filter=ansible_local'
+
 Ping all of the hosts in the inventory
 
     ansible <hosts> --inventory inventory.ini --module-name=ping
