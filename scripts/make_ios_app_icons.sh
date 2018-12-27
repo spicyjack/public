@@ -36,20 +36,20 @@ fi
 
 # format: <pixel_size>:<format_name>
 ICON_SPECS="
-   180:iPhone.App.3x
-   120:iPhone.App.2x
-   167:iPadPro.App.2x
-   152:iPad.App.2x
-   1024:AppStore.App.1x
-   120:iPhone.Spotlight.3x
-   80:iPhone.Spotlight.2x
-   80:iPad.Spotlight.2x
-   87:iPhone.Settings.3x
-   58:iPhone.Settings.2x
-   58:iPad.Settings.2x
-   60:iPhone.Notification.3x
-   40:iPhone.Notification.2x
-   40:iPad.Notification.2x
+   180:App.iPhone.3x
+   120:App.iPhone.2x
+   167:App.iPadPro.2x
+   152:App.iPad.2x
+   1024:App.AppStore.1x
+   120:Spotlight.iPhone.3x
+   80:Spotlight.iPhone.2x
+   80:Spotlight.iPad.2x
+   87:Settings.iPhone.3x
+   58:Settings.iPhone.2x
+   58:Settings.iPad.2x
+   60:Notification.iPhone.3x
+   40:Notification.iPhone.2x
+   40:Notification.iPad.2x
 " # ICON_SPECS
 
 echo "Original file: ${ORIGINAL_ICON}"
@@ -61,10 +61,10 @@ for ICON_SPEC in $(echo $ICON_SPECS); do
    echo "-> ${ICON_NAME}.${ICON_SIZE}.${ICON_TYPE}.png"
    if [ $FOUND_BIN = "sips" ]; then
       sips -z $ICON_SIZE $ICON_SIZE $ORIGINAL_ICON \
-         --out ${ICON_NAME}.${ICON_SIZE}.${ICON_TYPE}.png
+         --out ${ICON_NAME}.${ICON_TYPE}.${ICON_SIZE}.png
    elif [ $FOUND_BIN = "convert" ]; then
       convert -resize $ICON_SIZE $ORIGINAL_ICON \
-         ${ICON_NAME}.${ICON_SIZE}.${ICON_TYPE}.png
+         ${ICON_NAME}.${ICON_TYPE}.${ICON_SIZE}.png
    else
       echo "ERROR: unknown image converter '${FOUND_BIN}'"
    fi
