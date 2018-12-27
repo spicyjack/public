@@ -40,13 +40,17 @@ ICON_SPECS="
    120:App.iPhone.2x
    167:App.iPadPro.2x
    152:App.iPad.2x
+   60:App.iPhone.1x
+   72:App.iPad.1x
    1024:App.AppStore.1x
    120:Spotlight.iPhone.3x
    80:Spotlight.iPhone.2x
    80:Spotlight.iPad.2x
+   40:Spotlight.iPhone_iPad.1x
    87:Settings.iPhone.3x
    58:Settings.iPhone.2x
    58:Settings.iPad.2x
+   29:Settings.iPhone_iPad.1x
    60:Notification.iPhone.3x
    40:Notification.iPhone.2x
    40:Notification.iPad.2x
