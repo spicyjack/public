@@ -41,7 +41,7 @@ ICON_SPECS="
    167:App.iPadPro.2x
    152:App.iPad.2x
    60:App.iPhone.1x
-   72:App.iPad.1x
+   76:App.iPad.1x
    1024:App.AppStore.1x
    60:Notification.iPhone.3x
    40:Notification.iPhone.2x
