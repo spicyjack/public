@@ -1,6 +1,5 @@
 *.swp
 .DS_Store
-contents.xcworkspacedata
 # Xcode
 build/*
 *.pbxuser
@@ -11,7 +10,6 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
 !default.xcworkspace
 xcuserdata
 profile
