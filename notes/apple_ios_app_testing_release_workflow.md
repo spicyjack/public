@@ -1,3 +1,6 @@
+2019-01-29: Note that these instructions are old, Xcode does all of this stuff
+for you now.
+
 ## Links ##
 - Older phone firmware - http://ios.e-lite.org/
 - Restoring multiple iOS devices - http://tinyurl.com/3qct7er
