@@ -149,21 +149,28 @@ vimless () {
 
 # run VIM in "less" mode, with syntax highlighting, reading from a file
 vless () {
-    local VIM_CMD=$(which vim)
-    local FILENAME="$1"
-    if [ "x${FILENAME}" = "x" ]; then
-       echo "Usage: vless <filename>"
-       return
-    fi
-    if [ ! -f $FILENAME ]; then
-       echo "Error: '${FILENAME}' not found"
-       return
-    fi
-    $VIM_CMD -R -c 'runtime! macros/less.vim' $FILENAME
+   local VIM_CMD=$(which vim)
+   local FILENAME="$1"
+   local CALLED_AS=$2
+
+   if [ "x${CALLED_AS}" != "x" ]; then
+      FUNC_NAME=$CALLED_AS
+   else
+      FUNC_NAME=$FUNCNAME
+   fi
+   if [ "x${FILENAME}" = "x" ]; then
+      echo "Usage: ${FUNC_NAME} <filename>"
+      return
+   fi
+   if [ ! -f $FILENAME ]; then
+      echo "Error: '${FILENAME}' not found"
+      return
+   fi
+   $VIM_CMD -R -c 'runtime! macros/less.vim' $FILENAME
 }
 # alias of the above function
 vimr () {
-   vless "$1"
+   vless "$1" "vimr"
 }
 
 # view the output of 'set' in VIM with syntax highlighting
