@@ -1,0 +1,20 @@
+# VIM swap files
+*.swp
+# Mac metadata files
+.DS_Store
+
+# Python/Flask stuff
+venv/
+
+*.pyc
+__pycache__/
+
+instance/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
