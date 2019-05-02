@@ -1,26 +1,6 @@
 # Virtual Machine Setup #
 
-What to put on your virtual machine after you set it up.  See also
-`notes/qemu/host_setup.md`.
-
-## Installing Debian ##
-- Create a normal user during the Debian install process
-- Add SSH Server in tasksel
-
-## Things to set up ##
-- GRUB splashscreen image
-  - URL:
-  - what does the filename need to be?
-  - where should the file be located?
-- config files
-  - bashrc.d
-  - vimrc
-  - dircolors
-- Install any extra packages
-
-
-    locales loop-aes-utils less bzip2 lvm2 vim-nox screen
-    git zip sudo linuxlogo
+Moved to various files inside of `host_setup_docs.git`
 
 ### Done ###
 - 2015-02-10 - Add 'lack' to 'sudo' group in /etc/group
