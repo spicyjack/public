@@ -11,6 +11,10 @@ Installation
 - https://docs.mongodb.com/manual/tutorial/expand-replica-set/
 
 Usage
+- https://docs.mongodb.com/manual/reference/operator/
+- https://docs.mongodb.com/manual/reference/operator/query/
+- https://docs.mongodb.com/manual/reference/command/
+- https://www.mongodb.com/collateral/quick-reference-cards
 
 ## Mongo Basics ##
 Current database
