@@ -35,6 +35,10 @@ GDB
   - https://github.com/yudai/gotty
 
 ## The Discovery Book ##
+This book is an introductory course on microcontroller-based embedded systems
+that uses Rust as the teaching language rather than the usual C/C++.  The book
+uses the STM32F3DISCOVERY board for all demos and code examples.
+
 Software for all platforms
 - `rustc`
   - `rustc -V`, version should be 1.31.0 or greater
