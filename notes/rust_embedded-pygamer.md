@@ -28,6 +28,21 @@ GDB
   - https://github.com/cyrus-and/gdb-dashboard/issues/81
   - https://github.com/yudai/gotty
 
+## PyGamer Usage Notes ##
+The _PyGamer_ device has an `on/off` switch, and a `reset` switch.  To restart
+the currently loaded program, press the `reset` switch once.  To reset the
+device and get it ready to load a new program, press the `reset` switch twice
+in succession, similar to a double-mouse click on a computer.  Once the
+bootloader loads, you will see the "program load" graphic on the display, and
+the USB flashing device will be available to the host system.
+
+If you have a battery connected to the _PyGamer_ device, you can connect and
+disconnect the USB cable to the host computer or USB hub/charger as needed,
+the device will automatically switch between power sources.
+
+When you are done using the _PyGamer_ device, you can use the `on/off` switch
+to shut the device off.
+
 ## Rust Setup ##
 Software for all platforms
 - `rustc`
