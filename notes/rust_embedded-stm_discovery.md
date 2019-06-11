@@ -1,0 +1,193 @@
+# The Discovery Book #
+
+See also `rust-embedded.md` in this directory.
+
+## Links ##
+https://docs.rust-embedded.org/discovery/index.html
+- Repo
+  - https://github.com/rust-embedded/discovery
+- ST Docs
+  - STM32F3DISCOVERY User Manual -
+    http://www.st.com/resource/en/user_manual/dm00063382.pdf
+  - STM32F303VC Datasheet -
+    http://www.st.com/resource/en/datasheet/stm32f303vc.pdf
+  - STM32F303VC Reference Manual -
+    http://www.st.com/resource/en/reference_manual/dm00043574.pdf
+
+## About the book ##
+This book is an introductory course on microcontroller-based embedded systems
+that uses Rust as the teaching language rather than the usual C/C++.  The book
+uses the STM32F3DISCOVERY board for all demos and code examples.
+
+## Rust Setup ##
+Software for all platforms
+- `rustc`
+  - `rustc -V`, version should be 1.31.0 or greater
+- `itmdump` 
+  - `cargo install itm --vers 0.3.1`
+  - `itmdump -V`
+- `cargo-binutils`
+  - `rustup component add llvm-tools-preview`
+  - `cargo install cargo-binutils --vers 0.1.4`
+  - `cargo size -- -version`
+- Download the standard libraries for `thumbv7em-none-eabihf` (Cortex-M4F)
+  - `rustup target add thumbv7em-none-eabihf`
+  - Other ARM Cortex chipsets
+    - https://docs.rust-embedded.org/discovery/05-led-roulette/build-it.html#build-it
+    - `thumbv6m-none-eabi`, for the Cortex-M0 and Cortex-M1 processors
+    - `thumbv7m-none-eabi`, for the Cortex-M3 processor
+    - `thumbv7em-none-eabi`, for the Cortex-M4 and Cortex-M7 processors
+    - `thumbv7em-none-eabihf`, for the **Cortex-M4F** and **Cortex-M7F**
+      processors
+
+## macOS Setup ##
+- `brew install armmbed/formulae/arm-none-eabi-gcc`
+- `brew install minicom openocd`
+
+## Verifying connection to the board ##
+- Plug in the USB cable to the "USB ST-LINK" USB port
+- Run `openocd`
+
+
+    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
+
+- You should see _OpenOCD_ debug info about the target board in the _OpenOCD_
+  output
+- _OpenOCD_ will block the terminal while it is running
+
+## Basic Build & Deploy Workflow ##
+Build the binary (see also optional setup in _GDB Survival Guide_ below)
+
+    cd source_dir.git
+    cargo build --target thumbv7em-none-eabihf
+
+To set up debugging, in a different terminal, run...
+
+    cd /tmp
+    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
+
+Now in the original terminal run...
+
+    gdb -q target/thumbv7em-none-eabihf/debug/program_name
+    run
+
+
+## Building the `05-led-roulette` demo ##
+Build the binary (see also optional setup in _GDB Survival Guide_ below)
+
+    cd stm-discovery.git/src/05-led-roulette
+    cargo build
+
+Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
+
+    file target/thumbv7em-none-eabihf/debug/led-roulette
+    arm-none-eabi-readelf \
+        -h target/thumbv7em-none-eabihf/debug/led-roulette
+    cargo readobj --target thumbv7em-none-eabihf --bin led-roulette \
+      -- -file-headers
+
+
+(Optional) You can add a `.gdbinit` file the directory that you run `gdb` from
+in order to give `gdb` a default set of options when it is run for debugging;
+see the _GDB Survival Guide_ section in this file for more info (below).
+
+## Flash the compiled binary to the device ##
+To set up debugging, in a different terminal, run...
+
+    cd /tmp
+    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
+
+Now in the original terminal run...
+
+    gdb -q target/thumbv7em-none-eabihf/debug/led-roulette
+
+Compiling the release version will load the code on the board so it runs
+automatically when the reset button is pushed
+
+    cargo build --target thumbv7em-none-eabihf --release
+
+## Optional Setup Steps ##
+You can set up a `[build]` section in the `.cargo/config` file that specifies
+the default `--target` to build for a given program
+(https://stackoverflow.com/questions/49453571)
+
+``
+(
+cat <<'EOHD'
+[build]
+target = "thumbv7em-none-eabihf"
+EOHD
+) >> .cargo/config
+``
+
+
+## GDB Survival Guide ##
+You can add _GDB_ commands to the current project that you are running by
+creating a `.gdbinit` file in the project directory.  You can also create a
+"global" _GDB_ file as `~/.gdbinit`.
+
+Sample `.gdbinit` file
+
+    target remote :3333
+    load
+    break main.rs:main
+    continue
+
+Create `.gdbinit` with (copy/paste)...
+
+``
+(
+cat <<'EOHD'
+target remote :3333
+load
+break led_roulette::main
+continue
+EOHD
+) > .gdbinit
+``
+
+
+Once you are in _GDB_, change to a nicer UI
+
+    (gdb) layout src
+
+Change back to the original UI with...
+
+    (gdb) tui disable
+
+Step forward one statement
+
+    (gdb) step
+
+Print the value of a variable; note that uninitialized variables will contain
+garbage
+
+    (gdb) print x
+
+Print the memory address of a variable
+
+    (gdb) print &x
+
+Print all local variables
+
+    (gdb) info locals
+
+Switch to the "disassembly" view
+
+    (gdb) layout asm
+
+Step through instructions in "disassembly" view
+
+    (gdb) stepi
+
+Reset the microcontroller and stop it at the program entry point
+
+    (gdb) monitor reset halt
+
+**Note:** that memory is not cleared when the `reset` command is given
+
+Quit _GDB_
+
+    (gdb) quit
+
+vim: filetype=markdown shiftwidth=2 tabstop=2
