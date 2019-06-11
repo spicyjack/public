@@ -1,18 +1,12 @@
 ## Embedded Rust Programming Notes ##
 
+See also `rust_embedded_discovery.md` in this directory.
+
 ## Links ##
 - https://docs.rust-embedded.org/
 
 "The Discovery book"
 - https://docs.rust-embedded.org/discovery/index.html
-  - Repo https://github.com/rust-embedded/discovery
-  - ST Docs
-    - STM32F3DISCOVERY User Manual -
-      http://www.st.com/resource/en/user_manual/dm00063382.pdf
-    - STM32F303VC Datasheet -
-      http://www.st.com/resource/en/datasheet/stm32f303vc.pdf
-    - STM32F303VC Reference Manual -
-      http://www.st.com/resource/en/reference_manual/dm00043574.pdf
 
 "The (embedded Rust) book"
 - https://rust-embedded.github.io/book/intro/index.html
@@ -34,11 +28,7 @@ GDB
   - https://github.com/cyrus-and/gdb-dashboard/issues/81
   - https://github.com/yudai/gotty
 
-## The Discovery Book ##
-This book is an introductory course on microcontroller-based embedded systems
-that uses Rust as the teaching language rather than the usual C/C++.  The book
-uses the STM32F3DISCOVERY board for all demos and code examples.
-
+## Rust Setup ##
 Software for all platforms
 - `rustc`
   - `rustc -V`, version should be 1.31.0 or greater
@@ -63,161 +53,76 @@ Software for all platforms
 - `brew install armmbed/formulae/arm-none-eabi-gcc`
 - `brew install minicom openocd`
 
-## Verifying connection to the board ##
-- Plug in the USB cable to the "USB ST-LINK" USB port
-- Run `openocd`
+You'll also need a copy of `bossa`, which is not currently in _Homebrew_.
+- http://www.shumatech.com/web/products/bossa
+- https://github.com/shumatech/BOSSA
 
-
-    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
-
-- You should see _OpenOCD_ debug info about the target board in the _OpenOCD_
-  output
-- _OpenOCD_ will block the terminal while it is running
-
-## Basic Build & Deploy Workflow ##
+## Basic Build & Deploy Workflow (macOS) ##
 Build the binary (see also optional setup in _GDB Survival Guide_ below)
 
-    cd source_dir.git
-    cargo build --target thumbv7em-none-eabihf
+    cd atsamd.git/boards/<board_name>
+    cargo build --example <example_name>
+    arm-none-eabi-objcopy -O binary \
+      target/<build_architecture>/debug/examples/<example_name> \
+      target/<build_architecture>/debug/examples/<example_name>.bin
+    bossac --info --debug \
+      --port=cu.usbmodem<device_id> \
+      --usb-port=1 \
+      --erase \
+      --write \
+      --verify \
+      target/<build_architecture>/debug/examples/<example_name>.bin \
+      --reset
 
-To set up debugging, in a different terminal, run...
+## Building the `neopixel_rainbow` demo ##
+Building the `neopixel_rainbow` demo for the _PyGamer_ board
 
-    cd /tmp
-    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
-
-Now in the original terminal run...
-
-    gdb -q target/thumbv7em-none-eabihf/debug/program_name
-    run
-
-
-## Building the `05-led-roulette` demo ##
 Build the binary (see also optional setup in _GDB Survival Guide_ below)
 
-    cd stm-discovery.git/src/05-led-roulette
-    cargo build
+    cd atsamd.git/boards/pygamer
+    cargo build --example neopixel_rainbow
 
 Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
 
-    file target/thumbv7em-none-eabihf/debug/led-roulette
+    file target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow
     arm-none-eabi-readelf \
-        -h target/thumbv7em-none-eabihf/debug/led-roulette
-    cargo readobj --target thumbv7em-none-eabihf --bin led-roulette \
+        -h target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow
+    cargo readobj --target thumbv7em-none-eabihf --bin neopixel_rainbow \
       -- -file-headers
 
+Copy the ELF file to a "binary" format, for use on bare-metal hardware
 
-(Optional) You can add a `.gdbinit` file the directory that you run `gdb` from
-in order to give `gdb` a default set of options when it is run for debugging;
-see the _GDB Survival Guide_ section in this file for more info (below).
-
-## Flash the compiled binary to the device ##
-To set up debugging, in a different terminal, run...
-
-    cd /tmp
-    openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
-
-Now in the original terminal run...
-
-    gdb -q target/thumbv7em-none-eabihf/debug/led-roulette
-
-Compiling the release version will load the code on the board so it runs
-automatically when the reset button is pushed
-
-    cargo build --target thumbv7em-none-eabihf --release
-
-## Optional Setup Steps ##
-You can set up a `[build]` section in the `.cargo/config` file that specifies
-the default `--target` to build for a given program
-(https://stackoverflow.com/questions/49453571)
-
-``
-(
-cat <<'EOHD'
-[build]
-target = "thumbv7em-none-eabihf"
-EOHD
-) >> .cargo/config
-``
+    arm-none-eabi-objcopy -O binary \
+      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow \
+      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow.bin
 
 
-## The Embedonomicon Book ##
-Software for all platforms
-- `rustc`
-  - `rustc -V`, version should be 1.31.0 or greater
-- `cargo-binutils`
-  - `rustup component add llvm-tools-preview`
-  - `cargo install cargo-binutils --vers 0.1.4`
-  - `cargo size -- -version`
-- `cargo-edit`
-  - `cargo install cargo-edit`
+Flash the binary to the device
 
-## GDB Survival Guide ##
-You can add _GDB_ commands to the current project that you are running by
-creating a `.gdbinit` file in the project directory.  You can also create a
-"global" _GDB_ file as `~/.gdbinit`.
+    bossac --info --debug \
+      --port=cu.usbmodem14344201 \
+      --usb-port=1 \
+      --erase \
+      --write \
+      --verify \
+      --offset 0x4000 \
+      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow.bin \
+      --reset
 
-Sample `.gdbinit` file
+## Listing serial devices on _macOS_ ##
+"Borrowed" from: https://apple.stackexchange.com/questions/170105
 
-    target remote :3333
-    load
-    break main.rs:main
-    continue
+`ioreg` displays devices connected to the system in a 'tree' format.  Use the
+`-w` switch to tell `ioreg` to format the output for a given width ѕcreen; use
+`-w 0` to disable line widths
 
-Create `.gdbinit` with (copy/paste)...
+    ioreg -p IOUSB
+    ioreg -w 0 -p IOUSB
 
-``
-(
-cat <<'EOHD'
-target remote :3333
-load
-break led_roulette::main
-continue
-EOHD
-) > .gdbinit
-``
+`system_profiler` is the command-line version of the _System Profiler_ tool
+that can be launched from the Apple -> About menu on _macOS_.  It has much
+more info than `ioreg`, but you need to parse all of that information to make
+use of it.
 
-
-Once you are in _GDB_, change to a nicer UI
-
-    (gdb) layout src
-
-Change back to the original UI with...
-
-    (gdb) tui disable
-
-Step forward one statement
-
-    (gdb) step
-
-Print the value of a variable; note that uninitialized variables will contain
-garbage
-
-    (gdb) print x
-
-Print the memory address of a variable
-
-    (gdb) print &x
-
-Print all local variables
-
-    (gdb) info locals
-
-Switch to the "disassembly" view
-
-    (gdb) layout asm
-
-Step through instructions in "disassembly" view
-
-    (gdb) stepi
-
-Reset the microcontroller and stop it at the program entry point
-
-    (gdb) monitor reset halt
-
-**Note:** that memory is not cleared when the `reset` command is given
-
-Quit _GDB_
-
-    (gdb) quit
-
+    system_profiler SPUSBDataType
 vim: filetype=markdown shiftwidth=2 tabstop=2
