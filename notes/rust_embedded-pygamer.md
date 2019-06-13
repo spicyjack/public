@@ -64,6 +64,10 @@ Software for all platforms
     - `thumbv7em-none-eabihf`, for the **Cortex-M4F** and **Cortex-M7F**
       processors
 
+Optional software
+- https://github.com/cyrus-and/gdb-dashboard
+  - "GDB Dashboard", cleans up and makes `gdb` output purdy
+
 ## macOS Setup ##
 - `brew install armmbed/formulae/arm-none-eabi-gcc`
 - `brew install minicom openocd`
@@ -140,4 +144,5 @@ more info than `ioreg`, but you need to parse all of that information to make
 use of it.
 
     system_profiler SPUSBDataType
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
