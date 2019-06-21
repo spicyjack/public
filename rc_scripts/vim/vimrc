@@ -1,6 +1,9 @@
 " ===================================================================
 " Execute external scripts
 " ===================================================================
-execute pathogen#infect()
+" load Pathogen
+call pathogen#infect()
+" call ':helptags' in every directory in 'runtimepath'
+Helptags
 
 " vim:textwidth=70 expandtab shiftwidth=2 tabstop=2 comments=\:\"
