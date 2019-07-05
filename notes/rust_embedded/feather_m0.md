@@ -1,20 +1,7 @@
-## PyGamer Usage Notes ##
-The _PyGamer_ device has an `on/off` switch, and a `reset` switch.  To restart
-the currently loaded program, press the `reset` switch once.  To reset the
-device and get it ready to load a new program, press the `reset` switch twice
-in succession, similar to a double-mouse click on a computer.  Once the
-bootloader loads, you will see the "program load" graphic on the display, and
-the USB flashing device will be available to the host system.
-
-If you have a battery connected to the _PyGamer_ device, you can connect and
-disconnect the USB cable to the host computer or USB hub/charger as needed,
-the device will automatically switch between power sources.
-
-When you are done using the _PyGamer_ device, you can use the `on/off` switch
-to shut the device off.
+## Adafruit Feather M0 Board Notes ##
 
 ## Basic Build & Deploy Workflow (macOS) ##
-Build the binary (see also optional setup in _GDB Survival Guide_ below)
+Build the binary
 
     cd atsamd.git/boards/<board_name>
     cargo build --example <example_name>
@@ -30,13 +17,11 @@ Build the binary (see also optional setup in _GDB Survival Guide_ below)
       target/<build_architecture>/debug/examples/<example_name>.bin \
       --reset
 
-## Building the `neopixel_rainbow` demo ##
-Building the `neopixel_rainbow` demo for the _PyGamer_ board
+## Building the `pwm` demo ##
+Build the binary
 
-Build the binary (see also optional setup in _GDB Survival Guide_ below)
-
-    cd atsamd.git/boards/pygamer
-    cargo build --example neopixel_rainbow
+    cd atsamd.git/boards/feather_m0
+    cargo build --example pwm
 
 Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
 
