@@ -46,4 +46,34 @@ Set any breakpoints in the program running on the device
 
 Run `continue` to start the app on the device
 
+## Building the `blinky_basic` demo ##
+Build the binary
+
+    cd atsamd.git/boards/feather_m0
+    cargo build --example blinky_basic
+
+Verify the binary is valid for the `thumbv6m-none-eabi` architecture
+
+    file target/thumbv6m-none-eabi/debug/examples/blinky_basic
+    arm-none-eabi-readelf \
+        -h target/thumbv6m-none-eabi/debug/examples/blinky_basic
+    cargo readobj --target thumbv6m-none-eabi --bin blinky_basic \
+      -- -file-headers
+
+In a different terminal, start the JLink debug server
+
+
+    JLinkGDBServer -if SWD -device ATSAMD21G18
+
+Now in the original terminal, go back to the toplevel directory, and run
+
+    gdb -q \
+      boards/feather_m0/target/thumbv6m-none-eabi/debug/examples/blinky_basic
+
+Set any breakpoints in the program running on the device
+
+     break blinky_basic.rs:main
+
+Run `c`/`continue` to start the app on the device
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
