@@ -26,7 +26,6 @@ GDB
   - https://github.com/cyrus-and/gdb-dashboard/issues/81
   - https://github.com/yudai/gotty
 
-
 ## Rust Setup ##
 Software for all platforms
 - `rustc`
@@ -61,23 +60,6 @@ You'll also need a copy of `bossa`, which is not currently in _Homebrew_.
 - http://www.shumatech.com/web/products/bossa
 - https://github.com/shumatech/BOSSA
 
-
-## Listing serial devices on _macOS_ ##
-"Borrowed" from: https://apple.stackexchange.com/questions/170105
-
-`ioreg` displays devices connected to the system in a 'tree' format.  Use the
-`-w` switch to tell `ioreg` to format the output for a given width ѕcreen; use
-`-w 0` to disable line widths
-
-    ioreg -p IOUSB
-    ioreg -w 0 -p IOUSB
-
-`system_profiler` is the command-line version of the _System Profiler_ tool
-that can be launched from the Apple -> About menu on _macOS_.  It has much
-more info than `ioreg`, but you need to parse all of that information to make
-use of it.
-
-    system_profiler SPUSBDataType
 
 ## Listing serial devices on _macOS_ ##
 "Borrowed" from: https://apple.stackexchange.com/questions/170105
