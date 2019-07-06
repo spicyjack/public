@@ -25,29 +25,25 @@ Build the binary
 
 Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
 
-    file target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow
+    file target/thumbv6m-none-eabi/debug/examples/pwm
     arm-none-eabi-readelf \
-        -h target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow
-    cargo readobj --target thumbv7em-none-eabihf --bin neopixel_rainbow \
+        -h target/thumbv6m-none-eabi/debug/examples/pwm
+    cargo readobj --target thumbv6m-none-eabi --bin pwm \
       -- -file-headers
 
-Copy the ELF file to a "binary" format, for use on bare-metal hardware
-
-    arm-none-eabi-objcopy -O binary \
-      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow \
-      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow.bin
+In a different terminal, start the JLink debug server
 
 
-Flash the binary to the device
+    JLinkGDBServer -if SWD -device ATSAMD21G18
 
-    bossac --info --debug \
-      --port=cu.usbmodem14344201 \
-      --usb-port=1 \
-      --erase \
-      --write \
-      --verify \
-      --offset 0x4000 \
-      target/thumbv7em-none-eabihf/debug/examples/neopixel_rainbow.bin \
-      --reset
+Now in the original terminal, go back to the toplevel directory, and run
+
+    gdb -q boards/feather_m0/target/thumbv6m-none-eabi/debug/examples/pwm
+
+Set any breakpoints in the program running on the device
+
+     break pwm.rs:main
+
+Run `continue` to start the app on the device
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
