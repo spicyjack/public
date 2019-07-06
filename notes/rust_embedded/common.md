@@ -26,6 +26,9 @@ GDB
   - https://github.com/cyrus-and/gdb-dashboard/issues/81
   - https://github.com/yudai/gotty
 
+J-Link GDB
+- https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack
+
 ## Rust Setup ##
 Software for all platforms
 - `rustc`
@@ -56,7 +59,8 @@ Optional software
 - `brew install armmbed/formulae/arm-none-eabi-gcc`
 - `brew install minicom openocd`
 
-You'll also need a copy of `bossa`, which is not currently in _Homebrew_.
+To load programs outside of _J-Link_, you'll also need a copy of `bossa`,
+which is not currently in _Homebrew_.
 - http://www.shumatech.com/web/products/bossa
 - https://github.com/shumatech/BOSSA
 
