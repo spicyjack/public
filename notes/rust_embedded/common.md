@@ -98,7 +98,7 @@ EOHD
 ``
 
 
-## GDB Survival Guide ##
+## GDB Setup ##
 You can add _GDB_ commands to the current project that you are running by
 creating a `.gdbinit` file in the project directory.  You can also create a
 "global" _GDB_ file as `~/.gdbinit`.
@@ -124,15 +124,7 @@ EOHD
 ) > .gdbinit
 ``
 
-
-Once you are in _GDB_, change to a nicer UI
-
-    (gdb) layout src
-
-Change back to the original UI with...
-
-    (gdb) tui disable
-
+## GDB Usage ##
 Step forward one statement
 
     (gdb) step
@@ -150,10 +142,6 @@ Print all local variables
 
     (gdb) info locals
 
-Switch to the "disassembly" view
-
-    (gdb) layout asm
-
 Step through instructions in "disassembly" view
 
     (gdb) stepi
@@ -167,6 +155,20 @@ Reset the microcontroller and stop it at the program entry point
 Quit _GDB_
 
     (gdb) quit
+
+
+## Changing GDB UIs ##
+Once you are in _GDB_, change to a nicer UI
+
+    (gdb) layout src
+
+Change back to the original UI with...
+
+    (gdb) tui disable
+
+Switch to the "disassembly" view
+
+    (gdb) layout asm
 
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
