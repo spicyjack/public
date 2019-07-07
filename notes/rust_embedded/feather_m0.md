@@ -21,7 +21,7 @@ Build the binary
 Build the binary
 
     cd atsamd.git/boards/feather_m0
-    cargo build --example pwm
+    cargo build --release --example pwm
 
 Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
 
@@ -38,7 +38,7 @@ In a different terminal, start the JLink debug server
 
 Now in the original terminal, go back to the toplevel directory, and run
 
-    gdb -q boards/feather_m0/target/thumbv6m-none-eabi/debug/examples/pwm
+    gdb -quiet boards/feather_m0/target/thumbv6m-none-eabi/debug/examples/pwm
 
 Set any breakpoints in the program running on the device
 
@@ -50,7 +50,7 @@ Run `continue` to start the app on the device
 Build the binary
 
     cd atsamd.git/boards/feather_m0
-    cargo build --example blinky_basic
+    cargo build --release --example blinky_basic
 
 Verify the binary is valid for the `thumbv6m-none-eabi` architecture
 
@@ -67,7 +67,7 @@ In a different terminal, start the JLink debug server
 
 Now in the original terminal, go back to the toplevel directory, and run
 
-    gdb -q \
+    gdb -quiet \
       boards/feather_m0/target/thumbv6m-none-eabi/debug/examples/blinky_basic
 
 Set any breakpoints in the program running on the device
