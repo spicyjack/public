@@ -2,12 +2,13 @@
 One-liners, or mini-programs that can be used to do things.
 
 2019-07-12
-- Download a bunch of files with month numbers in the filename
+- Download and unzip a bunch of zipfiles with month numbers in the filename
 
 
-    for MONTH in $(printf '%02i\n' $(seq 7 12)); do \
-      echo "Downloading month '${MONTH}'"; \
-      wget https://example.com/${MONTH}filename.zip; done
+    for MONTH in $(printf '%02i\n' $(seq 1 12)); \
+      do echo "Downloading month '${MONTH}'"; \
+        wget https://example.com/${MONTH}filename.zip; \
+        unzip ${MONTH}filename.zip; sleep 15; done
 
 2018-07-16
 - Change the URLs of Git repos in a common directory
