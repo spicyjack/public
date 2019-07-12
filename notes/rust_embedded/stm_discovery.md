@@ -29,7 +29,8 @@ uses the STM32F3DISCOVERY board for all demos and code examples.
 - _OpenOCD_ will block the terminal while it is running
 
 ## Basic Build & Deploy Workflow ##
-Build the binary (see also optional setup in _GDB Survival Guide_ below)
+Build the binary; there are also optional [GDB](./gdb.md) setup steps, which
+makes life easier when debugging.
 
     cd source_dir.git
     cargo build --target thumbv7em-none-eabihf
@@ -46,7 +47,7 @@ Now in the original terminal run...
 
 
 ## Building the `05-led-roulette` demo ##
-Build the binary (see also optional setup in _GDB Survival Guide_ below)
+Build the binary
 
     cd stm-discovery.git/src/05-led-roulette
     cargo build
@@ -62,7 +63,7 @@ Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
 
 (Optional) You can add a `.gdbinit` file the directory that you run `gdb` from
 in order to give `gdb` a default set of options when it is run for debugging;
-see the _GDB Survival Guide_ section in this file for more info (below).
+see the [GDB](./gdb.md) notes file for more info.
 
 ## Flash the compiled binary to the device ##
 To set up debugging, in a different terminal, run...
@@ -72,7 +73,7 @@ To set up debugging, in a different terminal, run...
 
 Now in the original terminal run...
 
-    gdb -q target/thumbv7em-none-eabihf/debug/led-roulette
+    gdb -quiet target/thumbv7em-none-eabihf/debug/led-roulette
 
 Compiling the release version will load the code on the board so it runs
 automatically when the reset button is pushed

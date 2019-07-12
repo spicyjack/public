@@ -14,7 +14,8 @@ When you are done using the _PyGamer_ device, you can use the `on/off` switch
 to shut the device off.
 
 ## Basic Build & Deploy Workflow (macOS) ##
-Build the binary (see also optional setup in _GDB Survival Guide_ below)
+Build the binary; there are also optional [GDB](./gdb.md) setup steps, which
+makes life easier when debugging.
 
     cd atsamd.git/boards/<board_name>
     cargo build --example <example_name>
