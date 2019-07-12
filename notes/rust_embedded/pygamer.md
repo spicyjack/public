@@ -56,7 +56,7 @@ Copy the ELF file to a "binary" format, for use on bare-metal hardware
 Flash the binary to the device
 
     bossac --info --debug \
-      --port=cu.usbmodem14344201 \
+      --port=cu.usbmodem14301 \
       --usb-port=1 \
       --erase \
       --write \
