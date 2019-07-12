@@ -76,7 +76,7 @@ which is not currently in _Homebrew_.
     ioreg -w 0 -p IOUSB
 
 `system_profiler` is the command-line version of the _System Profiler_ tool
-that can be launched from the Apple -> About menu on _macOS_.  It has much
+that can be launched from the `Apple -> About` menu on _macOS_.  It has much
 more info than `ioreg`, but you need to parse all of that information to make
 use of it.
 
