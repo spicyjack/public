@@ -1,0 +1,7 @@
+# "global" ignore directives
+# GDB history files
+.gdb_history
+# Rust Bobbin (embedded development) config directory
+.bobbin/
+
+# vim: filetype=gitignore expandtab shiftwidth=2 tabstop=2:
