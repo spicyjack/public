@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export ATSAMD_SRC=${HOME}/src/rust/atsamd.git
+
+# shell functions
+function atsamd-examples {
+   START_PWD=$PWD
+   cd $ATSAMD_SRC/boards
+   for ATSAMD_EXAMPLE_DIR in $(find . -type d -name examples -maxdepth 2);
+   do
+      ATSAMD_EXAMPLE_DIR=$(echo $ATSAMD_EXAMPLE_DIR | sed 's!^./!!')
+      echo "-= ${ATSAMD_EXAMPLE_DIR} =-";
+      ls -l $ATSAMD_EXAMPLE_DIR;
+      echo
+   done
+}
+
+# vi: set filetype=sh shiftwidth=2 tabstop=2
+# конец!
