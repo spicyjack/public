@@ -28,6 +28,7 @@ makes life easier when debugging.
       --erase \
       --write \
       --verify \
+      --offset 0x4000 \
       target/<build_architecture>/debug/examples/<example_name>.bin \
       --reset
 
