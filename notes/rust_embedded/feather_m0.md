@@ -14,6 +14,7 @@ Build the binary
       --erase \
       --write \
       --verify \
+      --offset 0x2000 \
       target/<build_architecture>/debug/examples/<example_name>.bin \
       --reset
 
