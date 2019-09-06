@@ -8,6 +8,7 @@ alias datesync='sudo ntpdate pool.ntp.org'
 alias cgrep='grep --color=yes'
 alias cegrep='egrep --color=yes'
 alias grep='grep --color=auto'
+alias jqc='jq -C'
 alias lessr='less -R'
 alias mv='mv -i'
 # reload bash into the current shell after making changes to environment
