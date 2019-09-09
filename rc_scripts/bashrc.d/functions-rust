@@ -6,7 +6,8 @@ export ATSAMD_SRC=${HOME}/src/rust/atsamd.git
 function atsamd-examples {
    START_PWD=$PWD
    cd $ATSAMD_SRC/boards
-   for ATSAMD_EXAMPLE_DIR in $(find . -type d -name examples -maxdepth 2);
+   for ATSAMD_EXAMPLE_DIR in $(find . -type d -name examples -maxdepth 2 \
+         | sort);
    do
       ATSAMD_EXAMPLE_DIR=$(echo $ATSAMD_EXAMPLE_DIR | sed 's!^./!!')
       echo "-= ${ATSAMD_EXAMPLE_DIR} =-";
