@@ -19,6 +19,23 @@ Optional software
   - "GDB Dashboard", cleans up and makes `gdb` output purdy
 
 
+## Setting Source Paths ##
+If you compile source code into binaries (with debug info) in one directory,
+but run _GDB_ from a different directory, you need to let _GDB_ know where
+to find the original source code.  You do this by setting source directories
+in _GDB_.
+
+Show the directories where _GDB_ can find the program's source code
+
+    (gdb) show directory
+    (gdb) show dir
+
+Set the directories where _GDB_ can find the program's source code; note that
+you should use `show dir` first to see and possibly reuse existing directories
+
+    (gdb) set dir boards/feather_m0:$cdir:$cwd
+
+
 ## GDB Basic Usage ##
 Continue a running program; use _<Ctrl-C>_ to stop a running program
 
