@@ -12,15 +12,9 @@
   - https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/
   - https://www.linode.com/docs/applications/containers/docker
 
-## Notes ##
-- On OS X, you can install both _Docker_ and `boot2docker` from `brew`
-  - `brew install docker boot2docker`
-
 ## Installation ##
-- https://pilsniak.com/how-to-install-docker-on-mac-os-using-brew/
-
-You can download the _Docker_ DMG and install from there, or install via
-_Homebrew_
+You can install _Docker_ on _macOS_ from a package supplied by the _Docker_
+team, or from _Homebrew_.
 
 ### Docker Commands ###
 Docker info
