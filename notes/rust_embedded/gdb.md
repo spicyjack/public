@@ -48,17 +48,34 @@ List the program
     (gdb) list (show next 10 lines)
     (gdb) list - (show previous 10 lines)
 
-Step forward one statement
+Next line, stepping in to function calls
 
     (gdb) step
+    (gdb) s
+
+Next line, stepping over function calls
+
+    (gdb) next
+    (gdb) n
 
 Step through instructions in "disassembly" view
 
     (gdb) stepi
+    (gdb) si
 
+Killing the running program
+
+    (gdb) kill
+    (gdb) k
+
+Run the currently loaded program
+
+    (gdb) run
+    (gdb) r
 Quit _GDB_
 
     (gdb) quit
+    (gdb) q
 
 
 ## Showing Things ##
