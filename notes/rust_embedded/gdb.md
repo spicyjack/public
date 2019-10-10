@@ -99,6 +99,7 @@ Show names, types of global variables (all, or matching `<regex>`)
 
     info var [<regex>]
 
+
 ## Searching ##
 Regex forward search in source
 
@@ -107,6 +108,7 @@ Regex forward search in source
 Regex backwards search in source
 
     rev <regex>
+
 
 ## Breakpoints/Watchpoints ##
 Show breakpoints
@@ -132,6 +134,7 @@ Clear a single breakpoint
     clear [file:]function
     clear [file:]line
 
+
 ## Examining Variables ##
 Print the value of a variable; note that uninitialized variables will contain
 garbage
@@ -145,6 +148,28 @@ Print the memory address of a variable
 Print all local variables
 
     (gdb) info locals
+
+
+## GDB Logging ##
+- https://sourceware.org/gdb/current/onlinedocs/gdb/Logging-Output.html
+
+Set the name of the logfile (default logfile name is `gdb.txt` in the current
+directory)
+
+    (gdb) set logging file <filename>
+
+Turn on logging
+
+    (gdb) set logging on
+
+Turn off logging
+
+    (gdb) set logging off
+
+Show logging status
+
+    (gdb) show logging
+
 
 ## GDB Drastic Actions ##
 Reset the microcontroller and stop it at the program entry point
@@ -179,6 +204,7 @@ continue
 EOHD
 ) > .gdbinit
 ``
+
 
 ## Other GDB UIs ##
 Once you are in _GDB_, change to a nicer UI
