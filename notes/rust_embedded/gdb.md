@@ -79,60 +79,70 @@ Quit _GDB_
 
 
 ## Showing Things ##
+Show a backtrace of the entire program up from the current line
+
+    (gdb) backtrace
+    (gdb) bt
+
+Show a backtrace, with all local variables
+
+    (gdb) backtrace full
+    (gdb) bt full
+
 Show name of current source file
 
-    info source
+    (gdb) info source
 
 List all files in use
 
-    info sources
+    (gdb) info sources
 
 Show last 10 values
 
-    show values
+    (gdb) show values
 
 Show names, types of defined functions (all, or matching `<regex>`)
 
-    info func [<regex>]
+    (gdb) info func [<regex>]
 
 Show names, types of global variables (all, or matching `<regex>`)
 
-    info var [<regex>]
+    (gdb) info var [<regex>]
 
 
 ## Searching ##
 Regex forward search in source
 
-    forw <regex>
+    (gdb) forw <regex>
 
 Regex backwards search in source
 
-    rev <regex>
+    (gdb) rev <regex>
 
 
 ## Breakpoints/Watchpoints ##
 Show breakpoints
 
-    info break
-    info break
-    i b
+    (gdb) info break
+    (gdb) info break
+    (gdb) i b
 
 Set a breakpoint
 
-    break [file:]line
-    b [file:]line
+    (gdb) break [file:]line
+    (gdb) b [file:]line
 
 Set a breakpoint at _offset_ lines from current stop
 
-    b +<offset>
-    b -<offset>
+    (gdb) b +<offset>
+    (gdb) b -<offset>
 
 Clear a single breakpoint
 
-    clear (clears breakpoint at next instruction)
-    c (clears breakpoint at next instruction)
-    clear [file:]function
-    clear [file:]line
+    (gdb) clear (clears breakpoint at next instruction)
+    (gdb) c (clears breakpoint at next instruction)
+    (gdb) clear [file:]function
+    (gdb) clear [file:]line
 
 
 ## Examining Variables ##
@@ -218,7 +228,6 @@ Change back to the original UI with...
 Switch to the "disassembly" view
 
     (gdb) layout asm
-
 
 
 vim: filetype=markdown shiftwidth=2 tabstop=2
