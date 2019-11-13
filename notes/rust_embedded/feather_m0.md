@@ -31,6 +31,7 @@ Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
         -h target/thumbv6m-none-eabi/debug/examples/pwm
     cargo readobj --target thumbv6m-none-eabi --bin pwm \
       -- -file-headers
+    cargo size --example pwm -- -A
 
 In a different terminal, start the JLink debug server
 
@@ -60,6 +61,7 @@ Verify the binary is valid for the `thumbv6m-none-eabi` architecture
         -h target/thumbv6m-none-eabi/debug/examples/blinky_basic
     cargo readobj --target thumbv6m-none-eabi --bin blinky_basic \
       -- -file-headers
+    cargo size --example blinky_basic -- -A
 
 In a different terminal, start the JLink debug server
 
