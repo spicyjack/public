@@ -48,6 +48,15 @@ which is not currently in _Homebrew_.
 - https://github.com/shumatech/BOSSA
 
 
+## Formatting Rust code prior to generating a pull request ##
+Install `rustfmt`
+
+    rustup component add rustfmt
+
+Then run `rustfmt` at the top level of the target repo
+
+    rust fmt --all
+
 ## Listing serial devices on _macOS_ ##
 "Borrowed" from: https://apple.stackexchange.com/questions/170105
 
