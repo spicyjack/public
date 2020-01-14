@@ -24,13 +24,18 @@ Build the binary
     cd atsamd.git/boards/feather_m0
     cargo build --release --example pwm
 
-Verify the binary is valid for the `thumbv7em-none-eabihf` architecture
+Verify the binary is valid for the `thumbv6m-none-eabi` architecture
 
     file target/thumbv6m-none-eabi/debug/examples/pwm
+
+    # either run this...
     arm-none-eabi-readelf \
         -h target/thumbv6m-none-eabi/debug/examples/pwm
-    cargo readobj --target thumbv6m-none-eabi --bin pwm \
+    # or this, both give the same info
+    cargo readobj --target thumbv6m-none-eabi --example pwm \
       -- -file-headers
+
+    # this gives sections in the binary
     cargo size --example pwm -- -A
 
 In a different terminal, start the JLink debug server
