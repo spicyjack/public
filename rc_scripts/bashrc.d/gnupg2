@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# set the 'GPG_TTY' variable for GNU Privacy Guard v2
+export GPG_TTY=$(tty)
