@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# aliases to mimic 'pbcopy' and 'pbpaste' on Linux
+# https://www.ostechnix.com/how-to-use-pbcopy-and-pbpaste-commands-on-linux/
+# - Note: you only need one of the two blocks below; if you leave both blocks
+# uncommented, the *last* aliases in the file will override any previously set
+# aliases
+
+# 'xsel'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+# 'xclip'
+#alias pbcopy='xclip -selection clipboard'
+#alias pbpaste='xclip -selection clipboard -o'
+
+# vim: set filetype=sh shiftwidth=4 tabstop=4:
+# fin!
