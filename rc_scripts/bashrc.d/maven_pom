@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Get the project name and version from a Maven pom.xml file
+
+XMLLINT_MAVEN_BASE='setns x=http://maven.apache.org/POM/4.0.0\n'
+
+pom_project_name () {
+   echo -n "Project name: "
+   echo -e "${XMLLINT_MAVEN_BASE} cat /x:project/x:name/text()" \
+      | xmllint --shell pom.xml \
+      | grep -v '/'
+}
+
+pom_project_version () {
+   echo -n "Project version: "
+   echo -e "${XMLLINT_MAVEN_BASE} cat /x:project/x:version/text()" \
+      | xmllint --shell pom.xml \
+      | grep -v '/'
+}
+
+pom_info () {
+   pom_project_name
+   pom_project_version
+}
+
+
