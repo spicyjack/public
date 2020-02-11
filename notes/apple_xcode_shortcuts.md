@@ -169,4 +169,13 @@ Test the test method where the cursor is currently located
 Test the most recently tested test method again
 - `⌘ - ⌃ - ⌥  - G` (Cmd-Ctrl-Option-G)
 
+## Extensions ##
+BlockComment
+- https://github.com/superk589/BlockComment
+- Default hotkey: `⌘ - ⌃ - /`
+
+XAlign
+- https://github.com/qfish/XAlign
+- Assigned hotkey: `⇧ - ⌘ - {`
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
