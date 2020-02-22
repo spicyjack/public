@@ -41,6 +41,8 @@ set_ps1 () {
         HOST_STRING="ёжик"
     elif [ $(echo ${HOSTNAME} | egrep -c "grom") -gt 0 ]; then
         HOST_STRING="гром"
+    elif [ $(echo ${HOSTNAME} | egrep -c "perun") -gt 0 ]; then
+        HOST_STRING="перун"
     else
         HOST_STRING="\h"
     fi
