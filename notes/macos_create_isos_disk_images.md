@@ -27,7 +27,7 @@ of `*.iso.cdr`
     hdiutil convert imagefile.dmg -format UDTO -o imagefile.cdr
     hdiutil makehybrid -iso -joliet -o imagefile.iso imagefile.cdr
 
-Create an install disk for Mavericks
+## Create an install disk for Mavericks ##
 
     sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled \
     --applicationpath /Applications/Install\ OS\ X\ Mavericks.app \
@@ -37,6 +37,16 @@ Or, just use `dd` (from http://superuser.com/questions/85987):
 
     sudo umount /dev/disk?
     sudo dd if=/dev/disk? of=CD.iso bs=2048 conv=sync,notrunc
+
+## Create a Catalina install disk image using 'createinstallmedia' ##
+
+    hdiutil create 1015.dmg -size 8g -layout SPUD -fs HFS+J
+    hdiutil attach 1015.dmg -noverify -nobrowse \
+      -mountpoint /Volumes/InstallCatalina
+    sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia \
+      --volume /Volumes/InstallCatalina
+    hdiutil detach /Volumes/InstallCatalina
+    hdiutil resize -sectors min 1015.dmg
 
 ## Copy DMG image to Flash Disk ##
 - Open Disk Utility
