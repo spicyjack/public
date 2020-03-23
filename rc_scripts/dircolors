@@ -119,9 +119,10 @@ EXEC 01;32
 # images
 .bmp    00;35
 .crw    00;35 # Canon RAW files 2005-11-20
+.heic   00;35 # High Efficiency Image Coding
 .gif    00;35
 .jpg    00;35
-.jpeg   01;35 # Brother Scanner calls them 'jpeg's
+.jpeg   01;35 # Image Capture calls them 'jpeg's
 .ico    01;35 # icon files
 .png    00;35
 .svg    01;35
