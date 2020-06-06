@@ -134,8 +134,10 @@ EXEC 01;32
 # moving pictures
 .avi    01;35
 .mpg    01;35
+.mpeg   01;35
 .m4v    01;35
 .mov    01;35
+.mp4    01;35
 # audio
 .au     01;35
 .mp3    01;35 # changed 2000-06-15
