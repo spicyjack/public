@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export ANDROID_SDK=${HOME}/Library/Android/sdk
+if [ $(echo $PATH | grep -c "Android") -eq 0 ]; then
+   ANDROID_PATHS="${ANDROID_SDK}/emulator"
+   ANDROID_PATHS="${ANDROID_PATHS}:${ANDROID_SDK}/tools"
+   ANDROID_PATHS="${ANDROID_PATHS}:${ANDROID_SDK}/tools/bin"
+   export PATH="${ANDROID_PATHS}:${PATH}"
+fi
