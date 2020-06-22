@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ATSAMD_SRC=${HOME}/src/rust/atsamd.git
+export ATSAMD_SRC=${HOME}/src/rust/external/atsamd.git
 
 # shell functions
 function atsamd-examples {
