@@ -1,3 +1,8 @@
+# SSL Certificates #
+
+- https://www.sslshopper.com/article-most-common-openssl-commands.html
+
+## Todo ##
 Changing the password in a key?
 Changing certificate formats?
 What cert formats are used for which purposes?
@@ -11,39 +16,52 @@ you have a CA certificate, you can sign more certificates.  There's a Perl
 script inside of OpenSSL called 'CA.pl' that will do the work for you.
 Here's how you use it:
 
-$ perl CA.pl -newreq (You'll be prompted for a password for this new SSL key)
+    # You'll be prompted for a password for this new SSL key
+    $ perl CA.pl -newreq
 
-# You can see the details of this RSA private key via the command:
-$ openssl rsa -noout -text -in newkey.pem
+    # And you could create a decrypted PEM version (not recommended) of this
+    # RSA private key via:
 
-# And you could create a decrypted PEM version (not recommended) of this RSA
-# private key via:
+    $ openssl rsa -in newkey.pem -out newkey.pem.nopass
 
-$ openssl rsa -in newkey.pem -out newkey.pem.nopass
 
-# sign the CSR with CA.pl
+You can also manually generate a SSL CSR and key with
 
-$ perl CA.pl -sign (You'll be prompted for the CA password)
+    $ openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout KEY.key
 
-# View the signed certificate
+View CSR details with
+
+    $ openssl req -noout -text -verify -in CSR.csr
+
+View key details with
+
+    $ openssl rsa -noout -text -in newkey.pem
+
+Sign the CSR with CA.pl
+
+    $ perl CA.pl -sign (You'll be prompted for the CA password)
+
+View the signed certificate
 
 openssl x509 -noout -text -in newcert.pem
 
 Creating a CA certificate
 =========================
-$ CA.pl -newca (You'll be prompted for a new CA key password)
 
-# You can see the details of this RSA private key via the command
+    $ CA.pl -newca (You'll be prompted for a new CA key password)
 
-$ openssl rsa -noout -text -in /root/CA/private/cakey.pem
+    # You can see the details of this RSA private key via the command
 
-# And you can create a decrypted PEM version (not recommended) of this private
-# key via:
+    $ openssl rsa -noout -text -in /root/CA/private/cakey.pem
 
-$ openssl rsa -in ca.key -out ca.key.unsecure
+    # And you can create a decrypted PEM version (not recommended) of this
+    # private key via:
+
+    $ openssl rsa -in ca.key -out ca.key.unsecure
 
 Creating a self-signed SSL Cert for testing purposes
 ====================================================
-openssl req -new -x509 -nodes -out server.crt -keyout server.key
+
+    openssl req -new -x509 -nodes -out server.crt -keyout server.key
 
 # vim: filetype=markdown tabstop=2
