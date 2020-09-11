@@ -45,8 +45,10 @@ Continue a running program; use _<Ctrl-C>_ to stop a running program
 
 List the program
 
-    (gdb) list (show next 10 lines)
-    (gdb) list - (show previous 10 lines)
+    (gdb) list (show next 10 lines of current file)
+    (gdb) list - (show previous 10 lines of current file)
+    (gdb) list path/to/filename:function_name
+    (gdb) list path/to/filename:<line_number>
 
 Next line, stepping in to function calls
 
@@ -72,6 +74,7 @@ Run the currently loaded program
 
     (gdb) run
     (gdb) r
+
 Quit _GDB_
 
     (gdb) quit
