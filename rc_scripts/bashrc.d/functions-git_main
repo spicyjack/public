@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# shell functions
+# convert a local repo to use 'main' instead of 'master'
+function git_main_local {
+   # are we in a 'local' git repo?
+   if [ ! -d .git ]; then
+      echo "ERROR: not in a Git repository"
+      return 1
+   fi
+
+   # get the current git branch
+   CURR_GIT_BRANCH=$(git branch --show-current)
+   if [ $CURR_GIT_BRANCH != "master" ]; then
+      echo "ERROR: current Git branch is not 'master'"
+      return 1
+   fi
+
+   # get a list of available branches
+   AVAIL_GIT_BRANCHES=$(git branch --format="%(refname:lstrip=-1)")
+   if [ $(echo $AVAIL_GIT_BRANCHES | grep -c "main") -gt 0 ]; then
+      echo "ERROR: 'main' branch already exists"
+      return 1
+   fi
+
+   # check for a dirty repo
+   if [ $(git diff --no-ext-diff --quiet --exit-code) -gt 0 ]; then
+      echo "ERROR: current Git branch '${CURR_GIT_BRANCH}' is 'dirty'"
+      return 1
+   fi
+
+   # do the local needfuls
+   git checkout -b main
+   EXIT_STATUS=$?
+   if [ $EXIT_STATUS -gt 0 ]; then
+      echo "ERROR: 'git checkout -b main' failed"
+      return $EXIT_STATUS
+   fi
+
+   git branch --delete master
+   EXIT_STATUS=$?
+   if [ $EXIT_STATUS -gt 0 ]; then
+      echo "ERROR: 'git branch --delete master' failed"
+      return $EXIT_STATUS
+   fi
+
+   git push origin main
+   EXIT_STATUS=$?
+   if [ $EXIT_STATUS -gt 0 ]; then
+      echo "ERROR: 'git push origin main' failed"
+      return $EXIT_STATUS
+   fi
+
+   # do the remote needfuls
+   REMOTE_GIT_BRANCHES=$(git branch --remotes --format="%(refname:lstrip=-1)")
+   if [ $(echo $REMOTE_GIT_BRANCHES | grep -c "master") -eq 0 ]; then
+      echo "ERROR: 'master' branch does not exist on remote"
+      return 1
+   fi
+
+   git push origin master --delete
+   EXIT_STATUS=$?
+   if [ $EXIT_STATUS -gt 0 ]; then
+      echo "ERROR: 'git push origin master --delete' failed"
+      return $EXIT_STATUS
+   fi
+}
+
+# convert a server "bare" repo to use 'main' instead of 'master'
+function git_main_bare {
+   if [ ! -f HEAD ]; then
+      echo "ERROR: not in a 'bare' Git repository"
+      return 1
+   fi
+   # convert a 'bare' repo to use 'main'
+   git symbolic-ref HEAD refs/heads/main
+   EXIT_STATUS=$?
+   if [ $EXIT_STATUS -gt 0 ]; then
+      echo "Command 'git symbolic-ref' returned non-zero status"
+      return $EXIT_STATUS
+   fi
+}
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# конец!
