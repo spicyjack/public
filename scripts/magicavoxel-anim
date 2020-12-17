@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# start a copy of ncurses atari800
+WORK_DIR=${HOME}/Applications/MagicaVoxel-0.98.2-mac
+
+START_PWD=$PWD
+cd $WORK_DIR
+${PWD}/MagicaVoxel-0.98.2.app/Contents/MacOS/MagicaVoxel &
+cd $START_PWD
