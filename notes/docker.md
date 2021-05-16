@@ -147,6 +147,49 @@ Removes all images
 
     docker rmi $(docker images -a -q)
 
+## Docker Volumes ##
+Files inside of a Docker container do not persist when the container is shut
+down.  In order to persist files in a container, you need to use an external
+storage type, such as volumes, bind mounts, and tmpfs volumes.  'tmpfs'
+volumes are only available on Linux.
+
+To create a volume:
+
+    docker volume create <volume_name>
+
+To list volumes:
+
+    docker volume ls
+
+To inspect a volume:
+
+    docker volume inspect <volume_name>
+
+To remove a volume:
+
+    docker volume rm <volume_name>
+
+To run a Docker container with a volume:
+
+    docker run --detatch --name <container_name> \
+      --mount source=<vol_name>,target=<mount path in container> \
+      <image_name>:<image_version>
+
+    docker run --detatch \
+      --name devtest \
+      --mount source=myvol2,target=/app \
+      nginx:latest
+
+To create an anonymous volume with a container, use the `--volume` switch with
+only one argument.  If you use the `--rm` switch to `docker` when starting the
+container, the anonymous volume is removed when the container is deleted.
+
+    docker run --rm -v /foo -v awesome:/bar busybox top
+
+Here, `-v /foo` is an anonymous volume, and `-v awesome:/bar` is a volume
+named `awesome` that's mounted to `/bar` on the filesystem inside the
+container.
+
 ## Docker Hub ##
 Downloads the listed image; you can see the downloaded image with `docker images`
 
