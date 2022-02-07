@@ -58,10 +58,6 @@ function sudogrep {
     sudo grep $1 /etc/sudoers | less
 } # look for the string passed in as arg 1 in the sudoers file
 
-function vi {
-    echo "HEY! Don't use 'vi', use 'vim' instead"
-} # warn the user about using VI instead of VIM
-
 # for SSH
 function xssh {
     SSH_AUTH_SOCK= /usr/bin/ssh $1
