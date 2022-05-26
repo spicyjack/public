@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Shell functions for working with various Atari files
+
+# view text files with Atari line endings (0x9b), aka "SpartaDOS X manpages"
+function aman {
+   if [ "x${1}" = "x" ]; then
+      echo "ERROR: missing name of manpage to view"
+      return 1
+   fi
+   cat $1 | perl -pe "s/\x{9b}/\n/g" - | less
+}
+
+# vi: set filetype=sh shiftwidth=3 tabstop=3
+# конец!
