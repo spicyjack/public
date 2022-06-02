@@ -160,6 +160,7 @@ EXEC 01;32
 .ini    00;33 # 2017-11-13 - INI-style configs
 .json   00;33 # 2016-03-08 - https://en.wikipedia.org/wiki/JSON
 .log    00;33 # log files
+.man    01;33 # 2022-06-02 - Atari "MAN" pages from SpartaDOS X
 .md     00;33 # Markdown; http://daringfireball.net/projects/markdown/syntax
 .pu     00;33 # 2016-02-16 - PlantUML; http://plantuml.com/
 .sgml   00;33 # sgml files 2001-10-17
