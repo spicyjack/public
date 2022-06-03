@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # run Altirra under WINE
-ALTIRRA_PATH="${HOME}/Working/Altirra/Altirra-3.90"
-START_PWD=$PWD
-cd $ALTIRRA_PATH
-wine64 Altirra64.exe 2> Altirra64.wine.log
-cd $START_PWD
+ALTIRRA_PATH="/Users/brian/Working/Altirra/Altirra-4.01"
+/usr/local/bin/wine64 ${ALTIRRA_PATH}/Altirra64.exe \
+   2> ${ALTIRRA_PATH}/Altirra64.wine.log
