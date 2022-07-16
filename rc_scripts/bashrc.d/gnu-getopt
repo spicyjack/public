@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# add 'gnu-getopt' to $PATH ahead of the system 'getopt'
+if [ $(echo $PATH | grep -c "gnu-getopt") -eq 0 ]; then
+   if [ -d "/usr/local/opt/gnu-getopt/bin" ]; then
+      export PATH="/usr/local/opt/gnu-getopt/bin:${PATH}"
+   fi
+fi
