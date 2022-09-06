@@ -1,23 +1,26 @@
 #!/bin/bash
 
 # source plantuml from Homebrew now
-PLANTUML_VERSION=$(brew info plantuml 2>/dev/null |head -n 1 |awk '{print $3;}')
+PLANTUML_VERSION=$(brew info plantuml 2>/dev/null |head -n 1 |awk '{print $4;}')
 PLANTUML_JAR="/usr/local/Cellar/plantuml/${PLANTUML_VERSION}"
-PLANTUML_JAR="${PLANTUML_JAR}/plantuml.${PLANTUML_VERSION}.jar"
+PLANTUML_JAR="${PLANTUML_JAR}/libexec/plantuml.jar"
 
 # run the PlantUML JAR file
 function plantuml {
-    if [ $# -gt 0 ]; then
-        JAVA_BIN=$(which java)
-        if [ "x${JAVA_BIN}" != "x" ]; then
-            $JAVA_BIN -jar $PLANTUML_JAR $@ 2>/dev/null
-        else
-            echo "plantuml: No Java binary installed"
-        fi
-    else
-        echo "ERROR: Missing names of PlantUML files to render"
-        echo "ERROR: Usage: plantuml file1.pu file2.pu file3.pu"
-    fi
+   if [ $# -gt 0 ]; then
+      JAVA_BIN=$(which java)
+      if [ "x${JAVA_BIN}" != "x" ]; then
+         #echo "PlantUML JAR: ${PLANTUML_JAR}"
+         #echo "Java binary: ${JAVA_BIN}"
+         #$JAVA_BIN -jar $PLANTUML_JAR $@ 2>/dev/null
+         $JAVA_BIN -jar $PLANTUML_JAR $@
+      else
+         echo "plantuml: No Java binary installed"
+      fi
+   else
+      echo "ERROR: Missing names of PlantUML files to render"
+      echo "ERROR: Usage: plantuml file1.pu file2.pu file3.pu"
+   fi
 }
 
 # vi: set ft=sh sw=4 ts=4
