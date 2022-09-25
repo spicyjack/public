@@ -10,6 +10,7 @@ alias cegrep='egrep --color=yes'
 alias grep='grep --color=auto'
 alias jkubectl='kubectl -o json'
 alias jqc='jq -C'
+alias jqless='jq -C | less -R'
 alias lessr='less -R'
 alias mv='mv -i'
 # reload bash into the current shell after making changes to environment
