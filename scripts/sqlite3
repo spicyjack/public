@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Run SQLite3 from Homebrew
+SQLITE_BIN=$(brew list sqlite3 | grep 'bin/sqlite3')
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -gt 0 ]; then
+  echo "ERROR: running 'brew list sqlite3' failed"
+  exit 1
+fi
+$SQLITE_BIN "$@"
+
+# vim: filetype=sh tabstop=2 shiftwidth=2
