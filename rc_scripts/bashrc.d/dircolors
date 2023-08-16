@@ -8,6 +8,13 @@ if [ -x /usr/local/bin/gdircolors ]; then
     DIRCOLORS="/usr/local/bin/gdircolors"
     eval $($DIRCOLORS ~/.dircolors)
     return
+elif [ -x /opt/homebrew/bin/gdircolors ]; then
+    # Homebrew
+    alias dir='/opt/homebrew/bin/gls --color=auto --classify'
+    alias cdir='/opt/homebrew/bin/gls --color=yes --classify'
+    DIRCOLORS="/opt/homebrew/bin/gdircolors"
+    eval $($DIRCOLORS ~/.dircolors)
+    return
 elif [ -x /usr/bin/dircolors ]; then
     # GNU/Linux
     alias dir='/bin/ls --classify --color=auto'
