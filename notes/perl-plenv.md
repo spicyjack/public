@@ -60,6 +60,10 @@ Display the version of `plenv`
 
     plenv --version
 
+Install `cpanm` in the current Perl
+
+    plenv install-cpanm
+
 Locate a program file in `plenv's` path
 
     plenv which cpanm
