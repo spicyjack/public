@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Run cURL commands for sending/receiving JSON data
+
+# run an HTTP GET request
+function jcget {
+  curl --verbose --insecure \
+    --header "Content-Type: application/json" \
+    "${1}"
+
+  # the output from cURL doesn't normally inclue a newline
+  echo
+}
+
+# run an HTTP POST request
+# The URL is first, and the data to send is second, so you can change the data
+# easily
+function jcpost {
+  curl --verbose --insecure \
+    --header "Content-Type: application/json" \
+    --data "${2}" \
+    "${1}"
+
+  # the output from cURL doesn't normally inclue a newline
+  echo
+}
+
+# vim: set filetype=sh shiftwidth=2 tabstop=2
