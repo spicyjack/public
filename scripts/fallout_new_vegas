@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# run Fallout New Vegas under WINE
+FNV_PATH="${HOME}/Working/Fallout_New_Vegas"
+START_PWD=$PWD
+cd $FNV_PATH
+wine64 'setup_fallout_new_vegas_1.4.0.525_(12010).exe' > fnv.log
+cd $START_PWD
