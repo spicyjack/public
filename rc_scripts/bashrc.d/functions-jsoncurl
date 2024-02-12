@@ -4,11 +4,16 @@
 
 # run an HTTP GET request
 function jcget {
+  curl --insecure \
+    --header "Content-Type: application/json" \
+    "${1}"
+  echo
+}
+
+function jcvget {
   curl --verbose --insecure \
     --header "Content-Type: application/json" \
     "${1}"
-
-  # the output from cURL doesn't normally inclue a newline
   echo
 }
 
@@ -16,12 +21,18 @@ function jcget {
 # The URL is first, and the data to send is second, so you can change the data
 # easily
 function jcpost {
+  curl --insecure \
+    --header "Content-Type: application/json" \
+    --data "${2}" \
+    "${1}"
+  echo
+}
+
+function jcvpost {
   curl --verbose --insecure \
     --header "Content-Type: application/json" \
     --data "${2}" \
     "${1}"
-
-  # the output from cURL doesn't normally inclue a newline
   echo
 }
 
