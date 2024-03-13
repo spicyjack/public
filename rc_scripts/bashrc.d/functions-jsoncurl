@@ -6,15 +6,13 @@
 function jcget {
   curl --insecure \
     --header "Content-Type: application/json" \
-    "${1}"
-  echo
+    "${1}" | jq
 }
 
 function jcvget {
   curl --verbose --insecure \
     --header "Content-Type: application/json" \
-    "${1}"
-  echo
+    "${1}" | jq
 }
 
 # run an HTTP POST request
@@ -24,16 +22,14 @@ function jcpost {
   curl --insecure \
     --header "Content-Type: application/json" \
     --data "${2}" \
-    "${1}"
-  echo
+    "${1}" | jq
 }
 
 function jcvpost {
   curl --verbose --insecure \
     --header "Content-Type: application/json" \
     --data "${2}" \
-    "${1}"
-  echo
+    "${1}" | jq
 }
 
 # vim: set filetype=sh shiftwidth=2 tabstop=2
