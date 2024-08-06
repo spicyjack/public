@@ -1,6 +1,16 @@
 # One-liners #
 One-liners, or mini-programs that can be used to do things.
 
+2024-08-05
+- Generate an image using a generated string
+
+
+    for JOT in $(jot -w a%03d 20);
+      do TOWRITE="label: ${JOT}";
+      magick -background white -fill blue -pointsize 72 \
+        label:"${TOWRITE}" ${JOT}.png;
+    done
+
 2019-07-12
 - Download and unzip a bunch of zipfiles with month numbers in the filename
 
