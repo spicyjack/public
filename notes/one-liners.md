@@ -1,6 +1,13 @@
 # One-liners #
 One-liners, or mini-programs that can be used to do things.
 
+2024-09-03
+- Convert lowercase letters in an MD5 checksum to uppercase using the command
+  line, because "reasons"...
+
+
+    echo "foobarbaz" | md5 | tr '[:lower:]' '[:upper:]'
+
 2024-08-05
 - Generate an image using a generated string
 
