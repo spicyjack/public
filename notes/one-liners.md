@@ -4,6 +4,7 @@ One-liners, or mini-programs that can be used to do things.
 2024-09-03
 - Convert lowercase letters in an MD5 checksum to uppercase using the command
   line command `tr`, because "reasons"...
+  - https://stackoverflow.com/questions/2264428/how-to-convert-a-string-to-lower-case-in-bash
 
 
     echo "foobarbaz" | md5 | tr '[:lower:]' '[:upper:]'
