@@ -3,10 +3,14 @@ One-liners, or mini-programs that can be used to do things.
 
 2024-09-03
 - Convert lowercase letters in an MD5 checksum to uppercase using the command
-  line, because "reasons"...
+  line command `tr`, because "reasons"...
 
 
     echo "foobarbaz" | md5 | tr '[:lower:]' '[:upper:]'
+
+AWK version
+
+    echo "foobarbaz" | md5 | awk '{print tolower($0)}'
 
 2024-08-05
 - Generate an image using a generated string
