@@ -8,7 +8,9 @@ alias datesync='sudo ntpdate pool.ntp.org'
 alias cgrep='grep --color=yes'
 alias cegrep='egrep --color=yes'
 alias grep='grep --color=auto'
-alias jkubectl='kubectl -o json'
+# convert epoch time to a normal date/time
+alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
+    localtime(\$1))/e"'
 alias jqc='jq -C'
 alias jqless='jq -C | less -R'
 alias lessr='less -R'
@@ -16,9 +18,7 @@ alias mv='mv -i'
 # reload bash into the current shell after making changes to environment
 alias reexec='exec -l bash'
 alias rm='rm -i'
-# convert epoch time to a normal date/time
-alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
-    localtime(\$1))/e"'
+alias xxdr='xxd -R always'
 
 #if [ $KERNEL_NAME = "Linux" -o $KERNEL_NAME = "SunOS" ]; then
 #   alias cls='cd; clear'
