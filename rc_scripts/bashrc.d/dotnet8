@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# make 'dotnet' 8 available to this user
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
-if [ -d $DOTNET_ROOT ]; then
-   export PATH="/opt/homebrew/opt/dotnet@8/bin:${HOME}/.dotnet/tools:$PATH"
-fi
-
-alias dntf="dotnet test --filter"

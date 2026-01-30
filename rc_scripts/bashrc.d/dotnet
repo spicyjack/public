@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# make 'dotnet' 8 available to this user
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+#export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
+export DOTNET_ROOT="/usr/local/share/dotnet/dotnet"
+#DOTNET_BIN="/opt/homebrew/opt/dotnet@8/bin"
+DOTNET_BIN="/usr/local/share/dotnet/dotnet"
+#export DOTNET_ROOT="/usr/local/share/dotnet/"
+if [ -d $DOTNET_ROOT ]; then
+   export PATH="${DOTNET_BIN}:${HOME}/.dotnet/tools:$PATH"
+fi
+
+alias dntf="dotnet test --filter"
+
+vrgrep() {
+   local GREP_TEXT="${1}"
+   grep -rns "${GREP_TEXT}" | egrep -v "Binary|/.git" | grep "${GREP_TEXT}"
+}
