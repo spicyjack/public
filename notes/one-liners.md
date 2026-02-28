@@ -1,6 +1,16 @@
 # One-liners #
 One-liners, or mini-programs that can be used to do things.
 
+2025-10-27
+Get a unique list of App Service Plans from the output of Azure Function app
+configurations.
+
+    grep .appServicePlanId function_app_configs.txt \
+      | grep -v "userAssignedIdentities" \
+      | sed 's/App service plan (.appServicePlanId)://' \
+      | sort \
+      | uniq -d
+
 2024-09-03
 - Convert lowercase letters in an MD5 checksum to uppercase using the command
   line command `tr`, because "reasons"...
